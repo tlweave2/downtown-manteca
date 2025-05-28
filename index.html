@@ -4,303 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discover Downtown Manteca</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Georgia', serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #f7f5f3 0%, #fff 100%);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #8B4513 0%, #CD853F 100%);
-            color: white;
-            padding: 1rem 0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-        }
-
-        .nav-links a:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateY(-2px);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
-                        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600'%3E%3Crect fill='%23228B22' width='1200' height='600'/%3E%3Cpath fill='%2332CD32' d='M0 400L50 380C100 360 200 320 300 310C400 300 500 320 600 340C700 360 800 380 900 370C1000 360 1100 320 1150 300L1200 280V600H1150C1100 600 1000 600 900 600C800 600 700 600 600 600C500 600 400 600 300 600C200 600 100 600 50 600H0V400Z'/%3E%3C/svg%3E");
-            background-size: cover;
-            background-position: center;
-            text-align: center;
-            padding: 6rem 0;
-            color: white;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            animation: fadeInUp 1s ease-out 0.3s both;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(45deg, #FF6B35, #F7931E);
-            color: white;
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255,107,53,0.4);
-            animation: fadeInUp 1s ease-out 0.6s both;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255,107,53,0.6);
-        }
-
-        /* Main Content */
-        main {
-            padding: 4rem 0;
-        }
-
-        .intro-section {
-            text-align: center;
-            margin-bottom: 4rem;
-            background: white;
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .intro-section h2 {
-            font-size: 2.5rem;
-            color: #8B4513;
-            margin-bottom: 1rem;
-        }
-
-        .intro-section p {
-            font-size: 1.1rem;
-            color: #666;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* Events Section */
-        .events-section {
-            background: white;
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin-bottom: 3rem;
-        }
-
-        .events-section h2 {
-            font-size: 2.2rem;
-            color: #8B4513;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        .events-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .event-card {
-            background: linear-gradient(135deg, #FF6B35, #F7931E);
-            color: white;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .event-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(255,107,53,0.4);
-        }
-
-        .event-date {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        .event-month {
-            font-size: 1rem;
-            opacity: 0.9;
-            margin-bottom: 1rem;
-        }
-
-        .event-title {
-            font-size: 1.3rem;
-            font-weight: bold;
-        }
-
-        /* Attractions Section */
-        .attractions-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .attraction-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .attraction-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .attraction-card h3 {
-            font-size: 1.5rem;
-            color: #8B4513;
-            margin-bottom: 1rem;
-        }
-
-        .attraction-card p {
-            color: #666;
-            margin-bottom: 1rem;
-        }
-
-        .learn-more {
-            color: #FF6B35;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        .learn-more:hover {
-            color: #F7931E;
-        }
-
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, #8B4513 0%, #CD853F 100%);
-            color: white;
-            text-align: center;
-            padding: 3rem 0;
-            margin-top: 4rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h4 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer-section p, .footer-section a {
-            color: rgba(255,255,255,0.9);
-            text-decoration: none;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-
-        .footer-section a:hover {
-            color: white;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .container {
-                padding: 0 15px;
-            }
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <nav class="container">
-            <div class="logo">Downtown Manteca</div>
+            <div class="nav-left">
+                <div class="logo-text">Downtown Manteca</div>
+            </div>
+            <div class="logo-center">
+                <img src="https://images.unsplash.com/photo-1580478387259-5d0b9c34fbc0?w=80&h=80&fit=crop&crop=center" alt="Downtown Manteca District Logo" class="header-logo">
+            </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#events">Events</a></li>
@@ -312,7 +29,11 @@
     </header>
 
     <section class="hero" id="home">
+        <div class="hero-overlay"></div>
         <div class="container">
+            <div class="hero-logo">
+                <img src="https://images.unsplash.com/photo-1580478387259-5d0b9c34fbc0?w=150&h=150&fit=crop&crop=center" alt="Downtown Manteca District" class="hero-logo-img">
+            </div>
             <h1>Discover Downtown Manteca</h1>
             <p>Downtown Manteca boasts the heart and soul of California's Central Valley! From charming historic Main Street to vibrant community events, discover all that Downtown Manteca has to offer!</p>
             <a href="#attractions" class="cta-button">Explore Our City</a>
@@ -413,54 +134,6 @@
         </div>
     </footer>
 
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Add scroll effect to navigation
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'linear-gradient(135deg, rgba(139,69,19,0.95) 0%, rgba(205,133,63,0.95) 100%)';
-                header.style.backdropFilter = 'blur(10px)';
-            } else {
-                header.style.background = 'linear-gradient(135deg, #8B4513 0%, #CD853F 100%)';
-                header.style.backdropFilter = 'none';
-            }
-        });
-
-        // Add intersection observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.attraction-card, .event-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
