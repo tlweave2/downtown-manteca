@@ -43,7 +43,7 @@ const observer = new IntersectionObserver(function(entries) {
 }, observerOptions);
 
 // Observe cards for animation
-document.querySelectorAll('.attraction-card, .event-card').forEach(card => {
+document.querySelectorAll('.story-card, .contact-info, .contact-form-container, .link-card').forEach(card => {
     card.style.opacity = '0';
     card.style.transform = 'translateY(30px)';
     card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
@@ -59,26 +59,78 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// Add hover effects for event cards
-document.querySelectorAll('.event-card').forEach(card => {
+// Contact form enhancements
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.querySelector('.contact-form');
+    const fileInput = document.querySelector('#attachments');
+    const attachmentCount = document.querySelector('.form-group small');
+    
+    // File input handling
+    if (fileInput && attachmentCount) {
+        fileInput.addEventListener('change', function() {
+            const fileCount = this.files.length;
+            attachmentCount.textContent = `Attachments (${fileCount})`;
+        });
+    }
+    
+    // Form submission handling
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Add loading state
+            const submitBtn = this.querySelector('.btn-send');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            // Simulate form submission (replace with actual form handling)
+            setTimeout(() => {
+                alert('Thank you for your message! We\'ll get back to you soon.');
+                this.reset();
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                attachmentCount.textContent = 'Attachments (0)';
+            }, 2000);
+        });
+    }
+});
+
+// Newsletter form handling
+document.addEventListener('DOMContentLoaded', function() {
+    const newsletterForm = document.querySelector('.newsletter-form');
+    
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('button');
+            const originalText = submitBtn.textContent;
+            const emailInput = this.querySelector('input[type="email"]');
+            
+            // Add loading state
+            submitBtn.textContent = 'Signing up...';
+            submitBtn.disabled = true;
+            
+            // Simulate newsletter signup (replace with actual handling)
+            setTimeout(() => {
+                alert('Thank you for subscribing to our newsletter!');
+                emailInput.value = '';
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 1500);
+        });
+    }
+});
+
+// Enhanced hover effects for link cards
+document.querySelectorAll('.link-card').forEach(card => {
     card.addEventListener('mouseenter', function() {
         this.style.transform = 'translateY(-5px) scale(1.02)';
     });
     
     card.addEventListener('mouseleave', function() {
         this.style.transform = 'translateY(0) scale(1)';
-    });
-});
-
-// Add click effects for attraction cards
-document.querySelectorAll('.attraction-card').forEach(card => {
-    card.addEventListener('click', function(e) {
-        if (!e.target.matches('a')) {
-            const learnMore = this.querySelector('.learn-more');
-            if (learnMore) {
-                learnMore.click();
-            }
-        }
     });
 });
 
@@ -97,6 +149,23 @@ window.addEventListener('load', function() {
     document.body.classList.add('loaded');
 });
 
+// Form field focus effects
+document.addEventListener('DOMContentLoaded', function() {
+    const formInputs = document.querySelectorAll('.form-group input, .form-group textarea');
+    
+    formInputs.forEach(input => {
+        input.addEventListener('focus', function() {
+            this.parentElement.classList.add('focused');
+        });
+        
+        input.addEventListener('blur', function() {
+            if (!this.value) {
+                this.parentElement.classList.remove('focused');
+            }
+        });
+    });
+});
+
 // Mobile menu toggle (for future enhancement)
 function toggleMobileMenu() {
     const navLinks = document.querySelector('.nav-links');
@@ -110,7 +179,7 @@ window.addEventListener('resize', function() {
     if (window.innerWidth <= 768) {
         hero.style.minHeight = '70vh';
     } else {
-        hero.style.minHeight = '100vh';
+        hero.style.minHeight = 'auto';
     }
 });
 
@@ -118,8 +187,11 @@ window.addEventListener('resize', function() {
 document.addEventListener('DOMContentLoaded', function() {
     // Add fade-in effect for main content
     setTimeout(() => {
-        document.querySelector('main').style.opacity = '1';
-        document.querySelector('main').style.transform = 'translateY(0)';
+        const main = document.querySelector('main');
+        if (main) {
+            main.style.opacity = '1';
+            main.style.transform = 'translateY(0)';
+        }
     }, 500);
     
     // Initialize all interactive elements
