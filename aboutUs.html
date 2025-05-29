@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Downtown Manteca</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: #0a2b30;
+            background: linear-gradient(135deg, #f7f5f3 0%, #fff 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .logo-img {
+            width: 170px;
+            height: 170px;
+            object-fit: contain;
+            background: white;
+            border-radius: 50%;
+            padding: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background: rgba(238, 167, 25, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: white;
+            text-align: center;
+            padding: 1rem 0 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 3rem;
+            color: #0a2b30;
+            margin-bottom: rem;
+            font-weight: 700;
+        }
+
+        /* Content Sections */
+        .content-section {
+            background: white;
+            padding: 1rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+
+        .content-section h2 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2.2rem;
+            color: #0a2b30;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            border-bottom: 3px solid #eea719;
+            padding-bottom: 0.5rem;
+        }
+
+        .content-section h3 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.5rem;
+            color: #035847;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .content-section p {
+            font-size: 1.1rem;
+            color: #035847;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        /* Board Members Grid with Integrated Image */
+        .board-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .board-member {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid #eea719;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .board-member:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-left-color: #c44720;
+        }
+
+        .board-image-feature {
+            grid-column: span 2;
+            background: none;
+            color: white;
+            padding: 0;
+            border-radius: 15px;
+            overflow: hidden;
+            min-height: 200px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .board-image-feature:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .board-image-feature img {
+            width: 100%;
+            height: 100%;
+            min-height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .member-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, #eea719, #c44720);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            border: 3px solid white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .member-photo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .board-member h4 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.2rem;
+            color: #0a2b30;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .board-member .position {
+            color: #8d242f;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* Meeting Section */
+        .meeting-section {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            background: linear-gradient(135deg, #eea719, #c44720);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .meeting-content {
+            flex: 1;
+        }
+
+        .meeting-section h3 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .meeting-section p {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .meeting-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            flex-shrink: 0;
+        }
+
+        .meeting-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Documents Grid */
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .document-item {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            padding: 1.2rem;
+            border-radius: 10px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .document-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: #eea719;
+        }
+
+        .document-item a {
+            color: #0a2b30;
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .document-item a:hover {
+            color: #8d242f;
+        }
+
+        .document-icon {
+            background: #eea719;
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Contact Section */
+        .contact-highlight {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            color: #0a2b30;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 2rem 0;
+            border: 2px solid #eea719;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .contact-highlight h3 {
+            font-family: 'Roboto Slab', serif;
+            margin-bottom: 1rem;
+            color: #0a2b30;
+            font-weight: 600;
+        }
+
+        .contact-highlight p {
+            color: #035847;
+            font-weight: 500;
+        }
+
+        .contact-highlight a {
+            color: #8d242f;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .contact-highlight a:hover {
+            color: #c44720;
+            text-decoration: underline;
+        }
+
+        /* Bottom Feature Image */
+        .bottom-feature-image {
+            width: 100%;
+            max-width: 800px;
+            margin: 3rem auto;
+            text-align: center;
+        }
+
+        .bottom-feature-image img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .bottom-feature-image:hover img {
+            transform: scale(1.02);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        .bottom-feature-image h3 {
+            font-family: 'Roboto Slab', serif;
+            color: #0a2b30;
+            margin-top: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .bottom-feature-image p {
+            color: #035847;
+            margin-top: 0.8rem;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: #eea719;
+        }
+
+        .footer-section a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            display: block;
+            font-size: 0.9rem;
+        }
+
+        .footer-section a:hover {
+            color: #eea719;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 1.5rem 0;
+            }
+            
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .logo-container {
+                justify-content: center;
+            }
+            
+            .logo-img {
+                width: 130px;
+                height: 130px;
+                padding: 8px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+            
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .content-section {
+                padding: 2rem;
+            }
+            
+            .content-section h2 {
+                font-size: 1.8rem;
+            }
+            
+            .board-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .board-image-feature {
+                grid-column: span 1;
+                flex-direction: column;
+                text-align: center;
+                min-height: auto;
+            }
+            
+            .board-image-feature img {
+                width: 100%;
+                max-width: 300px;
+                height: 180px;
+            }
+            
+            .meeting-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .meeting-image {
+                width: 100%;
+                max-width: 300px;
+                height: 300px;
+                margin: 0 auto;
+            }
+            
+            .section-with-image {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .section-image img {
+                height: 300px;
+            }
+            
+            .section-image img {
+                height: 200px;
+            }
+            
+            .bottom-feature-image img {
+                height: 250px;
+            }
+            
+            .member-photo {
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
+            
+            .documents-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo-container">
+                <img src="img/manteca-logo.png" alt="Downtown Manteca District Logo" class="logo-img">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#business">Business</a></li>
+                <li><a href="about.html" class="active">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>About Us</h1>
+        </div>
+    </section>
+
+    <main class="container">
+        <!-- Board Section with Integrated Image -->
+        <section class="content-section">
+            <h2>Our Board</h2>
+            <div class="board-grid">
+                <div class="board-member">
+                    <div class="member-photo">
+                        <img src="img/board/president.jpg" alt="President" onerror="this.style.display='none'; this.parentNode.innerHTML='CP';">
+                    </div>
+                    <h5>Charles Paz</h5>
+                    <div class="position">President</div>
+                </div>
+                <div class="board-member">
+                    <div class="member-photo">
+                        <img src="img/board/vice-president.jpg" alt="Vice President" onerror="this.style.display='none'; this.parentNode.innerHTML='DM';">
+                    </div>
+                    <h5>Daniel Machado</h5>
+                    <div class="position">Vice-President</div>
+                </div>
+                <div class="board-member">
+                    <div class="member-photo">
+                        <img src="img/board/secretary.jpg" alt="Secretary" onerror="this.style.display='none'; this.parentNode.innerHTML='CT';">
+                    </div>
+                    <h5>Chris Teicheira</h5>
+                    <div class="position">Secretary</div>
+                </div>
+                <div class="board-member">
+                    <div class="member-photo">
+                        <img src="img/board/treasurer.jpg" alt="Treasurer" onerror="this.style.display='none'; this.parentNode.innerHTML='AC';">
+                    </div>
+                    <h5>Alfredo Cazarez</h5>
+                    <div class="position">Treasurer</div>
+                </div>
+                
+                <!-- Integrated Board Image Feature -->
+                <div class="board-image-feature">
+                    <img src="img/board-meeting.jpg" alt="Board Meeting">
+                </div>
+                
+                <div class="board-member">
+                    <div class="member-photo">
+                        <img src="img/board/executive-director.jpg" alt="Executive Director" onerror="this.style.display='none'; this.parentNode.innerHTML='MK';">
+                    </div>
+                    <h5>Michelle Kramer</h5>
+                    <div class="position">Executive Director</div>
+                </div>
+                <div class="board-member">
+                    <div class="member-photo">
+                        <img src="img/board/board-member-1.jpg" alt="Board Member" onerror="this.style.display='none'; this.parentNode.innerHTML='CS';">
+                    </div>
+                    <h5>Charlene Sevilla</h5>
+                    <div class="position">Board Member</div>
+                </div>
+                <div class="board-member">
+                    <div class="member-photo">
+                        <img src="img/board/board-member-2.jpg" alt="Board Member" onerror="this.style.display='none'; this.parentNode.innerHTML='KK';">
+                    </div>
+                    <h5>Kendra Kallstrom</h5>
+                    <div class="position">Board Member</div>
+                </div>
+                <div class="board-member">
+                    <div class="member-photo">
+                        <img src="img/board/board-member-3.jpg" alt="Board Member" onerror="this.style.display='none'; this.parentNode.innerHTML='BC';">
+                    </div>
+                    <h5>Brandy Clark</h5>
+                    <div class="position">Board Member</div>
+                </div>
+                <div class="board-member">
+                    <div class="member-photo">
+                        <img src="img/board/board-member-4.jpg" alt="Board Member" onerror="this.style.display='none'; this.parentNode.innerHTML='FO';">
+                    </div>
+                    <h5>Frank Orr</h5>
+                    <div class="position">Board Member</div>
+                </div>
+                <div class="board-member">
+                    <div class="member-photo">
+                        <img src="img/board/board-member-5.jpg" alt="Board Member" onerror="this.style.display='none'; this.parentNode.innerHTML='ET';">
+                    </div>
+                    <h5>Eddie Torres Law</h5>
+                    <div class="position">Board Member</div>
+                </div>
+                <div class="board-member">
+                    <div class="member-photo">
+                        <img src="img/board/board-member-6.jpg" alt="Board Member" onerror="this.style.display='none'; this.parentNode.innerHTML='BH';">
+                    </div>
+                    <h5>Barbara Harb</h5>
+                    <div class="position">Board Member</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Meeting Section with Image -->
+        <section class="content-section">
+            <div class="meeting-section">
+                <div class="meeting-content">
+                    <h3>Upcoming Meetings</h3>
+                    <p><strong>First Wednesday of Every Month</strong></p>
+                    <p>Deaf Puppy Comedy Club</p>
+                    <p>127 N Main St, Manteca, CA 95336</p>
+                </div>
+                <div class="meeting-image">
+                    <img src="img/meeting-location.jpg" alt="Meeting Location">
+                </div>
+            </div>
+        </section>
+
+        <!-- About Downtown Manteca District -->
+        <section class="content-section">
+            <h2>About Manteca Downtown District</h2>
+            <p>The Downtown Manteca District is a collaborative initiative focused on promoting the vitality, economic growth, and cultural identity of Downtown Manteca. Established to support the evolving needs of local businesses, property owners, and residents, the District works to foster a thriving and welcoming environment at the heart of the city.</p>
+            
+            <p>The District operates as a central advocate for Downtown, with priorities that include business development, beautification, public engagement, and community-centered events. Our mission is to make Downtown Manteca a dynamic destination where commerce, culture, and community connect.</p>
+            
+            <p>Through partnerships with the City of Manteca, local organizations, and the business community, the Downtown Manteca District supports efforts in revitalization, placemaking, and long-term investment. From preserving historic charm to encouraging innovation, we are committed to shaping a Downtown that reflects the energy and pride of Manteca.</p>
+            
+            <p>The Downtown Manteca District is supported by a growing group of business owners, property stakeholders, civic leaders, and volunteers. Regular meetings and workshops are held to ensure open communication and public involvement in district planning and programming.</p>
+
+            <div class="contact-highlight">
+                <h3>📅 Get Involved</h3>
+                <p>For information on upcoming meetings, events, and opportunities to get involved, please visit our Events Calendar or contact our team at <a href="mailto:info@downtownmanteca.com">info@downtownmanteca.com</a>.</p>
+                <p>All meetings are open to the public, and community participation is encouraged.</p>
+            </div>
+        </section>
+
+        <!-- District Documents -->
+        <section class="content-section">
+            <h2>District Documents</h2>
+            <div class="documents-grid">
+                <div class="document-item">
+                    <a href="documents/april-2025-board-meeting.pdf" download>
+                        <span class="document-icon">PDF</span>
+                        April 2025 Board Meeting
+                    </a>
+                </div>
+                <div class="document-item">
+                    <a href="documents/february-2025-board-meeting.pdf" download>
+                        <span class="document-icon">PDF</span>
+                        February 2025 Board Meeting
+                    </a>
+                </div>
+                <div class="document-item">
+                    <a href="documents/march-2024-board-meeting.docx" download>
+                        <span class="document-icon">DOCX</span>
+                        March 2024 Board Meeting
+                    </a>
+                </div>
+                <div class="document-item">
+                    <a href="documents/downtown-manteca-district-bylaws.docx" download>
+                        <span class="document-icon">DOCX</span>
+                        Downtown Manteca District Bylaws
+                    </a>
+                </div>
+                <div class="document-item">
+                    <a href="documents/dmia-city-manteca-contract.pdf" download>
+                        <span class="document-icon">PDF</span>
+                        DMIA City of Manteca Contract
+                    </a>
+                </div>
+                <div class="document-item">
+                    <a href="documents/district-map.pdf" download>
+                        <span class="document-icon">PDF</span>
+                        District Map
+                    </a>
+                </div>
+                <div class="document-item">
+                    <a href="documents/dmia-committee-structure.docx" download>
+                        <span class="document-icon">DOCX</span>
+                        DMIA Committee Structure
+                    </a>
+                </div>
+                <div class="document-item">
+                    <a href="documents/downtown-manteca-board-meeting-jan-22-2025.pdf" download>
+                        <span class="document-icon">PDF</span>
+                        Downtown Manteca Int. Board Meeting Jan 22 2025
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Connect Section -->
+        <section class="content-section">
+            <h2>Connect With Us</h2>
+            <p>Stay connected with the Downtown Manteca District through our various communication channels. We encourage community participation and welcome your input on our initiatives and programs.</p>
+            
+            <div class="contact-highlight">
+                <h3>Contact Information</h3>
+                <p>Email: <a href="mailto:info@downtownmanteca.com">info@downtownmanteca.com</a></p>
+                <p>Phone: (209) 239-8451</p>
+                <p>Address: Historic Main Street, Manteca, CA 95336</p>
+            </div>
+        </section>
+
+        <!-- Bottom Feature Image -->
+        <div class="bottom-feature-image">
+            <img src="img/downtown-community.jpg" alt="Downtown Manteca Community">
+            <h3>Building Community Together</h3>
+            <p>Join us in creating a vibrant downtown that celebrates our heritage while building for the future. Every voice matters in shaping the heart of Manteca.</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">About Us</a>
+                    <a href="#contact">Contact Us</a>
+                    <a href="#directory">Directory Sign Up</a>
+                    <a href="#business">Business Directory</a>
+                    <a href="#events">Events</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <a href="#bylaws">District Bylaws</a>
+                    <a href="#meetings">Meeting Minutes</a>
+                    <a href="#district-map">District Map</a>
+                    <a href="#committee">Committee Structure</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <a href="#">Facebook</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">Twitter</a>
+                    <a href="mailto:info@downtownmanteca.com">Email Us</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Copyright © 2025 Downtown Manteca - All Rights Reserved.</p>
+                <p>Managed by Jane Media Services</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

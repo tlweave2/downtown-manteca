@@ -93,7 +93,7 @@ nav {
 /* Hero Section */
 .hero {
     background: linear-gradient(rgba(10, 43, 48, 0.7), rgba(3, 88, 71, 0.7)), 
-                url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop&crop=center');
+                url('img/manteca-top.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
