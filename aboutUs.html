@@ -29,7 +29,7 @@
         header {
             background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
             color: white;
-            padding: 1rem 0;
+            padding: 2rem 0;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
@@ -80,7 +80,7 @@
         .page-header {
             background: white;
             text-align: center;
-            padding: 1rem 0 2rem;
+            padding: 4rem 0 2rem;
             margin-bottom: 3rem;
         }
 
@@ -88,14 +88,14 @@
             font-family: 'Roboto Slab', serif;
             font-size: 3rem;
             color: #0a2b30;
-            margin-bottom: rem;
+            margin-bottom: 1rem;
             font-weight: 700;
         }
 
         /* Content Sections */
         .content-section {
             background: white;
-            padding: 1rem;
+            padding: 3rem;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             margin-bottom: 3rem;
@@ -105,7 +105,7 @@
             font-family: 'Roboto Slab', serif;
             font-size: 2.2rem;
             color: #0a2b30;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
             font-weight: 600;
             border-bottom: 3px solid #eea719;
             padding-bottom: 0.5rem;
@@ -123,72 +123,74 @@
             font-size: 1.1rem;
             color: #035847;
             margin-bottom: 1.5rem;
-            line-height: 1.8;
+            line-height: 1.6;
         }
 
         /* Board Members Grid with Integrated Image */
         .board-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 1rem;
+            grid-template-columns: repeat(auto-fit, 100px);
+            gap: 0.2rem;
+            margin-bottom: 2rem;
+            justify-content: center;
         }
 
         .board-member {
             background: linear-gradient(135deg, #f8f9fa, #ffffff);
-            padding: 1.5rem;
-            border-radius: 15px;
-            border-left: 4px solid #eea719;
+            padding: 0.4rem;
+            border-radius: 6px;
+            border-left: 2px solid #eea719;
             transition: all 0.3s ease;
             text-align: center;
+            width: 100px;
+            box-sizing: border-box;
         }
 
         .board-member:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transform: translateY(-1px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
             border-left-color: #c44720;
         }
 
         .board-image-feature {
-            grid-column: span 2;
+            grid-column: span 4;
             background: none;
             color: white;
             padding: 0;
-            border-radius: 15px;
+            border-radius: 6px;
             overflow: hidden;
-            min-height: 200px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            height: 100px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
         }
 
         .board-image-feature:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
         .board-image-feature img {
             width: 100%;
-            height: 100%;
-            min-height: 200px;
+            height: 100px;
             object-fit: cover;
-            border-radius: 15px;
+            border-radius: 6px;
         }
 
         .member-photo {
-            width: 80px;
-            height: 80px;
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
             object-fit: cover;
-            margin: 0 auto 1rem;
+            margin: 0 auto 0.3rem;
             background: linear-gradient(135deg, #eea719, #c44720);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.5rem;
+            font-size: 0.7rem;
             font-weight: 600;
-            border: 3px solid white;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 1px solid white;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
         }
 
         .member-photo img {
@@ -198,18 +200,20 @@
             object-fit: cover;
         }
 
-        .board-member h4 {
+        .board-member h5 {
             font-family: 'Roboto Slab', serif;
-            font-size: 1.2rem;
+            font-size: 0.65rem;
             color: #0a2b30;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.1rem;
             font-weight: 600;
+            line-height: 1.0;
         }
 
         .board-member .position {
             color: #8d242f;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.55rem;
+            line-height: 1.0;
         }
 
         /* Meeting Section */
@@ -456,20 +460,36 @@
             }
             
             .board-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(auto-fit, 80px);
+                gap: 0.1rem;
+            }
+            
+            .board-member {
+                width: 80px;
+                padding: 0.3rem;
             }
             
             .board-image-feature {
-                grid-column: span 1;
-                flex-direction: column;
-                text-align: center;
-                min-height: auto;
+                grid-column: span 3;
+                height: 80px;
             }
             
             .board-image-feature img {
-                width: 100%;
-                max-width: 300px;
-                height: 180px;
+                height: 80px;
+            }
+            
+            .member-photo {
+                width: 25px;
+                height: 25px;
+                font-size: 0.6rem;
+            }
+            
+            .board-member h5 {
+                font-size: 0.6rem;
+            }
+            
+            .board-member .position {
+                font-size: 0.5rem;
             }
             
             .meeting-section {
@@ -501,12 +521,6 @@
                 height: 250px;
             }
             
-            .member-photo {
-                width: 45px;
-                height: 45px;
-                font-size: 1rem;
-            }
-            
             .documents-grid {
                 grid-template-columns: 1fr;
             }
@@ -527,7 +541,7 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="#events">Events</a></li>
                 <li><a href="#business">Business</a></li>
-                <li><a href="about.html" class="active">About Us</a></li>
+                <li><a href="aboutUs.html" class="active">About Us</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
