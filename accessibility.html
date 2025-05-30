@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessibility Statement - Downtown Manteca</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: #0a2b30;
+            background: linear-gradient(135deg, #f7f5f3 0%, #fff 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .logo-img {
+            width: 170px;
+            height: 170px;
+            object-fit: contain;
+            background: white;
+            border-radius: 50%;
+            padding: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background: rgba(238, 167, 25, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            padding: 3rem 0 2rem;
+            background: white;
+            margin: 2rem auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .page-header h1 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2.5rem;
+            color: #0a2b30;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: #035847;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Content Section */
+        .content-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .content-section h2 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2rem;
+            color: #0a2b30;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            border-bottom: 2px solid #eea719;
+            padding-bottom: 0.5rem;
+        }
+
+        .content-section h3 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.5rem;
+            color: #035847;
+            margin: 2rem 0 1rem 0;
+            font-weight: 600;
+        }
+
+        .content-section p {
+            font-size: 1.1rem;
+            color: #035847;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .content-section ul {
+            margin: 1rem 0 1.5rem 2rem;
+        }
+
+        .content-section li {
+            color: #035847;
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        /* Contact Highlight */
+        .contact-highlight {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            color: #0a2b30;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border: 2px solid #eea719;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .contact-highlight h3 {
+            font-family: 'Roboto Slab', serif;
+            margin-bottom: 1rem;
+            color: #0a2b30;
+            font-weight: 600;
+        }
+
+        .contact-highlight p {
+            color: #035847;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .contact-highlight a {
+            color: #8d242f;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .contact-highlight a:hover {
+            color: #c44720;
+            text-decoration: underline;
+        }
+
+        /* Links */
+        a {
+            color: #8d242f;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #c44720;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 1.5rem 0;
+            }
+            
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .logo-container {
+                justify-content: center;
+            }
+            
+            .logo-img {
+                width: 130px;
+                height: 130px;
+                padding: 8px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .content-section {
+                padding: 2rem;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo-container">
+                <img src="img/manteca-logo.png" alt="Downtown Manteca District Logo" class="logo-img">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="directory.html">Business</a></li>
+                <li><a href="aboutUs.html">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Web Accessibility Statement</h1>
+            <p>Downtown Manteca District is committed to ensuring digital accessibility for people with disabilities.</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <section class="content-section">
+            <h2>Our Commitment to Accessibility</h2>
+            <p>The Downtown Manteca District is committed to ensuring that our website is accessible to all users, including those with disabilities. We strive to provide an inclusive digital experience that allows everyone to access information about our services, programs, and activities.</p>
+
+            <p>We are actively working to enhance the accessibility and usability of our website and ensure compliance with the Americans with Disabilities Act (ADA) and Web Content Accessibility Guidelines (WCAG) 2.1 Level AA standards.</p>
+
+            <h3>Accessibility Standards</h3>
+            <p>Our website aims to conform to the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA. These guidelines explain how to make web content accessible to people with a wide range of disabilities including:</p>
+            <ul>
+                <li>Visual impairments (including blindness, low vision, and color blindness)</li>
+                <li>Hearing impairments (including deafness and hearing loss)</li>
+                <li>Motor impairments (including difficulty using a mouse or keyboard)</li>
+                <li>Cognitive disabilities (including learning disabilities and difficulties with concentration)</li>
+            </ul>
+
+            <h3>Accessibility Features</h3>
+            <p>Our website includes the following accessibility features:</p>
+            <ul>
+                <li>Alternative text for images and graphics</li>
+                <li>Keyboard navigation support</li>
+                <li>Proper heading structure for screen readers</li>
+                <li>High contrast color schemes</li>
+                <li>Descriptive link text</li>
+                <li>Resizable text without loss of functionality</li>
+                <li>Form labels and error identification</li>
+                <li>Skip navigation links</li>
+            </ul>
+
+            <h3>Ongoing Improvements</h3>
+            <p>We continuously work to improve the accessibility of our website. Our ongoing efforts include:</p>
+            <ul>
+                <li>Regular accessibility audits and testing</li>
+                <li>Staff training on accessibility best practices</li>
+                <li>User testing with people with disabilities</li>
+                <li>Consultation with accessibility experts</li>
+                <li>Updates to content and design based on feedback</li>
+            </ul>
+
+            <h3>Third-Party Content</h3>
+            <p>While we strive to ensure accessibility across our entire website, some content may be provided by third parties. We work with our vendors and partners to ensure their content meets accessibility standards, but we cannot guarantee the accessibility of all external content.</p>
+
+            <h3>Assistive Technology Compatibility</h3>
+            <p>Our website has been designed and tested to work with commonly used assistive technologies, including:</p>
+            <ul>
+                <li>Screen readers (NVDA, JAWS, VoiceOver)</li>
+                <li>Voice recognition software</li>
+                <li>Keyboard navigation</li>
+                <li>Screen magnification software</li>
+            </ul>
+
+            <div class="contact-highlight">
+                <h3>📞 Report Accessibility Issues</h3>
+                <p>If you encounter any accessibility barriers on our website or need assistance accessing content, please contact us:</p>
+                <p><strong>ADA Coordinator:</strong> Michelle Kramer, Executive Director</p>
+                <p><strong>Email:</strong> <a href="mailto:accessibility@downtownmanteca.com">accessibility@downtownmanteca.com</a></p>
+                <p><strong>Phone:</strong> <a href="tel:209-239-8451">(209) 239-8451</a></p>
+                <p><strong>TTY:</strong> Available upon request</p>
+                <p><strong>Mail:</strong><br>
+                Downtown Manteca District<br>
+                ATTN: ADA Coordinator<br>
+                Historic Main Street<br>
+                Manteca, CA 95336</p>
+            </div>
+
+            <h3>Alternative Formats</h3>
+            <p>We can provide information in alternative formats upon request, including:</p>
+            <ul>
+                <li>Large print documents</li>
+                <li>Audio recordings</li>
+                <li>Braille materials</li>
+                <li>Electronic formats compatible with screen readers</li>
+                <li>Sign language interpretation for meetings</li>
+            </ul>
+
+            <h3>Feedback Process</h3>
+            <p>When you contact us about an accessibility issue, we will:</p>
+            <ul>
+                <li>Acknowledge receipt of your feedback within 2 business days</li>
+                <li>Investigate the issue promptly</li>
+                <li>Provide a substantive response within 10 business days</li>
+                <li>Work with you to resolve the accessibility barrier</li>
+                <li>Document the issue to prevent future occurrences</li>
+            </ul>
+
+            <h3>Compliance Monitoring</h3>
+            <p>This accessibility statement was last reviewed and updated on <strong>January 2025</strong>. We review and update this statement regularly to reflect our ongoing accessibility improvements and compliance efforts.</p>
+
+            <p>The Downtown Manteca District is subject to the ADA Title II requirements for web accessibility. We are committed to meeting the WCAG 2.1 Level AA compliance deadline of April 24, 2027, as applicable to our organization.</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>Copyright © 2025 Downtown Manteca - All Rights Reserved.</p>
+                <p>Managed by Jane Media Services</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

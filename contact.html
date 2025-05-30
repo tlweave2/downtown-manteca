@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Downtown Manteca</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: #0a2b30;
+            background: linear-gradient(135deg, #f7f5f3 0%, #fff 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .logo-img {
+            width: 170px;
+            height: 170px;
+            object-fit: contain;
+            background: white;
+            border-radius: 50%;
+            padding: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background: rgba(238, 167, 25, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            padding: 3rem 0 2rem;
+            background: white;
+            margin: 2rem auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .page-header h1 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2.5rem;
+            color: #0a2b30;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: #035847;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Contact Grid */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-left: 4px solid #eea719;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-left-color: #c44720;
+        }
+
+        .contact-card h2 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.8rem;
+            color: #0a2b30;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-card .icon {
+            font-size: 2rem;
+            color: #eea719;
+        }
+
+        .contact-info {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info h3 {
+            font-family: 'Roboto Slab', serif;
+            color: #035847;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .contact-info p {
+            color: #035847;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-info a {
+            color: #8d242f;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: #c44720;
+            text-decoration: underline;
+        }
+
+        /* Department Cards */
+        .department-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .department-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-top: 3px solid #035847;
+            transition: all 0.3s ease;
+        }
+
+        .department-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            border-top-color: #eea719;
+        }
+
+        .department-card h3 {
+            font-family: 'Roboto Slab', serif;
+            color: #0a2b30;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .department-card p {
+            color: #035847;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Form */
+        .contact-form-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: 3rem 0;
+        }
+
+        .contact-form-section h2 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2rem;
+            color: #0a2b30;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            border-bottom: 2px solid #eea719;
+            padding-bottom: 0.5rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .form-group label {
+            font-family: 'Roboto Slab', serif;
+            font-weight: 600;
+            color: #0a2b30;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 1rem;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #eea719;
+            box-shadow: 0 0 10px rgba(238, 167, 25, 0.3);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #eea719, #c44720);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(238, 167, 25, 0.4);
+            display: block;
+            margin: 0 auto;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(238, 167, 25, 0.6);
+            background: linear-gradient(45deg, #c44720, #8d242f);
+        }
+
+        /* Map Section */
+        .map-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .map-section h2 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2rem;
+            color: #0a2b30;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            border-bottom: 2px solid #eea719;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .map-placeholder {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border: 2px solid #eea719;
+            border-radius: 15px;
+            padding: 4rem 2rem;
+            margin: 2rem 0;
+            color: #035847;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* Hours Section */
+        .hours-section {
+            background: linear-gradient(135deg, #8d242f, #c44720);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(141, 36, 47, 0.3);
+            margin: 3rem 0;
+        }
+
+        .hours-section h2 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .hours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .hours-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hours-card h3 {
+            font-family: 'Roboto Slab', serif;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .hours-card p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Emergency Contact */
+        .emergency-section {
+            background: linear-gradient(135deg, #dc3545, #c82333);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(220, 53, 69, 0.3);
+        }
+
+        .emergency-section h3 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .emergency-section p {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .emergency-section a {
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .emergency-section a:hover {
+            text-decoration: underline;
+        }
+
+        /* Accessibility Note */
+        .accessibility-note {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #eea719;
+            margin: 2rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .accessibility-note h4 {
+            font-family: 'Roboto Slab', serif;
+            color: #0a2b30;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .accessibility-note p {
+            color: #035847;
+            margin-bottom: 1rem;
+        }
+
+        .accessibility-note a {
+            color: #8d242f;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .accessibility-note a:hover {
+            color: #c44720;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 1.5rem 0;
+            }
+            
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .logo-container {
+                justify-content: center;
+            }
+            
+            .logo-img {
+                width: 130px;
+                height: 130px;
+                padding: 8px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .department-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+            
+            .hours-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-card,
+            .contact-form-section,
+            .map-section {
+                padding: 2rem;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo-container">
+                <img src="img/manteca-logo.png" alt="Downtown Manteca District Logo" class="logo-img">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="directory.html">Business</a></li>
+                <li><a href="aboutUs.html">About Us</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Contact Downtown Manteca District</h1>
+            <p>We're here to serve our community. Get in touch with us for information, assistance, or to get involved in making downtown Manteca vibrant.</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <!-- Primary Contact Information -->
+        <section class="contact-grid">
+            <div class="contact-card">
+                <h2><span class="icon">🏢</span> Main Office</h2>
+                <div class="contact-info">
+                    <h3>Downtown Manteca District</h3>
+                    <p>Historic Main Street<br>
+                    Manteca, CA 95336</p>
+                    <p><strong>Phone:</strong> <a href="tel:209-239-8451">(209) 239-8451</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:info@downtownmanteca.com">info@downtownmanteca.com</a></p>
+                </div>
+                <div class="contact-info">
+                    <h3>Executive Director</h3>
+                    <p><strong>Michelle Kramer</strong></p>
+                    <p><a href="mailto:mkramer@downtownmanteca.com">mkramer@downtownmanteca.com</a></p>
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <h2><span class="icon">📋</span> Board Leadership</h2>
+                <div class="contact-info">
+                    <h3>President</h3>
+                    <p><strong>Charles Paz</strong></p>
+                    <p><a href="mailto:cpaz@downtownmanteca.com">cpaz@downtownmanteca.com</a></p>
+                </div>
+                <div class="contact-info">
+                    <h3>Vice President</h3>
+                    <p><strong>Daniel Machado</strong></p>
+                    <p><a href="mailto:dmachado@downtownmanteca.com">dmachado@downtownmanteca.com</a></p>
+                </div>
+                <div class="contact-info">
+                    <h3>Secretary</h3>
+                    <p><strong>Chris Teicheira</strong></p>
+                    <p><a href="mailto:cteicheira@downtownmanteca.com">cteicheira@downtownmanteca.com</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Office Hours -->
+        <section class="hours-section">
+            <h2>Office Hours & Availability</h2>
+            <div class="hours-grid">
+                <div class="hours-card">
+                    <h3>🕘 Regular Office Hours</h3>
+                    <p><strong>Monday - Thursday:</strong> 8:30 AM - 4:00 PM</p>
+                    <p><strong>Friday:</strong> Closed</p>
+                    <p><strong>Weekends:</strong> Closed</p>
+                    <p><em>Holiday schedule may vary</em></p>
+                </div>
+                <div class="hours-card">
+                    <h3>📞 Phone Availability</h3>
+                    <p><strong>During Office Hours:</strong> Immediate response</p>
+                    <p><strong>After Hours:</strong> Voicemail monitored</p>
+                    <p><strong>Response Time:</strong> Within 24 hours</p>
+                </div>
+                <div class="hours-card">
+                    <h3>📧 Email Response</h3>
+                    <p><strong>General Inquiries:</strong> 1-2 business days</p>
+                    <p><strong>Public Records:</strong> 10 days (legal requirement)</p>
+                    <p><strong>Board Matters:</strong> 3-5 business days</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Departments -->
+        <section class="department-grid">
+            <div class="department-card">
+                <h3>🏪 Business Development</h3>
+                <p>Support for local businesses, directory listings, and economic development initiatives.</p>
+                <p><strong>Contact:</strong> <a href="mailto:business@downtownmanteca.com">business@downtownmanteca.com</a></p>
+            </div>
+            <div class="department-card">
+                <h3>🎉 Events & Programming</h3>
+                <p>Community events, festivals, and programming coordination.</p>
+                <p><strong>Contact:</strong> <a href="mailto:events@downtownmanteca.com">events@downtownmanteca.com</a></p>
+            </div>
+            <div class="department-card">
+                <h3>📄 Public Records</h3>
+                <p>Records requests, meeting minutes, and transparency compliance.</p>
+                <p><strong>Contact:</strong> <a href="mailto:records@downtownmanteca.com">records@downtownmanteca.com</a></p>
+                <p><strong>Submit Request:</strong> <a href="public-records.html">Online Form</a></p>
+            </div>
+            <div class="department-card">
+                <h3>♿ Accessibility Services</h3>
+                <p>ADA accommodations, accessibility concerns, and assistance requests.</p>
+                <p><strong>Contact:</strong> <a href="mailto:accessibility@downtownmanteca.com">accessibility@downtownmanteca.com</a></p>
+                <p><strong>Learn More:</strong> <a href="accessibility.html">Accessibility Statement</a></p>
+            </div>
+            <div class="department-card">
+                <h3>🗳️ Board Meetings</h3>
+                <p>Meeting attendance, public comments, and board communication.</p>
+                <p><strong>Meeting Info:</strong> First Wednesday of each month</p>
+                <p><strong>Location:</strong> Deaf Puppy Comedy Club, 127 N Main St</p>
+                <p><strong>Time:</strong> 6:00 PM</p>
+            </div>
+            <div class="department-card">
+                <h3>📰 Media & Communications</h3>
+                <p>Press inquiries, newsletter, and public communications.</p>
+                <p><strong>Contact:</strong> <a href="mailto:media@downtownmanteca.com">media@downtownmanteca.com</a></p>
+            </div>
+        </section>
+
+        <!-- Emergency Contact -->
+        <section class="emergency-section">
+            <h3>🚨 Emergency Contact</h3>
+            <p>For urgent matters outside business hours:</p>
+            <p><strong>Emergency Line:</strong> <a href="tel:209-239-8451">(209) 239-8451</a></p>
+            <p><em>For life-threatening emergencies, call 911</em></p>
+        </section>
+
+        <!-- Contact Form -->
+        <section class="contact-form-section">
+            <h2>Send Us a Message</h2>
+            <form id="contact-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="first-name">First Name <span style="color: #c44720;">*</span></label>
+                        <input type="text" id="first-name" name="first-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Last Name <span style="color: #c44720;">*</span></label>
+                        <input type="text" id="last-name" name="last-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address <span style="color: #c44720;">*</span></label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="subject">Subject <span style="color: #c44720;">*</span></label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Please select a topic</option>
+                            <option value="general">General Information</option>
+                            <option value="business">Business Development</option>
+                            <option value="events">Events & Programming</option>
+                            <option value="meetings">Board Meetings</option>
+                            <option value="records">Public Records Request</option>
+                            <option value="accessibility">Accessibility Services</option>
+                            <option value="media">Media Inquiry</option>
+                            <option value="complaint">Complaint or Concern</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="message">Message <span style="color: #c44720;">*</span></label>
+                        <textarea id="message" name="message" required 
+                                  placeholder="Please provide details about your inquiry. For public records requests, please use our dedicated form."></textarea>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="preferred-contact">Preferred Contact Method</label>
+                        <select id="preferred-contact" name="preferred-contact">
+                            <option value="email">Email</option>
+                            <option value="phone">Phone</option>
+                            <option value="either">Either</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </section>
+
+        <!-- Map Section -->
+        <section class="map-section">
+            <h2>📍 Find Us Downtown</h2>
+            <p>Located in the heart of Historic Main Street, Manteca</p>
+            <div class="map-placeholder">
+                🗺️ Interactive Map Coming Soon<br>
+                <em>Historic Main Street, Manteca, CA 95336</em><br>
+                <strong>Directions:</strong> <a href="https://maps.google.com/search/Historic+Main+Street+Manteca+CA" target="_blank" rel="noopener">Get Directions on Google Maps</a>
+            </div>
+            <p><strong>Parking:</strong> Street parking available along Main Street and adjacent blocks</p>
+            <p><strong>Public Transit:</strong> San Joaquin Regional Transit District serves downtown Manteca</p>
+        </section>
+
+        <!-- Accessibility Note -->
+        <div class="accessibility-note">
+            <h4>♿ Accessibility Accommodations</h4>
+            <p>The Downtown Manteca District is committed to providing equal access to all community members. If you need accommodations to participate in our meetings or access our services, please contact us at least 48 hours in advance.</p>
+            <p><strong>Accommodations available:</strong></p>
+            <ul>
+                <li>Sign language interpretation</li>
+                <li>Large print materials</li>
+                <li>Audio assistance</li>
+                <li>Accessible meeting locations</li>
+                <li>Alternative format documents</li>
+            </ul>
+            <p><strong>ADA Coordinator:</strong> <a href="mailto:accessibility@downtownmanteca.com">accessibility@downtownmanteca.com</a> | <a href="tel:209-239-8451">(209) 239-8451</a></p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>Copyright © 2025 Downtown Manteca - All Rights Reserved.</p>
+                <p>Managed by Jane Media Services</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Basic validation
+            if (!data['first-name'] || !data['last-name'] || !data['email'] || !data['subject'] || !data['message']) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(data['email'])) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            // Simulate form submission
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert('Thank you for contacting us! We will respond within 1-2 business days.');
+                this.reset();
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 2000);
+        });
+
+        // Add accessibility features
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add skip link functionality
+            const skipLink = document.createElement('a');
+            skipLink.href = '#main-content';
+            skipLink.textContent = 'Skip to main content';
+            skipLink.className = 'skip-link';
+            skipLink.style.cssText = 'position: absolute; top: -40px; left: 6px; background: #000; color: #fff; padding: 8px; text-decoration: none; z-index: 1000;';
+            skipLink.addEventListener('focus', function() {
+                this.style.top = '6px';
+            });
+            skipLink.addEventListener('blur', function() {
+                this.style.top = '-40px';
+            });
+            document.body.insertBefore(skipLink, document.body.firstChild);
+            
+            // Add main landmark
+            const main = document.querySelector('main');
+            if (main) {
+                main.id = 'main-content';
+                main.setAttribute('role', 'main');
+            }
+
+            // Add phone number formatting
+            const phoneInput = document.getElementById('phone');
+            if (phoneInput) {
+                phoneInput.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value.length >= 6) {
+                        value = value.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+                    } else if (value.length >= 3) {
+                        value = value.replace(/(\d{3})(\d{3})/, '($1) $2');
+                    }
+                    e.target.value = value;
+                });
+            }
+        });
+    </script>
+</body>
+</html>

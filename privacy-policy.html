@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Downtown Manteca</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: #0a2b30;
+            background: linear-gradient(135deg, #f7f5f3 0%, #fff 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .logo-img {
+            width: 170px;
+            height: 170px;
+            object-fit: contain;
+            background: white;
+            border-radius: 50%;
+            padding: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background: rgba(238, 167, 25, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            padding: 3rem 0 2rem;
+            background: white;
+            margin: 2rem auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .page-header h1 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2.5rem;
+            color: #0a2b30;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: #035847;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .last-updated {
+            background: linear-gradient(135deg, #eea719, #c44720);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            margin: 2rem auto;
+            text-align: center;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(238, 167, 25, 0.3);
+        }
+
+        /* Content Section */
+        .content-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .content-section h2 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2rem;
+            color: #0a2b30;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            border-bottom: 2px solid #eea719;
+            padding-bottom: 0.5rem;
+        }
+
+        .content-section h3 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.5rem;
+            color: #035847;
+            margin: 2rem 0 1rem 0;
+            font-weight: 600;
+        }
+
+        .content-section h4 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.2rem;
+            color: #0a2b30;
+            margin: 1.5rem 0 1rem 0;
+            font-weight: 600;
+        }
+
+        .content-section p {
+            font-size: 1.1rem;
+            color: #035847;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .content-section ul {
+            margin: 1rem 0 1.5rem 2rem;
+        }
+
+        .content-section li {
+            color: #035847;
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #eea719;
+            margin: 2rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .info-box h4 {
+            font-family: 'Roboto Slab', serif;
+            color: #0a2b30;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .info-box p {
+            margin-bottom: 1rem;
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background: linear-gradient(135deg, rgba(141, 36, 47, 0.1), rgba(196, 71, 32, 0.1));
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #8d242f;
+            margin: 2rem 0;
+            box-shadow: 0 4px 15px rgba(141, 36, 47, 0.1);
+        }
+
+        .warning-box h4 {
+            font-family: 'Roboto Slab', serif;
+            color: #8d242f;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .warning-box p {
+            color: #035847;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Highlight */
+        .contact-highlight {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            color: #0a2b30;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border: 2px solid #eea719;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .contact-highlight h3 {
+            font-family: 'Roboto Slab', serif;
+            margin-bottom: 1rem;
+            color: #0a2b30;
+            font-weight: 600;
+        }
+
+        .contact-highlight p {
+            color: #035847;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .contact-highlight a {
+            color: #8d242f;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .contact-highlight a:hover {
+            color: #c44720;
+            text-decoration: underline;
+        }
+
+        /* Data Table */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .data-table th {
+            background: linear-gradient(135deg, #0a2b30, #035847);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-family: 'Roboto Slab', serif;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+            color: #035847;
+            vertical-align: top;
+        }
+
+        .data-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        /* Links */
+        a {
+            color: #8d242f;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #c44720;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 1.5rem 0;
+            }
+            
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .logo-container {
+                justify-content: center;
+            }
+            
+            .logo-img {
+                width: 130px;
+                height: 130px;
+                padding: 8px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .content-section {
+                padding: 2rem;
+            }
+            
+            .data-table {
+                font-size: 0.9rem;
+            }
+            
+            .data-table th,
+            .data-table td {
+                padding: 0.75rem;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo-container">
+                <img src="img/manteca-logo.png" alt="Downtown Manteca District Logo" class="logo-img">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="directory.html">Business</a></li>
+                <li><a href="aboutUs.html">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Privacy Policy</h1>
+            <p>Learn how the Downtown Manteca District collects, uses, and protects your personal information.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="last-updated">
+            <strong>Last Updated:</strong> January 2025
+        </div>
+    </div>
+
+    <main class="container">
+        <section class="content-section">
+            <h2>Introduction</h2>
+            <p>The Downtown Manteca District ("we," "us," or "our") is committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or interact with our services.</p>
+
+            <p>As a public entity, we are committed to transparency while also respecting your privacy rights. This policy complies with applicable federal and state privacy laws, including the California Information Practices Act.</p>
+
+            <div class="info-box">
+                <h4>🔒 Our Commitment</h4>
+                <p>We collect only the information necessary to provide our services effectively and operate transparently as a public entity. We do not sell, rent, or trade your personal information to third parties for commercial purposes.</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Information We Collect</h2>
+            
+            <h3>Information You Provide Directly</h3>
+            <p>We collect information you voluntarily provide when you:</p>
+            <ul>
+                <li>Submit forms on our website (contact forms, business directory applications, public records requests)</li>
+                <li>Subscribe to our newsletter</li>
+                <li>Attend public meetings or events</li>
+                <li>Contact us via email or phone</li>
+                <li>Participate in public comment periods</li>
+            </ul>
+
+            <h4>Types of Personal Information Collected:</h4>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Information Type</th>
+                        <th>Examples</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Contact Information</td>
+                        <td>Name, email address, phone number, mailing address</td>
+                        <td>Communication, service delivery, public notices</td>
+                    </tr>
+                    <tr>
+                        <td>Business Information</td>
+                        <td>Business name, description, hours, social media handles</td>
+                        <td>Business directory listings, economic development</td>
+                    </tr>
+                    <tr>
+                        <td>Public Records Requests</td>
+                        <td>Request details, purpose, preferred format</td>
+                        <td>Fulfilling legal obligations under California PRA</td>
+                    </tr>
+                    <tr>
+                        <td>Meeting Participation</td>
+                        <td>Name, affiliation, comments made</td>
+                        <td>Meeting minutes, public record compliance</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Information Collected Automatically</h3>
+            <p>When you visit our website, we automatically collect certain technical information:</p>
+            <ul>
+                <li>IP address</li>
+                <li>Browser type and version</li>
+                <li>Operating system</li>
+                <li>Pages visited and time spent</li>
+                <li>Referring website</li>
+                <li>Device information</li>
+            </ul>
+
+            <h3>Cookies and Tracking Technologies</h3>
+            <p>Our website uses cookies and similar technologies to:</p>
+            <ul>
+                <li>Remember your preferences</li>
+                <li>Analyze website usage</li>
+                <li>Improve functionality</li>
+                <li>Provide relevant content</li>
+            </ul>
+
+            <div class="warning-box">
+                <h4>⚠️ Third-Party Services</h4>
+                <p>Our website integrates with third-party services including Google Sheets, Google Calendar, and Google Maps. These services may collect information according to their own privacy policies. We recommend reviewing their privacy policies for details on how your information is handled.</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>How We Use Your Information</h2>
+            <p>We use the information we collect for legitimate governmental purposes, including:</p>
+
+            <h3>Service Delivery</h3>
+            <ul>
+                <li>Processing public records requests</li>
+                <li>Maintaining business directory listings</li>
+                <li>Sending newsletters and updates</li>
+                <li>Responding to inquiries and comments</li>
+                <li>Organizing and conducting public meetings</li>
+            </ul>
+
+            <h3>Legal Compliance</h3>
+            <ul>
+                <li>Meeting Brown Act and Public Records Act requirements</li>
+                <li>Maintaining official records</li>
+                <li>Complying with audit and oversight requirements</li>
+                <li>Responding to legal requests</li>
+            </ul>
+
+            <h3>Communication</h3>
+            <ul>
+                <li>Sending important district notifications</li>
+                <li>Publishing meeting agendas and minutes</li>
+                <li>Sharing community events and updates</li>
+                <li>Emergency communications</li>
+            </ul>
+
+            <h3>Website Improvement</h3>
+            <ul>
+                <li>Analyzing usage patterns</li>
+                <li>Improving accessibility</li>
+                <li>Enhancing user experience</li>
+                <li>Troubleshooting technical issues</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>Information Sharing and Disclosure</h2>
+            
+            <h3>Public Records</h3>
+            <p>As a public entity, certain information we collect may be subject to disclosure under the California Public Records Act (Government Code Section 6250 et seq.). This may include:</p>
+            <ul>
+                <li>Communications with the district</li>
+                <li>Meeting attendance records</li>
+                <li>Public comments and correspondence</li>
+                <li>Business directory information</li>
+            </ul>
+
+            <h3>When We Share Information</h3>
+            <p>We may share your personal information in the following circumstances:</p>
+            <ul>
+                <li><strong>Public Records Requests:</strong> As required by law</li>
+                <li><strong>Legal Requirements:</strong> When compelled by subpoena, court order, or legal process</li>
+                <li><strong>Service Providers:</strong> With vendors who assist in website operation and maintenance</li>
+                <li><strong>Partner Agencies:</strong> When necessary for collaborative projects or services</li>
+                <li><strong>Emergency Situations:</strong> To protect health, safety, or legal rights</li>
+            </ul>
+
+            <h3>Information We Do NOT Share</h3>
+            <ul>
+                <li>We do not sell personal information to commercial entities</li>
+                <li>We do not rent mailing lists</li>
+                <li>We do not share information for marketing purposes</li>
+                <li>We do not disclose information exempt from public disclosure</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>Data Security</h2>
+            <p>We implement appropriate technical and organizational measures to protect your personal information:</p>
+
+            <h3>Technical Safeguards</h3>
+            <ul>
+                <li>SSL encryption for data transmission</li>
+                <li>Secure server hosting</li>
+                <li>Regular security updates</li>
+                <li>Access controls and authentication</li>
+                <li>Data backup and recovery procedures</li>
+            </ul>
+
+            <h3>Administrative Safeguards</h3>
+            <ul>
+                <li>Limited access to personal information</li>
+                <li>Staff training on privacy practices</li>
+                <li>Regular privacy policy reviews</li>
+                <li>Incident response procedures</li>
+            </ul>
+
+            <div class="warning-box">
+                <h4>⚠️ Security Limitation</h4>
+                <p>While we implement reasonable security measures, no method of transmission over the internet or electronic storage is 100% secure. We cannot guarantee absolute security of your information.</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Your Rights and Choices</h2>
+
+            <h3>Access and Correction</h3>
+            <p>You have the right to:</p>
+            <ul>
+                <li>Request access to personal information we maintain about you</li>
+                <li>Request correction of inaccurate information</li>
+                <li>Request updates to your business directory listing</li>
+                <li>Unsubscribe from our newsletter</li>
+            </ul>
+
+            <h3>Communication Preferences</h3>
+            <p>You can manage your communication preferences by:</p>
+            <ul>
+                <li>Using the unsubscribe link in our emails</li>
+                <li>Contacting us directly to update preferences</li>
+                <li>Opting out of non-essential communications</li>
+            </ul>
+
+            <h3>Cookie Management</h3>
+            <p>You can control cookies through your browser settings:</p>
+            <ul>
+                <li>Block or delete cookies</li>
+                <li>Set preferences for cookie acceptance</li>
+                <li>Receive notifications when cookies are set</li>
+            </ul>
+
+            <div class="info-box">
+                <h4>📋 Important Note</h4>
+                <p>Some information may be retained as required by law or necessary for legitimate governmental purposes, even after you request removal or correction.</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Data Retention</h2>
+            <p>We retain personal information only as long as necessary for the purposes for which it was collected or as required by law:</p>
+
+            <h3>Retention Periods</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Information Type</th>
+                        <th>Retention Period</th>
+                        <th>Legal Basis</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Meeting records and public comments</td>
+                        <td>Permanent</td>
+                        <td>Public Records Act, Brown Act</td>
+                    </tr>
+                    <tr>
+                        <td>Public records requests</td>
+                        <td>3 years</td>
+                        <td>Government Code requirements</td>
+                    </tr>
+                    <tr>
+                        <td>Business directory information</td>
+                        <td>Until removal requested or business closure</td>
+                        <td>Operational necessity</td>
+                    </tr>
+                    <tr>
+                        <td>Newsletter subscriptions</td>
+                        <td>Until unsubscribed</td>
+                        <td>Consent-based</td>
+                    </tr>
+                    <tr>
+                        <td>Website analytics data</td>
+                        <td>26 months</td>
+                        <td>Google Analytics default</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="content-section">
+            <h2>Children's Privacy</h2>
+            <p>Our website is not directed to children under 13 years of age. We do not knowingly collect personal information from children under 13. If we learn that we have collected personal information from a child under 13, we will take steps to delete such information promptly.</p>
+
+            <p>If you believe we have collected information from a child under 13, please contact us immediately.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Third-Party Websites</h2>
+            <p>Our website may contain links to third-party websites, including:</p>
+            <ul>
+                <li>Partner organization websites</li>
+                <li>Social media platforms</li>
+                <li>Business websites in our directory</li>
+                <li>Government agency websites</li>
+            </ul>
+
+            <p>This Privacy Policy does not apply to third-party websites. We encourage you to review the privacy policies of any third-party sites you visit.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Changes to This Privacy Policy</h2>
+            <p>We may update this Privacy Policy from time to time to reflect changes in our practices or applicable law. When we make changes, we will:</p>
+            <ul>
+                <li>Update the "Last Updated" date</li>
+                <li>Post the revised policy on our website</li>
+                <li>Notify users of significant changes via email or website notice</li>
+                <li>Maintain previous versions for reference</li>
+            </ul>
+
+            <p>Your continued use of our website after changes are posted constitutes acceptance of the updated Privacy Policy.</p>
+        </section>
+
+        <div class="contact-highlight">
+            <h3>📞 Privacy Questions or Concerns?</h3>
+            <p>If you have questions about this Privacy Policy or our privacy practices, or if you wish to exercise your privacy rights, please contact us:</p>
+            <p><strong>Privacy Officer:</strong> Michelle Kramer, Executive Director</p>
+            <p><strong>Email:</strong> <a href="mailto:privacy@downtownmanteca.com">privacy@downtownmanteca.com</a></p>
+            <p><strong>Phone:</strong> <a href="tel:209-239-8451">(209) 239-8451</a></p>
+            <p><strong>Mail:</strong><br>
+            Downtown Manteca District<br>
+            ATTN: Privacy Officer<br>
+            Historic Main Street<br>
+            Manteca, CA 95336</p>
+            <p><strong>Office Hours:</strong> Monday-Thursday, 8:30 AM - 4:00 PM</p>
+        </div>
+
+        <section class="content-section">
+            <h2>Legal Framework</h2>
+            <p>This Privacy Policy is designed to comply with applicable privacy laws, including:</p>
+            <ul>
+                <li>California Information Practices Act (Civil Code Section 1798 et seq.)</li>
+                <li>California Public Records Act (Government Code Section 6250 et seq.)</li>
+                <li>Ralph M. Brown Act (Government Code Section 54950 et seq.)</li>
+                <li>Federal Privacy Act principles</li>
+                <li>Americans with Disabilities Act accessibility requirements</li>
+            </ul>
+
+            <div class="info-box">
+                <h4>📚 Additional Resources</h4>
+                <p>For more information about your privacy rights under California law, visit the California Attorney General's website at <a href="https://oag.ca.gov/privacy" target="_blank" rel="noopener">oag.ca.gov/privacy</a>.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>Copyright © 2025 Downtown Manteca - All Rights Reserved.</p>
+                <p>Managed by Jane Media Services</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Add accessibility features
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add skip link functionality
+            const skipLink = document.createElement('a');
+            skipLink.href = '#main-content';
+            skipLink.textContent = 'Skip to main content';
+            skipLink.className = 'skip-link';
+            skipLink.style.cssText = 'position: absolute; top: -40px; left: 6px; background: #000; color: #fff; padding: 8px; text-decoration: none; z-index: 1000;';
+            skipLink.addEventListener('focus', function() {
+                this.style.top = '6px';
+            });
+            skipLink.addEventListener('blur', function() {
+                this.style.top = '-40px';
+            });
+            document.body.insertBefore(skipLink, document.body.firstChild);
+            
+            // Add main landmark
+            const main = document.querySelector('main');
+            if (main) {
+                main.id = 'main-content';
+                main.setAttribute('role', 'main');
+            }
+
+            // Add print functionality for privacy policy
+            const printBtn = document.createElement('button');
+            printBtn.textContent = '🖨️ Print This Policy';
+            printBtn.style.cssText = 'background: linear-gradient(45deg, #eea719, #c44720); color: white; padding: 1rem 2rem; border: none; border-radius: 25px; font-family: inherit; font-weight: 600; cursor: pointer; margin: 2rem auto; display: block;';
+            printBtn.addEventListener('click', function() {
+                window.print();
+            });
+            
+            const lastSection = document.querySelector('.content-section:last-of-type');
+            if (lastSection) {
+                lastSection.appendChild(printBtn);
+            }
+        });
+    </script>
+</body>
+</html>

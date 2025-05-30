@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meeting Minutes & Agendas - Downtown Manteca</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: #0a2b30;
+            background: linear-gradient(135deg, #f7f5f3 0%, #fff 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .logo-img {
+            width: 170px;
+            height: 170px;
+            object-fit: contain;
+            background: white;
+            border-radius: 50%;
+            padding: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background: rgba(238, 167, 25, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            padding: 3rem 0 2rem;
+            background: white;
+            margin: 2rem auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .page-header h1 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2.5rem;
+            color: #0a2b30;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: #035847;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Meeting Schedule Section */
+        .meeting-schedule {
+            background: linear-gradient(135deg, #8d242f, #c44720);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(141, 36, 47, 0.3);
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .meeting-schedule h2 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .schedule-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .schedule-card h3 {
+            font-family: 'Roboto Slab', serif;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .schedule-card p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Content Section */
+        .content-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .content-section h2 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2rem;
+            color: #0a2b30;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            border-bottom: 2px solid #eea719;
+            padding-bottom: 0.5rem;
+        }
+
+        .content-section h3 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.5rem;
+            color: #035847;
+            margin: 2rem 0 1rem 0;
+            font-weight: 600;
+        }
+
+        .content-section p {
+            font-size: 1.1rem;
+            color: #035847;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .content-section ul {
+            margin: 1rem 0 1.5rem 2rem;
+        }
+
+        .content-section li {
+            color: #035847;
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        /* Filter Controls */
+        .filter-controls {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .filter-select, .search-input {
+            padding: 0.5rem 1rem;
+            border: 2px solid #eea719;
+            border-radius: 25px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .filter-select:focus, .search-input:focus {
+            border-color: #c44720;
+            box-shadow: 0 0 10px rgba(238, 167, 25, 0.3);
+        }
+
+        .search-input {
+            width: 200px;
+        }
+
+        .view-toggle {
+            display: flex;
+            background: #f8f9fa;
+            border-radius: 25px;
+            overflow: hidden;
+            border: 2px solid #eea719;
+        }
+
+        .view-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            color: #035847;
+            transition: all 0.3s ease;
+        }
+
+        .view-btn.active {
+            background: #eea719;
+            color: white;
+        }
+
+        /* Document Grid */
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .document-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border-left: 4px solid #eea719;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .document-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-left-color: #c44720;
+        }
+
+        .document-header {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 1.5rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .document-date {
+            background: #eea719;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        .document-title {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.3rem;
+            color: #0a2b30;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .document-type {
+            color: #8d242f;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .document-content {
+            padding: 1.5rem;
+        }
+
+        .document-description {
+            color: #035847;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .document-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .meta-label {
+            color: #8d242f;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .meta-value {
+            color: #035847;
+            font-weight: 500;
+        }
+
+        .document-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .doc-action-btn {
+            flex: 1;
+            text-align: center;
+            padding: 0.75rem;
+            background: linear-gradient(45deg, #eea719, #c44720);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .doc-action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(238, 167, 25, 0.4);
+        }
+
+        .doc-action-btn.secondary {
+            background: linear-gradient(45deg, #035847, #0a2b30);
+        }
+
+        /* List View */
+        .documents-list {
+            display: none;
+        }
+
+        .documents-list.active {
+            display: block;
+        }
+
+        .document-list-item {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            margin-bottom: 1rem;
+            border-left: 4px solid #eea719;
+            transition: all 0.3s ease;
+        }
+
+        .document-list-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-left-color: #c44720;
+        }
+
+        .list-item-content {
+            padding: 1.5rem;
+            display: grid;
+            grid-template-columns: auto 1fr auto auto;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .list-date {
+            background: #eea719;
+            color: white;
+            padding: 0.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-align: center;
+            min-width: 80px;
+        }
+
+        .list-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .list-title {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.1rem;
+            color: #0a2b30;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .list-type {
+            color: #8d242f;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .list-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .list-action-btn {
+            padding: 0.5rem 1rem;
+            background: #eea719;
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .list-action-btn:hover {
+            background: #c44720;
+            transform: translateY(-1px);
+        }
+
+        /* Info Boxes */
+        .info-box {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #eea719;
+            margin: 2rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .info-box h4 {
+            font-family: 'Roboto Slab', serif;
+            color: #0a2b30;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .info-box p {
+            color: #035847;
+            margin-bottom: 1rem;
+        }
+
+        .info-box a {
+            color: #8d242f;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .info-box a:hover {
+            color: #c44720;
+            text-decoration: underline;
+        }
+
+        /* Loading and Error States */
+        .loading, .error, .no-documents {
+            text-align: center;
+            padding: 3rem;
+            color: #8d242f;
+            font-size: 1.2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .loading::after {
+            content: "...";
+            animation: dots 1.5s steps(4, end) infinite;
+        }
+
+        @keyframes dots {
+            0%, 20% { content: "."; }
+            40% { content: ".."; }
+            60% { content: "..."; }
+            80%, 100% { content: ""; }
+        }
+
+        .error {
+            background: rgba(238, 167, 25, 0.1);
+            border: 2px solid #eea719;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 1.5rem 0;
+            }
+            
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .logo-container {
+                justify-content: center;
+            }
+            
+            .logo-img {
+                width: 130px;
+                height: 130px;
+                padding: 8px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .content-section {
+                padding: 2rem;
+            }
+            
+            .filter-controls {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 1.5rem;
+            }
+            
+            .filter-group {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .search-input {
+                width: 100%;
+            }
+            
+            .documents-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .schedule-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .list-item-content {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .list-actions {
+                justify-content: center;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo-container">
+                <img src="img/manteca-logo.png" alt="Downtown Manteca District Logo" class="logo-img">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="directory.html">Business</a></li>
+                <li><a href="aboutUs.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Meeting Minutes & Agendas</h1>
+            <p>Access to board meeting documents, agendas, and minutes as required by the Ralph M. Brown Act for transparency in local government.</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <!-- Meeting Schedule -->
+        <section class="meeting-schedule">
+            <h2>📅 Board Meeting Schedule</h2>
+            <p>The Downtown Manteca District Board meets regularly to conduct official business in accordance with the Brown Act.</p>
+            
+            <div class="schedule-grid">
+                <div class="schedule-card">
+                    <h3>🗓️ Regular Meetings</h3>
+                    <p><strong>When:</strong> First Wednesday of every month</p>
+                    <p><strong>Time:</strong> 6:00 PM</p>
+                    <p><strong>Location:</strong> Deaf Puppy Comedy Club</p>
+                    <p><strong>Address:</strong> 127 N Main St, Manteca, CA 95336</p>
+                </div>
+                <div class="schedule-card">
+                    <h3>📋 Agenda Posting</h3>
+                    <p><strong>Posted:</strong> 72 hours before meeting</p>
+                    <p><strong>Where:</strong> District website and office</p>
+                    <p><strong>Access:</strong> Available online and in hard copy</p>
+                    <p><strong>Language:</strong> English, translation available upon request</p>
+                </div>
+                <div class="schedule-card">
+                    <h3>🎤 Public Participation</h3>
+                    <p><strong>Public Comment:</strong> Each meeting</p>
+                    <p><strong>Time Limit:</strong> 3 minutes per speaker</p>
+                    <p><strong>Sign-up:</strong> Before meeting or written submission</p>
+                    <p><strong>Topics:</strong> Any matter within district jurisdiction</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brown Act Information -->
+        <section class="content-section">
+            <h2>Ralph M. Brown Act Compliance</h2>
+            <p>The Downtown Manteca District operates in full compliance with the Ralph M. Brown Act (Government Code Section 54950 et seq.), California's open meeting law. This ensures transparency and public access to the decision-making process of local government agencies.</p>
+
+            <h3>Your Rights Under the Brown Act</h3>
+            <ul>
+                <li>Attend and observe all regular and special meetings</li>
+                <li>Receive advance notice of meeting agendas (72 hours minimum)</li>
+                <li>Participate in public comment periods</li>
+                <li>Access meeting minutes and recordings</li>
+                <li>Request accessible accommodations</li>
+                <li>Receive documents in alternative formats</li>
+            </ul>
+
+            <div class="info-box">
+                <h4>📞 Meeting Accessibility</h4>
+                <p>We are committed to providing equal access to all community members. Accommodations available include:</p>
+                <ul>
+                    <li>Sign language interpretation</li>
+                    <li>Large print agendas and materials</li>
+                    <li>Audio assistance devices</li>
+                    <li>Wheelchair accessible venues</li>
+                </ul>
+                <p><strong>Request accommodations:</strong> <a href="mailto:accessibility@downtownmanteca.com">accessibility@downtownmanteca.com</a> or <a href="tel:209-239-8451">(209) 239-8451</a> at least 48 hours in advance.</p>
+            </div>
+        </section>
+
+        <!-- Filter Controls -->
+        <section class="filter-controls">
+            <div class="filter-group">
+                <select class="filter-select" id="yearFilter">
+                    <option value="all">All Years</option>
+                    <option value="2025">2025</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                </select>
+                <select class="filter-select" id="typeFilter">
+                    <option value="all">All Documents</option>
+                    <option value="agenda">Agendas</option>
+                    <option value="minutes">Minutes</option>
+                    <option value="special">Special Meetings</option>
+                    <option value="committee">Committee Meetings</option>
+                </select>
+                <input type="text" class="search-input" placeholder="Search documents..." id="searchInput">
+            </div>
+            
+            <div class="view-toggle">
+                <button class="view-btn active" onclick="switchView('grid')">Grid View</button>
+                <button class="view-btn" onclick="switchView('list')">List View</button>
+            </div>
+        </section>
+
+        <!-- Documents Grid View -->
+        <section id="gridView" class="documents-grid">
+            <div class="loading">Loading meeting documents from Google Drive</div>
+        </section>
+
+        <!-- Documents List View -->
+        <section id="listView" class="documents-list">
+            <div class="loading">Loading meeting documents from Google Drive</div>
+        </section>
+
+        <!-- Additional Information -->
+        <section class="content-section">
+            <h2>Meeting Information & Policies</h2>
+            
+            <h3>How to Participate in Board Meetings</h3>
+            <ul>
+                <li><strong>Attendance:</strong> All meetings are open to the public</li>
+                <li><strong>Public Comment:</strong> Sign up before the meeting begins or submit written comments</li>
+                <li><strong>Speaking Time:</strong> 3 minutes per speaker on agenda items</li>
+                <li><strong>Decorum:</strong> Please maintain respectful behavior during meetings</li>
+                <li><strong>Recording:</strong> Meetings may be recorded for public access</li>
+            </ul>
+
+            <h3>Requesting Meeting Documents</h3>
+            <p>If you need documents in alternative formats or have difficulty accessing materials:</p>
+            <ul>
+                <li>Contact us at least 48 hours before the meeting</li>
+                <li>Large print versions available upon request</li>
+                <li>Audio recordings available for approved meetings</li>
+                <li>Translation services available with advance notice</li>
+            </ul>
+
+            <div class="info-box">
+                <h4>📧 Stay Informed</h4>
+                <p>Want to receive meeting agendas and notifications automatically?</p>
+                <ul>
+                    <li>Subscribe to our newsletter for meeting announcements</li>
+                    <li>Follow us on social media for updates</li>
+                    <li>Contact us to be added to our meeting notification list</li>
+                </ul>
+                <p><strong>Email:</strong> <a href="mailto:meetings@downtownmanteca.com">meetings@downtownmanteca.com</a></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>Copyright © 2025 Downtown Manteca - All Rights Reserved.</p>
+                <p>Managed by Jane Media Services</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Configuration - UPDATE THESE VALUES
+        const GOOGLE_DRIVE_FOLDER_ID = 'YOUR_GOOGLE_DRIVE_FOLDER_ID_HERE'; // Main meeting documents folder
+        const API_KEY = 'YOUR_GOOGLE_API_KEY_HERE'; // Same API key as your other pages
+        
+        // Folder structure - organize documents in Google Drive like this:
+        // Meeting Documents/
+        //   ├── 2025/
+        //   │   ├── Agendas/
+        //   │   └── Minutes/
+        //   ├── 2024/
+        //   │   ├── Agendas/
+        //   │   └── Minutes/
+        //   └── Special Meetings/
+
+        // Global variables
+        let currentView = 'grid';
+        let allDocuments = [];
+        let filteredDocuments = [];
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            setupEventListeners();
+            loadDocumentsFromDrive();
+        });
+
+        // Set up event listeners
+        function setupEventListeners() {
+            const searchInput = document.getElementById('searchInput');
+            const yearFilter = document.getElementById('yearFilter');
+            const typeFilter = document.getElementById('typeFilter');
+
+            searchInput.addEventListener('input', handleSearch);
+            yearFilter.addEventListener('change', handleFilter);
+            typeFilter.addEventListener('change', handleFilter);
+        }
+
+        // Load documents from Google Drive
+        async function loadDocumentsFromDrive() {
+            try {
+                showLoading();
+                
+                // Get all files from the meeting documents folder and subfolders
+                const url = `https://www.googleapis.com/drive/v3/files?q='${GOOGLE_DRIVE_FOLDER_ID}'+in+parents&key=${API_KEY}&fields=files(id,name,mimeType,size,createdTime,modifiedTime,parents,webViewLink,webContentLink)`;
+                
+                const response = await fetch(url);
+                const data = await response.json();
+
+                if (data.error) {
+                    throw new Error(data.error.message);
+                }
+
+                if (!data.files || data.files.length === 0) {
+                    displayNoDocuments('No meeting documents found in Google Drive.');
+                    return;
+                }
+
+                // Process files and organize them
+                allDocuments = await processGoogleDriveFiles(data.files);
+                filteredDocuments = [...allDocuments];
+                
+                displayDocuments();
+                updateDocumentCount();
+
+            } catch (error) {
+                console.error('Error loading documents from Google Drive:', error);
+                displayError(`Error loading documents: ${error.message}. Please check your Google Drive folder ID and API key configuration.`);
+            }
+        }
+
+        // Process Google Drive files into document objects
+        async function processGoogleDriveFiles(files) {
+            const documents = [];
+            
+            for (const file of files) {
+                // Skip non-document files
+                if (!isDocumentFile(file.mimeType)) {
+                    continue;
+                }
+
+                // Parse document information from filename and path
+                const docInfo = parseDocumentInfo(file);
+                
+                documents.push({
+                    id: file.id,
+                    title: docInfo.title,
+                    fileName: file.name,
+                    type: docInfo.type,
+                    year: docInfo.year,
+                    date: docInfo.date,
+                    fileSize: formatFileSize(file.size),
+                    createdTime: file.createdTime,
+                    modifiedTime: file.modifiedTime,
+                    viewLink: file.webViewLink,
+                    downloadLink: `https://drive.google.com/uc?id=${file.id}&export=download`,
+                    mimeType: file.mimeType
+                });
+            }
+            
+            // Sort by date (newest first)
+            documents.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            return documents;
+        }
+
+        // Check if file is a document type we want to display
+        function isDocumentFile(mimeType) {
+            const documentTypes = [
+                'application/pdf',
+                'application/msword',
+                'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                'application/vnd.google-apps.document'
+            ];
+            return documentTypes.includes(mimeType);
+        }
+
+        // Parse document information from filename
+        function parseDocumentInfo(file) {
+            const fileName = file.name.toLowerCase();
+            let type = 'document';
+            let year = new Date().getFullYear().toString();
+            let date = file.createdTime;
+            let title = file.name.replace(/\.[^/.]+$/, ""); // Remove file extension
+
+            // Determine document type from filename
+            if (fileName.includes('agenda')) {
+                type = 'agenda';
+            } else if (fileName.includes('minutes')) {
+                type = 'minutes';
+            } else if (fileName.includes('special')) {
+                type = 'special';
+            } else if (fileName.includes('committee')) {
+                type = 'committee';
+            }
+
+            // Extract year from filename
+            const yearMatch = fileName.match(/20\d{2}/);
+            if (yearMatch) {
+                year = yearMatch[0];
+            }
+
+            // Extract date from filename if possible
+            const dateMatch = fileName.match(/(\d{1,2}[-\/]\d{1,2}[-\/]20\d{2})|(\d{4}[-\/]\d{1,2}[-\/]\d{1,2})/);
+            if (dateMatch) {
+                date = new Date(dateMatch[0]).toISOString();
+            }
+
+            // Clean up title
+            title = title.replace(/[-_]/g, ' ')
+                        .replace(/\b\w/g, l => l.toUpperCase());
+
+            return { type, year, date, title };
+        }
+
+        // Format file size for display
+        function formatFileSize(bytes) {
+            if (!bytes) return '—';
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            if (bytes === 0) return '0 Bytes';
+            const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+            return Math.round(bytes / Math.pow(1024, i) * 100) / 100 + ' ' + sizes[i];
+        }
+
+        // Switch between grid and list view
+        function switchView(view) {
+            currentView = view;
+            
+            // Update buttons
+            document.querySelectorAll('.view-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[onclick="switchView('${view}')"]`).classList.add('active');
+            
+            // Show/hide views
+            if (view === 'grid') {
+                document.getElementById('gridView').style.display = 'grid';
+                document.getElementById('listView').classList.remove('active');
+            } else {
+                document.getElementById('gridView').style.display = 'none';
+                document.getElementById('listView').classList.add('active');
+            }
+        }
+
+        // Display documents in current view
+        function displayDocuments() {
+            displayGridView();
+            displayListView();
+        }
+
+        // Display documents in grid view
+        function displayGridView() {
+            const gridContainer = document.getElementById('gridView');
+            
+            if (filteredDocuments.length === 0) {
+                gridContainer.innerHTML = '<div class="no-documents">No documents match your search criteria.</div>';
+                return;
+            }
+
+            const documentCards = filteredDocuments.map((doc, index) => {
+                const docDate = new Date(doc.date);
+                const formattedDate = docDate.toLocaleDateString('en-US', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                });
+                const monthYear = docDate.toLocaleDateString('en-US', { 
+                    year: 'numeric', 
+                    month: 'short' 
+                });
+
+                const typeIcon = getTypeIcon(doc.type);
+                const typeLabel = getTypeLabel(doc.type);
+
+                return `
+                    <div class="document-card" style="animation-delay: ${index * 0.1}s">
+                        <div class="document-header">
+                            <span class="document-date">${monthYear}</span>
+                            <h3 class="document-title">${escapeHtml(doc.title)}</h3>
+                            <div class="document-type">${typeIcon} ${typeLabel}</div>
+                        </div>
+                        <div class="document-content">
+                            <div class="document-meta">
+                                <div class="meta-item">
+                                    <span class="meta-label">Date</span>
+                                    <span class="meta-value">${formattedDate}</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">Type</span>
+                                    <span class="meta-value">${typeLabel}</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">File Size</span>
+                                    <span class="meta-value">${doc.fileSize}</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">Format</span>
+                                    <span class="meta-value">${getFileTypeFromMime(doc.mimeType)}</span>
+                                </div>
+                            </div>
+                            <div class="document-actions">
+                                <a href="${doc.viewLink}" class="doc-action-btn" target="_blank" rel="noopener">
+                                    📄 View Document
+                                </a>
+                                <a href="${doc.downloadLink}" class="doc-action-btn secondary" target="_blank" rel="noopener">
+                                    ⬇️ Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            gridContainer.innerHTML = documentCards;
+        }
+
+        // Display documents in list view
+        function displayListView() {
+            const listContainer = document.getElementById('listView');
+            
+            if (filteredDocuments.length === 0) {
+                listContainer.innerHTML = '<div class="no-documents">No documents match your search criteria.</div>';
+                return;
+            }
+
+            const documentItems = filteredDocuments.map(doc => {
+                const docDate = new Date(doc.date);
+                const monthYear = docDate.toLocaleDateString('en-US', { 
+                    year: 'numeric', 
+                    month: 'short' 
+                });
+                const formattedDate = docDate.toLocaleDateString('en-US', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                });
+
+                const typeIcon = getTypeIcon(doc.type);
+                const typeLabel = getTypeLabel(doc.type);
+
+                return `
+                    <div class="document-list-item">
+                        <div class="list-item-content">
+                            <span class="list-date">${monthYear}</span>
+                            <div class="list-info">
+                                <h3 class="list-title">${escapeHtml(doc.title)}</h3>
+                                <span class="list-type">${typeIcon} ${typeLabel}</span>
+                            </div>
+                            <span class="meta-value">${formattedDate}</span>
+                            <div class="list-actions">
+                                <a href="${doc.viewLink}" class="list-action-btn" target="_blank" rel="noopener">View</a>
+                                <a href="${doc.downloadLink}" class="list-action-btn" target="_blank" rel="noopener">Download</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            listContainer.innerHTML = documentItems;
+        }
+
+        // Get icon for document type
+        function getTypeIcon(type) {
+            const icons = {
+                'agenda': '📋',
+                'minutes': '📝',
+                'special': '⚡',
+                'committee': '👥',
+                'document': '📄'
+            };
+            return icons[type] || icons['document'];
+        }
+
+        // Get label for document type
+        function getTypeLabel(type) {
+            const labels = {
+                'agenda': 'Meeting Agenda',
+                'minutes': 'Meeting Minutes',
+                'special': 'Special Meeting',
+                'committee': 'Committee Meeting',
+                'document': 'Document'
+            };
+            return labels[type] || labels['document'];
+        }
+
+        // Get file type from MIME type
+        function getFileTypeFromMime(mimeType) {
+            const types = {
+                'application/pdf': 'PDF',
+                'application/msword': 'DOC',
+                'application/vnd.openxmlformats-officedocument.wordprocessingml.document': 'DOCX',
+                'application/vnd.google-apps.document': 'Google Doc'
+            };
+            return types[mimeType] || 'Document';
+        }
+
+        // Handle search functionality
+        function handleSearch() {
+            applyFilters();
+        }
+
+        // Handle filter functionality  
+        function handleFilter() {
+            applyFilters();
+        }
+
+        // Apply all filters
+        function applyFilters() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const yearFilter = document.getElementById('yearFilter').value;
+            const typeFilter = document.getElementById('typeFilter').value;
+            
+            filteredDocuments = allDocuments.filter(doc => {
+                const matchesSearch = doc.title.toLowerCase().includes(searchTerm) || 
+                                    doc.fileName.toLowerCase().includes(searchTerm);
+                const matchesYear = yearFilter === 'all' || doc.year === yearFilter;
+                const matchesType = typeFilter === 'all' || doc.type === typeFilter;
+                
+                return matchesSearch && matchesYear && matchesType;
+            });
+            
+            displayDocuments();
+            updateDocumentCount();
+        }
+
+        // Update document count display
+        function updateDocumentCount() {
+            const total = allDocuments.length;
+            const showing = filteredDocuments.length;
+            
+            // You can add a count display element if needed
+            console.log(`Showing ${showing} of ${total} documents`);
+        }
+
+        // Show loading state
+        function showLoading() {
+            const gridView = document.getElementById('gridView');
+            const listView = document.getElementById('listView');
+            
+            gridView.innerHTML = '<div class="loading">Loading meeting documents from Google Drive</div>';
+            listView.innerHTML = '<div class="loading">Loading meeting documents from Google Drive</div>';
+        }
+
+        // Display error message
+        function displayError(message) {
+            const gridView = document.getElementById('gridView');
+            const listView = document.getElementById('listView');
+            
+            const errorHtml = `<div class="error">${escapeHtml(message)}</div>`;
+            gridView.innerHTML = errorHtml;
+            listView.innerHTML = errorHtml;
+        }
+
+        // Display no documents message
+        function displayNoDocuments(message) {
+            const gridView = document.getElementById('gridView');
+            const listView = document.getElementById('listView');
+            
+            const noDocsHtml = `<div class="no-documents">${escapeHtml(message)}</div>`;
+            gridView.innerHTML = noDocsHtml;
+            listView.innerHTML = noDocsHtml;
+        }
+
+        // Escape HTML to prevent XSS
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Add accessibility features
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add skip link functionality
+            const skipLink = document.createElement('a');
+            skipLink.href = '#main-content';
+            skipLink.textContent = 'Skip to main content';
+            skipLink.className = 'skip-link';
+            skipLink.style.cssText = 'position: absolute; top: -40px; left: 6px; background: #000; color: #fff; padding: 8px; text-decoration: none; z-index: 1000;';
+            skipLink.addEventListener('focus', function() {
+                this.style.top = '6px';
+            });
+            skipLink.addEventListener('blur', function() {
+                this.style.top = '-40px';
+            });
+            document.body.insertBefore(skipLink, document.body.firstChild);
+            
+            // Add main landmark
+            const main = document.querySelector('main');
+            if (main) {
+                main.id = 'main-content';
+                main.setAttribute('role', 'main');
+            }
+
+            // Add keyboard navigation for document cards
+            const documentCards = document.querySelectorAll('.document-card, .document-list-item');
+            documentCards.forEach(card => {
+                card.setAttribute('tabindex', '0');
+                card.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        const viewLink = card.querySelector('.doc-action-btn, .list-action-btn');
+                        if (viewLink) {
+                            viewLink.click();
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
