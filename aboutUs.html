@@ -160,7 +160,25 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
         }
+.board-image-standalone {
+    background: none;
+    border-radius: 0;
+    overflow: hidden;
+    **height: 200px;**          /* ← CHANGE THIS to 120px */
+    box-shadow: none;
+    transition: all 0.3s ease;
+    position: relative;
+    margin: 2rem auto;
+    max-width: 600px;
+    border-bottom: 2px solid #eea719;
+}
 
+.board-image-standalone img {
+    width: 100%;
+    **height: 200px;**          /* ← CHANGE THIS to 120px */
+    object-fit: cover;
+    border-radius: 0;
+}
         .board-image-feature:hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 40px rgba(0,0,0,0.3);
@@ -531,7 +549,23 @@
             <h1>About Us</h1>
         </div>
     </section>
+ <!-- About Downtown Manteca District -->
+        <section class="content-section">
+            <h2>About Manteca Downtown District</h2>
+            <p>The Downtown Manteca District is a collaborative initiative focused on promoting the vitality, economic growth, and cultural identity of Downtown Manteca. Established to support the evolving needs of local businesses, property owners, and residents, the District works to foster a thriving and welcoming environment at the heart of the city.</p>
+            
+            <p>The District operates as a central advocate for Downtown, with priorities that include business development, beautification, public engagement, and community-centered events. Our mission is to make Downtown Manteca a dynamic destination where commerce, culture, and community connect.</p>
+            
+            <p>Through partnerships with the City of Manteca, local organizations, and the business community, the Downtown Manteca District supports efforts in revitalization, placemaking, and long-term investment. From preserving historic charm to encouraging innovation, we are committed to shaping a Downtown that reflects the energy and pride of Manteca.</p>
+            
+            <p>The Downtown Manteca District is supported by a growing group of business owners, property stakeholders, civic leaders, and volunteers. Regular meetings and workshops are held to ensure open communication and public involvement in district planning and programming.</p>
 
+            <div class="contact-highlight">
+                <h3>📅 Get Involved</h3>
+                <p>For information on upcoming meetings, events, and opportunities to get involved, please visit our Events Calendar or contact our team at <a href="mailto:info@downtownmanteca.com">info@downtownmanteca.com</a>.</p>
+                <p>All meetings are open to the public, and community participation is encouraged.</p>
+            </div>
+        </section>
     <main class="container">
         <!-- Board Section with Separated Groups -->
         <section class="content-section">
@@ -580,7 +614,7 @@
             <div class="board-image-standalone">
                 <img src="img/board-meeting.jpg" alt="Board Meeting">
                 <div class="board-image-overlay">
-                    <h4>Our Leadership Team</h4>
+                    
                 </div>
             </div>
             
@@ -646,23 +680,7 @@
             </div>
         </section>
 
-        <!-- About Downtown Manteca District -->
-        <section class="content-section">
-            <h2>About Manteca Downtown District</h2>
-            <p>The Downtown Manteca District is a collaborative initiative focused on promoting the vitality, economic growth, and cultural identity of Downtown Manteca. Established to support the evolving needs of local businesses, property owners, and residents, the District works to foster a thriving and welcoming environment at the heart of the city.</p>
-            
-            <p>The District operates as a central advocate for Downtown, with priorities that include business development, beautification, public engagement, and community-centered events. Our mission is to make Downtown Manteca a dynamic destination where commerce, culture, and community connect.</p>
-            
-            <p>Through partnerships with the City of Manteca, local organizations, and the business community, the Downtown Manteca District supports efforts in revitalization, placemaking, and long-term investment. From preserving historic charm to encouraging innovation, we are committed to shaping a Downtown that reflects the energy and pride of Manteca.</p>
-            
-            <p>The Downtown Manteca District is supported by a growing group of business owners, property stakeholders, civic leaders, and volunteers. Regular meetings and workshops are held to ensure open communication and public involvement in district planning and programming.</p>
-
-            <div class="contact-highlight">
-                <h3>📅 Get Involved</h3>
-                <p>For information on upcoming meetings, events, and opportunities to get involved, please visit our Events Calendar or contact our team at <a href="mailto:info@downtownmanteca.com">info@downtownmanteca.com</a>.</p>
-                <p>All meetings are open to the public, and community participation is encouraged.</p>
-            </div>
-        </section>
+       
 
         <!-- District Documents -->
         <section class="content-section">
