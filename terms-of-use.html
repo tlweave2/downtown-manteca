@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Use - Downtown Manteca</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: #0a2b30;
+            background: linear-gradient(135deg, #f7f5f3 0%, #fff 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .logo-img {
+            width: 170px;
+            height: 170px;
+            object-fit: contain;
+            background: white;
+            border-radius: 50%;
+            padding: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background: rgba(238, 167, 25, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            padding: 3rem 0 2rem;
+            background: white;
+            margin: 2rem auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .page-header h1 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2.5rem;
+            color: #0a2b30;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: #035847;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .last-updated {
+            background: linear-gradient(135deg, #eea719, #c44720);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            margin: 2rem auto;
+            text-align: center;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(238, 167, 25, 0.3);
+        }
+
+        /* Content Section */
+        .content-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .content-section h2 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2rem;
+            color: #0a2b30;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            border-bottom: 2px solid #eea719;
+            padding-bottom: 0.5rem;
+        }
+
+        .content-section h3 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.5rem;
+            color: #035847;
+            margin: 2rem 0 1rem 0;
+            font-weight: 600;
+        }
+
+        .content-section h4 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.2rem;
+            color: #0a2b30;
+            margin: 1.5rem 0 1rem 0;
+            font-weight: 600;
+        }
+
+        .content-section p {
+            font-size: 1.1rem;
+            color: #035847;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .content-section ul {
+            margin: 1rem 0 1.5rem 2rem;
+        }
+
+        .content-section li {
+            color: #035847;
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background: linear-gradient(135deg, rgba(141, 36, 47, 0.1), rgba(196, 71, 32, 0.1));
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #8d242f;
+            margin: 2rem 0;
+            box-shadow: 0 4px 15px rgba(141, 36, 47, 0.1);
+        }
+
+        .warning-box h4 {
+            font-family: 'Roboto Slab', serif;
+            color: #8d242f;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .warning-box p {
+            color: #035847;
+            margin-bottom: 1rem;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #eea719;
+            margin: 2rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .info-box h4 {
+            font-family: 'Roboto Slab', serif;
+            color: #0a2b30;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .info-box p {
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Highlight */
+        .contact-highlight {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            color: #0a2b30;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border: 2px solid #eea719;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .contact-highlight h3 {
+            font-family: 'Roboto Slab', serif;
+            margin-bottom: 1rem;
+            color: #0a2b30;
+            font-weight: 600;
+        }
+
+        .contact-highlight p {
+            color: #035847;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .contact-highlight a {
+            color: #8d242f;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .contact-highlight a:hover {
+            color: #c44720;
+            text-decoration: underline;
+        }
+
+        /* Links */
+        a {
+            color: #8d242f;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #c44720;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 1.5rem 0;
+            }
+            
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .logo-container {
+                justify-content: center;
+            }
+            
+            .logo-img {
+                width: 130px;
+                height: 130px;
+                padding: 8px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .content-section {
+                padding: 2rem;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo-container">
+                <img src="img/manteca-logo.png" alt="Downtown Manteca District Logo" class="logo-img">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="directory.html">Business</a></li>
+                <li><a href="aboutUs.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Terms of Use</h1>
+            <p>Terms and conditions for using the Downtown Manteca District website and services.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="last-updated">
+            <strong>Last Updated:</strong> January 2025
+        </div>
+    </div>
+
+    <main class="container">
+        <section class="content-section">
+            <h2>Acceptance of Terms</h2>
+            <p>By accessing and using the Downtown Manteca District website (the "Website"), you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.</p>
+
+            <p>These Terms of Use may be updated from time to time without notice. Your continued use of the Website following any changes constitutes acceptance of those changes.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>About the Downtown Manteca District</h2>
+            <p>The Downtown Manteca District is a public entity established to promote economic development, community engagement, and the general welfare of the downtown Manteca area. We operate under California law and are subject to public disclosure and transparency requirements.</p>
+
+            <h3>Website Purpose</h3>
+            <p>This website is provided to:</p>
+            <ul>
+                <li>Inform the public about district activities and services</li>
+                <li>Provide access to public records and documents</li>
+                <li>Facilitate community engagement and participation</li>
+                <li>Support local businesses and economic development</li>
+                <li>Ensure transparency in government operations</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>Permitted Use</h2>
+            <p>You may use this Website for lawful purposes only. You agree not to use the Website:</p>
+            <ul>
+                <li>In any way that violates any applicable federal, state, local, or international law or regulation</li>
+                <li>To transmit, knowingly receive, upload, download, use, or re-use any material that does not comply with these Terms of Use</li>
+                <li>To transmit or procure the sending of any unsolicited or unauthorized advertising or promotional material</li>
+                <li>To impersonate or attempt to impersonate the District, a District employee, another user, or any other person or entity</li>
+                <li>To engage in any other conduct that restricts or inhibits anyone's use or enjoyment of the Website</li>
+            </ul>
+
+            <h3>Prohibited Activities</h3>
+            <p>The following activities are strictly prohibited:</p>
+            <ul>
+                <li>Attempting to gain unauthorized access to any portion of the Website</li>
+                <li>Using automated systems to access the Website without permission</li>
+                <li>Interfering with or disrupting the integrity or performance of the Website</li>
+                <li>Creating false identities or providing false information</li>
+                <li>Collecting information about other users without their consent</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>Information and Content</h2>
+            
+            <h3>Accuracy of Information</h3>
+            <p>We strive to provide accurate and up-to-date information on this Website. However, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability of the information contained on the Website.</p>
+
+            <h3>Official Records</h3>
+            <p>While this Website contains official documents and information, it should not be considered the official record for legal purposes. For official records, please submit a formal public records request or contact our office directly.</p>
+
+            <h3>Third-Party Content</h3>
+            <p>This Website may contain links to external websites and third-party content. We do not endorse or assume responsibility for the content, privacy policies, or practices of any third-party sites or services.</p>
+
+            <div class="warning-box">
+                <h4>⚠️ Disclaimer of Liability</h4>
+                <p>The District shall not be liable for any loss or damage arising from your use of this Website or reliance on information contained herein, including but not limited to direct, indirect, incidental, punitive, and consequential damages.</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Public Records and Privacy</h2>
+            
+            <h3>Public Information</h3>
+            <p>As a public entity, the Downtown Manteca District is subject to the California Public Records Act. Information you submit through this Website may become part of the public record and subject to disclosure.</p>
+
+            <h3>Privacy Considerations</h3>
+            <p>Please review our <a href="privacy-policy.html">Privacy Policy</a> for detailed information about how we collect, use, and protect your personal information.</p>
+
+            <h3>Communications</h3>
+            <p>By submitting information through this Website, you consent to receive communications from the District regarding your inquiry or submission. We may contact you via email, phone, or mail as appropriate.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Intellectual Property</h2>
+            
+            <h3>Copyright</h3>
+            <p>The content on this Website, including text, graphics, logos, images, and software, is the property of the Downtown Manteca District or its content suppliers and is protected by copyright laws.</p>
+
+            <h3>Government Works</h3>
+            <p>As a public entity, many of our documents and materials are in the public domain. However, some content may be subject to copyright protection or licensing restrictions.</p>
+
+            <h3>Permitted Use of Content</h3>
+            <p>You may:</p>
+            <ul>
+                <li>View and download materials for personal, non-commercial use</li>
+                <li>Print single copies of materials for personal reference</li>
+                <li>Link to our Website from other sites</li>
+                <li>Quote brief excerpts with proper attribution</li>
+            </ul>
+
+            <p>You may not:</p>
+            <ul>
+                <li>Reproduce, distribute, or republish substantial portions without permission</li>
+                <li>Use our logos or trademarks without authorization</li>
+                <li>Modify or create derivative works from our content</li>
+                <li>Use content for commercial purposes without permission</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>User-Generated Content</h2>
+            
+            <h3>Public Comments and Submissions</h3>
+            <p>When you submit comments, reports, or other content through this Website:</p>
+            <ul>
+                <li>You grant the District a non-exclusive right to use, reproduce, and publish your submission</li>
+                <li>You represent that you have the right to submit the content</li>
+                <li>You agree that your submission may become part of the public record</li>
+                <li>You waive any claim to confidentiality regarding your submission</li>
+            </ul>
+
+            <h3>Content Standards</h3>
+            <p>All user submissions must:</p>
+            <ul>
+                <li>Be factual and truthful to the best of your knowledge</li>
+                <li>Be relevant to district matters</li>
+                <li>Comply with applicable laws and regulations</li>
+                <li>Not contain defamatory, offensive, or harassing content</li>
+                <li>Not violate the privacy or rights of others</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>Website Availability and Modifications</h2>
+            
+            <h3>Service Availability</h3>
+            <p>We strive to maintain continuous access to our Website, but we do not guarantee uninterrupted availability. The Website may be temporarily unavailable due to maintenance, technical issues, or other factors beyond our control.</p>
+
+            <h3>Right to Modify</h3>
+            <p>We reserve the right to:</p>
+            <ul>
+                <li>Modify or discontinue any aspect of the Website at any time</li>
+                <li>Change these Terms of Use without prior notice</li>
+                <li>Restrict access to certain features or content</li>
+                <li>Update security measures and technical requirements</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>Accessibility Commitment</h2>
+            <p>The Downtown Manteca District is committed to ensuring equal access to our Website for all users, including those with disabilities. We strive to comply with the Americans with Disabilities Act (ADA) and Web Content Accessibility Guidelines (WCAG).</p>
+
+            <p>If you encounter accessibility barriers on our Website, please contact us immediately:</p>
+            <ul>
+                <li><strong>ADA Coordinator:</strong> <a href="mailto:accessibility@downtownmanteca.com">accessibility@downtownmanteca.com</a></li>
+                <li><strong>Phone:</strong> <a href="tel:209-239-8451">(209) 239-8451</a></li>
+            </ul>
+
+            <p>For more information, please review our <a href="accessibility.html">Accessibility Statement</a>.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Governing Law and Disputes</h2>
+            
+            <h3>Jurisdiction</h3>
+            <p>These Terms of Use and any disputes arising from your use of this Website shall be governed by the laws of the State of California and applicable federal law, without regard to conflict of law principles.</p>
+
+            <h3>Dispute Resolution</h3>
+            <p>Any legal action or proceeding arising under these Terms of Use shall be brought exclusively in the courts of San Joaquin County, California, or in the United States District Court for the Eastern District of California.</p>
+
+            <h3>Government Claims Act</h3>
+            <p>Claims against the Downtown Manteca District must comply with the California Government Claims Act (Government Code Section 900 et seq.), including requirements for timely filing of claims.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Severability and Entire Agreement</h2>
+            
+            <h3>Severability</h3>
+            <p>If any provision of these Terms of Use is found to be unenforceable or invalid, that provision will be limited or eliminated to the minimum extent necessary so that the remaining terms will remain in full force and effect.</p>
+
+            <h3>Entire Agreement</h3>
+            <p>These Terms of Use, together with our Privacy Policy and any other legal notices published on this Website, constitute the entire agreement between you and the Downtown Manteca District concerning your use of this Website.</p>
+        </section>
+
+        <div class="contact-highlight">
+            <h3>📞 Questions About These Terms?</h3>
+            <p>If you have questions about these Terms of Use or need clarification about any provision, please contact us:</p>
+            <p><strong>Legal Contact:</strong> Michelle Kramer, Executive Director</p>
+            <p><strong>Email:</strong> <a href="mailto:legal@downtownmanteca.com">legal@downtownmanteca.com</a></p>
+            <p><strong>Phone:</strong> <a href="tel:209-239-8451">(209) 239-8451</a></p>
+            <p><strong>Mail:</strong><br>
+            Downtown Manteca District<br>
+            ATTN: Legal Department<br>
+            Historic Main Street<br>
+            Manteca, CA 95336</p>
+        </div>
+
+        <div class="info-box">
+            <h4>📚 Related Policies</h4>
+            <p>For additional information about our policies and procedures, please review:</p>
+            <ul>
+                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="accessibility.html">Accessibility Statement</a></li>
+                <li><a href="public-records.html">Public Records Act Information</a></li>
+                <li><a href="aboutUs.html">District Bylaws and Governance</a></li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>Copyright © 2025 Downtown Manteca - All Rights Reserved.</p>
+                <p>Managed by Jane Media Services</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Add accessibility features
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add skip link functionality
+            const skipLink = document.createElement('a');
+            skipLink.href = '#main-content';
+            skipLink.textContent = 'Skip to main content';
+            skipLink.className = 'skip-link';
+            skipLink.style.cssText = 'position: absolute; top: -40px; left: 6px; background: #000; color: #fff; padding: 8px; text-decoration: none; z-index: 1000;';
+            skipLink.addEventListener('focus', function() {
+                this.style.top = '6px';
+            });
+            skipLink.addEventListener('blur', function() {
+                this.style.top = '-40px';
+            });
+            document.body.insertBefore(skipLink, document.body.firstChild);
+            
+            // Add main landmark
+            const main = document.querySelector('main');
+            if (main) {
+                main.id = 'main-content';
+                main.setAttribute('role', 'main');
+            }
+
+            // Add print functionality
+            const printBtn = document.createElement('button');
+            printBtn.textContent = '🖨️ Print This Document';
+            printBtn.style.cssText = 'background: linear-gradient(45deg, #eea719, #c44720); color: white; padding: 1rem 2rem; border: none; border-radius: 25px; font-family: inherit; font-weight: 600; cursor: pointer; margin: 2rem auto; display: block;';
+            printBtn.addEventListener('click', function() {
+                window.print();
+            });
+            
+            const lastSection = document.querySelector('.content-section:last-of-type');
+            if (lastSection) {
+                lastSection.appendChild(printBtn);
+            }
+        });
+    </script>
+</body>
+</html>
