@@ -651,7 +651,7 @@
                 return `
                     <div class="business-card" style="animation-delay: ${index * 0.1}s">
                         <div class="business-name">${escapeHtml(business.businessName)}</div>
-                        ${description ? `<div class="business-description">${escapeHtml(description)}</div>` : ''}
+                       
                         
                         ${business.ownerName ? `<div class="business-info"><strong>Owner:</strong> ${escapeHtml(business.ownerName)}</div>` : ''}
                         ${business.address ? `<div class="business-info"><strong>Address:</strong> ${escapeHtml(business.address)}</div>` : ''}
@@ -668,11 +668,7 @@
                             </div>
                         ` : ''}
                         
-                        ${business.interestedInEvents && business.interestedInEvents.toLowerCase().includes('yes') ? `
-                            <div class="event-participation">
-                                <span style="color: #eea719; font-weight: 600;">🎉 Participates in Downtown Events</span>
-                            </div>
-                        ` : ''}
+                        
                     </div>
                 `;
             }).join('');
