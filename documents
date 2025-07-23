@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documents Section - Add to Website</title>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: #0a2b30;
+            background: linear-gradient(135deg, #f7f5f3 0%, #fff 100%);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Documents Section */
+        .documents-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+        }
+
+        .documents-section h2 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2rem;
+            color: #0a2b30;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            border-bottom: 2px solid #eea719;
+            padding-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        /* All Documents Container */
+        .all-documents-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .documents-header {
+            background: linear-gradient(135deg, #0a2b30, #035847);
+            color: white;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .documents-header h3 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.4rem;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .documents-header .refresh-button {
+            background: rgba(238, 167, 25, 0.2);
+            border: 1px solid rgba(238, 167, 25, 0.5);
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+        }
+
+        .documents-header .refresh-button:hover {
+            background: rgba(238, 167, 25, 0.3);
+            transform: none;
+            box-shadow: none;
+        }
+
+        .documents-table {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .document-row {
+            display: grid;
+            grid-template-columns: auto 1fr auto auto auto;
+            gap: 1rem;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid #e9ecef;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .document-row:hover {
+            background-color: rgba(238, 167, 25, 0.05);
+        }
+
+        .document-row:last-child {
+            border-bottom: none;
+        }
+
+        .doc-type-badge {
+            background: #eea719;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            min-width: 45px;
+            text-align: center;
+        }
+
+        .doc-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .doc-title {
+            font-weight: 600;
+            color: #0a2b30;
+            margin-bottom: 0.25rem;
+            font-size: 1rem;
+        }
+
+        .doc-description {
+            color: #035847;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .doc-category {
+            background: #f8f9fa;
+            color: #6c757d;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .doc-size {
+            color: #6c757d;
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+
+        .doc-download {
+            background: linear-gradient(45deg, #eea719, #c44720);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .doc-download:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(238, 167, 25, 0.4);
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Loading states */
+        .loading-documents {
+            text-align: center;
+            padding: 2rem;
+            color: #8d242f;
+        }
+
+        .loading-documents::after {
+            content: "...";
+            animation: dots 1.5s steps(4, end) infinite;
+        }
+
+        @keyframes dots {
+            0%, 20% { content: "."; }
+            40% { content: ".."; }
+            60% { content: "..."; }
+            80%, 100% { content: ""; }
+        }
+
+        .error-documents {
+            text-align: center;
+            padding: 2rem;
+            color: #8d242f;
+            background: rgba(238, 167, 25, 0.1);
+            border-radius: 8px;
+        }
+
+        .refresh-button {
+            background: linear-gradient(45deg, #eea719, #c44720);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .refresh-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(238, 167, 25, 0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .documents-categories {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .documents-section {
+                padding: 2rem;
+            }
+            
+            .document-link {
+                padding: 0.75rem;
+            }
+            
+            .category-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .category-icon {
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Documents Section -->
+        <section class="documents-section">
+            <h2>📁 Public Documents & Records</h2>
+            <p style="text-align: center; color: #035847; margin-bottom: 2rem; font-size: 1.1rem;">
+                In accordance with California Government Code and transparency requirements, the following documents are available for public review and download.
+            </p>
+            
+            <!-- All Documents List -->
+            <div class="all-documents-container">
+                <div class="documents-header">
+                    <h3>Available Documents</h3>
+                    <button class="refresh-button" onclick="loadAllDocuments()">🔄 Refresh List</button>
+                </div>
+                
+                <div class="documents-table" id="allDocumentsList">
+                    <div class="loading-documents">Loading public documents...</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Configuration - UPDATE WITH YOUR FOLDER IDs
+        const GOOGLE_DRIVE_CONFIG = {
+            API_KEY: 'AIzaSyA_D9VSFEaQn4XnMsjNLHg7qS999n4gl1M', // Your API key
+            FOLDERS: {
+                boardAgenda: 'YOUR_BOARD_AGENDA_FOLDER_ID',      // Get from BoardAgenda folder
+                boardPackets: 'YOUR_BOARD_PACKETS_FOLDER_ID',    // Get from BoardPackets folder  
+                foundingDocs: 'YOUR_FOUNDING_DOCS_FOLDER_ID',    // Get from FoundingDocuments folder
+                vendorContracts: 'YOUR_VENDOR_CONTRACTS_FOLDER_ID' // Get from VendorContracts folder
+            }
+        };
+
+        // Document categories configuration
+        const DOCUMENT_CATEGORIES = {
+            boardAgenda: {
+                listId: 'boardAgendaList',
+                title: 'Board Agendas',
+                icon: 'AGD'
+            },
+            boardPackets: {
+                listId: 'boardPacketsList', 
+                title: 'Board Packets',
+                icon: 'PKT'
+            },
+            foundingDocs: {
+                listId: 'foundingDocsList',
+                title: 'Founding Documents', 
+                icon: 'DOC'
+            },
+            vendorContracts: {
+                listId: 'vendorContractsList',
+                title: 'Vendor Contracts',
+                icon: 'CON'
+            }
+        };
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAllDocuments();
+        });
+
+        // Load all document categories
+        async function loadAllDocuments() {
+            const allDocsList = document.getElementById('allDocumentsList');
+            allDocsList.innerHTML = '<div class="loading-documents">Loading public documents...</div>';
+            
+            let allDocuments = [];
+            
+            // Load documents from all folders
+            for (const [category, folderId] of Object.entries(GOOGLE_DRIVE_CONFIG.FOLDERS)) {
+                if (folderId && folderId !== `YOUR_${category.toUpperCase().replace(/([A-Z])/g, '_$1')}_FOLDER_ID`) {
+                    try {
+                        const documents = await loadDocumentsFromFolder(folderId, category);
+                        allDocuments = [...allDocuments, ...documents];
+                    } catch (error) {
+                        console.error(`Error loading ${category} documents:`, error);
+                    }
+                }
+            }
+            
+            if (allDocuments.length === 0) {
+                allDocsList.innerHTML = '<div class="error-documents">No public documents available at this time.</div>';
+                return;
+            }
+            
+            // Sort documents by date (newest first)
+            allDocuments.sort((a, b) => new Date(b.createdTime) - new Date(a.createdTime));
+            
+            displayAllDocuments(allDocuments);
+        }
+
+        // Load documents from a specific folder
+        async function loadDocumentsFromFolder(folderId, category) {
+            const url = `https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&key=${GOOGLE_DRIVE_CONFIG.API_KEY}&fields=files(id,name,size,mimeType,createdTime,webViewLink)&orderBy=createdTime desc`;
+            
+            const response = await fetch(url);
+            const data = await response.json();
+
+            if (data.error) {
+                throw new Error(data.error.message);
+            }
+
+            if (!data.files || data.files.length === 0) {
+                return [];
+            }
+
+            // Filter for document files and add category info
+            return data.files
+                .filter(file => isDocumentFile(file.mimeType))
+                .map(file => ({
+                    ...file,
+                    category: category,
+                    categoryLabel: getCategoryLabel(category),
+                    description: getDocumentDescription(file.name, category),
+                    downloadUrl: `https://drive.google.com/uc?id=${file.id}&export=download`
+                }));
+        }
+
+        // Display all documents in a single table
+        function displayAllDocuments(documents) {
+            const allDocsList = document.getElementById('allDocumentsList');
+            
+            const documentRows = documents.map(doc => {
+                const fileExtension = getFileExtension(doc.name);
+                const fileSize = formatFileSize(doc.size);
+                
+                return `
+                    <div class="document-row">
+                        <span class="doc-type-badge">${fileExtension}</span>
+                        <div class="doc-info">
+                            <div class="doc-title">${escapeHtml(doc.name)}</div>
+                            <div class="doc-description">${escapeHtml(doc.description)}</div>
+                        </div>
+                        <span class="doc-category">${doc.categoryLabel}</span>
+                        <span class="doc-size">${fileSize}</span>
+                        <a href="${doc.downloadUrl}" class="doc-download" target="_blank" rel="noopener">
+                            <span>📄</span>
+                            Download
+                        </a>
+                    </div>
+                `;
+            }).join('');
+
+            allDocsList.innerHTML = documentRows;
+        }
+
+        // Get category label for display
+        function getCategoryLabel(category) {
+            const labels = {
+                boardAgenda: 'Board Agenda',
+                boardPackets: 'Board Packet',
+                foundingDocs: 'Founding Document',
+                vendorContracts: 'Vendor Contract'
+            };
+            return labels[category] || 'Document';
+        }
+
+        // Get document description based on filename and category
+        function getDocumentDescription(filename, category) {
+            const descriptions = {
+                boardAgenda: 'Official board meeting agenda posted in compliance with the Ralph M. Brown Act (Government Code Section 54950 et seq.)',
+                boardPackets: 'Complete board meeting packet including agenda, staff reports, and supporting materials for public review.',
+                foundingDocs: 'District formation document, bylaws, or governance material establishing operational procedures and legal framework.',
+                vendorContracts: 'Public contract or vendor agreement subject to disclosure under Government Code Section 6250 et seq. (Public Records Act).'
+            };
+            
+            // Check for specific document types in filename
+            const lowerName = filename.toLowerCase();
+            if (lowerName.includes('bylaw')) {
+                return 'District bylaws establishing governance structure, board procedures, and operational guidelines.';
+            } else if (lowerName.includes('budget')) {
+                return 'Annual or amended budget document showing district revenues, expenditures, and fiscal planning.';
+            } else if (lowerName.includes('audit')) {
+                return 'Independent financial audit report as required by Government Code Section 26909.';
+            } else if (lowerName.includes('contract')) {
+                return 'Professional services contract or vendor agreement exceeding disclosure thresholds.';
+            } else if (lowerName.includes('resolution')) {
+                return 'Board resolution formally adopting district policies, procedures, or official positions.';
+            } else if (lowerName.includes('minute')) {
+                return 'Official meeting minutes documenting board actions and decisions as required by the Brown Act.';
+            }
+            
+            return descriptions[category] || 'Official district document available for public review and download.';
+        }
+
+        // Check if file is a document type we want to display
+        function isDocumentFile(mimeType) {
+            const documentTypes = [
+                'application/pdf',
+                'application/msword',
+                'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                'application/vnd.google-apps.document',
+                'application/vnd.ms-excel',
+                'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                'text/plain'
+            ];
+            return documentTypes.includes(mimeType);
+        }
+
+        // Get file extension from filename
+        function getFileExtension(filename) {
+            const ext = filename.split('.').pop().toLowerCase();
+            const extensionMap = {
+                'pdf': 'PDF',
+                'doc': 'DOC', 
+                'docx': 'DOCX',
+                'xls': 'XLS',
+                'xlsx': 'XLSX',
+                'txt': 'TXT'
+            };
+            return extensionMap[ext] || 'DOC';
+        }
+
+        // Format file size for display
+        function formatFileSize(bytes) {
+            if (!bytes) return '';
+            const sizes = ['B', 'KB', 'MB', 'GB'];
+            if (bytes === 0) return '0 B';
+            const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+            return Math.round(bytes / Math.pow(1024, i) * 100) / 100 + ' ' + sizes[i];
+        }
+
+        // Display error message
+        function displayError(listId, message) {
+            const listElement = document.getElementById(listId);
+            listElement.innerHTML = `<li class="error-documents">${escapeHtml(message)}</li>`;
+        }
+
+        // Display no documents message
+        function displayNoDocuments(listId, message) {
+            const listElement = document.getElementById(listId);
+            listElement.innerHTML = `<li style="text-align: center; padding: 1rem; color: #6c757d;">${escapeHtml(message)}</li>`;
+        }
+
+        // Escape HTML to prevent XSS
+        function escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+    </script>
+</body>
+</html>
