@@ -3,21 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documents Section - Add to Website</title>
+    <title>Public Documents - Downtown Manteca</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Montserrat', sans-serif;
             line-height: 1.6;
             color: #0a2b30;
             background: linear-gradient(135deg, #f7f5f3 0%, #fff 100%);
-            margin: 0;
-            padding: 20px;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .logo-img {
+            width: 170px;
+            height: 170px;
+            object-fit: contain;
+            background: white;
+            border-radius: 50%;
+            padding: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background: rgba(238, 167, 25, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            padding: 3rem 0 2rem;
+            background: white;
+            margin: 2rem auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .page-header h1 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2.5rem;
+            color: #0a2b30;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: #035847;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         /* Documents Section */
@@ -67,14 +148,16 @@
         .documents-header .refresh-button {
             background: rgba(238, 167, 25, 0.2);
             border: 1px solid rgba(238, 167, 25, 0.5);
+            color: white;
             font-size: 0.9rem;
             padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
         .documents-header .refresh-button:hover {
             background: rgba(238, 167, 25, 0.3);
-            transform: none;
-            box-shadow: none;
         }
 
         .documents-table {
@@ -211,89 +294,134 @@
             box-shadow: 0 4px 15px rgba(238, 167, 25, 0.4);
         }
 
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 1.5rem;
+            margin-top: 2rem;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
-            .documents-categories {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
+            header {
+                padding: 1.5rem 0;
+            }
+            
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .logo-container {
+                justify-content: center;
+            }
+            
+            .logo-img {
+                width: 130px;
+                height: 130px;
+                padding: 8px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
             }
             
             .documents-section {
                 padding: 2rem;
             }
             
-            .document-link {
-                padding: 0.75rem;
-            }
-            
-            .category-header {
-                flex-direction: column;
+            .document-row {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
                 text-align: center;
             }
             
-            .category-icon {
-                margin-right: 0;
-                margin-bottom: 0.5rem;
+            .documents-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .container {
+                padding: 0 15px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <header>
+        <nav class="container">
+            <div class="logo-container">
+                <img src="img/manteca-logo.png" alt="Downtown Manteca District Logo" class="logo-img">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="directory.html">Business</a></li>
+                <li><a href="aboutUs.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>📁 Public Documents & Records</h1>
+            <p>In accordance with California Government Code and transparency requirements, the following documents are available for public review and download.</p>
+        </div>
+    </section>
+
+    <main class="container">
         <!-- Documents Section -->
         <section class="documents-section">
-            <h2>📁 Public Documents & Records</h2>
-            <p style="text-align: center; color: #035847; margin-bottom: 2rem; font-size: 1.1rem;">
-                In accordance with California Government Code and transparency requirements, the following documents are available for public review and download.
-            </p>
+            <h2>Available Documents</h2>
             
             <!-- All Documents List -->
             <div class="all-documents-container">
                 <div class="documents-header">
-                    <h3>Available Documents</h3>
+                    <h3>📋 Official District Documents</h3>
                     <button class="refresh-button" onclick="loadAllDocuments()">🔄 Refresh List</button>
                 </div>
                 
                 <div class="documents-table" id="allDocumentsList">
-                    <div class="loading-documents">Loading public documents...</div>
+                    <div class="loading-documents">Loading public documents from Google Drive</div>
                 </div>
             </div>
         </section>
-    </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>Copyright © 2025 Downtown Manteca - All Rights Reserved.</p>
+                <p>Managed by Jane Media Services</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        // Configuration - UPDATE WITH YOUR FOLDER IDs
+        // Configuration - YOUR ACTUAL FOLDER IDs
         const GOOGLE_DRIVE_CONFIG = {
-            API_KEY: 'AIzaSyA_D9VSFEaQn4XnMsjNLHg7qS999n4gl1M', // Your API key
+            API_KEY: 'AIzaSyA_D9VSFEaQn4XnMsjNLHg7qS999n4gl1M', // Your existing API key
             FOLDERS: {
-                boardAgenda: 'YOUR_BOARD_AGENDA_FOLDER_ID',      // Get from BoardAgenda folder
-                boardPackets: 'YOUR_BOARD_PACKETS_FOLDER_ID',    // Get from BoardPackets folder  
-                foundingDocs: 'YOUR_FOUNDING_DOCS_FOLDER_ID',    // Get from FoundingDocuments folder
-                vendorContracts: 'YOUR_VENDOR_CONTRACTS_FOLDER_ID' // Get from VendorContracts folder
-            }
-        };
-
-        // Document categories configuration
-        const DOCUMENT_CATEGORIES = {
-            boardAgenda: {
-                listId: 'boardAgendaList',
-                title: 'Board Agendas',
-                icon: 'AGD'
-            },
-            boardPackets: {
-                listId: 'boardPacketsList', 
-                title: 'Board Packets',
-                icon: 'PKT'
-            },
-            foundingDocs: {
-                listId: 'foundingDocsList',
-                title: 'Founding Documents', 
-                icon: 'DOC'
-            },
-            vendorContracts: {
-                listId: 'vendorContractsList',
-                title: 'Vendor Contracts',
-                icon: 'CON'
+                // Your Downtown Manteca Google Drive folders:
+                boardAgenda: '1YWWVZFfc5cEBIwR4x21ZsJUfOJNQQPWu',     // Board Agenda folder
+                boardPackets: '10xtQ3iRG8uyVSZ8JlJau_Jgl2iSJuc4y',    // Board Packets folder  
+                foundingDocs: '1MkOa51uDR5e6k9z1acd765ZWAXdsqNYW',    // Founding Documents folder
+                vendorContracts: '1Mhhl-EjMpZFtV3F8XZ9bYCvT4rtO3ckX'  // Vendor Contracts folder
             }
         };
 
@@ -302,34 +430,58 @@
             loadAllDocuments();
         });
 
-        // Load all document categories
+        // Load all documents from Google Drive
         async function loadAllDocuments() {
             const allDocsList = document.getElementById('allDocumentsList');
-            allDocsList.innerHTML = '<div class="loading-documents">Loading public documents...</div>';
+            allDocsList.innerHTML = '<div class="loading-documents">Loading public documents from Google Drive</div>';
             
-            let allDocuments = [];
-            
-            // Load documents from all folders
-            for (const [category, folderId] of Object.entries(GOOGLE_DRIVE_CONFIG.FOLDERS)) {
-                if (folderId && folderId !== `YOUR_${category.toUpperCase().replace(/([A-Z])/g, '_$1')}_FOLDER_ID`) {
-                    try {
-                        const documents = await loadDocumentsFromFolder(folderId, category);
-                        allDocuments = [...allDocuments, ...documents];
-                    } catch (error) {
-                        console.error(`Error loading ${category} documents:`, error);
+            try {
+                let allDocuments = [];
+                
+                // Load from all your document folders
+                for (const [category, folderId] of Object.entries(GOOGLE_DRIVE_CONFIG.FOLDERS)) {
+                    if (folderId && folderId.length > 10) {
+                        try {
+                            const documents = await loadDocumentsFromFolder(folderId, category);
+                            allDocuments = [...allDocuments, ...documents];
+                        } catch (error) {
+                            console.error(`Error loading ${category} documents:`, error);
+                        }
                     }
                 }
+                
+                if (allDocuments.length === 0) {
+                    allDocsList.innerHTML = `
+                        <div class="error-documents">
+                            <h4>⚠️ Configuration Needed</h4>
+                            <p>No documents found. Please configure your Google Drive folder IDs in the script.</p>
+                            <p><strong>Instructions:</strong></p>
+                            <ol style="text-align: left; display: inline-block;">
+                                <li>Go to your Google Drive folder</li>
+                                <li>Copy the folder ID from the URL</li>
+                                <li>Replace the placeholder in GOOGLE_DRIVE_CONFIG.FOLDERS</li>
+                            </ol>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                // Sort documents by date (newest first)
+                allDocuments.sort((a, b) => new Date(b.createdTime) - new Date(a.createdTime));
+                
+                displayAllDocuments(allDocuments);
+                
+            } catch (error) {
+                console.error('Error loading documents:', error);
+                allDocsList.innerHTML = `
+                    <div class="error-documents">
+                        <h4>❌ Error Loading Documents</h4>
+                        <p>Error: ${error.message}</p>
+                        <p>Please check your folder ID and API key configuration.</p>
+                        <button class="refresh-button" onclick="loadAllDocuments()">Try Again</button>
+                    </div>
+                `;
             }
-            
-            if (allDocuments.length === 0) {
-                allDocsList.innerHTML = '<div class="error-documents">No public documents available at this time.</div>';
-                return;
-            }
-            
-            // Sort documents by date (newest first)
-            allDocuments.sort((a, b) => new Date(b.createdTime) - new Date(a.createdTime));
-            
-            displayAllDocuments(allDocuments);
         }
 
         // Load documents from a specific folder
@@ -366,13 +518,14 @@
             const documentRows = documents.map(doc => {
                 const fileExtension = getFileExtension(doc.name);
                 const fileSize = formatFileSize(doc.size);
+                const docDate = new Date(doc.createdTime).toLocaleDateString();
                 
                 return `
                     <div class="document-row">
                         <span class="doc-type-badge">${fileExtension}</span>
                         <div class="doc-info">
                             <div class="doc-title">${escapeHtml(doc.name)}</div>
-                            <div class="doc-description">${escapeHtml(doc.description)}</div>
+                            <div class="doc-description">Posted: ${docDate} | ${escapeHtml(doc.description)}</div>
                         </div>
                         <span class="doc-category">${doc.categoryLabel}</span>
                         <span class="doc-size">${fileSize}</span>
@@ -390,6 +543,7 @@
         // Get category label for display
         function getCategoryLabel(category) {
             const labels = {
+                document: 'Public Document',
                 boardAgenda: 'Board Agenda',
                 boardPackets: 'Board Packet',
                 foundingDocs: 'Founding Document',
@@ -400,30 +554,26 @@
 
         // Get document description based on filename and category
         function getDocumentDescription(filename, category) {
-            const descriptions = {
-                boardAgenda: 'Official board meeting agenda posted in compliance with the Ralph M. Brown Act (Government Code Section 54950 et seq.)',
-                boardPackets: 'Complete board meeting packet including agenda, staff reports, and supporting materials for public review.',
-                foundingDocs: 'District formation document, bylaws, or governance material establishing operational procedures and legal framework.',
-                vendorContracts: 'Public contract or vendor agreement subject to disclosure under Government Code Section 6250 et seq. (Public Records Act).'
-            };
-            
-            // Check for specific document types in filename
             const lowerName = filename.toLowerCase();
+            
+            // Specific document type descriptions
             if (lowerName.includes('bylaw')) {
-                return 'District bylaws establishing governance structure, board procedures, and operational guidelines.';
+                return 'District bylaws establishing governance structure and operational guidelines.';
             } else if (lowerName.includes('budget')) {
-                return 'Annual or amended budget document showing district revenues, expenditures, and fiscal planning.';
+                return 'Annual budget document showing district revenues and expenditures.';
             } else if (lowerName.includes('audit')) {
-                return 'Independent financial audit report as required by Government Code Section 26909.';
+                return 'Independent financial audit report as required by Government Code.';
             } else if (lowerName.includes('contract')) {
-                return 'Professional services contract or vendor agreement exceeding disclosure thresholds.';
+                return 'Professional services contract or vendor agreement.';
             } else if (lowerName.includes('resolution')) {
-                return 'Board resolution formally adopting district policies, procedures, or official positions.';
+                return 'Board resolution formally adopting district policies or procedures.';
             } else if (lowerName.includes('minute')) {
-                return 'Official meeting minutes documenting board actions and decisions as required by the Brown Act.';
+                return 'Official meeting minutes documenting board actions and decisions.';
+            } else if (lowerName.includes('agenda')) {
+                return 'Official board meeting agenda posted in compliance with the Brown Act.';
             }
             
-            return descriptions[category] || 'Official district document available for public review and download.';
+            return 'Official district document available for public review and download.';
         }
 
         // Check if file is a document type we want to display
@@ -461,18 +611,6 @@
             if (bytes === 0) return '0 B';
             const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
             return Math.round(bytes / Math.pow(1024, i) * 100) / 100 + ' ' + sizes[i];
-        }
-
-        // Display error message
-        function displayError(listId, message) {
-            const listElement = document.getElementById(listId);
-            listElement.innerHTML = `<li class="error-documents">${escapeHtml(message)}</li>`;
-        }
-
-        // Display no documents message
-        function displayNoDocuments(listId, message) {
-            const listElement = document.getElementById(listId);
-            listElement.innerHTML = `<li style="text-align: center; padding: 1rem; color: #6c757d;">${escapeHtml(message)}</li>`;
         }
 
         // Escape HTML to prevent XSS
