@@ -121,8 +121,7 @@
             text-align: center;
         }
 
-        /* All Documents Container */
-        .all-documents-container {
+        .documents-container {
             background: white;
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
@@ -145,7 +144,7 @@
             font-weight: 600;
         }
 
-        .documents-header .refresh-button {
+        .refresh-button {
             background: rgba(238, 167, 25, 0.2);
             border: 1px solid rgba(238, 167, 25, 0.5);
             color: white;
@@ -156,16 +155,16 @@
             transition: all 0.3s ease;
         }
 
-        .documents-header .refresh-button:hover {
+        .refresh-button:hover {
             background: rgba(238, 167, 25, 0.3);
         }
 
-        .documents-table {
+        .documents-list {
             max-height: 600px;
             overflow-y: auto;
         }
 
-        .document-row {
+        .document-item {
             display: grid;
             grid-template-columns: auto 1fr auto auto auto;
             gap: 1rem;
@@ -175,15 +174,15 @@
             transition: background-color 0.3s ease;
         }
 
-        .document-row:hover {
+        .document-item:hover {
             background-color: rgba(238, 167, 25, 0.05);
         }
 
-        .document-row:last-child {
+        .document-item:last-child {
             border-bottom: none;
         }
 
-        .doc-type-badge {
+        .doc-type {
             background: #eea719;
             color: white;
             padding: 0.25rem 0.5rem;
@@ -199,14 +198,14 @@
             flex-direction: column;
         }
 
-        .doc-title {
+        .doc-name {
             font-weight: 600;
             color: #0a2b30;
             margin-bottom: 0.25rem;
             font-size: 1rem;
         }
 
-        .doc-description {
+        .doc-details {
             color: #035847;
             font-size: 0.9rem;
             line-height: 1.4;
@@ -250,14 +249,13 @@
             text-decoration: none;
         }
 
-        /* Loading states */
-        .loading-documents {
+        .loading {
             text-align: center;
             padding: 2rem;
             color: #8d242f;
         }
 
-        .loading-documents::after {
+        .loading::after {
             content: "...";
             animation: dots 1.5s steps(4, end) infinite;
         }
@@ -269,7 +267,7 @@
             80%, 100% { content: ""; }
         }
 
-        .error-documents {
+        .error {
             text-align: center;
             padding: 2rem;
             color: #8d242f;
@@ -277,21 +275,74 @@
             border-radius: 8px;
         }
 
-        .refresh-button {
-            background: linear-gradient(45deg, #eea719, #c44720);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 25px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 1rem;
+        .debug-info {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: #495057;
         }
 
-        .refresh-button:hover {
-            transform: translateY(-2px);
+        /* Manual Documents Section */
+        .manual-docs {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 4px solid #eea719;
+        }
+
+        .manual-docs h3 {
+            color: #0a2b30;
+            margin-bottom: 1rem;
+            font-family: 'Roboto Slab', serif;
+        }
+
+        .manual-doc-item {
+            background: white;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #e9ecef;
+        }
+
+        .manual-doc-info {
+            flex: 1;
+        }
+
+        .manual-doc-name {
+            font-weight: 600;
+            color: #0a2b30;
+            margin-bottom: 0.25rem;
+        }
+
+        .manual-doc-desc {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .manual-doc-link {
+            background: linear-gradient(45deg, #eea719, #c44720);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .manual-doc-link:hover {
+            transform: translateY(-1px);
             box-shadow: 0 4px 15px rgba(238, 167, 25, 0.4);
+            color: white;
+            text-decoration: none;
         }
 
         /* Footer */
@@ -344,7 +395,7 @@
                 padding: 2rem;
             }
             
-            .document-row {
+            .document-item {
                 grid-template-columns: 1fr;
                 gap: 0.5rem;
                 text-align: center;
@@ -353,6 +404,12 @@
             .documents-header {
                 flex-direction: column;
                 gap: 1rem;
+            }
+            
+            .manual-doc-item {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
             }
             
             .container {
@@ -380,24 +437,48 @@
     <section class="page-header">
         <div class="container">
             <h1>📁 Public Documents & Records</h1>
-            <p>In accordance with California Government Code and transparency requirements, the following documents are available for public review and download.</p>
+            <p>The following public documents are available for review and download as required by California law.</p>
         </div>
     </section>
 
     <main class="container">
-        <!-- Documents Section -->
         <section class="documents-section">
             <h2>Available Documents</h2>
             
-            <!-- All Documents List -->
-            <div class="all-documents-container">
-                <div class="documents-header">
-                    <h3>📋 Official District Documents</h3>
-                    <button class="refresh-button" onclick="loadAllDocuments()">🔄 Refresh List</button>
+            <!-- Manual Documents (Always Available) -->
+            <div class="manual-docs">
+                <h3>📋 Current Documents</h3>
+                <div class="manual-doc-item">
+                    <div class="manual-doc-info">
+                        <div class="manual-doc-name">Vendor Contract Example</div>
+                        <div class="manual-doc-desc">Professional services contract - Posted January 2025</div>
+                    </div>
+                    <a href="https://drive.google.com/uc?id=11n5NaIq_AgnkrS1NjoxRg4MomU4SdaW1&export=download" class="manual-doc-link" target="_blank">
+                        📄 Download PDF
+                    </a>
                 </div>
                 
-                <div class="documents-table" id="allDocumentsList">
-                    <div class="loading-documents">Loading public documents from Google Drive</div>
+                <!-- Add more documents here manually as you upload them -->
+                <div class="manual-doc-item">
+                    <div class="manual-doc-info">
+                        <div class="manual-doc-name">Board Meeting Agenda</div>
+                        <div class="manual-doc-desc">Next meeting agenda - Coming soon</div>
+                    </div>
+                    <a href="#" class="manual-doc-link" onclick="alert('Document coming soon!')">
+                        📄 Coming Soon
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Dynamic Documents from Google Drive -->
+            <div class="documents-container">
+                <div class="documents-header">
+                    <h3>📂 Google Drive Documents</h3>
+                    <button class="refresh-button" onclick="loadDocuments()">🔄 Refresh</button>
+                </div>
+                
+                <div class="documents-list" id="documentsList">
+                    <div class="loading">Checking Google Drive for additional documents</div>
                 </div>
             </div>
         </section>
@@ -413,80 +494,79 @@
     </footer>
 
     <script>
-        // Configuration - YOUR ACTUAL FOLDER IDs
-        const GOOGLE_DRIVE_CONFIG = {
-            API_KEY: 'AIzaSyA_D9VSFEaQn4XnMsjNLHg7qS999n4gl1M', // Your existing API key
-            FOLDERS: {
-                // Your Downtown Manteca Google Drive folders:
-                boardAgenda: '1YWWVZFfc5cEBIwR4x21ZsJUfOJNQQPWu',     // Board Agenda folder
-                boardPackets: '10xtQ3iRG8uyVSZ8JlJau_Jgl2iSJuc4y',    // Board Packets folder  
-                foundingDocs: '1MkOa51uDR5e6k9z1acd765ZWAXdsqNYW',    // Founding Documents folder
-                vendorContracts: '1Mhhl-EjMpZFtV3F8XZ9bYCvT4rtO3ckX'  // Vendor Contracts folder
-            }
+        // Google Drive Configuration
+        const CONFIG = {
+            API_KEY: 'AIzaSyA_D9VSFEaQn4XnMsjNLHg7qS999n4gl1M',
+            FOLDERS: [
+                { id: '1YWWVZFfc5cEBIwR4x21ZsJUfOJNQQPWu', name: 'Board Agenda', type: 'AGD' },
+                { id: '10xtQ3iRG8uyVSZ8JlJau_Jgl2iSJuc4y', name: 'Board Packets', type: 'PKT' },
+                { id: '1MkOa51uDR5e6k9z1acd765ZWAXdsqNYW', name: 'Founding Documents', type: 'DOC' },
+                { id: '1Mhhl-EjMpZFtV3F8XZ9bYCvT4rtO3ckX', name: 'Vendor Contracts', type: 'CON' }
+            ]
         };
 
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            loadAllDocuments();
-        });
+        // Load documents on page load
+        document.addEventListener('DOMContentLoaded', loadDocuments);
 
-        // Load all documents from Google Drive
-        async function loadAllDocuments() {
-            const allDocsList = document.getElementById('allDocumentsList');
-            allDocsList.innerHTML = '<div class="loading-documents">Loading public documents from Google Drive</div>';
+        async function loadDocuments() {
+            const container = document.getElementById('documentsList');
+            container.innerHTML = '<div class="loading">Checking Google Drive folders</div>';
             
+            let allDocuments = [];
+            let folderResults = [];
+
             try {
-                let allDocuments = [];
-                
-                // Load from all your document folders
-                for (const [category, folderId] of Object.entries(GOOGLE_DRIVE_CONFIG.FOLDERS)) {
-                    if (folderId && folderId.length > 10) {
-                        try {
-                            const documents = await loadDocumentsFromFolder(folderId, category);
-                            allDocuments = [...allDocuments, ...documents];
-                        } catch (error) {
-                            console.error(`Error loading ${category} documents:`, error);
+                // Try to load from each folder
+                for (const folder of CONFIG.FOLDERS) {
+                    try {
+                        const docs = await loadFromFolder(folder);
+                        
+                        if (docs.length > 0) {
+                            allDocuments.push(...docs);
+                            folderResults.push(`✅ ${folder.name}: ${docs.length} documents found`);
+                        } else {
+                            folderResults.push(`📁 ${folder.name}: Empty folder`);
                         }
+                    } catch (error) {
+                        folderResults.push(`❌ ${folder.name}: ${error.message}`);
                     }
                 }
-                
+
                 if (allDocuments.length === 0) {
-                    allDocsList.innerHTML = `
-                        <div class="error-documents">
-                            <h4>⚠️ Configuration Needed</h4>
-                            <p>No documents found. Please configure your Google Drive folder IDs in the script.</p>
-                            <p><strong>Instructions:</strong></p>
-                            <ol style="text-align: left; display: inline-block;">
-                                <li>Go to your Google Drive folder</li>
-                                <li>Copy the folder ID from the URL</li>
-                                <li>Replace the placeholder in GOOGLE_DRIVE_CONFIG.FOLDERS</li>
-                            </ol>
+                    container.innerHTML = `
+                        <div style="padding: 2rem; text-align: center; color: #6c757d;">
+                            <h4>📁 Google Drive Folders</h4>
+                            <p>No documents found in Google Drive folders yet.</p>
+                            <div class="debug-info">
+                                ${folderResults.join('<br>')}
+                            </div>
+                            <p style="margin-top: 1rem; font-size: 0.9rem;">
+                                Documents will appear here automatically when uploaded to your Google Drive folders.
+                            </p>
                         </div>
                     `;
                     return;
                 }
-                
-                // Sort documents by date (newest first)
+
+                // Sort by date (newest first)
                 allDocuments.sort((a, b) => new Date(b.createdTime) - new Date(a.createdTime));
-                
-                displayAllDocuments(allDocuments);
-                
+                displayDocuments(allDocuments);
+
             } catch (error) {
-                console.error('Error loading documents:', error);
-                allDocsList.innerHTML = `
-                    <div class="error-documents">
-                        <h4>❌ Error Loading Documents</h4>
-                        <p>Error: ${error.message}</p>
-                        <p>Please check your folder ID and API key configuration.</p>
-                        <button class="refresh-button" onclick="loadAllDocuments()">Try Again</button>
+                container.innerHTML = `
+                    <div class="error">
+                        <h4>ℹ️ Google Drive Status</h4>
+                        <p>Google Drive integration is set up. Documents will appear here when uploaded.</p>
+                        <div class="debug-info">
+                            ${folderResults.join('<br>')}
+                        </div>
                     </div>
                 `;
             }
         }
 
-        // Load documents from a specific folder
-        async function loadDocumentsFromFolder(folderId, category) {
-            const url = `https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&key=${GOOGLE_DRIVE_CONFIG.API_KEY}&fields=files(id,name,size,mimeType,createdTime,webViewLink)&orderBy=createdTime desc`;
+        async function loadFromFolder(folder) {
+            const url = `https://www.googleapis.com/drive/v3/files?q='${folder.id}'+in+parents&key=${CONFIG.API_KEY}&fields=files(id,name,size,mimeType,createdTime)`;
             
             const response = await fetch(url);
             const data = await response.json();
@@ -495,127 +575,72 @@
                 throw new Error(data.error.message);
             }
 
-            if (!data.files || data.files.length === 0) {
+            if (!data.files) {
                 return [];
             }
 
-            // Filter for document files and add category info
+            // For now, just return file info without download links since permissions are limited
             return data.files
-                .filter(file => isDocumentFile(file.mimeType))
+                .filter(file => isDocument(file.mimeType))
                 .map(file => ({
                     ...file,
-                    category: category,
-                    categoryLabel: getCategoryLabel(category),
-                    description: getDocumentDescription(file.name, category),
-                    downloadUrl: `https://drive.google.com/uc?id=${file.id}&export=download`
+                    folderName: folder.name,
+                    folderType: folder.type,
+                    downloadUrl: `#` // Will be updated when permissions are fixed
                 }));
         }
 
-        // Display all documents in a single table
-        function displayAllDocuments(documents) {
-            const allDocsList = document.getElementById('allDocumentsList');
+        function displayDocuments(documents) {
+            const container = document.getElementById('documentsList');
             
-            const documentRows = documents.map(doc => {
-                const fileExtension = getFileExtension(doc.name);
-                const fileSize = formatFileSize(doc.size);
-                const docDate = new Date(doc.createdTime).toLocaleDateString();
+            const html = documents.map(doc => {
+                const fileType = getFileType(doc.name);
+                const fileSize = formatSize(doc.size);
+                const date = new Date(doc.createdTime).toLocaleDateString();
                 
                 return `
-                    <div class="document-row">
-                        <span class="doc-type-badge">${fileExtension}</span>
+                    <div class="document-item">
+                        <span class="doc-type">${fileType}</span>
                         <div class="doc-info">
-                            <div class="doc-title">${escapeHtml(doc.name)}</div>
-                            <div class="doc-description">Posted: ${docDate} | ${escapeHtml(doc.description)}</div>
+                            <div class="doc-name">${escapeHtml(doc.name)}</div>
+                            <div class="doc-details">Posted: ${date} | ${doc.folderName}</div>
                         </div>
-                        <span class="doc-category">${doc.categoryLabel}</span>
+                        <span class="doc-category">${doc.folderName}</span>
                         <span class="doc-size">${fileSize}</span>
-                        <a href="${doc.downloadUrl}" class="doc-download" target="_blank" rel="noopener">
-                            <span>📄</span>
-                            Download
+                        <a href="#" class="doc-download" onclick="alert('Document access is being configured. Please check back soon!')">
+                            📄 Coming Soon
                         </a>
                     </div>
                 `;
             }).join('');
 
-            allDocsList.innerHTML = documentRows;
+            container.innerHTML = html;
         }
 
-        // Get category label for display
-        function getCategoryLabel(category) {
-            const labels = {
-                document: 'Public Document',
-                boardAgenda: 'Board Agenda',
-                boardPackets: 'Board Packet',
-                foundingDocs: 'Founding Document',
-                vendorContracts: 'Vendor Contract'
-            };
-            return labels[category] || 'Document';
-        }
-
-        // Get document description based on filename and category
-        function getDocumentDescription(filename, category) {
-            const lowerName = filename.toLowerCase();
-            
-            // Specific document type descriptions
-            if (lowerName.includes('bylaw')) {
-                return 'District bylaws establishing governance structure and operational guidelines.';
-            } else if (lowerName.includes('budget')) {
-                return 'Annual budget document showing district revenues and expenditures.';
-            } else if (lowerName.includes('audit')) {
-                return 'Independent financial audit report as required by Government Code.';
-            } else if (lowerName.includes('contract')) {
-                return 'Professional services contract or vendor agreement.';
-            } else if (lowerName.includes('resolution')) {
-                return 'Board resolution formally adopting district policies or procedures.';
-            } else if (lowerName.includes('minute')) {
-                return 'Official meeting minutes documenting board actions and decisions.';
-            } else if (lowerName.includes('agenda')) {
-                return 'Official board meeting agenda posted in compliance with the Brown Act.';
-            }
-            
-            return 'Official district document available for public review and download.';
-        }
-
-        // Check if file is a document type we want to display
-        function isDocumentFile(mimeType) {
-            const documentTypes = [
+        function isDocument(mimeType) {
+            const types = [
                 'application/pdf',
                 'application/msword',
                 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-                'application/vnd.google-apps.document',
-                'application/vnd.ms-excel',
-                'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-                'text/plain'
+                'application/vnd.google-apps.document'
             ];
-            return documentTypes.includes(mimeType);
+            return types.includes(mimeType);
         }
 
-        // Get file extension from filename
-        function getFileExtension(filename) {
+        function getFileType(filename) {
             const ext = filename.split('.').pop().toLowerCase();
-            const extensionMap = {
-                'pdf': 'PDF',
-                'doc': 'DOC', 
-                'docx': 'DOCX',
-                'xls': 'XLS',
-                'xlsx': 'XLSX',
-                'txt': 'TXT'
-            };
-            return extensionMap[ext] || 'DOC';
+            const types = { pdf: 'PDF', doc: 'DOC', docx: 'DOCX' };
+            return types[ext] || 'DOC';
         }
 
-        // Format file size for display
-        function formatFileSize(bytes) {
+        function formatSize(bytes) {
             if (!bytes) return '';
-            const sizes = ['B', 'KB', 'MB', 'GB'];
-            if (bytes === 0) return '0 B';
-            const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+            const sizes = ['B', 'KB', 'MB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(1024));
             return Math.round(bytes / Math.pow(1024, i) * 100) / 100 + ' ' + sizes[i];
         }
 
-        // Escape HTML to prevent XSS
         function escapeHtml(text) {
-            if (!text) return '';
             const div = document.createElement('div');
             div.textContent = text;
             return div.innerHTML;
