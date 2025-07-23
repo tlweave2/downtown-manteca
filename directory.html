@@ -322,6 +322,14 @@
             color: #eea719;
         }
 
+        .event-participation {
+            margin-top: 1rem;
+            padding: 0.5rem;
+            background: rgba(238, 167, 25, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
         @keyframes fadeInUp {
             to {
                 opacity: 1;
@@ -352,7 +360,7 @@
             font-style: italic;
         }
 
-        /* Partners Section - Complete CSS */
+        /* Partners Section */
         .partners-section {
             text-align: center;
             margin: 3rem 0;
@@ -585,12 +593,12 @@
                 <img src="img/manteca-logo.png" alt="Downtown Manteca District Logo" class="logo-img">
             </div>
             <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="events.html">Events</a></li>
-    <li><a href="directory.html">Business</a></li>
-    <li><a href="aboutUs.html">About Us</a></li>
-    <li><a href="contact.html">Contact</a></li>
-</ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="directory.html">Business</a></li>
+                <li><a href="aboutUs.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
         </nav>
     </header>
 
@@ -679,13 +687,13 @@
     </footer>
 
     <script>
-        // Configuration - UPDATE THESE VALUES
-        const GOOGLE_SHEETS_ID = 'YOUR_GOOGLE_SHEET_ID_HERE';
-        const API_KEY = 'YOUR_GOOGLE_API_KEY_HERE';
-        const SHEET_NAME = 'Form Responses 1'; // Usually this is the default name
+        // Configuration - YOUR ACTUAL VALUES
+        const GOOGLE_SHEETS_ID = '13zFJOIrKOGaJSuIZEQRjAS5trCD-qDBrvLO5dJcXO2I';
+        const API_KEY = AIzaSyA_D9VSFEaQn4XnMsjNLHg7qS999n4gl1M; // Replace with your working API key
+        const SHEET_NAME = 'Form Responses 1';
         
-        // Partners Configuration
-        const PARTNERS_FOLDER_ID = 'YOUR_GOOGLE_DRIVE_FOLDER_ID_HERE'; // Google Drive folder with partner logos
+        // Partners Configuration (optional)
+        const PARTNERS_FOLDER_ID = 'YOUR_GOOGLE_DRIVE_FOLDER_ID_HERE';
 
         // Global variables
         let allBusinesses = [];
@@ -706,69 +714,6 @@
 
             searchInput.addEventListener('input', handleSearch);
             sortSelect.addEventListener('change', handleSort);
-        }
-
-        // Load partner logos from Google Drive
-        async function loadPartnerLogos() {
-            try {
-                const url = `https://www.googleapis.com/drive/v3/files?q='${PARTNERS_FOLDER_ID}'+in+parents+and+mimeType+contains+'image'&key=${API_KEY}&fields=files(id,name,webViewLink,webContentLink)`;
-                
-                const response = await fetch(url);
-                const data = await response.json();
-
-                if (data.error) {
-                    throw new Error(data.error.message);
-                }
-
-                if (!data.files || data.files.length === 0) {
-                    displayPartnersError('No partner logos found in the specified folder.');
-                    return;
-                }
-
-                partnerLogos = data.files.map(file => ({
-                    id: file.id,
-                    name: file.name,
-                    // Use direct link format for public images
-                    imageUrl: `https://drive.google.com/uc?id=${file.id}`
-                }));
-
-                displayPartnerLogos();
-
-            } catch (error) {
-                console.error('Error loading partner logos:', error);
-                displayPartnersError(`Error loading partner logos: ${error.message}`);
-            }
-        }
-
-        // Display partner logos in carousel
-        function displayPartnerLogos() {
-            const track = document.getElementById('partnersTrack');
-            
-            if (partnerLogos.length === 0) {
-                track.innerHTML = '<div class="partners-error">No partner logos available.</div>';
-                return;
-            }
-
-            // Duplicate logos for seamless scrolling
-            const duplicatedLogos = [...partnerLogos, ...partnerLogos];
-            
-            const logoCards = duplicatedLogos.map(logo => `
-                <div class="partner-logo">
-                    <img src="${logo.imageUrl}" alt="${escapeHtml(logo.name.replace(/\.[^/.]+$/, ""))}" loading="lazy" onerror="this.style.display='none'">
-                </div>
-            `).join('');
-
-            track.innerHTML = logoCards;
-            
-            // Adjust animation duration based on number of logos
-            const animationDuration = Math.max(20, partnerLogos.length * 3);
-            track.style.animationDuration = `${animationDuration}s`;
-        }
-
-        // Display partners error
-        function displayPartnersError(message) {
-            const track = document.getElementById('partnersTrack');
-            track.innerHTML = `<div class="partners-error">${escapeHtml(message)}</div>`;
         }
 
         // Load businesses from Google Sheets
@@ -805,8 +750,8 @@
                     instagram: row[9] || '',
                     description: row[10] || '',
                     hours: row[11] || '',
-                    wantsUpdates: row[12] || ''
-                })).filter(business => business.businessName.trim() !== '');
+                    businessDescription: row[12] || '', // Additional description column if it exists
+                })).filter(business => business.businessName && business.businessName.trim() !== '');
 
                 filteredBusinesses = [...allBusinesses];
                 displayBusinesses();
@@ -814,7 +759,7 @@
 
             } catch (error) {
                 console.error('Error loading businesses:', error);
-                displayError(`Error loading businesses: ${error.message}`);
+                displayError(`Error loading businesses: ${error.message}. Please check your API key and sheet permissions.`);
             }
         }
 
@@ -827,26 +772,46 @@
                 return;
             }
 
-            const businessCards = filteredBusinesses.map((business, index) => `
-                <div class="business-card" style="animation-delay: ${index * 0.1}s">
-                    <div class="business-name">${escapeHtml(business.businessName)}</div>
-                    ${business.description ? `<div class="business-description">${escapeHtml(business.description)}</div>` : ''}
-                    
-                    ${business.address ? `<div class="business-info"><strong>Address:</strong> ${escapeHtml(business.address)}</div>` : ''}
-                    ${business.phone ? `<div class="business-info"><strong>Phone:</strong> <a href="tel:${escapeHtml(business.phone)}">${escapeHtml(business.phone)}</a></div>` : ''}
-                    ${business.ownerEmail ? `<div class="business-info"><strong>Email:</strong> <a href="mailto:${escapeHtml(business.ownerEmail)}">${escapeHtml(business.ownerEmail)}</a></div>` : ''}
-                    
-                    ${business.hours ? `<div class="business-hours"><strong>Hours:</strong> ${escapeHtml(business.hours)}</div>` : ''}
-                    
-                    ${(business.facebook || business.instagram) ? `
-                        <div class="social-handles">
-                            <strong>Follow Us:</strong><br>
-                            ${business.facebook ? `<a href="${business.facebook.startsWith('http') ? business.facebook : 'https://facebook.com/' + business.facebook}" class="social-link" target="_blank">Facebook</a>` : ''}
-                            ${business.instagram ? `<a href="${business.instagram.startsWith('http') ? business.instagram : 'https://instagram.com/' + business.instagram.replace('@', '')}" class="social-link" target="_blank">Instagram</a>` : ''}
-                        </div>
-                    ` : ''}
-                </div>
-            `).join('');
+            const businessCards = filteredBusinesses.map((business, index) => {
+                // Format phone number
+                const formattedPhone = business.phone ? 
+                    formatPhoneNumber(business.phone) : '';
+                
+                // Clean social media handles
+                const facebookUrl = cleanSocialMediaUrl(business.facebook, 'facebook');
+                const instagramUrl = cleanSocialMediaUrl(business.instagram, 'instagram');
+
+                // Use the best available description
+                const description = business.businessDescription || business.description || '';
+
+                return `
+                    <div class="business-card" style="animation-delay: ${index * 0.1}s">
+                        <div class="business-name">${escapeHtml(business.businessName)}</div>
+                        ${description ? `<div class="business-description">${escapeHtml(description)}</div>` : ''}
+                        
+                        ${business.ownerName ? `<div class="business-info"><strong>Owner:</strong> ${escapeHtml(business.ownerName)}</div>` : ''}
+                        ${business.address ? `<div class="business-info"><strong>Address:</strong> ${escapeHtml(business.address)}</div>` : ''}
+                        ${formattedPhone ? `<div class="business-info"><strong>Phone:</strong> <a href="tel:${escapeHtml(business.phone.replace(/\\D/g, ''))}">${formattedPhone}</a></div>` : ''}
+                        ${business.ownerEmail ? `<div class="business-info"><strong>Email:</strong> <a href="mailto:${escapeHtml(business.ownerEmail)}">${escapeHtml(business.ownerEmail)}</a></div>` : ''}
+                        
+                        ${business.hours ? `<div class="business-hours"><strong>Hours:</strong> ${escapeHtml(business.hours)}</div>` : ''}
+                        
+                        ${(facebookUrl || instagramUrl) ? `
+                            <div class="social-handles">
+                                <strong>Follow Us:</strong><br>
+                                ${facebookUrl ? `<a href="${facebookUrl}" class="social-link" target="_blank" rel="noopener">📘 Facebook</a>` : ''}
+                                ${instagramUrl ? `<a href="${instagramUrl}" class="social-link" target="_blank" rel="noopener">📷 Instagram</a>` : ''}
+                            </div>
+                        ` : ''}
+                        
+                        ${business.interestedInEvents && business.interestedInEvents.toLowerCase().includes('yes') ? `
+                            <div class="event-participation">
+                                <span style="color: #eea719; font-weight: 600;">🎉 Participates in Downtown Events</span>
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            }).join('');
 
             grid.innerHTML = businessCards;
         }
@@ -861,6 +826,7 @@
                 filteredBusinesses = allBusinesses.filter(business => 
                     business.businessName.toLowerCase().includes(searchTerm) ||
                     business.description.toLowerCase().includes(searchTerm) ||
+                    business.businessDescription.toLowerCase().includes(searchTerm) ||
                     business.address.toLowerCase().includes(searchTerm) ||
                     business.ownerName.toLowerCase().includes(searchTerm)
                 );
@@ -879,8 +845,8 @@
                     filteredBusinesses.sort((a, b) => a.businessName.localeCompare(b.businessName));
                     break;
                 case 'category':
-                    // If you add category field to your form, use that. For now, sort by description
-                    filteredBusinesses.sort((a, b) => a.description.localeCompare(b.description));
+                    // Sort by description if no category field
+                    filteredBusinesses.sort((a, b) => (a.description || '').localeCompare(b.description || ''));
                     break;
                 case 'newest':
                     filteredBusinesses.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
@@ -903,6 +869,35 @@
             }
         }
 
+        // Utility functions
+        function formatPhoneNumber(phone) {
+            if (!phone) return '';
+            const cleaned = phone.replace(/\D/g, '');
+            if (cleaned.length === 10) {
+                return cleaned.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+            }
+            return phone; // Return original if not standard format
+        }
+
+        function cleanSocialMediaUrl(handle, platform) {
+            if (!handle) return '';
+            
+            // If it's already a full URL, return it
+            if (handle.startsWith('http')) return handle;
+            
+            // Clean up the handle (remove @ symbol)
+            const cleanHandle = handle.replace('@', '');
+            
+            // Return the full URL
+            if (platform === 'facebook') {
+                return `https://facebook.com/${cleanHandle}`;
+            } else if (platform === 'instagram') {
+                return `https://instagram.com/${cleanHandle}`;
+            }
+            
+            return handle;
+        }
+
         // Display error message
         function displayError(message) {
             const grid = document.getElementById('businessGrid');
@@ -919,10 +914,10 @@
 
         // Escape HTML to prevent XSS
         function escapeHtml(text) {
+            if (!text) return '';
             const div = document.createElement('div');
             div.textContent = text;
             return div.innerHTML;
         }
-    </script>
-</body>
-</html>
+
+        // Load partner logos from
