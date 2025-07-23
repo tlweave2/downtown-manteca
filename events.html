@@ -99,298 +99,74 @@
             margin: 0 auto;
         }
 
-        /* Events Controls */
+        /* Controls Section */
         .events-controls {
             background: white;
             padding: 2rem;
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             margin-bottom: 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .view-toggle {
-            display: flex;
-            background: #f8f9fa;
-            border-radius: 25px;
-            overflow: hidden;
-            border: 2px solid #eea719;
-        }
-
-        .view-btn {
-            padding: 0.5rem 1rem;
-            border: none;
-            background: transparent;
-            cursor: pointer;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 500;
-            color: #035847;
-            transition: all 0.3s ease;
-        }
-
-        .view-btn.active {
-            background: #eea719;
-            color: white;
-        }
-
-        .events-search {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .search-input, .filter-select {
-            padding: 0.5rem 1rem;
-            border: 2px solid #eea719;
-            border-radius: 25px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem;
-            outline: none;
-            transition: all 0.3s ease;
-        }
-
-        .search-input:focus, .filter-select:focus {
-            border-color: #c44720;
-            box-shadow: 0 0 10px rgba(238, 167, 25, 0.3);
-        }
-
-        .search-input {
-            width: 200px;
-        }
-
-        /* Loading and Error States */
-        .loading, .error, .no-events {
-            text-align: center;
-            padding: 3rem;
-            color: #8d242f;
-            font-size: 1.2rem;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        }
-
-        .loading::after {
-            content: "...";
-            animation: dots 1.5s steps(4, end) infinite;
-        }
-
-        @keyframes dots {
-            0%, 20% { content: "."; }
-            40% { content: ".."; }
-            60% { content: "..."; }
-            80%, 100% { content: ""; }
-        }
-
-        .error {
-            background: rgba(238, 167, 25, 0.1);
-            border: 2px solid #eea719;
-        }
-
-        /* Events Grid View */
-        .events-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .event-card {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            overflow: hidden;
-            transition: all 0.3s ease;
-            border-left: 4px solid #eea719;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.6s ease forwards;
-        }
-
-        .event-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-            border-left-color: #c44720;
-        }
-
-        .event-header {
-            background: linear-gradient(135deg, #8d242f, #c44720);
-            color: white;
-            padding: 1.5rem;
             text-align: center;
         }
 
-        .event-date {
+        .events-controls h3 {
             font-family: 'Roboto Slab', serif;
-            font-size: 2rem;
-            font-weight: 700;
+            color: #0a2b30;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .events-controls p {
+            color: #035847;
+            margin-bottom: 1.5rem;
+        }
+
+        .calendar-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-top: 3px solid #eea719;
+        }
+
+        .info-card h4 {
+            font-family: 'Roboto Slab', serif;
+            color: #0a2b30;
             margin-bottom: 0.5rem;
-        }
-
-        .event-time {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        .event-content {
-            padding: 1.5rem;
-        }
-
-        .event-title {
-            font-family: 'Roboto Slab', serif;
-            font-size: 1.4rem;
-            color: #0a2b30;
-            margin-bottom: 1rem;
             font-weight: 600;
         }
 
-        .event-description {
+        .info-card p {
             color: #035847;
-            margin-bottom: 1rem;
-            line-height: 1.6;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+            font-size: 0.95rem;
         }
 
-        .event-location {
-            color: #8d242f;
-            font-weight: 500;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .event-actions {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .event-link {
-            flex: 1;
-            text-align: center;
-            padding: 0.5rem;
-            background: linear-gradient(45deg, #eea719, #c44720);
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .event-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(238, 167, 25, 0.4);
-        }
-
-        /* Calendar View */
-        .calendar-view {
-            display: none;
+        /* Calendar Embed Section */
+        .calendar-embed-section {
             background: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            overflow: hidden;
-        }
-
-        .calendar-header {
-            background: linear-gradient(135deg, #0a2b30, #035847);
-            color: white;
-            padding: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .calendar-nav-btn {
-            background: rgba(238, 167, 25, 0.2);
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .calendar-nav-btn:hover {
-            background: rgba(238, 167, 25, 0.4);
-        }
-
-        .calendar-month {
-            font-family: 'Roboto Slab', serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-
-        .calendar-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-        }
-
-        .calendar-day-header {
-            background: #f8f9fa;
-            padding: 1rem;
-            text-align: center;
-            font-weight: 600;
-            color: #035847;
-            border: 1px solid #e9ecef;
-        }
-
-        .calendar-day {
-            min-height: 120px;
-            padding: 0.5rem;
-            border: 1px solid #e9ecef;
-            background: white;
-            position: relative;
-        }
-
-        .calendar-day.other-month {
-            background: #f8f9fa;
-            color: #6c757d;
-        }
-
-        .calendar-day.today {
-            background: rgba(238, 167, 25, 0.1);
-            border-color: #eea719;
-        }
-
-        .calendar-day-number {
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-            color: #0a2b30;
-        }
-
-        .calendar-event {
-            background: linear-gradient(45deg, #eea719, #c44720);
-            color: white;
-            padding: 0.25rem 0.5rem;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            margin-bottom: 0.25rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-        }
-
-        .calendar-event:hover {
-            transform: scale(1.02);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-        }
-
-        /* Event Count */
-        .events-count {
-            text-align: center;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             margin-bottom: 2rem;
-            color: #8d242f;
-            font-weight: 600;
+        }
+
+        .calendar-embed {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 2px solid #eea719;
+        }
+
+        .calendar-embed iframe {
+            width: 100%;
+            min-height: 700px;
+            border: none;
         }
 
         /* Footer */
@@ -435,13 +211,6 @@
             margin-top: 2rem;
         }
 
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         /* Responsive */
         @media (max-width: 768px) {
             header {
@@ -474,37 +243,25 @@
             }
             
             .events-controls {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 1.5rem;
+                padding: 1.5rem;
             }
-            
-            .events-search {
-                flex-direction: column;
+
+            .calendar-info {
+                grid-template-columns: 1fr;
                 gap: 1rem;
             }
-            
-            .search-input {
+
+            .calendar-embed {
+                border-radius: 15px;
+                overflow: hidden;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+                border: 2px solid #eea719;
+            }
+
+            .calendar-embed iframe {
                 width: 100%;
-            }
-            
-            .events-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            
-            .event-actions {
-                flex-direction: column;
-            }
-            
-            .calendar-day {
-                min-height: 80px;
-                padding: 0.25rem;
-            }
-            
-            .calendar-event {
-                font-size: 0.7rem;
-                padding: 0.2rem 0.4rem;
+                min-height: 500px;
+                border: none;
             }
             
             .container {
@@ -519,13 +276,13 @@
             <div class="logo-container">
                 <img src="img/manteca-logo.png" alt="Downtown Manteca District Logo" class="logo-img">
             </div>
-           <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="events.html">Events</a></li>
-    <li><a href="directory.html">Business</a></li>
-    <li><a href="aboutUs.html">About Us</a></li>
-    <li><a href="contact.html">Contact</a></li>
-</ul>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="events.html" class="active">Events</a></li>
+                <li><a href="directory.html">Business</a></li>
+                <li><a href="aboutUs.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
         </nav>
     </header>
 
@@ -539,38 +296,36 @@
     <main class="container">
         <!-- Events Controls -->
         <section class="events-controls">
-            <div class="view-toggle">
-                <button class="view-btn active" onclick="switchView('grid')">Grid View</button>
-                <button class="view-btn" onclick="switchView('calendar')">Calendar View</button>
-            </div>
+            <h3>📅 Downtown Manteca Events Calendar</h3>
+            <p>View all upcoming events, meetings, and activities happening in downtown Manteca. Click on any event for more details.</p>
             
-            <div class="events-search">
-                <input type="text" class="search-input" placeholder="Search events..." id="searchInput">
-                <select class="filter-select" id="filterSelect">
-                    <option value="all">All Events</option>
-                    <option value="upcoming">Upcoming</option>
-                    <option value="this-month">This Month</option>
-                    <option value="next-month">Next Month</option>
-                </select>
+            <div class="calendar-info">
+                <div class="info-card">
+                    <h4>🎪 Community Events</h4>
+                    <p>Festivals, farmers markets, and seasonal celebrations</p>
+                </div>
+                <div class="info-card">
+                    <h4>🏛️ Board Meetings</h4>
+                    <p>First Wednesday of every month at 6:00 PM</p>
+                </div>
+                <div class="info-card">
+                    <h4>🎵 Entertainment</h4>
+                    <p>Concerts, shows, and cultural performances</p>
+                </div>
             </div>
         </section>
 
-        <div class="events-count" id="eventsCount">Loading events...</div>
-
-        <!-- Grid View -->
-        <section id="gridView" class="events-grid">
-            <div class="loading">Loading events from Google Calendar</div>
-        </section>
-
-        <!-- Calendar View -->
-        <section id="calendarView" class="calendar-view">
-            <div class="calendar-header">
-                <button class="calendar-nav-btn" onclick="changeMonth(-1)">‹ Previous</button>
-                <span class="calendar-month" id="calendarMonth">Loading...</span>
-                <button class="calendar-nav-btn" onclick="changeMonth(1)">Next ›</button>
-            </div>
-            <div class="calendar-grid" id="calendarGrid">
-                <!-- Calendar will be generated here -->
+        <!-- Main Calendar Embed -->
+        <section class="calendar-embed-section">
+            <div class="calendar-embed">
+                <iframe src="https://calendar.google.com/calendar/embed?height=700&wkst=1&bgcolor=%23ffffff&ctz=America%2FLos_Angeles&src=Y19mMTU5MzU5N2RjNjZkNjk5ODFhOTI5YjEwZjQ5MGVkMDI4OWI0MTJlN2RmMGE1NGI0OGE2MjY5ZWFmMTVkODhjQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23D50000&mode=MONTH&showTitle=1&showPrint=1&showTabs=1&showCalendars=0" 
+                        style="border-width:0" 
+                        width="100%" 
+                        height="700" 
+                        frameborder="0" 
+                        scrolling="no"
+                        title="Downtown Manteca Events Calendar">
+                </iframe>
             </div>
         </section>
     </main>
@@ -579,26 +334,23 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <a href="mailto:info@downtownmanteca.com">info@downtownmanteca.com</a>
+                    <a href="tel:209-239-8451">(209) 239-8451</a>
+                    <a href="#">Historic Main Street, Manteca CA</a>
+                </div>
+                <div class="footer-section">
                     <h4>Quick Links</h4>
-                    <a href="index.html">About Us</a>
-                    <a href="#contact">Contact Us</a>
-                    <a href="directory.html">Directory Sign Up</a>
+                    <a href="index.html">Home</a>
+                    <a href="aboutUs.html">About Us</a>
                     <a href="directory.html">Business Directory</a>
-                    <a href="events.html">Events</a>
+                    <a href="contact.html">Contact Us</a>
                 </div>
                 <div class="footer-section">
-                    <h4>Resources</h4>
-                    <a href="#bylaws">District Bylaws</a>
-                    <a href="#meetings">Meeting Minutes</a>
-                    <a href="#district-map">District Map</a>
-                    <a href="#committee">Committee Structure</a>
-                </div>
-                <div class="footer-section">
-                    <h4>Connect</h4>
-                    <a href="#">Facebook</a>
-                    <a href="#">Instagram</a>
-                    <a href="#">Twitter</a>
-                    <a href="mailto:info@downtownmanteca.com">Email Us</a>
+                    <h4>Meeting Info</h4>
+                    <a href="#">First Wednesday Every Month</a>
+                    <a href="#">6:00 PM at Deaf Puppy Comedy Club</a>
+                    <a href="#">127 N Main St, Manteca</a>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -609,354 +361,29 @@
     </footer>
 
     <script>
-        // Configuration - UPDATE THESE VALUES
-        const GOOGLE_CALENDAR_ID = 'YOUR_CALENDAR_ID@gmail.com'; // Your Google Calendar ID
-        const API_KEY = 'YOUR_GOOGLE_API_KEY_HERE'; // Your Google Calendar API key
-        
-        // Global variables
-        let allEvents = [];
-        let filteredEvents = [];
-        let currentView = 'grid';
-        let currentDate = new Date();
-        let calendarDate = new Date();
-
-        // Initialize the page
+        // Add accessibility features
         document.addEventListener('DOMContentLoaded', function() {
-            loadEvents();
-            setupEventListeners();
-            updateCalendarView();
+            // Add skip link functionality
+            const skipLink = document.createElement('a');
+            skipLink.href = '#main-content';
+            skipLink.textContent = 'Skip to main content';
+            skipLink.className = 'skip-link';
+            skipLink.style.cssText = 'position: absolute; top: -40px; left: 6px; background: #000; color: #fff; padding: 8px; text-decoration: none; z-index: 1000;';
+            skipLink.addEventListener('focus', function() {
+                this.style.top = '6px';
+            });
+            skipLink.addEventListener('blur', function() {
+                this.style.top = '-40px';
+            });
+            document.body.insertBefore(skipLink, document.body.firstChild);
+            
+            // Add main landmark
+            const main = document.querySelector('main');
+            if (main) {
+                main.id = 'main-content';
+                main.setAttribute('role', 'main');
+            }
         });
-
-        // Set up event listeners
-        function setupEventListeners() {
-            const searchInput = document.getElementById('searchInput');
-            const filterSelect = document.getElementById('filterSelect');
-
-            searchInput.addEventListener('input', handleSearch);
-            filterSelect.addEventListener('change', handleFilter);
-        }
-
-        // Load events from Google Calendar
-        async function loadEvents() {
-            try {
-                // Calculate date range (6 months back to 12 months forward)
-                const timeMin = new Date();
-                timeMin.setMonth(timeMin.getMonth() - 6);
-                const timeMax = new Date();
-                timeMax.setMonth(timeMax.getMonth() + 12);
-
-                const url = `https://www.googleapis.com/calendar/v3/calendars/${GOOGLE_CALENDAR_ID}/events?` +
-                    `key=${API_KEY}&` +
-                    `timeMin=${timeMin.toISOString()}&` +
-                    `timeMax=${timeMax.toISOString()}&` +
-                    `singleEvents=true&` +
-                    `orderBy=startTime&` +
-                    `maxResults=100`;
-
-                const response = await fetch(url);
-                const data = await response.json();
-
-                if (data.error) {
-                    throw new Error(data.error.message);
-                }
-
-                if (!data.items || data.items.length === 0) {
-                    displayNoEvents('No events found in the calendar.');
-                    return;
-                }
-
-                // Parse events
-                allEvents = data.items.map(event => {
-                    const startDate = event.start.dateTime || event.start.date;
-                    const endDate = event.end.dateTime || event.end.date;
-                    
-                    return {
-                        id: event.id,
-                        title: event.summary || 'Untitled Event',
-                        description: event.description || '',
-                        location: event.location || '',
-                        startDate: new Date(startDate),
-                        endDate: new Date(endDate),
-                        isAllDay: !event.start.dateTime,
-                        url: event.htmlLink
-                    };
-                });
-
-                filteredEvents = [...allEvents];
-                displayEvents();
-                updateEventsCount();
-                updateCalendarView();
-
-            } catch (error) {
-                console.error('Error loading events:', error);
-                displayError(`Error loading events: ${error.message}`);
-            }
-        }
-
-        // Display events in grid view
-        function displayEvents() {
-            const grid = document.getElementById('gridView');
-            
-            if (filteredEvents.length === 0) {
-                displayNoEvents('No events match your search criteria.');
-                return;
-            }
-
-            const eventCards = filteredEvents.map((event, index) => {
-                const startDate = event.startDate;
-                const formattedDate = formatEventDate(startDate);
-                const formattedTime = event.isAllDay ? 'All Day' : formatEventTime(startDate, event.endDate);
-                
-                return `
-                    <div class="event-card" style="animation-delay: ${index * 0.1}s">
-                        <div class="event-header">
-                            <div class="event-date">${formattedDate.day}</div>
-                            <div class="event-time">${formattedDate.month} • ${formattedTime}</div>
-                        </div>
-                        <div class="event-content">
-                            <h3 class="event-title">${escapeHtml(event.title)}</h3>
-                            ${event.description ? `<p class="event-description">${escapeHtml(event.description)}</p>` : ''}
-                            ${event.location ? `
-                                <div class="event-location">
-                                    📍 ${escapeHtml(event.location)}
-                                </div>
-                            ` : ''}
-                            <div class="event-actions">
-                                <a href="${event.url}" target="_blank" class="event-link">View Details</a>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-
-            grid.innerHTML = eventCards;
-        }
-
-        // Handle search functionality
-        function handleSearch() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
-            
-            if (searchTerm === '') {
-                filteredEvents = [...allEvents];
-            } else {
-                filteredEvents = allEvents.filter(event => 
-                    event.title.toLowerCase().includes(searchTerm) ||
-                    event.description.toLowerCase().includes(searchTerm) ||
-                    event.location.toLowerCase().includes(searchTerm)
-                );
-            }
-            
-            applyDateFilter();
-        }
-
-        // Handle filter functionality
-        function handleFilter() {
-            applyDateFilter();
-        }
-
-        // Apply date filter
-        function applyDateFilter() {
-            const filterValue = document.getElementById('filterSelect').value;
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
-            
-            let filtered = allEvents;
-            
-            // Apply search filter first
-            if (searchTerm !== '') {
-                filtered = filtered.filter(event => 
-                    event.title.toLowerCase().includes(searchTerm) ||
-                    event.description.toLowerCase().includes(searchTerm) ||
-                    event.location.toLowerCase().includes(searchTerm)
-                );
-            }
-            
-            // Apply date filter
-            const now = new Date();
-            const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-            const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
-            const startOfNextMonth = new Date(now.getFullYear(), now.getMonth() + 1, 1);
-            const endOfNextMonth = new Date(now.getFullYear(), now.getMonth() + 2, 0);
-            
-            switch(filterValue) {
-                case 'upcoming':
-                    filtered = filtered.filter(event => event.startDate >= startOfToday);
-                    break;
-                case 'this-month':
-                    filtered = filtered.filter(event => 
-                        event.startDate >= startOfMonth && 
-                        event.startDate < startOfNextMonth
-                    );
-                    break;
-                case 'next-month':
-                    filtered = filtered.filter(event => 
-                        event.startDate >= startOfNextMonth && 
-                        event.startDate <= endOfNextMonth
-                    );
-                    break;
-            }
-            
-            filteredEvents = filtered;
-            displayEvents();
-            updateEventsCount();
-        }
-
-        // Switch between grid and calendar view
-        function switchView(view) {
-            currentView = view;
-            
-            // Update buttons
-            document.querySelectorAll('.view-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            document.querySelector(`[onclick="switchView('${view}')"]`).classList.add('active');
-            
-            // Show/hide views
-            if (view === 'grid') {
-                document.getElementById('gridView').style.display = 'grid';
-                document.getElementById('calendarView').style.display = 'none';
-            } else {
-                document.getElementById('gridView').style.display = 'none';
-                document.getElementById('calendarView').style.display = 'block';
-                updateCalendarView();
-            }
-        }
-
-        // Update calendar view
-        function updateCalendarView() {
-            const monthNames = [
-                "January", "February", "March", "April", "May", "June",
-                "July", "August", "September", "October", "November", "December"
-            ];
-            
-            const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-            
-            // Update month header
-            document.getElementById('calendarMonth').textContent = 
-                `${monthNames[calendarDate.getMonth()]} ${calendarDate.getFullYear()}`;
-            
-            // Generate calendar grid
-            const grid = document.getElementById('calendarGrid');
-            
-            // Day headers
-            let calendarHTML = '';
-            dayNames.forEach(day => {
-                calendarHTML += `<div class="calendar-day-header">${day}</div>`;
-            });
-            
-            // Get first day of month and number of days
-            const firstDay = new Date(calendarDate.getFullYear(), calendarDate.getMonth(), 1);
-            const lastDay = new Date(calendarDate.getFullYear(), calendarDate.getMonth() + 1, 0);
-            const startDate = new Date(firstDay);
-            startDate.setDate(startDate.getDate() - firstDay.getDay());
-            
-            // Generate 42 days (6 weeks)
-            for (let i = 0; i < 42; i++) {
-                const currentDay = new Date(startDate);
-                currentDay.setDate(startDate.getDate() + i);
-                
-                const isCurrentMonth = currentDay.getMonth() === calendarDate.getMonth();
-                const isToday = isSameDay(currentDay, new Date());
-                
-                let dayClass = 'calendar-day';
-                if (!isCurrentMonth) dayClass += ' other-month';
-                if (isToday) dayClass += ' today';
-                
-                // Get events for this day
-                const dayEvents = allEvents.filter(event => 
-                    isSameDay(event.startDate, currentDay)
-                );
-                
-                const eventsHTML = dayEvents.map(event => 
-                    `<div class="calendar-event" title="${escapeHtml(event.title)}">${escapeHtml(event.title.substring(0, 20))}${event.title.length > 20 ? '...' : ''}</div>`
-                ).join('');
-                
-                calendarHTML += `
-                    <div class="${dayClass}">
-                        <div class="calendar-day-number">${currentDay.getDate()}</div>
-                        ${eventsHTML}
-                    </div>
-                `;
-            }
-            
-            grid.innerHTML = calendarHTML;
-        }
-
-        // Change calendar month
-        function changeMonth(direction) {
-            calendarDate.setMonth(calendarDate.getMonth() + direction);
-            updateCalendarView();
-        }
-
-        // Update events count
-        function updateEventsCount() {
-            const countElement = document.getElementById('eventsCount');
-            const total = allEvents.length;
-            const showing = filteredEvents.length;
-            
-            if (showing === total) {
-                countElement.textContent = `Showing ${total} event${total !== 1 ? 's' : ''}`;
-            } else {
-                countElement.textContent = `Showing ${showing} of ${total} event${total !== 1 ? 's' : ''}`;
-            }
-        }
-
-        // Display error message
-        function displayError(message) {
-            const grid = document.getElementById('gridView');
-            grid.innerHTML = `<div class="error">${escapeHtml(message)}</div>`;
-            document.getElementById('eventsCount').textContent = 'Error loading events';
-        }
-
-        // Display no events message
-        function displayNoEvents(message) {
-            const grid = document.getElementById('gridView');
-            grid.innerHTML = `<div class="no-events">${escapeHtml(message)}</div>`;
-            updateEventsCount();
-        }
-
-        // Utility functions
-        function formatEventDate(date) {
-            const monthNames = [
-                "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-                "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-            ];
-            
-            return {
-                day: date.getDate(),
-                month: monthNames[date.getMonth()]
-            };
-        }
-
-        function formatEventTime(startDate, endDate) {
-            const formatTime = (date) => {
-                return date.toLocaleTimeString('en-US', {
-                    hour: 'numeric',
-                    minute: '2-digit',
-                    hour12: true
-                });
-            };
-            
-            const startTime = formatTime(startDate);
-            const endTime = formatTime(endDate);
-            
-            if (isSameDay(startDate, endDate)) {
-                return `${startTime} - ${endTime}`;
-            } else {
-                return `${startTime}`;
-            }
-        }
-
-        function isSameDay(date1, date2) {
-            return date1.getFullYear() === date2.getFullYear() &&
-                   date1.getMonth() === date2.getMonth() &&
-                   date1.getDate() === date2.getDate();
-        }
-
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
     </script>
 </body>
 </html>
