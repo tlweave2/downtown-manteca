@@ -121,169 +121,143 @@
             text-align: center;
         }
 
-        .documents-container {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            overflow: hidden;
+        /* Folder Tabs */
+        .folder-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #e9ecef;
         }
 
-        .documents-header {
+        .folder-tab {
+            background: #f8f9fa;
+            color: #6c757d;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 15px 15px 0 0;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .folder-tab.active {
             background: linear-gradient(135deg, #0a2b30, #035847);
             color: white;
-            padding: 1.5rem 2rem;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(10, 43, 48, 0.3);
+        }
+
+        .folder-tab:hover:not(.active) {
+            background: #eea719;
+            color: white;
+        }
+
+        /* Document Containers */
+        .document-container {
+            display: none;
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .document-container.active {
+            display: block;
+        }
+
+        .container-header {
+            background: linear-gradient(135deg, #0a2b30, #035847);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .documents-header h3 {
+        .container-header h3 {
             font-family: 'Roboto Slab', serif;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             margin: 0;
-            font-weight: 600;
         }
 
-        .refresh-button {
-            background: rgba(238, 167, 25, 0.2);
-            border: 1px solid rgba(238, 167, 25, 0.5);
-            color: white;
+        .folder-info {
             font-size: 0.9rem;
-            padding: 0.5rem 1rem;
+            opacity: 0.9;
+        }
+
+        /* Google Drive Iframe */
+        .drive-iframe {
+            width: 100%;
+            height: 500px;
+            border: 2px solid #eea719;
+            border-radius: 10px;
+            background: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* View Toggle */
+        .view-toggle {
+            display: flex;
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .view-btn {
+            background: transparent;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
             cursor: pointer;
+            font-size: 0.8rem;
             transition: all 0.3s ease;
         }
 
-        .refresh-button:hover {
+        .view-btn.active {
             background: rgba(238, 167, 25, 0.3);
         }
 
-        .documents-list {
-            max-height: 600px;
-            overflow-y: auto;
+        .view-btn:hover {
+            background: rgba(238, 167, 25, 0.2);
         }
 
-        .document-item {
-            display: grid;
-            grid-template-columns: auto 1fr auto auto auto;
-            gap: 1rem;
-            padding: 1rem 2rem;
-            border-bottom: 1px solid #e9ecef;
-            align-items: center;
-            transition: background-color 0.3s ease;
+        /* Info Box */
+        .info-box {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #eea719;
+            margin: 2rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
 
-        .document-item:hover {
-            background-color: rgba(238, 167, 25, 0.05);
-        }
-
-        .document-item:last-child {
-            border-bottom: none;
-        }
-
-        .doc-type {
-            background: #eea719;
-            color: white;
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            min-width: 45px;
-            text-align: center;
-        }
-
-        .doc-info {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .doc-name {
-            font-weight: 600;
+        .info-box h4 {
+            font-family: 'Roboto Slab', serif;
             color: #0a2b30;
-            margin-bottom: 0.25rem;
-            font-size: 1rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
         }
 
-        .doc-details {
+        .info-box p {
             color: #035847;
-            font-size: 0.9rem;
-            line-height: 1.4;
+            margin-bottom: 1rem;
         }
 
-        .doc-category {
-            background: #f8f9fa;
-            color: #6c757d;
-            padding: 0.25rem 0.75rem;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            white-space: nowrap;
-        }
-
-        .doc-size {
-            color: #6c757d;
-            font-size: 0.85rem;
-            white-space: nowrap;
-        }
-
-        .doc-download {
-            background: linear-gradient(45deg, #eea719, #c44720);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .doc-download:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 15px rgba(238, 167, 25, 0.4);
-            color: white;
-            text-decoration: none;
-        }
-
-        .loading {
-            text-align: center;
-            padding: 2rem;
+        .info-box a {
             color: #8d242f;
+            text-decoration: none;
+            font-weight: 700;
         }
 
-        .loading::after {
-            content: "...";
-            animation: dots 1.5s steps(4, end) infinite;
-        }
-
-        @keyframes dots {
-            0%, 20% { content: "."; }
-            40% { content: ".."; }
-            60% { content: "..."; }
-            80%, 100% { content: ""; }
-        }
-
-        .error {
-            text-align: center;
-            padding: 2rem;
-            color: #8d242f;
-            background: rgba(238, 167, 25, 0.1);
-            border-radius: 8px;
-        }
-
-        .debug-info {
-            background: #f8f9fa;
-            border: 1px solid #dee2e6;
-            border-radius: 8px;
-            padding: 1rem;
-            margin: 1rem 0;
-            font-family: monospace;
-            font-size: 0.85rem;
-            color: #495057;
+        .info-box a:hover {
+            color: #c44720;
+            text-decoration: underline;
         }
 
         /* Footer */
@@ -336,15 +310,28 @@
                 padding: 2rem;
             }
             
-            .document-item {
-                grid-template-columns: 1fr;
-                gap: 0.5rem;
-                text-align: center;
+            .folder-tabs {
+                flex-direction: column;
             }
             
-            .documents-header {
+            .folder-tab {
+                min-width: auto;
+                border-radius: 10px;
+                margin-bottom: 0.5rem;
+            }
+            
+            .container-header {
                 flex-direction: column;
-                gap: 1rem;
+                text-align: center;
+                gap: 0.5rem;
+            }
+            
+            .view-toggle {
+                margin-top: 1rem;
+            }
+            
+            .drive-iframe {
+                height: 400px;
             }
             
             .container {
@@ -380,17 +367,95 @@
         <section class="documents-section">
             <h2>Available Documents</h2>
             
-            <div class="documents-container">
-                <div class="documents-header">
-                    <h3>📋 Official District Documents</h3>
-                    <button class="refresh-button" onclick="loadDocuments()">🔄 Refresh</button>
+            <!-- Folder Navigation Tabs -->
+            <div class="folder-tabs">
+                <button class="folder-tab active" onclick="showFolder('boardAgenda')">
+                    📋 Board Agendas
+                </button>
+                <button class="folder-tab" onclick="showFolder('boardPackets')">
+                    📄 Board Packets
+                </button>
+                <button class="folder-tab" onclick="showFolder('foundingDocs')">
+                    📜 Founding Documents
+                </button>
+                <button class="folder-tab" onclick="showFolder('vendorContracts')">
+                    📝 Vendor Contracts
+                </button>
+            </div>
+
+            <!-- Board Agendas -->
+            <div id="boardAgenda" class="document-container active">
+                <div class="container-header">
+                    <h3>📋 Board Agendas</h3>
+                    <div class="view-toggle">
+                        <button class="view-btn active" onclick="switchView('boardAgenda', 'list')">List</button>
+                        <button class="view-btn" onclick="switchView('boardAgenda', 'grid')">Grid</button>
+                    </div>
                 </div>
-                
-                <div class="documents-list" id="documentsList">
-                    <div class="loading">Loading documents from Google Drive using proper API methods</div>
+                <iframe id="boardAgenda-iframe" 
+                        src="https://drive.google.com/embeddedfolderview?id=1YWWVZFfc5cEBIwR4x21ZsJUfOJNQQPWu#list" 
+                        class="drive-iframe"
+                        title="Board Agendas">
+                </iframe>
+            </div>
+
+            <!-- Board Packets -->
+            <div id="boardPackets" class="document-container">
+                <div class="container-header">
+                    <h3>📄 Board Packets</h3>
+                    <div class="view-toggle">
+                        <button class="view-btn active" onclick="switchView('boardPackets', 'list')">List</button>
+                        <button class="view-btn" onclick="switchView('boardPackets', 'grid')">Grid</button>
+                    </div>
                 </div>
+                <iframe id="boardPackets-iframe" 
+                        src="https://drive.google.com/embeddedfolderview?id=10xtQ3iRG8uyVSZ8JlJau_Jgl2iSJuc4y#list" 
+                        class="drive-iframe"
+                        title="Board Packets">
+                </iframe>
+            </div>
+
+            <!-- Founding Documents -->
+            <div id="foundingDocs" class="document-container">
+                <div class="container-header">
+                    <h3>📜 Founding Documents</h3>
+                    <div class="view-toggle">
+                        <button class="view-btn active" onclick="switchView('foundingDocs', 'list')">List</button>
+                        <button class="view-btn" onclick="switchView('foundingDocs', 'grid')">Grid</button>
+                    </div>
+                </div>
+                <iframe id="foundingDocs-iframe" 
+                        src="https://drive.google.com/embeddedfolderview?id=1MkOa51uDR5e6k9z1acd765ZWAXdsqNYW#list" 
+                        class="drive-iframe"
+                        title="Founding Documents">
+                </iframe>
+            </div>
+
+            <!-- Vendor Contracts -->
+            <div id="vendorContracts" class="document-container">
+                <div class="container-header">
+                    <h3>📝 Vendor Contracts</h3>
+                    <div class="view-toggle">
+                        <button class="view-btn active" onclick="switchView('vendorContracts', 'list')">List</button>
+                        <button class="view-btn" onclick="switchView('vendorContracts', 'grid')">Grid</button>
+                    </div>
+                </div>
+                <iframe id="vendorContracts-iframe" 
+                        src="https://drive.google.com/embeddedfolderview?id=1Mhhl-EjMpZFtV3F8XZ9bYCvT4rtO3ckX#list" 
+                        class="drive-iframe"
+                        title="Vendor Contracts">
+                </iframe>
             </div>
         </section>
+
+        <!-- Information Box -->
+        <div class="info-box">
+            <h4>📋 How to Access Documents</h4>
+            <p><strong>Download:</strong> Click on any document in the folders above to download it directly.</p>
+            <p><strong>View:</strong> Some documents can be previewed before downloading.</p>
+            <p><strong>Mobile:</strong> On mobile devices, tap documents to view or download.</p>
+            <p><strong>Questions?</strong> Contact us at <a href="mailto:records@downtownmanteca.com">records@downtownmanteca.com</a> or <a href="tel:209-239-8451">(209) 239-8451</a></p>
+        </div>
     </main>
 
     <footer>
@@ -403,201 +468,56 @@
     </footer>
 
     <script>
-        // Google Drive API Configuration
-        const CONFIG = {
-            API_KEY: 'AIzaSyA_D9VSFEaQn4XnMsjNLHg7qS999n4gl1M',
-            FOLDERS: [
-                { id: '1YWWVZFfc5cEBIwR4x21ZsJUfOJNQQPWu', name: 'Board Agenda', type: 'AGD' },
-                { id: '10xtQ3iRG8uyVSZ8JlJau_Jgl2iSJuc4y', name: 'Board Packets', type: 'PKT' },
-                { id: '1MkOa51uDR5e6k9z1acd765ZWAXdsqNYW', name: 'Founding Documents', type: 'DOC' },
-                { id: '1Mhhl-EjMpZFtV3F8XZ9bYCvT4rtO3ckX', name: 'Vendor Contracts', type: 'CON' }
-            ]
-        };
-
-        // Load documents on page load
-        document.addEventListener('DOMContentLoaded', loadDocuments);
-
-        async function loadDocuments() {
-            const container = document.getElementById('documentsList');
-            container.innerHTML = '<div class="loading">Loading documents from Google Drive using proper API methods</div>';
+        // Show/hide folder containers
+        function showFolder(folderId) {
+            // Hide all containers
+            document.querySelectorAll('.document-container').forEach(container => {
+                container.classList.remove('active');
+            });
             
-            let allDocuments = [];
-            let debugInfo = [];
-
-            try {
-                for (const folder of CONFIG.FOLDERS) {
-                    debugInfo.push(`🔍 Checking folder: ${folder.name} (${folder.id})`);
-                    
-                    try {
-                        const docs = await loadFromFolder(folder);
-                        
-                        if (docs.length > 0) {
-                            allDocuments.push(...docs);
-                            debugInfo.push(`✅ ${folder.name}: Found ${docs.length} documents`);
-                            
-                            // Test direct download for first file
-                            const testResult = await testDirectDownload(docs[0].id);
-                            debugInfo.push(`🔗 Download test for ${docs[0].name}: ${testResult}`);
-                        } else {
-                            debugInfo.push(`📁 ${folder.name}: Empty folder or no accessible files`);
-                        }
-                    } catch (error) {
-                        debugInfo.push(`❌ ${folder.name}: ${error.message}`);
-                        console.error(`Error loading ${folder.name}:`, error);
-                    }
-                }
-
-                if (allDocuments.length === 0) {
-                    container.innerHTML = `
-                        <div class="error">
-                            <h4>📁 Google Drive Status</h4>
-                            <p>No documents found in any Google Drive folders.</p>
-                            <div class="debug-info">
-                                <strong>Folder Check Results:</strong><br>
-                                ${debugInfo.join('<br>')}
-                            </div>
-                            <p style="margin-top: 1rem;">
-                                <strong>Next Steps:</strong><br>
-                                1. Add documents to your Google Drive folders<br>
-                                2. Make sure folders are shared: "Anyone with the link can view"<br>
-                                3. Make sure files are shared: "Anyone with the link can view"
-                            </p>
-                            <button class="refresh-button" onclick="loadDocuments()" style="margin-top: 1rem;">Try Again</button>
-                        </div>
-                    `;
-                    return;
-                }
-
-                // Sort by date (newest first)
-                allDocuments.sort((a, b) => new Date(b.createdTime) - new Date(a.createdTime));
-                
-                displayDocuments(allDocuments);
-                
-                // Show debug info in console
-                console.log('Google Drive Debug Info:', debugInfo);
-
-            } catch (error) {
-                container.innerHTML = `
-                    <div class="error">
-                        <h4>❌ Error Loading Documents</h4>
-                        <p>Error: ${error.message}</p>
-                        <div class="debug-info">
-                            ${debugInfo.join('<br>')}
-                        </div>
-                        <button class="refresh-button" onclick="loadDocuments()" style="margin-top: 1rem;">Try Again</button>
-                    </div>
-                `;
-            }
-        }
-
-        async function loadFromFolder(folder) {
-            // Use the files.list method to get file metadata
-            const url = `https://www.googleapis.com/drive/v3/files?q='${folder.id}'+in+parents&key=${CONFIG.API_KEY}&fields=files(id,name,size,mimeType,createdTime,webViewLink)`;
+            // Remove active class from all tabs
+            document.querySelectorAll('.folder-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
             
-            const response = await fetch(url);
-            const data = await response.json();
-
-            if (data.error) {
-                throw new Error(`${data.error.message} (Code: ${data.error.code})`);
-            }
-
-            if (!data.files) {
-                return [];
-            }
-
-            return data.files
-                .filter(file => isDocument(file.mimeType))
-                .map(file => ({
-                    ...file,
-                    folderName: folder.name,
-                    folderType: folder.type,
-                    // Use the proper Google Drive API direct download method
-                    downloadUrl: `https://www.googleapis.com/drive/v3/files/${file.id}?alt=media&key=${CONFIG.API_KEY}`,
-                    viewUrl: file.webViewLink
-                }));
-        }
-
-        // Test if direct download works for a file
-        async function testDirectDownload(fileId) {
-            try {
-                const testUrl = `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media&key=${CONFIG.API_KEY}`;
-                const response = await fetch(testUrl, { method: 'HEAD' }); // Just test headers
-                
-                if (response.ok) {
-                    return `✅ Direct download available`;
-                } else {
-                    return `❌ Download failed (${response.status})`;
-                }
-            } catch (error) {
-                return `❌ Download test failed: ${error.message}`;
-            }
-        }
-
-        function displayDocuments(documents) {
-            const container = document.getElementById('documentsList');
+            // Show selected container
+            document.getElementById(folderId).classList.add('active');
             
-            const html = documents.map(doc => {
-                const fileType = getFileType(doc.name);
-                const fileSize = formatSize(doc.size);
-                const date = new Date(doc.createdTime).toLocaleDateString();
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+
+        // Switch between list and grid view
+        function switchView(folderId, viewType) {
+            const iframe = document.getElementById(folderId + '-iframe');
+            const currentSrc = iframe.src;
+            const baseUrl = currentSrc.split('#')[0];
+            
+            // Update iframe source with new view
+            iframe.src = baseUrl + '#' + viewType;
+            
+            // Update button states
+            const container = document.getElementById(folderId);
+            const buttons = container.querySelectorAll('.view-btn');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // Add loading message while iframes load
+        document.addEventListener('DOMContentLoaded', function() {
+            const iframes = document.querySelectorAll('.drive-iframe');
+            
+            iframes.forEach(iframe => {
+                iframe.addEventListener('load', function() {
+                    console.log('Google Drive folder loaded successfully');
+                });
                 
-                return `
-                    <div class="document-item">
-                        <span class="doc-type">${fileType}</span>
-                        <div class="doc-info">
-                            <div class="doc-name">${escapeHtml(doc.name)}</div>
-                            <div class="doc-details">Posted: ${date} | ${doc.folderName}</div>
-                        </div>
-                        <span class="doc-category">${doc.folderName}</span>
-                        <span class="doc-size">${fileSize}</span>
-                        <a href="${doc.downloadUrl}" class="doc-download" target="_blank" download>
-                            📄 Download
-                        </a>
-                    </div>
-                `;
-            }).join('');
-
-            container.innerHTML = html || '<div class="error">No documents to display</div>';
-        }
-
-        function isDocument(mimeType) {
-            const types = [
-                'application/pdf',
-                'application/msword',
-                'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-                'application/vnd.google-apps.document',
-                'application/vnd.ms-excel',
-                'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-                'text/plain'
-            ];
-            return types.includes(mimeType);
-        }
-
-        function getFileType(filename) {
-            const ext = filename.split('.').pop().toLowerCase();
-            const types = { 
-                pdf: 'PDF', 
-                doc: 'DOC', 
-                docx: 'DOCX',
-                xls: 'XLS',
-                xlsx: 'XLSX',
-                txt: 'TXT'
-            };
-            return types[ext] || 'DOC';
-        }
-
-        function formatSize(bytes) {
-            if (!bytes) return '';
-            const sizes = ['B', 'KB', 'MB', 'GB'];
-            const i = Math.floor(Math.log(bytes) / Math.log(1024));
-            return Math.round(bytes / Math.pow(1024, i) * 100) / 100 + ' ' + sizes[i];
-        }
-
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
+                iframe.addEventListener('error', function() {
+                    console.error('Error loading Google Drive folder');
+                });
+            });
+        });
     </script>
 </body>
 </html>
