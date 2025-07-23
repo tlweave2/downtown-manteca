@@ -3,338 +3,779 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fix JavaScript Loading Issue</title>
+    <title>Business Directory - Downtown Manteca</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Montserrat', sans-serif;
             line-height: 1.6;
-            color: #333;
-            max-width: 900px;
+            color: #0a2b30;
+            background: linear-gradient(135deg, #f7f5f3 0%, #fff 100%);
+        }
+
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
-            background: #f5f5f5;
+            padding: 0 20px;
         }
-        
-        .fix-card {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
+            color: white;
+            padding: 2rem 0;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
         }
-        
-        h1 {
-            color: #28a745;
-            border-bottom: 3px solid #28a745;
-            padding-bottom: 10px;
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
         }
-        
-        h2 {
+
+        .logo-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .logo-img {
+            width: 170px;
+            height: 170px;
+            object-fit: contain;
+            background: white;
+            border-radius: 50%;
+            padding: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background: rgba(238, 167, 25, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: none;
+            text-align: center;
+            padding: 2rem 0 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .page-header h1 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2.5rem;
+            color: #0a2b30;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        /* Welcome Section */
+        .welcome-section {
+            background: none;
+            padding: 1.5rem;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .welcome-section h2 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2rem;
+            color: #0a2b30;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            border-bottom: 2px solid #eea719;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .welcome-section p {
+            font-size: 1.2rem;
             color: #035847;
-            margin-top: 25px;
+            margin-bottom: 2rem;
+            line-height: 1.8;
         }
-        
-        .step {
-            background: #f8f9fa;
-            padding: 20px;
-            border-left: 4px solid #28a745;
-            margin: 15px 0;
-            border-radius: 0 8px 8px 0;
+
+        .signup-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #eea719, #c44720);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(238, 167, 25, 0.4);
+            margin-bottom: 3rem;
         }
-        
-        .urgent {
-            background: #fff3cd;
-            border-left-color: #ffc107;
+
+        .signup-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(238, 167, 25, 0.6);
+            background: linear-gradient(45deg, #c44720, #8d242f);
         }
-        
-        .code-block {
-            background: #1e1e1e;
-            color: #d4d4d4;
-            padding: 15px;
+
+        /* Business Directory Section */
+        .directory-section {
+            background: none;
+            padding: 1.5rem;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 2rem;
+        }
+
+        .directory-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .directory-header h2 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2rem;
+            color: #0a2b30;
+            font-weight: 600;
+            border-bottom: 2px solid #eea719;
+            padding-bottom: 0.5rem;
+            margin: 0;
+        }
+
+        .directory-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .sort-select, .search-input {
+            padding: 0.5rem 1rem;
+            border: 2px solid #eea719;
+            border-radius: 25px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .sort-select:focus, .search-input:focus {
+            border-color: #c44720;
+            box-shadow: 0 0 10px rgba(238, 167, 25, 0.3);
+        }
+
+        .search-input {
+            width: 200px;
+        }
+
+        /* Business Count */
+        .business-count {
+            color: #8d242f;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: #8d242f;
+            font-size: 1.2rem;
+        }
+
+        .loading::after {
+            content: "...";
+            animation: dots 1.5s steps(4, end) infinite;
+        }
+
+        @keyframes dots {
+            0%, 20% { content: "."; }
+            40% { content: ".."; }
+            60% { content: "..."; }
+            80%, 100% { content: ""; }
+        }
+
+        /* Error State */
+        .error {
+            text-align: center;
+            padding: 2rem;
+            color: #8d242f;
+            background: rgba(238, 167, 25, 0.1);
+            border: 2px solid #eea719;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        /* Business Grid */
+        .business-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .business-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #eea719;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .business-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-left-color: #c44720;
+        }
+
+        .business-name {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.4rem;
+            color: #0a2b30;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .business-description {
+            font-style: italic;
+            color: #8d242f;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .business-info {
+            margin-bottom: 0.8rem;
+        }
+
+        .business-info strong {
+            color: #8d242f;
+            font-weight: 600;
+        }
+
+        .business-info a {
+            color: #035847;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .business-info a:hover {
+            color: #eea719;
+        }
+
+        .business-hours {
+            background: rgba(238, 167, 25, 0.1);
+            padding: 0.8rem;
             border-radius: 8px;
-            font-family: 'Monaco', 'Menlo', monospace;
-            font-size: 13px;
-            overflow-x: auto;
-            margin: 15px 0;
+            margin: 1rem 0;
+            border-left: 3px solid #eea719;
         }
-        
-        .highlight {
-            background: #d4edda;
-            padding: 15px;
+
+        .social-handles {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .social-handles strong {
+            color: #8d242f;
+            font-weight: 600;
+        }
+
+        .social-link {
+            display: inline-block;
+            margin-right: 1rem;
+            color: #035847;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: #eea719;
+        }
+
+        .event-participation {
+            margin-top: 1rem;
+            padding: 0.5rem;
+            background: rgba(238, 167, 25, 0.1);
             border-radius: 8px;
-            margin: 15px 0;
+            text-align: center;
         }
-        
-        .console-steps {
-            background: #e9ecef;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 15px 0;
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        
-        ol {
-            margin: 10px 0;
-            padding-left: 25px;
+
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: #8d242f;
+            font-size: 1.2rem;
         }
-        
-        li {
-            margin: 8px 0;
+
+        /* Disclaimer */
+        .disclaimer {
+            background: none;
+            padding: 1.5rem 0;
+            text-align: center;
+            border-top: 2px solid #eea719;
+            margin: 3rem 0 2rem;
         }
-        
-        .error-fix {
-            background: #f8d7da;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
+
+        .disclaimer p {
+            color: #8d242f;
+            font-weight: 500;
+            font-style: italic;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: #eea719;
+        }
+
+        .footer-section a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            display: block;
+            font-size: 0.9rem;
+        }
+
+        .footer-section a:hover {
+            color: #eea719;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 1.5rem 0;
+            }
+            
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .logo-container {
+                justify-content: center;
+            }
+            
+            .logo-img {
+                width: 130px;
+                height: 130px;
+                padding: 8px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .welcome-section, .directory-section {
+                padding: 1rem;
+            }
+            
+            .welcome-section h2, .directory-header h2 {
+                font-size: 1.6rem;
+            }
+            
+            .directory-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .directory-controls {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .search-input {
+                width: 100%;
+                max-width: 250px;
+            }
+            
+            .business-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .business-card {
+                padding: 1.5rem;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="fix-card">
-        <h1>✅ API Works! Now Let's Fix Your Website</h1>
-        <p>Since the API link works, the issue is in your website's JavaScript. Let's debug and fix it.</p>
-    </div>
-
-    <div class="fix-card">
-        <h2>🔍 Step 1: Check Browser Console for Errors</h2>
-        
-        <div class="console-steps">
-            <h3>Follow these steps exactly:</h3>
-            <ol>
-                <li>Go to your directory page (where it's stuck loading)</li>
-                <li>Press <strong>F12</strong> (or right-click → "Inspect Element")</li>
-                <li>Click the <strong>"Console"</strong> tab</li>
-                <li>Look for <span style="color: red;">red error messages</span></li>
-                <li>Tell me what errors you see (if any)</li>
-            </ol>
-        </div>
-        
-        <div class="step">
-            <h3>Common errors you might see:</h3>
-            <ul>
-                <li><strong style="color: red;">CORS error:</strong> "Access to fetch... has been blocked"</li>
-                <li><strong style="color: red;">Reference error:</strong> "GOOGLE_SHEETS_ID is not defined"</li>
-                <li><strong style="color: red;">Syntax error:</strong> "Unexpected token" or "Missing }"</li>
-                <li><strong style="color: red;">Network error:</strong> "Failed to fetch"</li>
+    <header>
+        <nav class="container">
+            <div class="logo-container">
+                <img src="img/manteca-logo.png" alt="Downtown Manteca District Logo" class="logo-img">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="directory.html">Business</a></li>
+                <li><a href="aboutUs.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
+        </nav>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Downtown Manteca Business Directory</h1>
         </div>
-    </div>
+    </section>
 
-    <div class="fix-card">
-        <h2>🔧 Step 2: Add Debug Code (Temporary Fix)</h2>
-        
-        <div class="step urgent">
-            <h3>Replace your current loadBusinesses function with this debug version:</h3>
-            <p>This will show us exactly what's happening and where it's failing.</p>
+    <main class="container">
+        <!-- Welcome Section -->
+        <section class="welcome-section">
+            <h2>Welcome</h2>
+            <p>Discover the unique charm and diverse offerings of Downtown Manteca. From shopping and dining to arts and entertainment, there's something for everyone.</p>
+            <a href="https://docs.google.com/forms/d/e/your-form-id/viewform" class="signup-button" target="_blank">Sign Up Here!</a>
+        </section>
+
+        <!-- Business Directory -->
+        <section class="directory-section">
+            <div class="directory-header">
+                <h2>Business Directory</h2>
+                <div class="directory-controls">
+                    <input type="text" class="search-input" placeholder="Search businesses..." id="searchInput">
+                    <select class="sort-select" id="sortSelect">
+                        <option value="name">Sort by Name</option>
+                        <option value="category">Sort by Category</option>
+                        <option value="newest">Newest First</option>
+                    </select>
+                </div>
+            </div>
             
-            <div class="code-block">
-// Debug version of loadBusinesses function
-async function loadBusinesses() {
-    console.log('🚀 loadBusinesses started');
-    console.log('📊 Sheet ID:', GOOGLE_SHEETS_ID);
-    console.log('🔑 API Key:', API_KEY);
-    
-    const grid = document.getElementById('businessGrid');
-    const countElement = document.getElementById('businessCount');
-    
-    // Update loading message
-    grid.innerHTML = '<div class="loading">🔄 Connecting to Google Sheets...</div>';
-    countElement.textContent = 'Connecting to API...';
-    
-    try {
-        const url = `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SHEETS_ID}/values/${SHEET_NAME}?key=${API_KEY}`;
-        console.log('🌐 Fetching URL:', url);
-        
-        // Update status
-        grid.innerHTML = '<div class="loading">📡 Making API request...</div>';
-        
-        const response = await fetch(url);
-        console.log('📨 Response status:', response.status);
-        console.log('📨 Response OK:', response.ok);
-        
-        if (!response.ok) {
-            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-        }
-        
-        // Update status
-        grid.innerHTML = '<div class="loading">📄 Processing data...</div>';
-        
-        const data = await response.json();
-        console.log('📄 Received data:', data);
-        
-        if (data.error) {
-            console.error('❌ API returned error:', data.error);
-            throw new Error(data.error.message);
-        }
-
-        if (!data.values) {
-            console.log('⚠️ No values in response');
-            throw new Error('No data found in spreadsheet');
-        }
-        
-        if (data.values.length <= 1) {
-            console.log('⚠️ Only headers found, no business data');
-            displayNoResults('No businesses found in the directory.');
-            return;
-        }
-
-        console.log('✅ Found', data.values.length - 1, 'businesses');
-        
-        // Update status
-        grid.innerHTML = '<div class="loading">🏗️ Building business cards...</div>';
-        
-        // Process the data
-        const headers = data.values[0];
-        const rows = data.values.slice(1);
-        
-        console.log('📋 Headers:', headers);
-        console.log('📊 Sample business:', rows[0]);
-
-        allBusinesses = rows.map((row, index) => {
-            const business = {
-                timestamp: row[0] || '',
-                email: row[1] || '',
-                businessName: row[2] || '',
-                ownerName: row[3] || '',
-                phone: row[4] || '',
-                ownerEmail: row[5] || '',
-                address: row[6] || '',
-                interestedInEvents: row[7] || '',
-                facebook: row[8] || '',
-                instagram: row[9] || '',
-                description: row[10] || '',
-                hours: row[11] || '',
-                businessDescription: row[12] || '',
-            };
+            <div class="business-count" id="businessCount">Loading businesses...</div>
             
-            if (index < 3) {
-                console.log(`📊 Business ${index + 1}:`, business);
+            <div id="businessGrid" class="business-grid">
+                <div class="loading">Loading businesses from Google Sheets</div>
+            </div>
+        </section>
+
+        <!-- Disclaimer -->
+        <section class="disclaimer">
+            <p>All Businesses Listed On This Site Are Responsible For Their Own Marketing & Community Engagement</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">About Us</a>
+                    <a href="#contact">Contact Us</a>
+                    <a href="directory.html">Directory Sign Up</a>
+                    <a href="directory.html">Business Directory</a>
+                    <a href="#events">Events</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <a href="#bylaws">District Bylaws</a>
+                    <a href="#meetings">Meeting Minutes</a>
+                    <a href="#district-map">District Map</a>
+                    <a href="#committee">Committee Structure</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <a href="#">Facebook</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">Twitter</a>
+                    <a href="mailto:info@downtownmanteca.com">Email Us</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Copyright © 2025 Downtown Manteca - All Rights Reserved.</p>
+                <p>Managed by Jane Media Services</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Configuration
+        const GOOGLE_SHEETS_ID = '13zFJOIrKOGaJSuIZEQRjAS5trCD-qDBrvLO5dJcXO2I';
+        const API_KEY = 'AIzaSyA_D9VSFEaQn4XnMsjNLHg7qS999n4gl1M';
+        const SHEET_NAME = 'Form Responses 1';
+
+        // Global variables
+        let allBusinesses = [];
+        let filteredBusinesses = [];
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadBusinesses();
+            setupEventListeners();
+        });
+
+        // Set up event listeners
+        function setupEventListeners() {
+            const searchInput = document.getElementById('searchInput');
+            const sortSelect = document.getElementById('sortSelect');
+
+            searchInput.addEventListener('input', handleSearch);
+            sortSelect.addEventListener('change', handleSort);
+        }
+
+        // Load businesses from Google Sheets
+        async function loadBusinesses() {
+            try {
+                const url = `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SHEETS_ID}/values/${SHEET_NAME}?key=${API_KEY}`;
+                
+                const response = await fetch(url);
+                const data = await response.json();
+
+                if (data.error) {
+                    throw new Error(data.error.message);
+                }
+
+                if (!data.values || data.values.length <= 1) {
+                    displayNoResults('No businesses found in the directory.');
+                    return;
+                }
+
+                // Parse the data (first row is headers)
+                const headers = data.values[0];
+                const rows = data.values.slice(1);
+
+                allBusinesses = rows.map(row => ({
+                    timestamp: row[0] || '',
+                    email: row[1] || '',
+                    businessName: row[2] || '',
+                    ownerName: row[3] || '',
+                    phone: row[4] || '',
+                    ownerEmail: row[5] || '',
+                    address: row[6] || '',
+                    interestedInEvents: row[7] || '',
+                    facebook: row[8] || '',
+                    instagram: row[9] || '',
+                    description: row[10] || '',
+                    hours: row[11] || '',
+                    businessDescription: row[12] || '',
+                })).filter(business => business.businessName && business.businessName.trim() !== '');
+
+                filteredBusinesses = [...allBusinesses];
+                displayBusinesses();
+                updateBusinessCount();
+
+            } catch (error) {
+                console.error('Error loading businesses:', error);
+                displayError(`Error loading businesses: ${error.message}`);
+            }
+        }
+
+        // Display businesses in the grid
+        function displayBusinesses() {
+            const grid = document.getElementById('businessGrid');
+            
+            if (filteredBusinesses.length === 0) {
+                displayNoResults('No businesses match your search criteria.');
+                return;
+            }
+
+            const businessCards = filteredBusinesses.map((business, index) => {
+                const formattedPhone = business.phone ? formatPhoneNumber(business.phone) : '';
+                const facebookUrl = cleanSocialMediaUrl(business.facebook, 'facebook');
+                const instagramUrl = cleanSocialMediaUrl(business.instagram, 'instagram');
+                const description = business.businessDescription || business.description || '';
+
+                return `
+                    <div class="business-card" style="animation-delay: ${index * 0.1}s">
+                        <div class="business-name">${escapeHtml(business.businessName)}</div>
+                        ${description ? `<div class="business-description">${escapeHtml(description)}</div>` : ''}
+                        
+                        ${business.ownerName ? `<div class="business-info"><strong>Owner:</strong> ${escapeHtml(business.ownerName)}</div>` : ''}
+                        ${business.address ? `<div class="business-info"><strong>Address:</strong> ${escapeHtml(business.address)}</div>` : ''}
+                        ${formattedPhone ? `<div class="business-info"><strong>Phone:</strong> <a href="tel:${escapeHtml(business.phone.replace(/\\D/g, ''))}">${formattedPhone}</a></div>` : ''}
+                        ${business.ownerEmail ? `<div class="business-info"><strong>Email:</strong> <a href="mailto:${escapeHtml(business.ownerEmail)}">${escapeHtml(business.ownerEmail)}</a></div>` : ''}
+                        
+                        ${business.hours ? `<div class="business-hours"><strong>Hours:</strong> ${escapeHtml(business.hours)}</div>` : ''}
+                        
+                        ${(facebookUrl || instagramUrl) ? `
+                            <div class="social-handles">
+                                <strong>Follow Us:</strong><br>
+                                ${facebookUrl ? `<a href="${facebookUrl}" class="social-link" target="_blank" rel="noopener">📘 Facebook</a>` : ''}
+                                ${instagramUrl ? `<a href="${instagramUrl}" class="social-link" target="_blank" rel="noopener">📷 Instagram</a>` : ''}
+                            </div>
+                        ` : ''}
+                        
+                        ${business.interestedInEvents && business.interestedInEvents.toLowerCase().includes('yes') ? `
+                            <div class="event-participation">
+                                <span style="color: #eea719; font-weight: 600;">🎉 Participates in Downtown Events</span>
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            }).join('');
+
+            grid.innerHTML = businessCards;
+        }
+
+        // Handle search functionality
+        function handleSearch() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+            
+            if (searchTerm === '') {
+                filteredBusinesses = [...allBusinesses];
+            } else {
+                filteredBusinesses = allBusinesses.filter(business => 
+                    business.businessName.toLowerCase().includes(searchTerm) ||
+                    business.description.toLowerCase().includes(searchTerm) ||
+                    business.businessDescription.toLowerCase().includes(searchTerm) ||
+                    business.address.toLowerCase().includes(searchTerm) ||
+                    business.ownerName.toLowerCase().includes(searchTerm)
+                );
             }
             
-            return business;
-        }).filter(business => business.businessName && business.businessName.trim() !== '');
-
-        console.log('🏢 Processed businesses:', allBusinesses.length);
-        
-        if (allBusinesses.length === 0) {
-            console.log('⚠️ No valid businesses after filtering');
-            displayNoResults('No valid businesses found.');
-            return;
+            displayBusinesses();
+            updateBusinessCount();
         }
 
-        filteredBusinesses = [...allBusinesses];
-        
-        // Update status
-        grid.innerHTML = '<div class="loading">🎨 Rendering business cards...</div>';
-        
-        console.log('🎨 About to display businesses');
-        displayBusinesses();
-        updateBusinessCount();
-        
-        console.log('✅ loadBusinesses completed successfully');
-
-    } catch (error) {
-        console.error('💥 Error in loadBusinesses:', error);
-        console.error('💥 Error stack:', error.stack);
-        
-        displayError(`Failed to load businesses: ${error.message}`);
-        countElement.textContent = 'Error loading businesses';
-    }
-}
-            </div>
-        </div>
-    </div>
-
-    <div class="fix-card">
-        <h2>🛠️ Step 3: Check Your Configuration</h2>
-        
-        <div class="step">
-            <h3>Make sure these values are EXACTLY correct in your code:</h3>
+        // Handle sort functionality
+        function handleSort() {
+            const sortBy = document.getElementById('sortSelect').value;
             
-            <div class="code-block">
-// Configuration - CHECK THESE VALUES
-const GOOGLE_SHEETS_ID = '13zFJOIrKOGaJSuIZEQRjAS5trCD-qDBrvLO5dJcXO2I';
-const API_KEY = 'AIzaSyA_D9VSFEaQn4XnMsjNLHg7qS999n4gl1M';
-const SHEET_NAME = 'Form Responses 1';
-            </div>
+            switch(sortBy) {
+                case 'name':
+                    filteredBusinesses.sort((a, b) => a.businessName.localeCompare(b.businessName));
+                    break;
+                case 'category':
+                    filteredBusinesses.sort((a, b) => (a.description || '').localeCompare(b.description || ''));
+                    break;
+                case 'newest':
+                    filteredBusinesses.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+                    break;
+            }
             
-            <div class="highlight">
-                <h4>⚠️ Common mistakes to check:</h4>
-                <ul>
-                    <li>Extra spaces before or after the values</li>
-                    <li>Missing quotes around the strings</li>
-                    <li>Typos in the variable names</li>
-                    <li>Missing semicolons</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+            displayBusinesses();
+        }
 
-    <div class="fix-card">
-        <h2>🎯 Step 4: Test the Debug Version</h2>
-        
-        <div class="step">
-            <h3>After adding the debug code:</h3>
-            <ol>
-                <li>Save and upload your directory.html file</li>
-                <li>Refresh the directory page</li>
-                <li>Open browser console (F12 → Console)</li>
-                <li>Watch the console messages</li>
-                <li>Tell me exactly what you see in the console</li>
-            </ol>
-        </div>
-        
-        <div class="step">
-            <h3>The debug version will show:</h3>
-            <ul>
-                <li>🚀 <strong>Starting messages:</strong> "loadBusinesses started"</li>
-                <li>🌐 <strong>The API URL being called</strong></li>
-                <li>📨 <strong>Response status:</strong> Should be 200</li>
-                <li>📄 <strong>Raw data received:</strong> Your spreadsheet data</li>
-                <li>🏢 <strong>Number of businesses processed</strong></li>
-                <li>✅ <strong>Success message:</strong> "loadBusinesses completed successfully"</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="fix-card">
-        <h2>🚀 Quick Fixes for Common Issues</h2>
-        
-        <div class="error-fix">
-            <h3>If you see "GOOGLE_SHEETS_ID is not defined":</h3>
-            <p>Your configuration variables aren't properly declared. Make sure they're at the very top of your script section.</p>
-        </div>
-        
-        <div class="error-fix">
-            <h3>If you see "displayBusinesses is not a function":</h3>
-            <p>The function is missing or has a syntax error. Make sure all functions are properly defined.</p>
-        </div>
-        
-        <div class="error-fix">
-            <h3>If you see "Cannot read property of null":</h3>
-            <p>The HTML elements (businessGrid, businessCount) don't exist. Check your HTML structure.</p>
-        </div>
-        
-        <div class="error-fix">
-            <h3>If it still shows "Loading..." forever:</h3>
-            <p>The JavaScript isn't running at all. Check for syntax errors or missing script tags.</p>
-        </div>
-    </div>
-
-    <div class="fix-card">
-        <h2>📋 What I Need From You</h2>
-        
-        <div class="step">
-            <h3>After trying the debug version, tell me:</h3>
-            <ol>
-                <li><strong>Console messages:</strong> What do you see when you open F12 → Console?</li>
-                <li><strong>Error messages:</strong> Any red errors?</li>
-                <li><strong>Loading behavior:</strong> Does it get past "Connecting to Google Sheets"?</li>
-                <li><strong>Business count:</strong> How many businesses does it find?</li>
-            </ol>
+        // Update business count display
+        function updateBusinessCount() {
+            const countElement = document.getElementById('businessCount');
+            const total = allBusinesses.length;
+            const showing = filteredBusinesses.length;
             
-            <p>With this info, I can give you the exact fix needed!</p>
-        </div>
-    </div>
+            if (showing === total) {
+                countElement.textContent = `Showing ${total} business${total !== 1 ? 'es' : ''}`;
+            } else {
+                countElement.textContent = `Showing ${showing} of ${total} business${total !== 1 ? 'es' : ''}`;
+            }
+        }
+
+        // Utility functions
+        function formatPhoneNumber(phone) {
+            if (!phone) return '';
+            const cleaned = phone.replace(/\D/g, '');
+            if (cleaned.length === 10) {
+                return cleaned.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+            }
+            return phone;
+        }
+
+        function cleanSocialMediaUrl(handle, platform) {
+            if (!handle) return '';
+            
+            if (handle.startsWith('http')) return handle;
+            
+            const cleanHandle = handle.replace('@', '');
+            
+            if (platform === 'facebook') {
+                return `https://facebook.com/${cleanHandle}`;
+            } else if (platform === 'instagram') {
+                return `https://instagram.com/${cleanHandle}`;
+            }
+            
+            return handle;
+        }
+
+        function displayError(message) {
+            const grid = document.getElementById('businessGrid');
+            grid.innerHTML = `<div class="error">${escapeHtml(message)}</div>`;
+            document.getElementById('businessCount').textContent = 'Error loading businesses';
+        }
+
+        function displayNoResults(message) {
+            const grid = document.getElementById('businessGrid');
+            grid.innerHTML = `<div class="no-results">${escapeHtml(message)}</div>`;
+            updateBusinessCount();
+        }
+
+        function escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+    </script>
 </body>
 </html>
