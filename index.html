@@ -56,13 +56,6 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        .logo {
-            font-family: 'Roboto Slab', serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
         .nav-links {
             display: flex;
             list-style: none;
@@ -266,22 +259,22 @@
             padding: 3rem;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-top: 4px solid #eea719;
         }
 
         .intro-section h2 {
-            font-family: 'Roboto Slab', serif;
+            font-family: 'Montserrat', sans-serif;
             font-size: 2.5rem;
+            font-weight: 700;
             color: #0a2b30;
             margin-bottom: 1rem;
-            font-weight: 600;
         }
 
         .intro-section p {
             font-size: 1.1rem;
             color: #035847;
             max-width: 800px;
-            margin: 0 auto 1.5rem;
-            line-height: 1.8;
+            margin: 0 auto;
         }
 
         /* Events Section */
@@ -291,15 +284,16 @@
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             margin-bottom: 3rem;
+            border-top: 4px solid #8d242f;
         }
 
         .events-section h2 {
-            font-family: 'Roboto Slab', serif;
+            font-family: 'Montserrat', sans-serif;
             font-size: 2.2rem;
+            font-weight: 700;
             color: #0a2b30;
             margin-bottom: 2rem;
             text-align: center;
-            font-weight: 600;
         }
 
         .events-grid {
@@ -316,15 +310,17 @@
             text-align: center;
             transition: all 0.3s ease;
             cursor: pointer;
+            border: 2px solid transparent;
         }
 
         .event-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 35px rgba(141, 36, 47, 0.4);
+            border-color: #eea719;
         }
 
         .event-date {
-            font-family: 'Roboto Slab', serif;
+            font-family: 'Montserrat', sans-serif;
             font-size: 2rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
@@ -334,10 +330,11 @@
             font-size: 1rem;
             opacity: 0.9;
             margin-bottom: 1rem;
-            font-weight: 500;
+            font-weight: 300;
         }
 
         .event-title {
+            font-family: 'Montserrat', sans-serif;
             font-size: 1.3rem;
             font-weight: 600;
         }
@@ -356,47 +353,42 @@
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
-            border-top: 4px solid #eea719;
+            border-left: 4px solid #035847;
         }
 
         .attraction-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-            border-top-color: #c44720;
+            border-left-color: #eea719;
         }
 
         .attraction-card h3 {
-            font-family: 'Roboto Slab', serif;
+            font-family: 'Montserrat', sans-serif;
             font-size: 1.5rem;
+            font-weight: 600;
             color: #0a2b30;
             margin-bottom: 1rem;
-            font-weight: 600;
         }
 
         .attraction-card p {
             color: #035847;
             margin-bottom: 1rem;
+            line-height: 1.7;
         }
 
         .learn-more {
-            color: #8d242f;
+            color: #c44720;
             text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
             font-weight: 600;
             transition: color 0.3s ease;
         }
 
         .learn-more:hover {
-            color: #c44720;
+            color: #eea719;
         }
 
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
-            color: white;
-            padding: 3rem 0 1rem;
-            margin-top: 4rem;
-        }
-
+        /* Newsletter Section */
         .newsletter-section {
             text-align: center;
             margin-bottom: 3rem;
@@ -448,27 +440,37 @@
             box-shadow: 0 4px 15px rgba(238, 167, 25, 0.4);
         }
 
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin-bottom: 2rem;
         }
 
         .footer-section h4 {
-            font-family: 'Roboto Slab', serif;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
             font-weight: 600;
+            margin-bottom: 1rem;
             color: #eea719;
         }
 
-        .footer-section p, .footer-section a {
+        .footer-section p, 
+        .footer-section a {
             color: rgba(255,255,255,0.9);
             text-decoration: none;
             margin-bottom: 0.5rem;
             display: block;
-            font-size: 0.9rem;
+            transition: color 0.3s ease;
         }
 
         .footer-section a:hover {
@@ -478,6 +480,7 @@
         .footer-bottom {
             border-top: 1px solid rgba(255,255,255,0.2);
             padding-top: 1.5rem;
+            margin-top: 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -611,12 +614,13 @@
                 <img src="img/manteca-logo.png" alt="Downtown Manteca District Logo" class="logo-img">
             </div>
             <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="events.html">Events</a></li>
-    <li><a href="directory.html">Business</a></li>
-    <li><a href="aboutUs.html">About Us</a></li>
-    <li><a href="contact.html">Contact</a></li>
-</ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="directory.html">Business</a></li>
+                <li><a href="aboutUs.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
     <!-- Image Carousel Section -->
@@ -745,27 +749,20 @@
 
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>About the DMIA</h4>
-                    <a href="aboutUs.html">Board, Committees & Info</a>
-                    <a href="report-issue.html">Report An Issue</a>
-                    <a href="public-records.html">Public Records Act (PRA) Request</a>
-                    <a href="resources.html">Resources</a>
+                    <h4>Quick Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="aboutUs.html">About Us</a>
+                    <a href="directory.html">Business Directory</a>
+                    <a href="events.html">Events</a>
+                    <a href="contact.html">Contact Us</a>
                 </div>
                 
                 <div class="footer-section">
-                    <h4>Legal & Transparency</h4>
-                    <a href="accessibility.html">Website Accessibility</a>
-                    <a href="accessibility.html">Accessibility Statement</a>
-                    <a href="privacy-policy.html">Privacy Policy</a>
-                    <a href="terms-of-use.html">Terms of Use</a>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Meetings</h4>
-                    <a href="meeting-minutes.html">Current Board & Committee Packets</a>
-                    <a href="meeting-minutes.html">Past Board & Committee Packets</a>
-                    <a href="meeting-minutes.html">Meeting Minutes</a>
-                    <a href="events.html">Meeting Calendar</a>
+                    <h4>Public Records & Transparency</h4>
+                    <a href="documents.html">Public Documents</a>
+                    <a href="meeting-minutes.html">Meeting Minutes & Agendas</a>
+                    <a href="public-records.html">Records Request</a>
+                    <a href="accessibility.html">Accessibility</a>
                 </div>
                 
                 <div class="footer-section">
@@ -781,18 +778,14 @@
                     <p>Historic Main Street</p>
                     <p>Manteca, CA 95336</p>
                     <p>Phone: (209) 239-8451</p>
-                    <a href="contact.html">Contact Us</a>
-                    
-                    <h4 style="margin-top: 1rem;">Office Hours</h4>
-                    <p>Monday-Thursday 8:30am-4:00pm</p>
+                    <p style="margin-top: 1rem;"><strong>Office Hours</strong></p>
+                    <p>Monday-Thursday: 8:30am-4:00pm</p>
                 </div>
             </div>
             
             <div class="footer-bottom">
                 <p>&copy; 2025 Downtown Manteca Improvement Association. All Rights Reserved.</p>
                 <div class="footer-links">
-                    <a href="resources.html">Site Search</a>
-                    <span>|</span>
                     <a href="privacy-policy.html">Privacy Policy</a>
                     <span>|</span>
                     <a href="terms-of-use.html">Terms of Use</a>
