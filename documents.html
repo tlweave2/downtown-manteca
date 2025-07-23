@@ -286,65 +286,6 @@
             color: #495057;
         }
 
-        /* Manual Documents Section */
-        .manual-docs {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 2rem;
-            margin: 2rem 0;
-            border-left: 4px solid #eea719;
-        }
-
-        .manual-docs h3 {
-            color: #0a2b30;
-            margin-bottom: 1rem;
-            font-family: 'Roboto Slab', serif;
-        }
-
-        .manual-doc-item {
-            background: white;
-            padding: 1rem;
-            margin: 0.5rem 0;
-            border-radius: 8px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border: 1px solid #e9ecef;
-        }
-
-        .manual-doc-info {
-            flex: 1;
-        }
-
-        .manual-doc-name {
-            font-weight: 600;
-            color: #0a2b30;
-            margin-bottom: 0.25rem;
-        }
-
-        .manual-doc-desc {
-            color: #6c757d;
-            font-size: 0.9rem;
-        }
-
-        .manual-doc-link {
-            background: linear-gradient(45deg, #eea719, #c44720);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .manual-doc-link:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 15px rgba(238, 167, 25, 0.4);
-            color: white;
-            text-decoration: none;
-        }
-
         /* Footer */
         footer {
             background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
@@ -406,12 +347,6 @@
                 gap: 1rem;
             }
             
-            .manual-doc-item {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
-            }
-            
             .container {
                 padding: 0 15px;
             }
@@ -445,40 +380,14 @@
         <section class="documents-section">
             <h2>Available Documents</h2>
             
-            <!-- Manual Documents (Always Available) -->
-            <div class="manual-docs">
-                <h3>📋 Current Documents</h3>
-                <div class="manual-doc-item">
-                    <div class="manual-doc-info">
-                        <div class="manual-doc-name">Vendor Contract Example</div>
-                        <div class="manual-doc-desc">Professional services contract - Posted January 2025</div>
-                    </div>
-                    <a href="https://drive.google.com/uc?id=11n5NaIq_AgnkrS1NjoxRg4MomU4SdaW1&export=download" class="manual-doc-link" target="_blank">
-                        📄 Download PDF
-                    </a>
-                </div>
-                
-                <!-- Add more documents here manually as you upload them -->
-                <div class="manual-doc-item">
-                    <div class="manual-doc-info">
-                        <div class="manual-doc-name">Board Meeting Agenda</div>
-                        <div class="manual-doc-desc">Next meeting agenda - Coming soon</div>
-                    </div>
-                    <a href="#" class="manual-doc-link" onclick="alert('Document coming soon!')">
-                        📄 Coming Soon
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Dynamic Documents from Google Drive -->
             <div class="documents-container">
                 <div class="documents-header">
-                    <h3>📂 Google Drive Documents</h3>
+                    <h3>📋 Official District Documents</h3>
                     <button class="refresh-button" onclick="loadDocuments()">🔄 Refresh</button>
                 </div>
                 
                 <div class="documents-list" id="documentsList">
-                    <div class="loading">Checking Google Drive for additional documents</div>
+                    <div class="loading">Loading documents from Google Drive using proper API methods</div>
                 </div>
             </div>
         </section>
@@ -494,7 +403,7 @@
     </footer>
 
     <script>
-        // Google Drive Configuration
+        // Google Drive API Configuration
         const CONFIG = {
             API_KEY: 'AIzaSyA_D9VSFEaQn4XnMsjNLHg7qS999n4gl1M',
             FOLDERS: [
@@ -510,39 +419,50 @@
 
         async function loadDocuments() {
             const container = document.getElementById('documentsList');
-            container.innerHTML = '<div class="loading">Checking Google Drive folders</div>';
+            container.innerHTML = '<div class="loading">Loading documents from Google Drive using proper API methods</div>';
             
             let allDocuments = [];
-            let folderResults = [];
+            let debugInfo = [];
 
             try {
-                // Try to load from each folder
                 for (const folder of CONFIG.FOLDERS) {
+                    debugInfo.push(`🔍 Checking folder: ${folder.name} (${folder.id})`);
+                    
                     try {
                         const docs = await loadFromFolder(folder);
                         
                         if (docs.length > 0) {
                             allDocuments.push(...docs);
-                            folderResults.push(`✅ ${folder.name}: ${docs.length} documents found`);
+                            debugInfo.push(`✅ ${folder.name}: Found ${docs.length} documents`);
+                            
+                            // Test direct download for first file
+                            const testResult = await testDirectDownload(docs[0].id);
+                            debugInfo.push(`🔗 Download test for ${docs[0].name}: ${testResult}`);
                         } else {
-                            folderResults.push(`📁 ${folder.name}: Empty folder`);
+                            debugInfo.push(`📁 ${folder.name}: Empty folder or no accessible files`);
                         }
                     } catch (error) {
-                        folderResults.push(`❌ ${folder.name}: ${error.message}`);
+                        debugInfo.push(`❌ ${folder.name}: ${error.message}`);
+                        console.error(`Error loading ${folder.name}:`, error);
                     }
                 }
 
                 if (allDocuments.length === 0) {
                     container.innerHTML = `
-                        <div style="padding: 2rem; text-align: center; color: #6c757d;">
-                            <h4>📁 Google Drive Folders</h4>
-                            <p>No documents found in Google Drive folders yet.</p>
+                        <div class="error">
+                            <h4>📁 Google Drive Status</h4>
+                            <p>No documents found in any Google Drive folders.</p>
                             <div class="debug-info">
-                                ${folderResults.join('<br>')}
+                                <strong>Folder Check Results:</strong><br>
+                                ${debugInfo.join('<br>')}
                             </div>
-                            <p style="margin-top: 1rem; font-size: 0.9rem;">
-                                Documents will appear here automatically when uploaded to your Google Drive folders.
+                            <p style="margin-top: 1rem;">
+                                <strong>Next Steps:</strong><br>
+                                1. Add documents to your Google Drive folders<br>
+                                2. Make sure folders are shared: "Anyone with the link can view"<br>
+                                3. Make sure files are shared: "Anyone with the link can view"
                             </p>
+                            <button class="refresh-button" onclick="loadDocuments()" style="margin-top: 1rem;">Try Again</button>
                         </div>
                     `;
                     return;
@@ -550,44 +470,67 @@
 
                 // Sort by date (newest first)
                 allDocuments.sort((a, b) => new Date(b.createdTime) - new Date(a.createdTime));
+                
                 displayDocuments(allDocuments);
+                
+                // Show debug info in console
+                console.log('Google Drive Debug Info:', debugInfo);
 
             } catch (error) {
                 container.innerHTML = `
                     <div class="error">
-                        <h4>ℹ️ Google Drive Status</h4>
-                        <p>Google Drive integration is set up. Documents will appear here when uploaded.</p>
+                        <h4>❌ Error Loading Documents</h4>
+                        <p>Error: ${error.message}</p>
                         <div class="debug-info">
-                            ${folderResults.join('<br>')}
+                            ${debugInfo.join('<br>')}
                         </div>
+                        <button class="refresh-button" onclick="loadDocuments()" style="margin-top: 1rem;">Try Again</button>
                     </div>
                 `;
             }
         }
 
         async function loadFromFolder(folder) {
-            const url = `https://www.googleapis.com/drive/v3/files?q='${folder.id}'+in+parents&key=${CONFIG.API_KEY}&fields=files(id,name,size,mimeType,createdTime)`;
+            // Use the files.list method to get file metadata
+            const url = `https://www.googleapis.com/drive/v3/files?q='${folder.id}'+in+parents&key=${CONFIG.API_KEY}&fields=files(id,name,size,mimeType,createdTime,webViewLink)`;
             
             const response = await fetch(url);
             const data = await response.json();
 
             if (data.error) {
-                throw new Error(data.error.message);
+                throw new Error(`${data.error.message} (Code: ${data.error.code})`);
             }
 
             if (!data.files) {
                 return [];
             }
 
-            // For now, just return file info without download links since permissions are limited
             return data.files
                 .filter(file => isDocument(file.mimeType))
                 .map(file => ({
                     ...file,
                     folderName: folder.name,
                     folderType: folder.type,
-                    downloadUrl: `#` // Will be updated when permissions are fixed
+                    // Use the proper Google Drive API direct download method
+                    downloadUrl: `https://www.googleapis.com/drive/v3/files/${file.id}?alt=media&key=${CONFIG.API_KEY}`,
+                    viewUrl: file.webViewLink
                 }));
+        }
+
+        // Test if direct download works for a file
+        async function testDirectDownload(fileId) {
+            try {
+                const testUrl = `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media&key=${CONFIG.API_KEY}`;
+                const response = await fetch(testUrl, { method: 'HEAD' }); // Just test headers
+                
+                if (response.ok) {
+                    return `✅ Direct download available`;
+                } else {
+                    return `❌ Download failed (${response.status})`;
+                }
+            } catch (error) {
+                return `❌ Download test failed: ${error.message}`;
+            }
         }
 
         function displayDocuments(documents) {
@@ -607,14 +550,14 @@
                         </div>
                         <span class="doc-category">${doc.folderName}</span>
                         <span class="doc-size">${fileSize}</span>
-                        <a href="#" class="doc-download" onclick="alert('Document access is being configured. Please check back soon!')">
-                            📄 Coming Soon
+                        <a href="${doc.downloadUrl}" class="doc-download" target="_blank" download>
+                            📄 Download
                         </a>
                     </div>
                 `;
             }).join('');
 
-            container.innerHTML = html;
+            container.innerHTML = html || '<div class="error">No documents to display</div>';
         }
 
         function isDocument(mimeType) {
@@ -622,20 +565,30 @@
                 'application/pdf',
                 'application/msword',
                 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-                'application/vnd.google-apps.document'
+                'application/vnd.google-apps.document',
+                'application/vnd.ms-excel',
+                'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                'text/plain'
             ];
             return types.includes(mimeType);
         }
 
         function getFileType(filename) {
             const ext = filename.split('.').pop().toLowerCase();
-            const types = { pdf: 'PDF', doc: 'DOC', docx: 'DOCX' };
+            const types = { 
+                pdf: 'PDF', 
+                doc: 'DOC', 
+                docx: 'DOCX',
+                xls: 'XLS',
+                xlsx: 'XLSX',
+                txt: 'TXT'
+            };
             return types[ext] || 'DOC';
         }
 
         function formatSize(bytes) {
             if (!bytes) return '';
-            const sizes = ['B', 'KB', 'MB'];
+            const sizes = ['B', 'KB', 'MB', 'GB'];
             const i = Math.floor(Math.log(bytes) / Math.log(1024));
             return Math.round(bytes / Math.pow(1024, i) * 100) / 100 + ' ' + sizes[i];
         }
