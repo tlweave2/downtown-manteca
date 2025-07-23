@@ -120,26 +120,6 @@
             line-height: 1.8;
         }
 
-        .signup-button {
-            display: inline-block;
-            background: linear-gradient(45deg, #eea719, #c44720);
-            color: white;
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(238, 167, 25, 0.4);
-            margin-bottom: 3rem;
-        }
-
-        .signup-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(238, 167, 25, 0.6);
-            background: linear-gradient(45deg, #c44720, #8d242f);
-        }
-
         /* Business Directory Section */
         .directory-section {
             background: none;
@@ -360,6 +340,31 @@
             font-style: italic;
         }
 
+        /* Signup Button at Bottom */
+        .signup-section {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .signup-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #eea719, #c44720);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(238, 167, 25, 0.4);
+        }
+
+        .signup-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(238, 167, 25, 0.6);
+            background: linear-gradient(45deg, #c44720, #8d242f);
+        }
+
         /* Footer */
         footer {
             background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
@@ -480,7 +485,7 @@
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="events.html">Events</a></li>
-                <li><a href="directory.html">Business</a></li>
+                <li><a href="directory.html" class="active">Business</a></li>
                 <li><a href="aboutUs.html">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -498,7 +503,6 @@
         <section class="welcome-section">
             <h2>Welcome</h2>
             <p>Discover the unique charm and diverse offerings of Downtown Manteca. From shopping and dining to arts and entertainment, there's something for everyone.</p>
-            <a href="https://docs.google.com/forms/d/e/your-form-id/viewform" class="signup-button" target="_blank">Sign Up Here!</a>
         </section>
 
         <!-- Business Directory -->
@@ -525,6 +529,11 @@
         <!-- Disclaimer -->
         <section class="disclaimer">
             <p>All Businesses Listed On This Site Are Responsible For Their Own Marketing & Community Engagement</p>
+        </section>
+
+        <!-- Business Directory Signup - Moved to Bottom -->
+        <section class="signup-section">
+            <a href="https://docs.google.com/forms/d/e/your-form-id/viewform" class="signup-button" target="_blank">Sign Up Here!</a>
         </section>
     </main>
 
@@ -668,7 +677,7 @@
                             </div>
                         ` : ''}
                         
-                        
+                     
                     </div>
                 `;
             }).join('');
