@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Public Documents - Downtown Manteca</title>
+    <title>Public Documents - Downtown Manteca District</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -29,7 +29,7 @@
         header {
             background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
             color: white;
-            padding: 2rem 0;
+            padding: .5rem 0;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
@@ -52,7 +52,7 @@
             object-fit: contain;
             background: white;
             border-radius: 50%;
-            padding: 10px;
+            padding: 0px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
@@ -68,7 +68,7 @@
             transition: all 0.3s ease;
             padding: 0.5rem 1rem;
             border-radius: 25px;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .nav-links a:hover, .nav-links a.active {
@@ -381,8 +381,11 @@
                 <button class="folder-tab" onclick="showFolder('vendorContracts')">
                     📝 Vendor Contracts
                 </button>
+                <button class="folder-tab" onclick="showFolder('committeeMeetings')">
+                    🗂️ Committee Meetings
+                </button>
                 <button class="folder-tab" onclick="showFolder('committeeAgendas')">
-                    🗂️ Committee Meeting Agendas
+                    📅 Committee Meeting Agendas
                 </button>
             </div>
 
@@ -450,12 +453,36 @@
                 </iframe>
             </div>
 
+            <!-- Committee Meetings -->
+            <div id="committeeMeetings" class="document-container">
+                <div class="container-header">
+                    <h3>🗂️ Committee Meetings</h3>
+                    <div class="view-toggle">
+                        <button class="view-btn active" onclick="switchView('committeeMeetings', 'list')">List</button>
+                        <button class="view-btn" onclick="switchView('committeeMeetings', 'grid')">Grid</button>
+                    </div>
+                </div>
+                <iframe id="committeeMeetings-iframe"
+                        src="https://drive.google.com/embeddedfolderview?id=1_ICk3Mkl_ezVCqGm14ZsEDBILcziCbrb#list"
+                        class="drive-iframe"
+                        title="Committee Meetings">
+                </iframe>
+            </div>
+
             <!-- Committee Meeting Agendas -->
             <div id="committeeAgendas" class="document-container">
                 <div class="container-header">
-                    <h3>🗂️ Committee Meeting Agendas</h3>
+                    <h3>📅 Committee Meeting Agendas</h3>
+                    <div class="view-toggle">
+                        <button class="view-btn active" onclick="switchView('committeeAgendas', 'list')">List</button>
+                        <button class="view-btn" onclick="switchView('committeeAgendas', 'grid')">Grid</button>
+                    </div>
                 </div>
-                <p>No committee meeting agendas are available at this time.</p>
+                <iframe id="committeeAgendas-iframe"
+                        src="https://drive.google.com/embeddedfolderview?id=1x8GHdeNT_P6DCUAvgD3og6WuhHtbrP9U#list"
+                        class="drive-iframe"
+                        title="Committee Meeting Agendas">
+                </iframe>
             </div>
         </section>
 
@@ -471,8 +498,37 @@
 
     <footer>
         <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>Downtown Manteca District</p>
+                    <p>123 W. Yosemite Ave.</p>
+                    <p>Manteca, CA 95336</p>
+                    <p>Phone: (209) 214-7555</p>
+                    <p>Email: info@downtownmanteca.com</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="aboutUs.html">About Us</a>
+                    <a href="directory.html">Business Directory</a>
+                    <a href="events.html">Events</a>
+                    <a href="contact.html">Contact Us</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <a href="https://www.facebook.com/profile.php?id=61573494300309" target="_blank" rel="noopener">Facebook</a>
+                    <a href="https://www.instagram.com/downtownmanteca/" target="_blank" rel="noopener">Instagram</a>
+                    <a href="https://linktr.ee/downtownmanteca" target="_blank" rel="noopener">Linktree</a>
+                    <a href="mailto:info@downtownmanteca.com">Email Us</a>
+                </div>
+            </div>
+            
             <div class="footer-bottom">
-                <p>Copyright © 2025 Downtown Manteca - All Rights Reserved.</p>
+                <p>Office Hours: Monday-Thursday 8:30am-4:00pm, Friday Closed</p>
+                <p>Copyright © 2025 Downtown Manteca District - All Rights Reserved.</p>
                 <p>Managed by Jane Media Services</p>
             </div>
         </div>
@@ -501,18 +557,20 @@
         // Switch between list and grid view
         function switchView(folderId, viewType) {
             const iframe = document.getElementById(folderId + '-iframe');
-            const currentSrc = iframe.src;
-            const baseUrl = currentSrc.split('#')[0];
-            
-            // Update iframe source with new view
-            iframe.src = baseUrl + '#' + viewType;
-            
-            // Update button states
-            const container = document.getElementById(folderId);
-            const buttons = container.querySelectorAll('.view-btn');
-            
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+            if (iframe) {
+                const currentSrc = iframe.src;
+                const baseUrl = currentSrc.split('#')[0];
+                
+                // Update iframe source with new view
+                iframe.src = baseUrl + '#' + viewType;
+                
+                // Update button states
+                const container = document.getElementById(folderId);
+                const buttons = container.querySelectorAll('.view-btn');
+                
+                buttons.forEach(btn => btn.classList.remove('active'));
+                event.target.classList.add('active');
+            }
         }
 
         // Add loading message while iframes load
