@@ -658,6 +658,21 @@
                 font-size: 1rem;
             }
         }
+
+        /* tighten up the spacing around each embed */
+.instagram-embeds {
+  display: flex;
+  gap: 0.5rem;              /* half the previous gap */
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 1rem 0;           /* less vertical space above & below */
+}
+
+.instagram-embeds blockquote.instagram-media {
+  margin: 0;                /* remove blockquote default margins */
+  padding: 0;
+  flex: 1 1 200px;          /* allow flexible sizing if you like */
+}
     </style>
 </head>
 <body>
@@ -741,14 +756,34 @@
         </div>
     </section>
 
-    <main class="container">
-        <section class="events-section" id="events">
-            <h2>Upcoming Events</h2>
-            <p style="text-align: center; font-size: 1.1rem; color: #035847; margin-bottom: 2rem;">Join us for exciting events throughout the year that celebrate our community, culture, and local businesses.</p>
-            <div class="events-cta">
-                <a href="events.html" class="view-calendar-btn">View Full Calendar & Event Details →</a>
-            </div>
-        </section>
+ <section class="events-section" id="events">
+  <h2>Upcoming Events</h2>
+  <p style="text-align: center; font-size: 1.1rem; color: #035847; margin-bottom: 2rem;">
+    Join us for exciting events throughout the year that celebrate our community, culture, and local businesses.
+  </p>
+
+  <div class="instagram-embeds">
+    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DM8p6h7N5ut/" data-instgrm-version="14">
+      <a href="https://www.instagram.com/p/DM8p6h7N5ut/"></a>
+    </blockquote>
+    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DM5N13BO8Cb/" data-instgrm-version="14">
+      <a href="https://www.instagram.com/p/DM5N13BO8Cb/"></a>
+    </blockquote>
+    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DMyXWvvIxKk/" data-instgrm-version="14">
+      <a href="https://www.instagram.com/p/DMyXWvvIxKk/"></a>
+    </blockquote>
+  </div>
+
+  <div class="events-cta">
+    <a href="events.html" class="view-calendar-btn">View Full Calendar & Event Details →</a>
+  </div>
+</section>
+
+<!-- only once per page -->
+<script async defer src="https://www.instagram.com/embed.js"></script>
+
+<!-- load Instagram’s embed script once per page -->
+<script async defer src="https://www.instagram.com/embed.js"></script>
 
         <section class="attractions-section" id="attractions">
             <div class="attraction-card">
