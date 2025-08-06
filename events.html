@@ -250,6 +250,7 @@
             }
             
             .nav-links {
+                display: flex;
                 position: fixed;
                 top: 0;
                 right: -100%;
@@ -362,6 +363,7 @@
             }
             
             .nav-links {
+                display: flex;
                 position: fixed;
                 top: 0;
                 right: -100%;
@@ -501,6 +503,13 @@
                 if (isMobile) {
                     hamburger.style.display = 'flex';
                     navLinks.style.position = 'fixed';
+                    navLinks.style.right = '-100%';
+                    navLinks.classList.remove('active');
+                } else {
+                    hamburger.style.display = 'none';
+                    navLinks.style.position = 'static';
+                    navLinks.style.right = 'auto';
+                    navLinks.classList.remove('active');
                 }
             }
             
