@@ -162,6 +162,15 @@
             text-decoration: none;
             font-weight: 600;
             transition: color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-info a.email::before {
+            content: "📧";
+            font-size: 1rem;
+            flex-shrink: 0;
         }
 
         .contact-info a:hover {
@@ -410,12 +419,12 @@
                     <p>123 W. Yosemite Ave.<br>
                     Manteca, CA 95336</p>
                     <p><strong>Phone:</strong> <a href="tel:209-214-7555">(209) 214-7555</a></p>
-                    <p><strong>Email:</strong> <a href="mailto:info@downtownmanteca.com">info@downtownmanteca.com</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:info@downtownmanteca.com" class="email">info@downtownmanteca.com</a></p>
                 </div>
                 <div class="contact-info">
                     <h3>Executive Director</h3>
                     <p><strong>Michelle Kramer</strong></p>
-                    <p><a href="mailto:mkramer@downtownmanteca.com">mkramer@downtownmanteca.com</a></p>
+                    <p><a href="mailto:mkramer@downtownmanteca.com" class="email">mkramer@downtownmanteca.com</a></p>
                 </div>
             </div>
 
@@ -424,12 +433,12 @@
                 <div class="contact-info">
                     <h3>President</h3>
                     <p><strong>Charles Paz</strong></p>
-                    <p><a href="mailto:cpaz@downtownmanteca.com">cpaz@downtownmanteca.com</a></p>
+                    <p><a href="mailto:cpaz@downtownmanteca.com" class="email">cpaz@downtownmanteca.com</a></p>
                 </div>
                 <div class="contact-info">
                     <h3>Vice President</h3>
                     <p><strong>Daniel Machado</strong></p>
-                    <p><a href="mailto:dmachado@downtownmanteca.com">dmachado@downtownmanteca.com</a></p>
+                    <p><a href="mailto:dmachado@downtownmanteca.com" class="email">dmachado@downtownmanteca.com</a></p>
                 </div>
             </div>
         </section>
