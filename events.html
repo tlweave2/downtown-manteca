@@ -317,12 +317,33 @@
 
             .calendar-embed iframe {
                 width: 100%;
-                min-height: 500px;
+                min-height: 600px;
                 border: none;
+            }
+            
+            .calendar-embed {
+                overflow-x: auto;
+                overflow-y: hidden;
+                -webkit-overflow-scrolling: touch;
             }
             
             .container {
                 padding: 0 15px;
+            }
+        }
+        
+        /* Extra mobile optimization for very small screens */
+        @media (max-width: 480px) {
+            .calendar-embed {
+                overflow-x: auto;
+                overflow-y: hidden;
+                -webkit-overflow-scrolling: touch;
+                border-radius: 10px;
+            }
+            
+            .calendar-embed iframe {
+                min-width: 350px;
+                min-height: 500px;
             }
         }
     </style>
@@ -385,12 +406,12 @@
         <!-- Main Calendar Embed -->
         <section class="calendar-embed-section">
             <div class="calendar-embed">
-                <iframe src="https://calendar.google.com/calendar/embed?height=700&wkst=1&bgcolor=%23ffffff&ctz=America%2FLos_Angeles&src=Y19mMTU5MzU5N2RjNjZkNjk5ODFhOTI5YjEwZjQ5MGVkMDI4OWI0MTJlN2RmMGE1NGI0OGE2MjY5ZWFmMTVkODhjQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23D50000&mode=MONTH&showTitle=1&showPrint=1&showTabs=1&showCalendars=0" 
-                        style="border-width:0" 
+                <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FLos_Angeles&src=Y19mMTU5MzU5N2RjNjZkNjk5ODFhOTI5YjEwZjQ5MGVkMDI4OWI0MTJlN2RmMGE1NGI0OGE2MjY5ZWFmMTVkODhjQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23D50000&mode=MONTH&showTitle=1&showPrint=1&showTabs=1&showCalendars=0" 
+                        style="border-width:0; min-width: 800px;" 
                         width="100%" 
-                        height="700" 
+                        height="600" 
                         frameborder="0" 
-                        scrolling="no"
+                        scrolling="yes"
                         title="Downtown Manteca District Events Calendar">
                 </iframe>
             </div>
