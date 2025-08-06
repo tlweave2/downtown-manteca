@@ -38,6 +38,7 @@
             justify-content: space-between;
             align-items: center;
             gap: 1.5rem;
+            position: relative;
         }
 
         .logo-container {
@@ -74,6 +75,37 @@
         .nav-links a:hover, .nav-links a.active {
             background: rgba(238, 167, 25, 0.2);
             transform: translateY(-2px);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+            border: none;
+            background: none;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
         }
 
         /* Page Header - Flat Design */
