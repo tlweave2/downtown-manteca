@@ -455,6 +455,31 @@
             margin-bottom: 2rem;
         }
 
+        /* Calendar Embed Section */
+        .calendar-embed-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            max-width: 1048px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .calendar-embed {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 2px solid #eea719;
+        }
+
+        .calendar-embed iframe {
+            width: 100%;
+            min-height: 700px;
+            border: none;
+        }
+
         .contact-meeting-section h2 {
             font-family: 'Roboto Slab', serif;
             font-size: 2rem;
@@ -729,6 +754,22 @@
             .view-calendar-btn {
                 padding: 0.8rem 1.5rem;
                 font-size: 1rem;
+            }
+
+            .calendar-embed-section {
+                padding: 1.5rem;
+                margin: 1rem auto;
+            }
+
+            .calendar-embed iframe {
+                min-height: 500px;
+                min-width: 350px;
+            }
+
+            .calendar-embed {
+                overflow-x: auto;
+                overflow-y: hidden;
+                -webkit-overflow-scrolling: touch;
             }
         }
 
