@@ -632,7 +632,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>Office Hours: Monday-Thursday 8:30am-4:00pm, Friday Closed</p>
+
                 <p>Copyright © 2025 Downtown Manteca District - All Rights Reserved.</p>
                 <p>Managed by Jane Media Services</p>
             </div>
@@ -642,7 +642,7 @@
     <script>
         // Configuration
         const GOOGLE_SHEETS_ID = '13zFJOIrKOGaJSuIZEQRjAS5trCD-qDBrvLO5dJcXO2I';
-        const API_KEY = 'AIzaSyA_D9VSFEaQn4XnMsjNLHg7qS999n4gl1M';
+    // const API_KEY = 'AIzaSyA_D9VSFEaQn4XnMsjNLHg7qS999n4gl1M'; // Removed unused API key
         const SHEET_NAME = 'Form Responses 1';
 
         // Global variables
@@ -667,7 +667,7 @@
         // Load businesses from Google Sheets
         async function loadBusinesses() {
             try {
-                const url = `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SHEETS_ID}/values/${SHEET_NAME}?key=${API_KEY}`;
+                const url = `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SHEETS_ID}/values/${SHEET_NAME}`;
                 
                 const response = await fetch(url);
                 const data = await response.json();
