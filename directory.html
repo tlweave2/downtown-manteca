@@ -644,7 +644,7 @@
         const GOOGLE_SHEETS_ID = '13zFJOIrKOGaJSuIZEQRjAS5trCD-qDBrvLO5dJcXO2I';
     // const API_KEY = 'AIzaSyA_D9VSFEaQn4XnMsjNLHg7qS999n4gl1M'; // Removed unused API key
         const SHEET_NAME = 'Form Responses 1';
-
+        const API_KEY = 'AIzaSyA_D9VSFEaQn4XnMsjNLHg7qS999n4gl1M';
         // Global variables
         let allBusinesses = [];
         let filteredBusinesses = [];
@@ -667,7 +667,7 @@
         // Load businesses from Google Sheets
         async function loadBusinesses() {
             try {
-                const url = `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SHEETS_ID}/values/${SHEET_NAME}`;
+                const url = `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SHEETS_ID}/values/${SHEET_NAME}?key=${API_KEY}`;
                 
                 const response = await fetch(url);
                 const data = await response.json();
