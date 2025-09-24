@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discover Downtown Manteca District</title>
+    
+    <!-- Preload critical images for better performance -->
+    <link rel="preload" as="image" href="img/carousel-1.jpg">
+    <link rel="preload" as="image" href="img/manteca-logo.webp">
+    
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -195,6 +200,9 @@
             justify-content: center;
             opacity: 0;
             transition: opacity 0.8s ease-in-out;
+            will-change: opacity;
+            backface-visibility: hidden;
+            transform: translateZ(0);
         }
 
         .carousel-slide.active {
@@ -920,6 +928,23 @@
             opacity: 0.95;
         }
 
+        /* Performance optimizations */
+        .lazy-load {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Optimize heavy elements */
+        .carousel-container, .event-popup-overlay {
+            will-change: transform;
+        }
+
         /* Mobile responsiveness for popup */
         @media (max-width: 768px) {
             .event-popup-content {
@@ -959,7 +984,7 @@
         <div class="event-popup-content">
             <button class="event-popup-close" onclick="closeEventPopup()">&times;</button>
             <a href="https://www.eventbrite.com/e/beer-wine-stroll-tickets-1588981048089?aff=oddtdtcreator" target="_blank" rel="noopener noreferrer" class="event-link">
-                <img src="img/beerwine.jpeg" alt="Beer & Wine Stroll - October 24, 2025 - Click to register on Eventbrite" class="event-popup-image">
+                <img data-src="img/beerwine.jpeg" alt="Beer & Wine Stroll - October 24, 2025 - Click to register on Eventbrite" class="event-popup-image lazy-load">
             </a>
             <p style="text-align: center; margin-top: 15px; color: #0a2b30; font-weight: 600;">
                 Click the image above to register for tickets on Eventbrite!
@@ -970,7 +995,10 @@
     <header>
         <nav class="container">
             <div class="logo-container">
-                <img src="img/manteca-logo.png" alt="Downtown Manteca District Logo" class="logo-img">
+                <picture>
+                    <source srcset="img/manteca-logo.webp" type="image/webp">
+                    <img src="img/manteca-logo.png" alt="Downtown Manteca District Logo" class="logo-img">
+                </picture>
             </div>
             <button class="hamburger" onclick="toggleMenu()">
                 <span></span>
@@ -992,35 +1020,35 @@
     <section>
         <div class="image-carousel">
             <div class="carousel-container">
-                <div class="carousel-slide active" style="background-image: url('img/carousel-1.jpg');">
+                <div class="carousel-slide active" style="background-image: url('img/carousel-1.jpg');" data-bg-loaded="true">
                     <div class="carousel-overlay"></div>
                     <div class="carousel-content">
                         <h2>Celebrating Our Local Arts & Culture</h2>
                         <p>Experience the vibrant creative spirit that defines Downtown Manteca</p>
                     </div>
                 </div>
-                <div class="carousel-slide" style="background-image: url('img/carousel-2.jpg');">
+                <div class="carousel-slide" data-bg="img/carousel-2.jpg">
                     <div class="carousel-overlay"></div>
                     <div class="carousel-content">
                         <h2>Historic Main Street Heritage</h2>
                         <p>Walk through history on our beautifully preserved Main Street</p>
                     </div>
                 </div>
-                <div class="carousel-slide" style="background-image: url('img/carousel-3.jpg');">
+                <div class="carousel-slide" data-bg="img/carousel-3.jpg">
                     <div class="carousel-overlay"></div>
                     <div class="carousel-content">
                         <h2>Community Events & Festivals</h2>
                         <p>Join us for year-round celebrations that bring our community together</p>
                     </div>
                 </div>
-                <div class="carousel-slide" style="background-image: url('img/carousel-4.jpg');">
+                <div class="carousel-slide" data-bg="img/carousel-4.jpg">
                     <div class="carousel-overlay"></div>
                     <div class="carousel-content">
                         <h2>Local Business & Shopping</h2>
                         <p>Support local entrepreneurs and discover unique finds in our shops</p>
                     </div>
                 </div>
-                <div class="carousel-slide" style="background-image: url('img/carousel-5.jpg');">
+                <div class="carousel-slide" data-bg="img/carousel-5.jpg">
                     <div class="carousel-overlay"></div>
                     <div class="carousel-content">
                         <h2>Dining & Culinary Excellence</h2>
@@ -1220,8 +1248,23 @@
             slides.forEach(slide => slide.classList.remove('active'));
             dots.forEach(dot => dot.classList.remove('active'));
             
+            // Lazy load background image if not already loaded
+            const currentSlide = slides[index];
+            if (currentSlide.dataset.bg && !currentSlide.dataset.bgLoaded) {
+                currentSlide.style.backgroundImage = `url('${currentSlide.dataset.bg}')`;
+                currentSlide.dataset.bgLoaded = 'true';
+            }
+            
+            // Preload next slide image for smooth transitions
+            const nextIndex = (index + 1) % totalSlides;
+            const nextSlide = slides[nextIndex];
+            if (nextSlide.dataset.bg && !nextSlide.dataset.bgLoaded) {
+                nextSlide.style.backgroundImage = `url('${nextSlide.dataset.bg}')`;
+                nextSlide.dataset.bgLoaded = 'true';
+            }
+            
             // Add active class to current slide and dot
-            slides[index].classList.add('active');
+            currentSlide.classList.add('active');
             dots[index].classList.add('active');
         }
 
@@ -1282,6 +1325,14 @@
         // Event Popup Functionality
         function showEventPopup() {
             const popup = document.getElementById('eventPopup');
+            const lazyImage = popup.querySelector('.lazy-load');
+            
+            // Load the popup image when showing popup
+            if (lazyImage && lazyImage.dataset.src) {
+                lazyImage.src = lazyImage.dataset.src;
+                lazyImage.classList.remove('lazy-load');
+            }
+            
             popup.classList.add('active');
             document.body.style.overflow = 'hidden'; // Prevent background scrolling
         }
