@@ -828,9 +828,105 @@
                 min-width: 280px;
             }
         }
+
+        /* Event Popup Modal */
+        .event-popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .event-popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .event-popup-content {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transform: scale(0.7);
+            transition: transform 0.3s ease;
+        }
+
+        .event-popup-overlay.active .event-popup-content {
+            transform: scale(1);
+        }
+
+        .event-popup-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: #ff4757;
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10001;
+        }
+
+        .event-popup-close:hover {
+            background: #ff3742;
+            transform: rotate(90deg);
+        }
+
+        .event-popup-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            display: block;
+        }
+
+        /* Mobile responsiveness for popup */
+        @media (max-width: 768px) {
+            .event-popup-content {
+                margin: 20px;
+                padding: 15px;
+                max-width: calc(100% - 40px);
+                max-height: calc(100% - 40px);
+            }
+
+            .event-popup-close {
+                top: 5px;
+                right: 10px;
+                width: 30px;
+                height: 30px;
+                font-size: 16px;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Event Popup Modal -->
+    <div id="eventPopup" class="event-popup-overlay">
+        <div class="event-popup-content">
+            <button class="event-popup-close" onclick="closeEventPopup()">&times;</button>
+            <img src="img/beerwine.jpeg" alt="Beer & Wine Stroll - October 24, 2025" class="event-popup-image">
+        </div>
+    </div>
+
     <header>
         <nav class="container">
             <div class="logo-container">
@@ -944,17 +1040,9 @@
         <section class="instagram-section">
             <h2>Follow Our Latest Updates</h2>
             <p>Stay connected with Downtown Manteca District on Instagram for the latest news, events, and community highlights.</p>
-            <div class="instagram-embeds">
-                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DM8p6h7N5ut/" data-instgrm-version="14">
-                    <a href="https://www.instagram.com/p/DM8p6h7N5ut/"></a>
-                </blockquote>
-                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DM5N13BO8Cb/" data-instgrm-version="14">
-                    <a href="https://www.instagram.com/p/DM5N13BO8Cb/"></a>
-                </blockquote>
-                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DMyXWvvIxKk/" data-instgrm-version="14">
-                    <a href="https://www.instagram.com/p/DMyXWvvIxKk/"></a>
-                </blockquote>
-            </div>
+            <!-- Elfsight Instagram Feed | Downtown Instagram Feed -->
+            <script src="https://elfsightcdn.com/platform.js" async></script>
+            <div class="elfsight-app-92139637-56f4-4171-ac7a-0c2eab9747f2" data-elfsight-app-lazy></div>
         </section>
 
         <section class="attractions-section" id="attractions">
@@ -1150,6 +1238,54 @@
                 hamburger.classList.remove('active');
             }
         });
+
+        // Event Popup Functionality
+        function showEventPopup() {
+            const popup = document.getElementById('eventPopup');
+            popup.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeEventPopup() {
+            const popup = document.getElementById('eventPopup');
+            popup.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Restore scrolling
+            
+            // Set a flag to not show popup again in this session
+            sessionStorage.setItem('eventPopupClosed', 'true');
+        }
+
+        // Close popup when clicking outside the content
+        document.getElementById('eventPopup').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeEventPopup();
+            }
+        });
+
+        // Close popup with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeEventPopup();
+            }
+        });
+
+        // Check if popup should be shown
+        function checkEventPopup() {
+            const today = new Date();
+            const eventDate = new Date('2025-10-24'); // October 24, 2025
+            const hasClosedPopup = sessionStorage.getItem('eventPopupClosed');
+            
+            // Show popup if:
+            // 1. Today is before or on the event date
+            // 2. User hasn't closed the popup in this session
+            if (today <= eventDate && !hasClosedPopup) {
+                // Show popup after a short delay to ensure page is loaded
+                setTimeout(showEventPopup, 1500);
+            }
+        }
+
+        // Initialize popup check when page loads
+        window.addEventListener('load', checkEventPopup);
     </script>
 </body>
 </html>
