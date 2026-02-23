@@ -292,6 +292,81 @@
             text-decoration: underline;
         }
 
+        /* Document List Items */
+        .document-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .document-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #eea719;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .document-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            border-left-color: #c44720;
+        }
+
+        .document-info {
+            flex: 1;
+        }
+
+        .document-info h4 {
+            font-family: 'Roboto Slab', serif;
+            color: #0a2b30;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .document-info p {
+            color: #035847;
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .document-meta {
+            font-size: 0.9rem;
+            color: #8d242f;
+            font-weight: 500;
+        }
+
+        .document-actions {
+            display: flex;
+            gap: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .doc-btn {
+            background: linear-gradient(45deg, #eea719, #c44720);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .doc-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(238, 167, 25, 0.4);
+        }
+
+        .doc-btn.secondary {
+            background: linear-gradient(45deg, #0a2b30, #035847);
+        }
+
         /* Footer */
         footer {
             background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
@@ -394,6 +469,20 @@
             .container {
                 padding: 0 15px;
             }
+            
+            .document-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .document-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .doc-btn {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -432,7 +521,10 @@
             
             <!-- Folder Navigation Tabs -->
             <div class="folder-tabs">
-                <button class="folder-tab active" onclick="showFolder('boardAgenda')">
+                <button class="folder-tab active" onclick="showFolder('rfpOpportunities')">
+                    💼 RFP/Opportunities
+                </button>
+                <button class="folder-tab" onclick="showFolder('boardAgenda')">
                     📋 Board Agendas
                 </button>
                 <button class="folder-tab" onclick="showFolder('boardPackets')">
@@ -452,8 +544,34 @@
                 </button>
             </div>
 
+            <!-- RFP/Opportunities -->
+            <div id="rfpOpportunities" class="document-container active">
+                <div class="container-header">
+                    <h3>💼 RFP/Opportunities</h3>
+                </div>
+                <div class="document-list">
+                    <div class="document-item">
+                        <div class="document-info">
+                            <h4>RFP: Downtown District Coordinator</h4>
+                            <p>The Downtown Manteca Improvement Association (DMIA) Board has approved a Request for Proposals to hire a consultant to serve as the District Coordinator. All qualified consultants are invited to submit proposals.</p>
+                            <div class="document-meta">
+                                📅 Posted: February 18, 2026 | 📧 Contact: info@downtownmanteca.com
+                            </div>
+                        </div>
+                        <div class="document-actions">
+                            <a href="docs/RFP%20for%20District%20Coordinator_2.18.2026.docx" class="doc-btn" download>
+                                📄 Download RFP
+                            </a>
+                            <a href="mailto:info@downtownmanteca.com?subject=RFP%20for%20District%20Coordinator" class="doc-btn secondary">
+                                📧 Email Questions
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Board Agendas -->
-            <div id="boardAgenda" class="document-container active">
+            <div id="boardAgenda" class="document-container">
                 <div class="container-header">
                     <h3>📋 Board Agendas</h3>
                     <div class="view-toggle">
