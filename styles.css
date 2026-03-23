@@ -192,7 +192,6 @@ main {
     padding: 3rem;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    border-top: 4px solid #eea719;
 }
 
 .intro-section h2 {
@@ -217,7 +216,6 @@ main {
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     margin-bottom: 3rem;
-    border-top: 4px solid #8d242f;
 }
 
 .events-section h2 {
@@ -286,13 +284,11 @@ main {
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
-    border-left: 4px solid #035847;
 }
 
 .attraction-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-    border-left-color: #eea719;
 }
 
 .attraction-card h3 {
