@@ -983,12 +983,25 @@
     <div id="eventPopup" class="event-popup-overlay">
         <div class="event-popup-content">
             <button class="event-popup-close" onclick="closeEventPopup()">&times;</button>
-            <a href="https://www.eventbrite.com/e/beer-wine-stroll-tickets-1588981048089?aff=oddtdtcreator" target="_blank" rel="noopener noreferrer" class="event-link">
-                <img data-src="img/beerwine.jpeg" alt="Beer & Wine Stroll - October 24, 2025 - Click to register on Eventbrite" class="event-popup-image lazy-load">
-            </a>
-            <p style="text-align: center; margin-top: 15px; color: #0a2b30; font-weight: 600;">
-                Click the image above to register for tickets on Eventbrite!
+            <div style="font-size: 28px; margin-bottom: 0.5rem; text-align: center;">🌮🎉🇲🇽</div>
+            <div style="display: inline-block; background: #FAEEDA; color: #854F0B; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; padding: 4px 14px; border-radius: 8px; margin-bottom: 1rem; text-transform: uppercase;">Vendor Call Now Open</div>
+            <h2 style="font-size: 22px; font-weight: 600; color: #111; margin: 0 0 0.25rem; text-align: center;">Cinco de Mayo</h2>
+            <p style="font-size: 15px; font-weight: 500; color: #3B6D11; margin: 0 0 1rem; text-align: center;">Downtown Manteca</p>
+            <p style="font-size: 14px; color: #555; line-height: 1.6; margin: 0 0 1rem; text-align: center;">
+                Join us as Downtown Manteca comes alive with vibrant music, traditional flavors, colorful performances, and local artisans at Library Park.
             </p>
+            <div style="background: #f5f5f3; border-radius: 8px; padding: 0.75rem 1rem; margin-bottom: 1.25rem; font-size: 13px; color: #111;">
+                <div style="margin-bottom: 4px;">📅 <strong>Saturday, May 2, 2026</strong></div>
+                <div>📍 <strong>Library Park | 320 W Center Street</strong></div>
+            </div>
+            <p style="font-size: 13px; color: #666; margin: 0 0 1.25rem; text-align: center;">Food vendors, artisans, makers & small businesses welcome. Space is limited - apply early!</p>
+            <a href="docs/DMIA%20Vendor%20Application.pdf" download style="display: block; background: #3B6D11; color: #EAF3DE; text-decoration: none; padding: 12px; border-radius: 8px; font-size: 14px; font-weight: 600; margin-bottom: 0.75rem; text-align: center;">
+                📄 Download Vendor Application
+            </a>
+            <a href="mailto:info@downtownmanteca.com" style="display: block; background: #fff; color: #3B6D11; text-decoration: none; padding: 12px; border-radius: 8px; font-size: 14px; font-weight: 500; margin-bottom: 0.75rem; border: 1px solid #3B6D11; text-align: center;">
+                📧 Email Us - info@downtownmanteca.com
+            </a>
+            <p style="font-size: 12px; color: #aaa; margin: 0; text-align: center;">#DowntownManteca   #CincoDeMayo   #MantecaEvents</p>
         </div>
     </div>
 
@@ -1086,6 +1099,13 @@
             <p style="text-align: center; font-size: 1.1rem; color: #035847; margin-bottom: 2rem;">
                 Join us for exciting events throughout the year that celebrate our community, culture, and local businesses.
             </p>
+            <div class="events-grid">
+                <div class="event-card" onclick="window.location.href='events.html'">
+                    <div class="event-date">2</div>
+                    <div class="event-month">May 2026</div>
+                    <div class="event-title">🌮 Cinco de Mayo at Library Park</div>
+                </div>
+            </div>
             <div class="events-cta">
                 <a href="events.html" class="view-calendar-btn">View Full Calendar & Event Details →</a>
             </div>
@@ -1322,14 +1342,6 @@
         // Event Popup Functionality
         function showEventPopup() {
             const popup = document.getElementById('eventPopup');
-            const lazyImage = popup.querySelector('.lazy-load');
-            
-            // Load the popup image when showing popup
-            if (lazyImage && lazyImage.dataset.src) {
-                lazyImage.src = lazyImage.dataset.src;
-                lazyImage.classList.remove('lazy-load');
-            }
-            
             popup.classList.add('active');
             document.body.style.overflow = 'hidden'; // Prevent background scrolling
         }
@@ -1360,7 +1372,7 @@
         // Check if popup should be shown
         function checkEventPopup() {
             const today = new Date();
-            const eventDate = new Date('2025-10-24'); // October 24, 2025
+            const eventDate = new Date('2026-05-02'); // Cinco de Mayo event
             const hasClosedPopup = sessionStorage.getItem('eventPopupClosed');
             
             // Show popup if:
