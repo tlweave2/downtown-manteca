@@ -34,7 +34,8 @@
         .intro { margin-bottom: 50px; }
         .intro h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 0.75rem; }
         .intro p { color: #555; font-size: 1rem; line-height: 1.7; max-width: 620px; }
-        .concepts { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .concepts { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+        @media (max-width: 960px) { .concepts { grid-template-columns: 1fr; } }
         .concept-card {
             background: #fff; border-radius: 12px; overflow: hidden;
             box-shadow: 0 2px 12px rgba(0,0,0,0.07);
@@ -72,8 +73,17 @@
 
         footer { background: #0f1a1c; color: rgba(255,255,255,0.35); text-align: center; padding: 20px; font-size: 0.78rem; }
 
+        /* Concept C preview */
+        .preview-c { background: #1c1c1c; height: 220px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .preview-c-bg { position: absolute; inset: 0; background: url('img/carousel-1.jpg') center/cover; opacity: 0.45; }
+        .preview-c-text { position: relative; z-index: 2; text-align: center; padding: 24px; }
+        .preview-c .lbl { font-size: 0.52rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 10px; }
+        .preview-c .ttl { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 400; color: #fff; line-height: 1.05; }
+        .preview-c .ttl em { font-style: italic; }
+        .preview-c .btn { margin-top: 16px; display: inline-block; background: #b8975a; color: #1c1c1c; font-size: 0.52rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 7px 16px; }
+        .tag-c { background: #f0ece4; color: #4a3820; }
+
         @media (max-width: 700px) {
-            .concepts { grid-template-columns: 1fr; }
             header { padding: 20px; }
             main { padding: 40px 20px; }
         }
@@ -89,7 +99,7 @@
     <main>
         <div class="intro">
             <h2>Website Design Concepts</h2>
-            <p>Two redesign directions for downtownmanteca.com — each uses your real photos, content, and branding. Click a concept to view the full page.</p>
+            <p>Three redesign directions for downtownmanteca.com — each uses your real photos, content, and branding. Click a concept to view the full page.</p>
         </div>
 
         <div class="concepts">
@@ -138,6 +148,32 @@
                         <span class="trait">Cream palette</span>
                     </div>
                     <span class="view-btn">View Concept B →</span>
+                </div>
+            </a>
+
+            <!-- Concept C -->
+            <a href="preview-boutique.html" class="concept-card">
+                <div class="preview-c">
+                    <div class="preview-c-bg"></div>
+                    <div class="preview-c-text">
+                        <div class="lbl">Manteca, California</div>
+                        <div class="ttl">Downtown<br><em>Manteca</em></div>
+                        <div class="btn">Upcoming Events</div>
+                    </div>
+                </div>
+                <div class="concept-body">
+                    <span class="concept-tag tag-c">Concept C</span>
+                    <h3>Boutique</h3>
+                    <p>Clean, whitespace-heavy layout inspired by downtownbirmingham.com (Michigan). Centered hero with image (replacing their video), elegant serif type, airy event cards, and minimal color use.</p>
+                    <div class="concept-traits">
+                        <span class="trait">Cormorant Garamond + Jost</span>
+                        <span class="trait">Image hero</span>
+                        <span class="trait">White nav</span>
+                        <span class="trait">Event card grid</span>
+                        <span class="trait">Split section</span>
+                        <span class="trait">Max whitespace</span>
+                    </div>
+                    <span class="view-btn">View Concept C →</span>
                 </div>
             </a>
         </div>

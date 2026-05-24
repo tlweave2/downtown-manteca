@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concept C: Boutique — Downtown Manteca District</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+        :root {
+            --white: #ffffff;
+            --off: #f8f6f3;
+            --ink: #1c1c1c;
+            --mid: #555;
+            --brass: #b8975a;
+            --green: #3d6b52;
+            --border: #e4dfd8;
+        }
+
+        body { font-family: 'Jost', sans-serif; background: var(--white); color: var(--ink); line-height: 1.65; }
+
+        /* Preview badge */
+        .preview-badge {
+            position: fixed; top: 12px; right: 12px; z-index: 9999;
+            background: var(--ink); color: #fff; font-size: 11px; font-weight: 600;
+            letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 14px; border-radius: 4px;
+        }
+        .preview-badge a { color: var(--brass); text-decoration: none; }
+
+        /* NAV */
+        header {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(255,255,255,0.97);
+            border-bottom: 1px solid var(--border);
+            transition: box-shadow 0.3s;
+        }
+        header.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.07); }
+        nav { max-width: 1280px; margin: 0 auto; padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 70px; }
+        .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .nav-logo img { width: 42px; height: 42px; border-radius: 50%; }
+        .nav-logo-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: var(--ink); letter-spacing: 0.03em; line-height: 1.2; }
+        .nav-logo-name span { display: block; font-family: 'Jost', sans-serif; font-size: 0.62rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); }
+        .nav-links { display: flex; list-style: none; gap: 2.25rem; }
+        .nav-links a { color: var(--mid); text-decoration: none; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--ink); }
+        .nav-cta { background: var(--ink); color: #fff !important; padding: 8px 18px; border-radius: 2px; transition: background 0.2s !important; }
+        .nav-cta:hover { background: var(--brass) !important; color: #fff !important; }
+
+        /* HERO */
+        .hero { height: 92vh; min-height: 580px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; margin-top: 70px; }
+        .hero-img { position: absolute; inset: 0; background: url('img/carousel-1.jpg') center/cover no-repeat; }
+        .hero-overlay { position: absolute; inset: 0; background: rgba(20,20,20,0.38); }
+        .hero-content { position: relative; z-index: 2; text-align: center; padding: 0 32px; max-width: 860px; }
+        .hero-sup { display: inline-block; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.75); margin-bottom: 1.5rem; }
+        .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.2rem, 8vw, 7rem); font-weight: 300; color: #fff; line-height: 1.0; letter-spacing: -0.01em; margin-bottom: 1.5rem; }
+        .hero h1 em { font-style: italic; font-weight: 300; }
+        .hero-sub { font-size: 1rem; font-weight: 300; color: rgba(255,255,255,0.82); max-width: 500px; margin: 0 auto 2.5rem; line-height: 1.75; }
+        .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+        .btn-white { display: inline-block; background: #fff; color: var(--ink); text-decoration: none; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px 30px; transition: all 0.2s; }
+        .btn-white:hover { background: var(--brass); color: #fff; }
+        .btn-outline-white { display: inline-block; background: transparent; color: #fff; text-decoration: none; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px 30px; border: 1px solid rgba(255,255,255,0.55); transition: all 0.2s; }
+        .btn-outline-white:hover { background: rgba(255,255,255,0.12); border-color: #fff; }
+
+        /* INTRO */
+        .intro { padding: 100px 48px; text-align: center; }
+        .intro-inner { max-width: 760px; margin: 0 auto; }
+        .eyebrow { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brass); margin-bottom: 1.25rem; display: block; }
+        .intro h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 400; color: var(--ink); line-height: 1.25; margin-bottom: 1.5rem; }
+        .intro h2 em { font-style: italic; color: var(--green); }
+        .intro p { font-size: 1rem; color: var(--mid); line-height: 1.82; margin-bottom: 1rem; }
+        .divider { width: 48px; height: 1px; background: var(--brass); margin: 2.5rem auto 0; }
+
+        /* EVENTS */
+        .events { background: var(--off); padding: 100px 48px; }
+        .events-inner { max-width: 1280px; margin: 0 auto; }
+        .section-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 56px; }
+        .section-header h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 400; color: var(--ink); }
+        .see-all { color: var(--brass); text-decoration: none; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; border-bottom: 1px solid var(--brass); padding-bottom: 2px; white-space: nowrap; transition: color 0.2s; }
+        .see-all:hover { color: var(--ink); border-color: var(--ink); }
+        .events-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+        .event-card { background: var(--white); padding: 36px 32px; transition: box-shadow 0.25s; }
+        .event-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+        .event-card-date { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 300; color: var(--brass); line-height: 1; margin-bottom: 4px; }
+        .event-card-mo { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+        .event-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: var(--ink); margin-bottom: 10px; line-height: 1.3; }
+        .event-card p { font-size: 0.88rem; color: var(--mid); line-height: 1.65; margin-bottom: 24px; }
+        .event-card-link { color: var(--green); text-decoration: none; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 6px; transition: gap 0.2s, color 0.2s; }
+        .event-card-link:hover { gap: 10px; color: var(--brass); }
+
+        /* SPLIT */
+        .split { display: grid; grid-template-columns: 1fr 1fr; min-height: 520px; }
+        .split-photo { background: url('img/manteca-top.jpg') center/cover no-repeat; }
+        .split-text { background: var(--ink); display: flex; flex-direction: column; justify-content: center; padding: 80px 72px; }
+        .split-text .eyebrow { color: var(--brass); }
+        .split-text h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 400; color: #fff; line-height: 1.25; margin-bottom: 1.5rem; }
+        .split-text h2 em { font-style: italic; }
+        .split-text p { font-size: 0.95rem; color: rgba(255,255,255,0.68); line-height: 1.8; margin-bottom: 2rem; }
+        .btn-brass { display: inline-block; background: var(--brass); color: var(--ink); text-decoration: none; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px 28px; transition: all 0.2s; }
+        .btn-brass:hover { background: #a07e45; color: #fff; }
+
+        /* PILLARS */
+        .pillars { padding: 100px 48px; }
+        .pillars-inner { max-width: 1280px; margin: 0 auto; }
+        .pillars-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 400; color: var(--ink); text-align: center; margin-bottom: 64px; }
+        .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 64px; }
+        .pillar { text-align: center; }
+        .pillar-icon { width: 48px; height: 48px; border: 1px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
+        .pillar-icon svg { width: 20px; height: 20px; stroke: var(--brass); fill: none; stroke-width: 1.5; }
+        .pillar h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: var(--ink); margin-bottom: 10px; }
+        .pillar p { font-size: 0.9rem; color: var(--mid); line-height: 1.75; }
+
+        /* MEETINGS */
+        .meetings { background: var(--off); padding: 80px 48px; }
+        .meetings-inner { max-width: 800px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+        .meetings h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 400; color: var(--ink); margin-bottom: 1rem; }
+        .meetings p { font-size: 0.93rem; color: var(--mid); line-height: 1.78; margin-bottom: 1.5rem; }
+        .meetings-info { border-left: 2px solid var(--brass); padding-left: 24px; }
+        .meetings-info p { font-size: 0.88rem; color: var(--mid); margin-bottom: 8px; line-height: 1.6; }
+        .meetings-info strong { color: var(--ink); font-weight: 600; }
+        .btn-green { display: inline-block; background: var(--green); color: #fff; text-decoration: none; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 12px 26px; transition: background 0.2s; }
+        .btn-green:hover { background: #2f5440; }
+
+        /* NEWSLETTER */
+        .newsletter { padding: 90px 48px; text-align: center; border-top: 1px solid var(--border); }
+        .newsletter-inner { max-width: 520px; margin: 0 auto; }
+        .newsletter h3 { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 400; color: var(--ink); margin-bottom: 0.5rem; }
+        .newsletter p { font-size: 0.93rem; color: var(--mid); margin-bottom: 2rem; }
+        .nl-form { display: flex; border: 1px solid var(--border); }
+        .nl-form input { flex: 1; padding: 13px 18px; border: none; font-family: 'Jost', sans-serif; font-size: 0.92rem; color: var(--ink); background: var(--off); outline: none; }
+        .nl-form input::placeholder { color: #aaa; }
+        .nl-form button { background: var(--ink); color: #fff; border: none; padding: 13px 24px; font-family: 'Jost', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+        .nl-form button:hover { background: var(--brass); }
+
+        /* FOOTER */
+        footer { background: var(--ink); color: rgba(255,255,255,0.5); padding: 72px 48px 36px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 56px; max-width: 1280px; margin: 0 auto 56px; }
+        .footer-brand img { width: 50px; height: 50px; border-radius: 50%; background: white; margin-bottom: 14px; display: block; }
+        .footer-brand p { font-size: 0.86rem; line-height: 1.72; color: rgba(255,255,255,0.42); max-width: 230px; }
+        .footer-col h5 { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 600; color: var(--brass); margin-bottom: 18px; letter-spacing: 0.04em; }
+        .footer-col a { display: block; color: rgba(255,255,255,0.48); text-decoration: none; font-size: 0.86rem; margin-bottom: 10px; transition: color 0.2s; }
+        .footer-col a:hover { color: var(--brass); }
+        .footer-col p { font-size: 0.86rem; color: rgba(255,255,255,0.42); margin-bottom: 6px; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 28px; display: flex; justify-content: space-between; max-width: 1280px; margin: 0 auto; font-size: 0.76rem; color: rgba(255,255,255,0.28); flex-wrap: wrap; gap: 8px; }
+
+        @media (max-width: 960px) {
+            .events-grid { grid-template-columns: 1fr; gap: 2px; }
+            .split { grid-template-columns: 1fr; }
+            .split-photo { height: 300px; }
+            .split-text { padding: 56px 32px; }
+            .pillars-grid { grid-template-columns: 1fr; gap: 40px; }
+            .meetings-inner { grid-template-columns: 1fr; gap: 40px; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+            nav { padding: 0 20px; }
+            .nav-links { display: none; }
+            .hero-content { padding: 0 24px; }
+            .intro, .events, .pillars, .meetings, .newsletter { padding-left: 24px; padding-right: 24px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-badge">Concept C — Boutique &nbsp;|&nbsp; <a href="preview.html">← Back to hub</a></div>
+
+    <header id="site-header">
+        <nav>
+            <a href="#" class="nav-logo">
+                <img src="img/manteca-logo.png" alt="Downtown Manteca District">
+                <div class="nav-logo-name">
+                    Downtown Manteca
+                    <span>District</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Events</a></li>
+                <li><a href="#">Business</a></li>
+                <li><a href="#">Documents</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#" class="nav-cta">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO — image in place of video -->
+    <section class="hero">
+        <div class="hero-img"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-sup">Manteca, California</span>
+            <h1>Downtown<br><em>Manteca</em></h1>
+            <p class="hero-sub">The cultural and historic heart of our city — where community, local business, and Manteca's unique spirit come together.</p>
+            <div class="hero-actions">
+                <a href="#" class="btn-white">Upcoming Events</a>
+                <a href="#" class="btn-outline-white">Business Directory</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTRO -->
+    <section class="intro">
+        <div class="intro-inner">
+            <span class="eyebrow">Who We Are</span>
+            <h2>A district built on <em>community,</em><br>shaped by the people who call it home.</h2>
+            <p>Downtown Manteca District is the cultural and historical heart of our city, where tradition meets innovation. Our district features a vibrant mix of locally-owned businesses, restaurants, and cultural attractions that showcase the best of what Manteca has to offer.</p>
+            <p>From seasonal events to monthly meetings open to all, we foster economic growth and community connection for residents and visitors alike.</p>
+            <div class="divider"></div>
+        </div>
+    </section>
+
+    <!-- EVENTS -->
+    <section class="events">
+        <div class="events-inner">
+            <div class="section-header">
+                <div>
+                    <span class="eyebrow">What's On</span>
+                    <h2>Upcoming Events</h2>
+                </div>
+                <a href="#" class="see-all">View Full Calendar →</a>
+            </div>
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-card-date">20</div>
+                    <div class="event-card-mo">June 2026 &nbsp;·&nbsp; 8:30 AM</div>
+                    <h3>Pilates in the Park</h3>
+                    <p>Library Park, Downtown Manteca. Bloom bar, photo booth, coffee cart &amp; giveaways. Hosted in partnership with Tone Reformer Pilates Studio.</p>
+                    <a href="https://www.eventbrite.com/e/pilates-in-the-park-tickets-1990128445754?aff=oddtdtcreator&keep_tld=true" target="_blank" class="event-card-link">Get Tickets →</a>
+                </div>
+                <div class="event-card">
+                    <div class="event-card-date">2</div>
+                    <div class="event-card-mo">May 2026</div>
+                    <h3>Cinco de Mayo at Library Park</h3>
+                    <p>Library Park · 320 W Center Street. Music, traditional flavors, artisans, and community — in the heart of downtown. Car Show Full.</p>
+                    <a href="#" class="event-card-link">Event Details →</a>
+                </div>
+                <div class="event-card">
+                    <div class="event-card-date" style="font-size:2rem;line-height:1.4;">Monthly</div>
+                    <div class="event-card-mo">Board &amp; Committee Meetings</div>
+                    <h3>Join Us at Our Meetings</h3>
+                    <p>Deaf Puppy Comedy Club, 127 N Main St. Open to business owners and community members throughout the month.</p>
+                    <a href="#" class="event-card-link">View Schedule →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPLIT -->
+    <section class="split">
+        <div class="split-photo"></div>
+        <div class="split-text">
+            <span class="eyebrow">Our Story</span>
+            <h2>The heart of <em>Manteca,</em><br>shaped by community.</h2>
+            <p>Downtown Manteca District is committed to preserving our rich heritage while fostering economic growth, local commerce, and meaningful community connection — year round.</p>
+            <a href="#" class="btn-brass">Learn About the District</a>
+        </div>
+    </section>
+
+    <!-- PILLARS -->
+    <section class="pillars">
+        <div class="pillars-inner">
+            <h2 class="pillars-heading">What We Do</h2>
+            <div class="pillars-grid">
+                <div class="pillar">
+                    <div class="pillar-icon">
+                        <svg viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    </div>
+                    <h3>Events &amp; Festivals</h3>
+                    <p>Year-round programming that brings our community together — from Cinco de Mayo at Library Park to outdoor fitness events and seasonal celebrations.</p>
+                </div>
+                <div class="pillar">
+                    <div class="pillar-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                    </div>
+                    <h3>Local Business Support</h3>
+                    <p>We champion the locally-owned shops, restaurants, and services that make Downtown Manteca a unique destination for residents and visitors.</p>
+                </div>
+                <div class="pillar">
+                    <div class="pillar-icon">
+                        <svg viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    </div>
+                    <h3>Community Governance</h3>
+                    <p>Open monthly board and committee meetings at Deaf Puppy Comedy Club, 127 N Main St — where business owners and residents shape the future of downtown together.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MEETINGS -->
+    <section class="meetings">
+        <div class="meetings-inner">
+            <div>
+                <span class="eyebrow">Get Involved</span>
+                <h2>Monthly Meetings</h2>
+                <p>Join us for board and committee meetings throughout the month. Your voice helps shape the future of Downtown Manteca.</p>
+                <a href="#" class="btn-green">View Schedule</a>
+            </div>
+            <div class="meetings-info">
+                <p><strong>Location</strong><br>Deaf Puppy Comedy Club<br>127 N Main St, Manteca</p>
+                <p style="margin-top:20px;"><strong>Contact</strong><br>info@downtownmanteca.com<br>(209) 214-7555</p>
+                <p style="margin-top:20px;"><strong>Address</strong><br>123 W. Yosemite Ave.<br>Manteca, CA 95336</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter">
+        <div class="newsletter-inner">
+            <span class="eyebrow">Stay Connected</span>
+            <h3>Let's Stay in Touch</h3>
+            <p>Monthly updates on events, business news, and everything happening in Downtown Manteca.</p>
+            <form class="nl-form">
+                <input type="email" placeholder="Your email address">
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <img src="img/manteca-logo.png" alt="Downtown Manteca District">
+                <p>The cultural and historic heart of Manteca, California — supporting local businesses and building community.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Navigate</h5>
+                <a href="#">Home</a>
+                <a href="#">Events</a>
+                <a href="#">Business Directory</a>
+                <a href="#">Documents</a>
+                <a href="#">About Us</a>
+                <a href="#">Contact</a>
+            </div>
+            <div class="footer-col">
+                <h5>Connect</h5>
+                <a href="https://www.facebook.com/profile.php?id=61573494300309" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com/downtownmanteca/" target="_blank">Instagram</a>
+                <a href="https://linktr.ee/downtownmanteca" target="_blank">Linktree</a>
+                <a href="mailto:info@downtownmanteca.com">Email Us</a>
+            </div>
+            <div class="footer-col">
+                <h5>Contact</h5>
+                <p>123 W. Yosemite Ave.</p>
+                <p>Manteca, CA 95336</p>
+                <p style="margin-top:10px;">(209) 214-7555</p>
+                <p>info@downtownmanteca.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2025 Downtown Manteca District. All Rights Reserved.</span>
+            <span>Managed by Jane Media Services</span>
+        </div>
+    </footer>
+
+    <script>
+        const header = document.getElementById('site-header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 30);
+        });
+    </script>
+</body>
+</html>
