@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Concepts — Downtown Manteca District</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8f7f4;
+            color: #1a1a1a;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            background: #0f1a1c;
+            padding: 24px 40px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        header img { width: 48px; height: 48px; border-radius: 50%; background: white; }
+        header h1 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #fff; }
+        header span {
+            font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em;
+            text-transform: uppercase; color: #c8a84b; margin-left: 16px;
+            background: rgba(200,168,75,0.12); padding: 4px 12px;
+            border-radius: 4px; border: 1px solid rgba(200,168,75,0.3);
+        }
+        main { flex: 1; max-width: 1100px; margin: 0 auto; padding: 60px 40px; width: 100%; }
+        .intro { margin-bottom: 50px; }
+        .intro h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 0.75rem; }
+        .intro p { color: #555; font-size: 1rem; line-height: 1.7; max-width: 620px; }
+        .concepts { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .concept-card {
+            background: #fff; border-radius: 12px; overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none; color: inherit; display: block;
+        }
+        .concept-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.12); }
+
+        /* Concept A preview */
+        .preview-a { background: #0f1a1c; height: 220px; padding: 32px; display: flex; flex-direction: column; justify-content: center; }
+        .preview-a .lbl { font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: #c8a84b; margin-bottom: 8px; }
+        .preview-a .ttl { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: #fff; line-height: 1.05; }
+        .preview-a .sub { font-size: 0.62rem; color: rgba(255,255,255,0.45); margin-top: 10px; line-height: 1.5; }
+        .preview-a .btn { margin-top: 14px; display: inline-block; background: #c8a84b; color: #0f1a1c; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 7px 16px; }
+
+        /* Concept B preview */
+        .preview-b { height: 220px; display: grid; grid-template-columns: 1fr 1fr; }
+        .preview-b-photo { background: url('img/carousel-1.jpg') center/cover; }
+        .preview-b-text { background: #faf7f2; padding: 24px 20px; display: flex; flex-direction: column; justify-content: center; }
+        .preview-b .lbl { font-size: 0.5rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #c8602a; margin-bottom: 8px; }
+        .preview-b .ttl { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: #2c1810; line-height: 1.2; }
+        .preview-b .ttl em { font-style: italic; color: #4a7059; }
+        .preview-b .btn { margin-top: 14px; display: inline-block; background: #c8602a; color: #fff; font-size: 0.5rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 14px; border-radius: 4px; }
+
+        .concept-body { padding: 28px 28px 32px; }
+        .concept-tag { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 10px; border-radius: 4px; margin-bottom: 10px; }
+        .tag-a { background: #f0ece4; color: #5c4a1e; }
+        .tag-b { background: #fdeee8; color: #8a3315; }
+        .concept-body h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 0.6rem; }
+        .concept-body p { font-size: 0.9rem; color: #555; line-height: 1.6; margin-bottom: 1.25rem; }
+        .concept-traits { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.5rem; }
+        .trait { font-size: 0.72rem; font-weight: 600; color: #444; background: #f4f2ee; padding: 4px 10px; border-radius: 4px; }
+        .view-btn { display: inline-block; background: #1a1a1a; color: #fff; text-decoration: none; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 11px 24px; border-radius: 6px; transition: background 0.2s; }
+        .view-btn:hover { background: #333; }
+
+        footer { background: #0f1a1c; color: rgba(255,255,255,0.35); text-align: center; padding: 20px; font-size: 0.78rem; }
+
+        @media (max-width: 700px) {
+            .concepts { grid-template-columns: 1fr; }
+            header { padding: 20px; }
+            main { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="img/manteca-logo.png" alt="Downtown Manteca District">
+        <h1>Downtown Manteca District</h1>
+        <span>Internal Preview</span>
+    </header>
+
+    <main>
+        <div class="intro">
+            <h2>Website Design Concepts</h2>
+            <p>Two redesign directions for downtownmanteca.com — each uses your real photos, content, and branding. Click a concept to view the full page.</p>
+        </div>
+
+        <div class="concepts">
+            <a href="preview-editorial.html" class="concept-card">
+                <div class="preview-a">
+                    <div class="lbl">Manteca, California</div>
+                    <div class="ttl">Downtown<br>Manteca.</div>
+                    <div class="sub">The cultural and historic heart of our city —<br>where tradition meets community.</div>
+                    <div class="btn">Explore Events</div>
+                </div>
+                <div class="concept-body">
+                    <span class="concept-tag tag-a">Concept A</span>
+                    <h3>Editorial</h3>
+                    <p>Clean, magazine-style layout inspired by downtownbhm.com. Bold serif type, full-bleed photography, no gradients or pill buttons. Feels premium and authoritative.</p>
+                    <div class="concept-traits">
+                        <span class="trait">Playfair Display + Inter</span>
+                        <span class="trait">Dark nav</span>
+                        <span class="trait">Full-bleed hero</span>
+                        <span class="trait">Event list rows</span>
+                        <span class="trait">Photo grid</span>
+                        <span class="trait">No gradients</span>
+                    </div>
+                    <span class="view-btn">View Concept A →</span>
+                </div>
+            </a>
+
+            <a href="preview-warm.html" class="concept-card">
+                <div class="preview-b">
+                    <div class="preview-b-photo"></div>
+                    <div class="preview-b-text">
+                        <div class="lbl">Manteca, CA</div>
+                        <div class="ttl">Where Downtown<br><em>Comes Alive.</em></div>
+                        <div class="btn">Upcoming Events</div>
+                    </div>
+                </div>
+                <div class="concept-body">
+                    <span class="concept-tag tag-b">Concept B</span>
+                    <h3>Warm Local</h3>
+                    <p>Inviting, community-centered layout inspired by downtownsanrafael.org. Split-screen hero, cream background, terracotta accents. Feels approachable and human.</p>
+                    <div class="concept-traits">
+                        <span class="trait">Lora + Nunito</span>
+                        <span class="trait">Sticky white nav</span>
+                        <span class="trait">Split-screen hero</span>
+                        <span class="trait">Date circles</span>
+                        <span class="trait">Feature photo grid</span>
+                        <span class="trait">Cream palette</span>
+                    </div>
+                    <span class="view-btn">View Concept B →</span>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <footer>Internal design preview — not linked from the live site &nbsp;·&nbsp; Downtown Manteca District</footer>
+</body>
+</html>
