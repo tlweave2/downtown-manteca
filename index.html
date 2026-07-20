@@ -1093,18 +1093,45 @@
             }
         });
 
-        // Newsletter form handling
+        // Newsletter form handling — saves signups to a Google Sheet.
+        // Setup: see NEWSLETTER_SETUP.md in the repo, then paste your
+        // Apps Script web app URL below.
+        const NEWSLETTER_SCRIPT_URL = '';
+
         document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            const email = this.querySelector('input[type="email"]').value;
-            
+            const emailInput = this.querySelector('input[type="email"]');
+            const submitBtn = this.querySelector('button');
+            const email = emailInput.value.trim();
+
             // Basic email validation
-            if (email && email.includes('@')) {
-                alert('Thank you for subscribing to our newsletter!');
-                this.querySelector('input[type="email"]').value = '';
-            } else {
+            if (!email || !email.includes('@')) {
                 alert('Please enter a valid email address.');
+                return;
             }
+
+            if (!NEWSLETTER_SCRIPT_URL) {
+                alert('Newsletter signup is not available right now. Please email us at info@downtownmanteca.com to subscribe.');
+                return;
+            }
+
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Signing up...';
+            submitBtn.disabled = true;
+
+            fetch(NEWSLETTER_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: new URLSearchParams({ email: email })
+            }).then(function() {
+                alert('Thank you for subscribing to our newsletter!');
+                emailInput.value = '';
+            }).catch(function() {
+                alert('Sorry, something went wrong. Please try again later.');
+            }).finally(function() {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
         });
 
         // Image Carousel Functionality
