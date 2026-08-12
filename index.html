@@ -554,58 +554,6 @@
             text-decoration: underline;
         }
 
-        /* Newsletter Section */
-        .newsletter-section {
-            text-align: center;
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: rgba(255,255,255,0.1);
-            border-radius: 15px;
-        }
-
-        .newsletter-section h3 {
-            font-family: 'Roboto Slab', serif;
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .newsletter-section p {
-            margin-bottom: 1.5rem;
-            opacity: 0.9;
-        }
-
-        .newsletter-form {
-            display: flex;
-            max-width: 400px;
-            margin: 0 auto;
-            gap: 0.5rem;
-        }
-
-        .newsletter-form input {
-            flex: 1;
-            padding: 0.8rem 1rem;
-            border: none;
-            border-radius: 25px;
-            font-size: 1rem;
-        }
-
-        .newsletter-form button {
-            background: linear-gradient(45deg, #eea719, #c44720);
-            color: white;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .newsletter-form button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(238, 167, 25, 0.4);
-        }
-
         /* Footer */
         footer {
             background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
@@ -780,11 +728,6 @@
             
             .container {
                 padding: 0 15px;
-            }
-            
-            .newsletter-form {
-                flex-direction: column;
-                gap: 1rem;
             }
             
             .footer-bottom {
@@ -1015,16 +958,6 @@
 
     <footer id="contact">
         <div class="container">
-            <!-- Newsletter Signup -->
-            <div class="newsletter-section">
-                <h3>Let's stay in touch!</h3>
-                <p>Join our monthly Newsletter to receive news and updates</p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Email Address" required>
-                    <button type="submit">Submit</button>
-                </form>
-            </div>
-
             <div class="footer-content">
                 <div class="footer-section">
                     <h4>Contact Info</h4>
@@ -1088,32 +1021,6 @@
                 header.style.background = 'linear-gradient(135deg, #0a2b30 0%, #035847 100%)';
                 header.style.backdropFilter = 'none';
             }
-        });
-
-        // Newsletter form handling
-        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = this.querySelector('input[type="email"]').value;
-            
-            // Basic email validation
-            if (!email || !email.includes('@')) {
-                alert('Please enter a valid email address.');
-                return;
-            }
-
-            // No server here to record a subscriber, so send the request to a
-            // real inbox rather than pretending it was saved. Replace this with
-            // a mailing-list signup if DMIA adopts one.
-            const mailto = 'mailto:info@downtownmanteca.com'
-                + '?subject=' + encodeURIComponent('[Website] Newsletter signup')
-                + '&body=' + encodeURIComponent(
-                    'Please add this address to the Downtown Manteca newsletter list:\n\n' + email);
-
-            window.location.href = mailto;
-
-            alert('Your email program should now open with a short signup message ready to send. '
-                + 'Press send there and we will add you to the list.\n\n'
-                + 'If nothing opened, email info@downtownmanteca.com and ask to be subscribed.');
         });
 
         // Image Carousel Functionality

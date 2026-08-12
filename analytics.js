@@ -89,6 +89,5 @@ var GA_MEASUREMENT_ID = 'G-NC0NFD6XXK';
 
     document.addEventListener('DOMContentLoaded', function () {
         trackSubmit(document.getElementById('contact-form'), 'contact_form_submit');
-        trackSubmit(document.querySelector('.newsletter-form'), 'newsletter_signup');
     });
 })();
