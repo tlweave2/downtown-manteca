@@ -1,19 +1,19 @@
 // Downtown Manteca — site analytics (Google Analytics 4)
 //
 // ---------------------------------------------------------------------------
-// SETUP: paste your GA4 Measurement ID below, then commit.
+// This file replaces the copy-and-paste gtag snippet Google hands you during
+// setup. It does the same job from one place, so the tag never has to be kept
+// in sync across a dozen pages. Every live page loads it from its <head>.
 //
-//   1. Go to analytics.google.com and create a property for downtownmanteca.com
-//   2. Admin -> Data Streams -> add a Web stream for https://downtownmanteca.com
-//   3. Copy the Measurement ID (it looks like G-ABC1234XYZ)
-//   4. Replace the empty string below with it
+// The Measurement ID below belongs to the GA4 web stream for
+// downtownmanteca.com. It is not a secret — measurement IDs are visible in the
+// page source of any site running Google Analytics.
 //
-// Until an ID is set, this file does nothing at all: no network requests, no
-// console errors, no visible change for visitors. That is deliberate — an
-// unconfigured tracker should stay silent rather than break the page.
+// If the ID is ever blanked out, this file returns immediately: no network
+// requests, no console errors, no visible change for visitors.
 // ---------------------------------------------------------------------------
 
-var GA_MEASUREMENT_ID = '';
+var GA_MEASUREMENT_ID = 'G-NC0NFD6XXK';
 
 (function () {
     'use strict';
