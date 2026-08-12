@@ -930,15 +930,35 @@
                 year = yearMatch[0];
             }
 
-            // Extract date from filename if possible
-            const dateMatch = fileName.match(/(\d{1,2}[-\/]\d{1,2}[-\/]20\d{2})|(\d{4}[-\/]\d{1,2}[-\/]\d{1,2})/);
-            if (dateMatch) {
-                date = new Date(dateMatch[0]).toISOString();
+            // Extract date from filename if possible.
+            //
+            // Build the date from its parts rather than letting Date parse the
+            // string. "2026-06-17" is read as UTC midnight, which renders as
+            // the 16th in California and can push a document into the previous
+            // month. These are meeting records, so the date has to be exact.
+            const ymd = fileName.match(/(20\d{2})[-\/](\d{1,2})[-\/](\d{1,2})/);
+            const mdy = fileName.match(/(\d{1,2})[-\/](\d{1,2})[-\/](20\d{2})/);
+            if (ymd) {
+                date = new Date(+ymd[1], +ymd[2] - 1, +ymd[3]).toISOString();
+                year = ymd[1];
+            } else if (mdy) {
+                date = new Date(+mdy[3], +mdy[1] - 1, +mdy[2]).toISOString();
+                year = mdy[3];
             }
 
-            // Clean up title
-            title = title.replace(/[-_]/g, ' ')
+            // Clean up title. Files are named date-first so the Drive folder
+            // sorts chronologically, but the card already shows the date in its
+            // own field, so drop the leading date rather than printing it twice.
+            title = title.replace(/^\s*(20\d{2}[-\/]\d{1,2}[-\/]\d{1,2}|\d{1,2}[-\/]\d{1,2}[-\/]20\d{2})[\s-_]*/, '')
+                        .replace(/[-_]/g, ' ')
+                        .replace(/\s+/g, ' ')
+                        .trim()
                         .replace(/\b\w/g, l => l.toUpperCase());
+
+            // If the name was nothing but a date, fall back to the full filename.
+            if (!title) {
+                title = file.name.replace(/\.[^/.]+$/, "");
+            }
 
             return { type, year, date, title };
         }
