@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
-    <link rel="preload" as="image" href="img/street-fair.jpg" fetchpriority="high">
+    <link rel="preload" as="image" href="img/home-street-fair.webp" type="image/webp" fetchpriority="high">
 
     <style>
         /* ---------------------------------------------------------------
@@ -46,6 +46,9 @@
         }
 
         img { display: block; max-width: 100%; }
+        /* Every <picture> here is a format-swap wrapper, never a layout box —
+           this keeps the <img> as the direct flex/grid child. */
+        picture { display: contents; }
 
         h1, h2, h3, .display {
             font-family: 'Fraunces', Georgia, serif;
@@ -146,8 +149,6 @@
         }
 
         .brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
-        /* <picture> is the flex item, so it carries the shrink guard. */
-        .brand picture, .footer-brand picture { display: block; flex-shrink: 0; }
         .brand img {
             width: 52px; height: 52px;
             background: #fff; border-radius: 50%;
@@ -340,10 +341,11 @@
             display: flex; align-items: center; justify-content: flex-end;
             overflow: hidden; background: var(--ink-deep);
         }
-        .banner-band > img {
+        /* Descendant, not child: <picture> sits between band and img. */
+        .banner-band img {
             position: absolute; inset: 0;
             width: 100%; height: 100%;
-            object-fit: cover; object-position: center 40%;
+            object-fit: cover; object-position: center 58%;
         }
         .banner-band::after {
             content: '';
@@ -376,7 +378,9 @@
         }
 
         /* ------------------------------------------------ photo grid --- */
-        .photos { display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 420px; gap: 3px; }
+        .photos-section { padding: 104px 0 0; }
+        .photos-section .band-head { margin-bottom: 48px; }
+        .photos { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 310px; gap: 3px; }
         .photo { position: relative; overflow: hidden; background: var(--ink-deep); }
         .photo img {
             width: 100%; height: 100%; object-fit: cover;
@@ -462,7 +466,8 @@
             .strip-item { padding: 22px 0; border-right: 0; border-bottom: 1px solid var(--rule); }
             .strip-item:last-child { border-bottom: 0; }
 
-            .photos { grid-auto-rows: 300px; }
+            .photos-section { padding-top: 68px; }
+            .photos { grid-template-columns: 1fr 1fr; grid-auto-rows: 240px; }
             .banner-quote { text-align: left; }
 
             .events { padding: 68px 0; }
@@ -525,7 +530,10 @@
 
     <main id="main">
         <section class="hero">
-            <img src="img/street-fair.jpg" alt="A crowd walking the street fair downtown between vendor canopies, past signs for tacos, garlic fries and funnel cake, under the shade trees." class="hero-img" fetchpriority="high" decoding="async">
+            <picture>
+                <source srcset="img/home-street-fair.webp" type="image/webp">
+                <img src="img/home-street-fair.jpg" alt="A crowd walking the street fair downtown between vendor canopies, past signs for tacos, garlic fries and funnel cake, under the shade trees." class="hero-img" fetchpriority="high" decoding="async">
+            </picture>
             <div class="hero-content">
                 <span class="eyebrow eyebrow-light">Manteca, California</span>
                 <h1>Downtown<br>Manteca.</h1>
@@ -568,7 +576,10 @@
                 <a href="aboutUs.html" class="tlink">About the District &amp; the board</a>
             </div>
             <figure>
-                <img src="img/rotary-mural.jpg" alt="The Rotary mural on a downtown wall, showing volunteers at work, children reading, and the Rotary International wheel beside a barrel painted Manteca California." loading="lazy" decoding="async">
+                <picture>
+                    <source srcset="img/home-mural.webp" type="image/webp">
+                    <img src="img/home-mural.jpg" alt="The Rotary mural on a downtown wall, showing volunteers at work, children reading, and the Rotary International wheel beside a barrel painted Manteca California, with benches and ginkgo trees in front of it." loading="lazy" decoding="async">
+                </picture>
                 <figcaption>The Rotary mural, off the brick walkway downtown.</figcaption>
             </figure>
         </section>
@@ -632,22 +643,67 @@
 
         <!-- The district's own banner supplies the line here. -->
         <section class="banner-band">
-            <img src="img/district-banner.jpg" alt="A Downtown Manteca District banner on a lamppost reading Community, Where Everyone Belongs, with string lights strung across the street against a blue sky." loading="lazy" decoding="async">
+            <picture>
+                <source srcset="img/home-banner.webp" type="image/webp">
+                <img src="img/home-banner.jpg" alt="A Downtown Manteca District banner on a lamppost reading Community, Where Everyone Belongs, with string lights strung across the street against a blue sky." loading="lazy" decoding="async">
+            </picture>
             <div class="banner-quote">
                 <p>&ldquo;Where Everyone<br>Belongs.&rdquo;</p>
                 <span>Printed on the banners downtown</span>
             </div>
         </section>
 
-        <section class="photos" aria-label="Photographs of downtown Manteca">
-            <figure class="photo">
-                <img src="img/car-show-park.jpg" alt="Children climbing the rope play structure in the downtown park while classic cars line the street behind them at the car show, with the almond blossom mural on the wall beyond." loading="lazy" decoding="async">
-                <span>Car show day, seen from the playground.</span>
-            </figure>
-            <figure class="photo">
-                <img src="img/pilates-park.jpg" alt="A morning fitness class on mats on the grass at the park downtown, with the instructor leading a stretch under the trees." loading="lazy" decoding="async">
-                <span>A class on the grass at the park.</span>
-            </figure>
+        <section class="photos-section">
+            <div class="band-head">
+                <span class="eyebrow">Through the Year</span>
+                <h2>What actually happens here</h2>
+                <p>Cinco de Mayo, the Fourth of July, Music on Maple, Pilates in the Park &mdash; the district programs the street all year, not just in October.</p>
+            </div>
+
+            <div class="photos">
+                <figure class="photo">
+                    <picture>
+                        <source srcset="img/ev-cinco-dancers.webp" type="image/webp">
+                        <img src="img/ev-cinco-dancers.jpg" alt="Four young ballet folklorico dancers in embroidered blouses holding out brightly ribboned skirts, with a crowd on the grass behind them." loading="lazy" decoding="async">
+                    </picture>
+                    <span>Ballet folkl&oacute;rico at Cinco de Mayo.</span>
+                </figure>
+                <figure class="photo">
+                    <picture>
+                        <source srcset="img/ev-cinco-carshow.webp" type="image/webp">
+                        <img src="img/ev-cinco-carshow.jpg" alt="Children climbing a rope play structure in the downtown park while classic cars line the street behind them, with the almond blossom mural on an orange wall beyond." loading="lazy" decoding="async">
+                    </picture>
+                    <span>Classic cars at Cinco de Mayo, playground included.</span>
+                </figure>
+                <figure class="photo">
+                    <picture>
+                        <source srcset="img/ev-july4-parade.webp" type="image/webp">
+                        <img src="img/ev-july4-parade.jpg" alt="Riders in cowboy hats on white horses carrying the American and California flags down the avenue in the Fourth of July parade." loading="lazy" decoding="async">
+                    </picture>
+                    <span>The Fourth of July parade on the avenue.</span>
+                </figure>
+                <figure class="photo">
+                    <picture>
+                        <source srcset="img/ev-music-on-maple.webp" type="image/webp">
+                        <img src="img/ev-music-on-maple.jpg" alt="Five kids lined up on a bench with drinks and food from the trucks at Music on Maple, a taco truck and an aguas frescas stand behind them." loading="lazy" decoding="async">
+                    </picture>
+                    <span>Dinner off the trucks at Music on Maple.</span>
+                </figure>
+                <figure class="photo">
+                    <picture>
+                        <source srcset="img/ev-pilates-class.webp" type="image/webp">
+                        <img src="img/ev-pilates-class.jpg" alt="An instructor leading a Pilates class on mats spread across the grass in the park, participants stretching in the morning light." loading="lazy" decoding="async">
+                    </picture>
+                    <span>Pilates in the Park, out on the grass.</span>
+                </figure>
+                <figure class="photo">
+                    <picture>
+                        <source srcset="img/ev-pilates-group.webp" type="image/webp">
+                        <img src="img/ev-pilates-group.jpg" alt="A large group photograph of everyone who came to Pilates in the Park one July morning, gathered under the trees with their mats laid out on the grass." loading="lazy" decoding="async">
+                    </picture>
+                    <span>One July morning's group, all of it.</span>
+                </figure>
+            </div>
         </section>
 
         <section class="band band-paper">
