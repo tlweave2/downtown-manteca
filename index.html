@@ -1101,12 +1101,24 @@
             const email = this.querySelector('input[type="email"]').value;
             
             // Basic email validation
-            if (email && email.includes('@')) {
-                alert('Thank you for subscribing to our newsletter!');
-                this.querySelector('input[type="email"]').value = '';
-            } else {
+            if (!email || !email.includes('@')) {
                 alert('Please enter a valid email address.');
+                return;
             }
+
+            // No server here to record a subscriber, so send the request to a
+            // real inbox rather than pretending it was saved. Replace this with
+            // a mailing-list signup if DMIA adopts one.
+            const mailto = 'mailto:info@downtownmanteca.com'
+                + '?subject=' + encodeURIComponent('[Website] Newsletter signup')
+                + '&body=' + encodeURIComponent(
+                    'Please add this address to the Downtown Manteca newsletter list:\n\n' + email);
+
+            window.location.href = mailto;
+
+            alert('Your email program should now open with a short signup message ready to send. '
+                + 'Press send there and we will add you to the list.\n\n'
+                + 'If nothing opened, email info@downtownmanteca.com and ask to be subscribed.');
         });
 
         // Image Carousel Functionality

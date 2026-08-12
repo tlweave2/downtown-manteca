@@ -661,19 +661,38 @@
                 return;
             }
             
-            // Simulate form submission
-            const submitBtn = this.querySelector('.submit-btn');
-            const originalText = submitBtn.textContent;
-            
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
-            
-            setTimeout(() => {
-                alert('Thank you for contacting us! We will respond within 1-2 business days.');
-                this.reset();
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }, 2000);
+            // Hand the message off to the visitor's email program.
+            //
+            // This site is hosted as static files and has no server of its own,
+            // so it cannot send mail directly. Composing a pre-filled email is
+            // the honest alternative: the message reaches a real inbox, and the
+            // sender keeps a copy in their sent folder. If DMIA later signs up
+            // for a form service, this is the block to replace.
+            const subjectSelect = document.getElementById('subject');
+            const subjectLabel = subjectSelect.options[subjectSelect.selectedIndex].text;
+
+            const bodyLines = [
+                'Name: ' + data['first-name'] + ' ' + data['last-name'],
+                'Email: ' + data['email'],
+                'Phone: ' + (data['phone'] || 'Not provided'),
+                'Preferred contact method: ' + (data['preferred-contact'] || 'Email'),
+                'Topic: ' + subjectLabel,
+                '',
+                data['message']
+            ];
+
+            const mailto = 'mailto:info@downtownmanteca.com'
+                + '?subject=' + encodeURIComponent('[Website] ' + subjectLabel)
+                + '&body=' + encodeURIComponent(bodyLines.join('\n'));
+
+            window.location.href = mailto;
+
+            // The form is deliberately NOT cleared. If no mail program opens,
+            // the visitor still has everything they typed and can copy it.
+            alert('Your email program should now open with this message ready to send. '
+                + 'Press send there to reach us.\n\n'
+                + 'If nothing opened, email us directly at info@downtownmanteca.com '
+                + '— your message is still on this page so you can copy it.');
         });
 
         // Add accessibility features
