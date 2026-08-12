@@ -773,9 +773,17 @@
     </footer>
 
     <script>
-        // Configuration - UPDATE THESE VALUES
-        const GOOGLE_DRIVE_FOLDER_ID = 'YOUR_GOOGLE_DRIVE_FOLDER_ID_HERE'; // Main meeting documents folder
-        const API_KEY = 'YOUR_GOOGLE_API_KEY_HERE'; // Same API key as your other pages
+        // Configuration
+        // Drive folders holding committee meeting documents. Both must stay
+        // shared as "Anyone with the link - Viewer": an API key can only read
+        // publicly shared files, so a private folder returns nothing.
+        const GOOGLE_DRIVE_FOLDER_IDS = [
+            '1XPYps8QWGvA0RaWdKeHAqHs-W-cSwjlc', // Committee Meeting Agendas
+            '1Gqa5wumfAi9dX_EHsEs-vglVx54n6_9w'  // Committee Meetings
+        ];
+        // Same key the business directory uses. It needs the Drive API enabled
+        // on its Google Cloud project, not just the Sheets API.
+        const API_KEY = 'AIzaSyA_D9VSFEaQn4XnMsjNLHg7qS999n4gl1M';
         
         // Folder structure - organize documents in Google Drive like this:
         // Meeting Documents/
@@ -815,7 +823,14 @@
                 showLoading();
                 
                 // Get all files from the meeting documents folder and subfolders
-                const url = `https://www.googleapis.com/drive/v3/files?q='${GOOGLE_DRIVE_FOLDER_ID}'+in+parents&key=${API_KEY}&fields=files(id,name,mimeType,size,createdTime,modifiedTime,parents,webViewLink,webContentLink)`;
+                // Match files in any of the configured folders.
+                const parentQuery = '(' + GOOGLE_DRIVE_FOLDER_IDS
+                    .map(id => `'${id}' in parents`).join(' or ') + ') and trashed = false';
+                const url = 'https://www.googleapis.com/drive/v3/files'
+                    + '?q=' + encodeURIComponent(parentQuery)
+                    + '&key=' + encodeURIComponent(API_KEY)
+                    + '&pageSize=200'
+                    + '&fields=' + encodeURIComponent('files(id,name,mimeType,size,createdTime,modifiedTime,parents,webViewLink,webContentLink)');
                 
                 const response = await fetch(url);
                 const data = await response.json();
@@ -837,8 +852,10 @@
                 updateDocumentCount();
 
             } catch (error) {
+                // Keep the technical detail in the console for whoever maintains
+                // the site, and show visitors something they can act on instead.
                 console.error('Error loading documents from Google Drive:', error);
-                displayError(`Error loading documents: ${error.message}. Please check your Google Drive folder ID and API key configuration.`);
+                displayError('Meeting documents could not be loaded right now.');
             }
         }
 
@@ -1159,7 +1176,15 @@
             const gridView = document.getElementById('gridView');
             const listView = document.getElementById('listView');
             
-            const errorHtml = `<div class="error">${escapeHtml(message)}</div>`;
+            // Never dead-end the visitor: every failure offers another route
+            // to the same documents.
+            const errorHtml = `<div class="error">
+                <p>${escapeHtml(message)}</p>
+                <p>You can browse board and committee documents on our
+                   <a href="documents.html">Documents page</a>, or email
+                   <a href="mailto:info@downtownmanteca.com">info@downtownmanteca.com</a>
+                   and we will send what you need.</p>
+            </div>`;
             gridView.innerHTML = errorHtml;
             listView.innerHTML = errorHtml;
         }
