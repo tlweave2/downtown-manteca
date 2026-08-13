@@ -215,7 +215,15 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(10, 43, 48, 0.6), rgba(3, 88, 71, 0.6));
+            /* Light teal tint so the photos keep their color, plus a soft
+               centre vignette so white headlines stay legible on bright
+               shots like the parade. */
+            background:
+                radial-gradient(ellipse 78% 58% at 50% 52%,
+                    rgba(4, 26, 30, 0.55) 0%,
+                    rgba(4, 26, 30, 0.24) 55%,
+                    rgba(4, 26, 30, 0) 78%),
+                linear-gradient(135deg, rgba(10, 43, 48, 0.34), rgba(3, 88, 71, 0.34));
         }
 
         .carousel-content {
