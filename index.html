@@ -3,921 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Discover Downtown Manteca District</title>
-    
-    <!-- Preload critical images for better performance -->
-    <link rel="preload" as="image" href="img/home-arts-dancers.jpg">
-    <link rel="preload" as="image" href="img/manteca-logo.webp">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Downtown Manteca District</title>
+    <meta name="description" content="Events, business directory, meeting minutes and public notices for the Downtown Manteca District — the blocks around Yosemite and Maple in Manteca, California.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/site.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
-            color: #0a2b30;
-            background: linear-gradient(135deg, #f7f5f3 0%, #fff 100%);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
-            color: white;
-            padding: .5rem 0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1.5rem;
-            position: relative;
-        }
-
-        .logo-container {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-        }
-
-        .logo-img {
-            width: 170px;
-            height: 170px;
-            object-fit: contain;
-            background: white;
-            border-radius: 50%;
-            padding: 0px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            font-weight: 600;
-        }
-
-        .nav-links a:hover {
-            background: rgba(238, 167, 25, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            padding: 0.5rem;
-            border: none;
-            background: none;
-            z-index: 1001;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: white;
-            margin: 3px 0;
-            transition: 0.3s;
-            border-radius: 2px;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: white;
-            text-align: center;
-            padding: 4rem 0;
-            color: #0a2b30;
-            border-radius: 20px;
-            margin: 1.5rem auto;
-            max-width: 1048px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .hero h1 {
-            font-family: 'Roboto Slab', serif;
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: #0a2b30;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .hero h2 {
-            font-family: 'Roboto Slab', serif;
-            font-size: 2rem;
-            font-weight: 400;
-            margin-bottom: 2rem;
-            color: #035847;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            color: #035847;
-            line-height: 1.8;
-            animation: fadeInUp 1s ease-out 0.3s both;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(45deg, #eea719, #c44720);
-            color: white;
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(238, 167, 25, 0.4);
-            animation: fadeInUp 1s ease-out 0.6s both;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(238, 167, 25, 0.6);
-            background: linear-gradient(45deg, #c44720, #8d242f);
-        }
-
-        /* Image Carousel Section */
-        .image-carousel {
-            position: relative;
-            width: 100%;
-            height: 700px;
-            margin: 0 0 2rem 0;
-            border-radius: 0;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-        }
-
-        .carousel-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
-        .carousel-slide {
+        /* The hero photo cross-fades through the district photography.
+           Static first frame; the script only runs if motion is welcome. */
+        .hero-photo { background-image: url('img/home-arts-dancers.jpg'); }
+        .hero-photo .frame {
             position: absolute;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
+            inset: 0;
             background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background-size: cover;
             opacity: 0;
-            transition: opacity 0.8s ease-in-out;
-            will-change: opacity;
-            backface-visibility: hidden;
-            transform: translateZ(0);
+            transition: opacity 1.4s ease;
         }
+        .hero-photo .frame.on { opacity: 1; }
 
-        .carousel-slide.active {
-            opacity: 1;
-        }
-
-        .carousel-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            /* Light teal tint so the photos keep their color, plus a soft
-               centre vignette so white headlines stay legible on bright
-               shots like the parade. */
-            background:
-                radial-gradient(ellipse 78% 58% at 50% 52%,
-                    rgba(4, 26, 30, 0.55) 0%,
-                    rgba(4, 26, 30, 0.24) 55%,
-                    rgba(4, 26, 30, 0) 78%),
-                linear-gradient(135deg, rgba(10, 43, 48, 0.34), rgba(3, 88, 71, 0.34));
-        }
-
-        .carousel-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            color: white;
-            padding: 2rem;
-        }
-
-        .carousel-content h2 {
-            font-family: 'Roboto Slab', serif;
-            font-size: 3rem;
-            font-weight: 700;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
-            margin-bottom: 1rem;
-        }
-
-        .carousel-content p {
-            font-size: 1.4rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .carousel-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(238, 167, 25, 0.8);
-            color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 3;
-        }
-
-        .carousel-nav:hover {
-            background: rgba(238, 167, 25, 1);
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        .carousel-prev {
-            left: 20px;
-        }
-
-        .carousel-next {
-            right: 20px;
-        }
-
-        .carousel-dots {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-            z-index: 3;
-        }
-
-        .carousel-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .carousel-dot.active {
-            background: #eea719;
-            transform: scale(1.2);
-        }
-
-        /* Main Content */
-        main {
-            padding: 2rem 0;
-        }
-
-        /* Events Section with Cards */
-        .events-section {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-            max-width: 1048px;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 2rem;
-        }
-
-        .events-section h2 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: #0a2b30;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        .events-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .event-card {
-            background: linear-gradient(135deg, #8d242f, #c44720);
-            color: white;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: 2px solid transparent;
-        }
-
-        .event-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(141, 36, 47, 0.4);
-            border-color: #eea719;
-        }
-
-        .event-date {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .event-month {
-            font-size: 1rem;
-            opacity: 0.9;
-            margin-bottom: 1rem;
-            font-weight: 300;
-        }
-
-        .event-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 600;
-        }
-
-        /* Event cards are links, so keyboard and screen-reader users get them too */
-        .event-card {
-            display: block;
-            text-decoration: none;
-        }
-
-        /* Featured treatment: Beer & Wine Stroll */
-        .event-card-stroll {
-            position: relative;
-            overflow: hidden;
-            isolation: isolate;
-            background: linear-gradient(158deg, #1c0b31 0%, #0b0710 55%, #16092a 100%);
-            border-color: rgba(201, 160, 245, 0.4);
-            padding: 0;
-        }
-
-        .event-banner {
-            display: block;
-            width: 100%;
-            height: auto;
-        }
-
-        .event-card-body {
-            position: relative;
-            padding: 1.75rem 2rem 2rem;
-        }
-
-        .event-card-body::before {
-            content: "";
-            position: absolute;
-            top: -70px;
-            right: -60px;
-            width: 260px;
-            height: 260px;
-            z-index: -1;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(216, 178, 255, 0.32) 0%, rgba(167, 96, 232, 0.18) 45%, rgba(11, 7, 16, 0) 70%);
-            animation: stroll-card-moon 7s ease-in-out infinite;
-        }
-
-        @keyframes stroll-card-moon {
-            0%, 100% { opacity: 0.75; transform: scale(1); }
-            50%      { opacity: 1;    transform: scale(1.07); }
-        }
-
-        .event-card-stroll:hover {
-            box-shadow: 0 15px 35px rgba(167, 96, 232, 0.45);
-            border-color: #c9a0f5;
-        }
-
-        .event-badge {
-            display: inline-block;
-            margin-bottom: 1rem;
-            padding: 0.3rem 0.9rem;
-            border-radius: 50px;
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: #f4eeff;
-            background: rgba(167, 96, 232, 0.25);
-            border: 1px solid rgba(201, 160, 245, 0.55);
-        }
-
-        .event-meta {
-            margin-top: 0.75rem;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #eadcff;
-        }
-
-        .event-meta-sub {
-            margin-top: 0.35rem;
-            font-size: 0.9rem;
-            color: rgba(244, 238, 255, 0.75);
-        }
-
-        .event-more {
-            display: inline-block;
-            margin-top: 1.1rem;
-            font-size: 0.9rem;
-            font-weight: 700;
-            letter-spacing: 0.04em;
-            color: #c9a0f5;
-        }
-
-        .event-card-stroll:hover .event-more {
-            color: #e2ccff;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .event-card-body::before { animation: none; }
-        }
-
-        .events-cta {
-            text-align: center;
-            margin-top: 2rem;
-        }
-
-        .view-calendar-btn {
-            display: inline-block;
-            background: linear-gradient(45deg, #eea719, #c44720);
-            color: white;
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(238, 167, 25, 0.4);
-        }
-
-        .view-calendar-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(238, 167, 25, 0.6);
-            background: linear-gradient(45deg, #c44720, #8d242f);
-        }
-
-        /* Calendar Embed Section */
-        .calendar-embed-section {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-            max-width: 1048px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .calendar-embed {
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border: 2px solid #eea719;
-        }
-
-        .calendar-embed iframe {
-            width: 100%;
-            min-height: 700px;
-            border: none;
-        }
-
-        /* Instagram Embeds Section - Added after calendar */
-        .instagram-section {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-            max-width: 1048px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .instagram-section h2 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: #0a2b30;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .instagram-section p {
-            text-align: center;
-            font-size: 1.1rem;
-            color: #035847;
-            margin-bottom: 2rem;
-        }
-
-        /* tighten up the spacing around each embed */
-        .instagram-embeds {
-            display: flex;
-            gap: 0.3rem;              /* reduce gap even more */
-            justify-content: center;
-            flex-wrap: nowrap;        /* prevent wrapping to force single line */
-            margin: 1rem 0;           /* less vertical space above & below */
-            overflow-x: auto;         /* allow horizontal scroll if needed */
-        }
-
-        .instagram-embeds blockquote.instagram-media {
-            margin: 0;                /* remove blockquote default margins */
-            padding: 0;
-            flex: 0 0 300px;          /* fixed width, no grow/shrink */
-            max-width: 300px;         /* smaller maximum width */
-            min-width: 250px;         /* smaller minimum width */
-        }
-
-        /* Attractions Section */
-        .attractions-section {
-            display: flex;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-            max-width: 1048px;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 2rem;
-            flex-wrap: nowrap;
-            overflow-x: auto;
-        }
-
-        .attraction-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            flex: 0 0 320px;
-            min-width: 280px;
-            max-width: 320px;
-        }
-
-        /* Only lift cards that actually go somewhere. "Historic Main Street"
-           and "Manteca Historical Museum" lost their links in 01c264f, so
-           they were promising a click they could not honour. */
-        .attraction-card:has(a):hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .attraction-card h3 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #0a2b30;
-            margin-bottom: 1rem;
-        }
-
-        .attraction-card p {
-            color: #035847;
-            margin-bottom: 1rem;
-            line-height: 1.7;
-        }
-
-        .learn-more {
-            color: #c44720;
-            text-decoration: none;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .learn-more:hover {
-            color: #eea719;
-        }
-
-        /* Contact/Meeting Section */
-        .contact-meeting-section {
-            background: linear-gradient(135deg, #8d242f, #c44720);
-            color: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(141, 36, 47, 0.3);
-            margin-bottom: 2rem;
-            text-align: center;
-            max-width: 1048px;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 2rem;
-        }
-
-        .contact-meeting-section h2 {
-            font-family: 'Roboto Slab', serif;
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .contact-meeting-section p {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            opacity: 0.95;
-        }
-
-        .contact-meeting-section a {
-            color: #eea719;
-            text-decoration: none;
-            font-weight: 700;
-        }
-
-        .contact-meeting-section a:hover {
-            color: white;
-            text-decoration: underline;
-        }
-
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
-            color: white;
-            text-align: center;
-            padding: 2.5rem 0;
-            margin-top: 2rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h4 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #eea719;
-        }
-
-        .footer-section p, 
-        .footer-section a {
-            color: rgba(255,255,255,0.9);
-            text-decoration: none;
-            margin-bottom: 0.5rem;
-            display: block;
-            transition: color 0.3s ease;
-        }
-
-        .footer-section a:hover {
-            color: #eea719;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.2);
-            padding-top: 1.5rem;
-            margin-top: 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .footer-links a {
-            color: rgba(255,255,255,0.9);
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-
-        .footer-links a:hover {
-            color: #eea719;
-        }
-
-        .footer-links span {
-            color: rgba(255,255,255,0.5);
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
-            }
-            
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                height: 100vh;
-                width: 300px;
-                background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 2rem;
-                transition: right 0.3s ease;
-                z-index: 1000;
-                box-shadow: -5px 0 15px rgba(0,0,0,0.3);
-            }
-            
-            .nav-links.active {
-                right: 0;
-            }
-            
-            .nav-links a {
-                font-size: 1.2rem;
-                padding: 1rem 2rem;
-                text-align: center;
-                width: 100%;
-            }
-            
-            header {
-                padding: 1.5rem 0;
-            }
-            
-            nav {
-                flex-direction: row;
-                gap: 1rem;
-            }
-            
-            .logo-container {
-                justify-content: flex-start;
-            }
-            
-            .logo-img {
-                width: 130px;
-                height: 130px;
-                padding: 8px;
-            }
-            
-            .image-carousel {
-                height: 400px;
-                margin: 0 auto 2rem;
-            }
-            
-            .carousel-content h2 {
-                font-size: 2rem;
-            }
-            
-            .carousel-content p {
-                font-size: 1.1rem;
-            }
-            
-            .carousel-nav {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
-            
-            .carousel-prev {
-                left: 10px;
-            }
-            
-            .carousel-next {
-                right: 10px;
-            }
-            
-            .hero {
-                margin: 1rem auto;
-                padding: 4rem 0;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .container {
-                padding: 0 15px;
-            }
-            
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .footer-content {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            }
-
-            .events-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .view-calendar-btn {
-                padding: 0.8rem 1.5rem;
-                font-size: 1rem;
-            }
-
-            .calendar-embed-section {
-                padding: 1.5rem;
-                margin: 1rem auto;
-            }
-
-            .calendar-embed iframe {
-                min-height: 500px;
-                min-width: 350px;
-            }
-
-            .calendar-embed {
-                overflow-x: auto;
-                overflow-y: hidden;
-                -webkit-overflow-scrolling: touch;
-            }
-
-            .instagram-embeds {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .instagram-embeds blockquote.instagram-media {
-                flex: 0 0 280px;
-                min-width: 280px;
-            }
-        }
-
-
-        /* Performance optimizations */
-        .lazy-load {
-            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-            background-size: 200% 100%;
-            animation: loading 1.5s infinite;
-        }
-
-        @keyframes loading {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
-
-        /* Optimize heavy elements */
-        .carousel-container {
-            will-change: transform;
-        }
+        .social { border-top: 1px solid var(--border); }
+        .social .section-title { margin-bottom: 1rem; }
     </style>
-    <!-- Site analytics -->
+    <script src="js/site.js" defer></script>
     <script src="analytics.js" defer></script>
 </head>
 <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
     <header>
-        <nav class="container">
-            <div class="logo-container">
-                <picture>
-                    <source srcset="img/manteca-logo.webp" type="image/webp">
-                    <img src="img/manteca-logo.png" alt="Downtown Manteca District Logo" class="logo-img">
-                </picture>
-            </div>
-            <button class="hamburger" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
+        <nav>
+            <a class="nav-logo" href="index.html">
+                <img src="img/manteca-logo.png" alt="">
+                <span class="nav-logo-text">Downtown Manteca<span>District</span></span>
+            </a>
+            <button class="hamburger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+                <span></span><span></span><span></span>
             </button>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html" class="active" aria-current="page">Home</a></li>
                 <li><a href="events.html">Events</a></li>
                 <li><a href="directory.html">Business</a></li>
                 <li><a href="documents.html">Documents</a></li>
@@ -927,294 +51,193 @@
         </nav>
     </header>
 
-    <!-- Image Carousel Section -->
-    <section>
-        <div class="image-carousel">
-            <div class="carousel-container">
-                <div class="carousel-slide active" style="background-image: url('img/home-arts-dancers.jpg');" data-bg-loaded="true">
-                    <div class="carousel-overlay"></div>
-                    <div class="carousel-content">
-                        <h2>Celebrating Our Local Arts & Culture</h2>
-                        <p>Experience the vibrant creative spirit that defines Downtown Manteca</p>
-                    </div>
-                </div>
-                <div class="carousel-slide" data-bg="img/home-mural.jpg">
-                    <div class="carousel-overlay"></div>
-                    <div class="carousel-content">
-                        <h2>Historic Main Street Heritage</h2>
-                        <p>Walk through history on our beautifully preserved Main Street</p>
-                    </div>
-                </div>
-                <div class="carousel-slide" data-bg="img/home-street-fair.jpg">
-                    <div class="carousel-overlay"></div>
-                    <div class="carousel-content">
-                        <h2>Community Events & Festivals</h2>
-                        <p>Join us for year-round celebrations that bring our community together</p>
-                    </div>
-                </div>
-                <div class="carousel-slide" data-bg="img/home-july4.jpg">
-                    <div class="carousel-overlay"></div>
-                    <div class="carousel-content">
-                        <h2>Fourth of July on the Avenue</h2>
-                        <p>Flags, horses, and the whole town out on the street</p>
-                    </div>
-                </div>
-                <div class="carousel-slide" data-bg="img/home-dining-maple.jpg">
-                    <div class="carousel-overlay"></div>
-                    <div class="carousel-content">
-                        <h2>Dining & Culinary Excellence</h2>
-                        <p>Savor the flavors of Manteca at our diverse restaurants and cafes</p>
-                    </div>
-                </div>
+    <main id="main">
+        <section class="hero">
+            <div class="hero-photo" role="img" aria-label="Ballet folklorico dancers performing in Downtown Manteca">
+                <div class="frame" data-bg="img/home-mural.jpg"></div>
+                <div class="frame" data-bg="img/home-street-fair.jpg"></div>
+                <div class="frame" data-bg="img/home-july4.jpg"></div>
             </div>
-            
-            <button class="carousel-nav carousel-prev" onclick="changeSlide(-1)">‹</button>
-            <button class="carousel-nav carousel-next" onclick="changeSlide(1)">›</button>
-            
-            <div class="carousel-dots">
-                <span class="carousel-dot active" onclick="currentSlide(1)"></span>
-                <span class="carousel-dot" onclick="currentSlide(2)"></span>
-                <span class="carousel-dot" onclick="currentSlide(3)"></span>
-                <span class="carousel-dot" onclick="currentSlide(4)"></span>
-                <span class="carousel-dot" onclick="currentSlide(5)"></span>
-            </div>
-        </div>
-    </section>
-
-    <section class="hero" id="home">
-        <div class="container">
-            <h1>About Downtown Manteca District</h1>
-            <h2>Our Story</h2>
-            <p>Downtown Manteca District is the cultural and historical heart of our city, where tradition meets innovation. Our district features a vibrant mix of locally-owned businesses, restaurants, and cultural attractions that showcase the best of what Manteca has to offer.</p>
-            <p>From our seasonal farmers markets to our community events, Downtown Manteca District provides a welcoming atmosphere for residents and visitors alike. Our mission is to preserve our rich heritage while fostering economic growth and community connection.</p>
-            <a href="aboutUs.html" class="cta-button">Learn More</a>
-        </div>
-    </section>
-
-    <main>
-        <section class="events-section" id="events">
-            <h2>Upcoming Events</h2>
-            <p style="text-align: center; font-size: 1.1rem; color: #035847; margin-bottom: 2rem;">
-                Join us for exciting events throughout the year that celebrate our community, culture, and local businesses.
-            </p>
-            <div class="events-grid">
-                <a class="event-card event-card-stroll" href="events.html#beer-wine-stroll">
-                    <img class="event-banner" src="img/beerwinestroll.jpg" width="1920" height="1080" alt="Beer &amp; Wine Stroll, presented by the Downtown Manteca District. 10.30.26, 6:00 to 9:00 pm. 21 and over.">
-                    <div class="event-card-body">
-                        <span class="event-badge">21+ &middot; Tickets on sale</span>
-                        <div class="event-meta">Friday, October 30, 2026 &middot; 6:00 &ndash; 9:00 PM</div>
-                        <div class="event-meta-sub">Beer &amp; wine tastings, live music, and Halloween fun at participating businesses along Yosemite Ave. &amp; Maple Ave.</div>
-                        <span class="event-more">See details &amp; tickets &rarr;</span>
-                    </div>
-                </a>
-            </div>
-            <div class="events-cta">
-                <a href="events.html" class="view-calendar-btn">View Full Calendar & Event Details →</a>
+            <div class="hero-text">
+                <p class="hero-eyebrow">Manteca, California</p>
+                <h1>Where Yosemite<br><em>meets Maple.</em></h1>
+                <p class="hero-desc">
+                    The Downtown Manteca Improvement Association works the blocks around
+                    those two streets &mdash; the events that fill them, the storefronts
+                    along them, the sidewalks underneath. What we are doing is all on this
+                    site, meeting minutes included.
+                </p>
+                <div class="btn-row">
+                    <a href="events.html" class="btn btn-terra">Upcoming Events</a>
+                    <a href="directory.html" class="btn btn-sage">Business Directory</a>
+                </div>
             </div>
         </section>
 
-        <section class="calendar-embed-section">
-            <div class="calendar-embed">
-                <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FLos_Angeles&src=Y19mMTU5MzU5N2RjNjZkNjk5ODFhOTI5YjEwZjQ5MGVkMDI4OWI0MTJlN2RmMGE1NGI0OGE2MjY5ZWFmMTVkODhjQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23D50000&mode=MONTH&showTitle=1&showPrint=1&showTabs=1&showCalendars=0" 
-                        style="border-width:0; min-width: 800px;" 
-                        width="100%" 
-                        height="600" 
-                        frameborder="0" 
-                        scrolling="yes"
-                        title="Downtown Manteca District Events Calendar">
-                </iframe>
+        <p class="tagline">A downtown in a town that got its name from a misprint.</p>
+
+        <section class="section">
+            <div class="container">
+                <p class="section-eyebrow">What&rsquo;s coming up</p>
+                <h2 class="section-title">Events</h2>
+
+                <div class="event-item">
+                    <div class="date-circle">
+                        <span class="day">30</span>
+                        <span class="mo">Oct</span>
+                    </div>
+                    <div class="event-body">
+                        <h3>Beer &amp; Wine Stroll</h3>
+                        <p>Friday, 6&ndash;9 PM &middot; Yosemite Ave. &amp; Maple Ave. &middot; Tastings at participating businesses, live music, costume contest &middot; 21+</p>
+                    </div>
+                    <a class="link-rule" href="events.html#beer-wine-stroll">Details</a>
+                </div>
+
+                <div class="event-item">
+                    <div class="date-circle date-circle--sage">
+                        <span class="day day--sm">Every<br>month</span>
+                    </div>
+                    <div class="event-body">
+                        <h3>Board &amp; Committee Meetings</h3>
+                        <p>American Legion Hall &middot; Executive Committee on the first Wednesday, the Board on the second, Civil Sidewalks and District Identity &amp; Placemaking on the fourth &middot; Open to the public</p>
+                    </div>
+                    <a class="link-rule" href="events.html">Schedule</a>
+                </div>
+
+                <p style="margin-top: 2.5rem; text-align: center;">
+                    <a href="events.html" class="btn btn-terra">View the full calendar</a>
+                </p>
             </div>
         </section>
 
-        <!-- Instagram Section - Now positioned after calendar -->
-        <section class="instagram-section">
-            <h2>Follow Our Latest Updates</h2>
-            <p>Stay connected with Downtown Manteca District on Instagram for the latest news, events, and community highlights.</p>
-            <!-- Elfsight Instagram Feed | Downtown Instagram Feed -->
-            <script src="https://elfsightcdn.com/platform.js" async></script>
-            <div class="elfsight-app-92139637-56f4-4171-ac7a-0c2eab9747f2" data-elfsight-app-lazy></div>
-        </section>
-
-        <section class="attractions-section" id="attractions">
-            <div class="attraction-card">
-                <h3>Historic Main Street</h3>
-                <p>Stroll down our charming Main Street, lined with locally-owned boutiques, antique shops, and cafes housed in beautifully preserved early 20th-century buildings. Experience the perfect blend of Manteca's rich history and vibrant present.</p>
-            </div>
-            
-            <div class="attraction-card">
-                <h3>Local Dining Scene</h3>
-                <p>From classic American diners to authentic Mexican, Italian, and Asian cuisines, Downtown Manteca District's diverse restaurants reflect our community's rich cultural tapestry. Fresh coffee, homemade pastries, and farm-to-table dining await.</p>
-                <a href="directory.html" class="learn-more">Explore Restaurants →</a>
-            </div>
-            
-            <div class="attraction-card">
-                <h3>Manteca Historical Museum</h3>
-                <p>Learn about our city's unique story, including how we got our distinctive name through a historic misprint. Explore exhibits showcasing our agricultural heritage, railroad history, and community growth.</p>
+        <section class="banner">
+            <img src="img/4thofjuly2025-00393.jpg" alt="">
+            <div class="banner-overlay">
+                <div class="banner-text">
+                    <h2>What the association actually does</h2>
+                    <p>
+                        We run the events, advocate for the businesses, and work with the
+                        City of Manteca on the parts nobody photographs &mdash; storefronts,
+                        sidewalks, signage, placemaking. Business owners, property owners,
+                        civic leaders and volunteers all sit at the table.
+                    </p>
+                    <a href="aboutUs.html" class="btn btn-gold">Our story</a>
+                </div>
             </div>
         </section>
 
-        <!-- Contact/Meeting Section -->
-        <section class="contact-meeting-section">
-            <h2>Join Us at Our Monthly Meetings</h2>
-            <p>We welcome business owners and community members to join us at our various committee meetings throughout the month.</p>
-            
-            <p><strong>Location:</strong> American Legion Hall, Manteca, CA</p>
-            <p><strong>Contact:</strong> <a href="mailto:info@downtownmanteca.com">info@downtownmanteca.com</a></p>
+        <section class="features">
+            <a class="feature-card" href="directory.html">
+                <img src="img/downtownmanteca-01971.jpg" alt="">
+                <div class="feature-overlay">
+                    <span class="feature-lbl">Eat &amp; shop</span>
+                    <span class="feature-title">Business Directory</span>
+                </div>
+            </a>
+            <a class="feature-card" href="events.html">
+                <img src="img/DMIACincoDeMayo26-2-110.jpg" alt="">
+                <div class="feature-overlay">
+                    <span class="feature-lbl">All year</span>
+                    <span class="feature-title">Events Calendar</span>
+                </div>
+            </a>
+            <a class="feature-card" href="meeting-minutes.html">
+                <img src="img/board-meeting.jpg" alt="">
+                <div class="feature-overlay">
+                    <span class="feature-lbl">On the record</span>
+                    <span class="feature-title">Minutes &amp; Agendas</span>
+                </div>
+            </a>
+        </section>
+
+        <section class="section section--paper">
+            <div class="container" style="text-align: center;">
+                <p class="section-eyebrow section-eyebrow--center">Get involved</p>
+                <h2 class="section-title section-title--lead">Come to a meeting</h2>
+                <p class="lede" style="margin: 0 auto 2rem;">
+                    Every meeting is open to the public, and you do not need to own a
+                    business to speak. Agendas and past minutes are posted on this site.
+                </p>
+                <div class="detail-row" style="display: inline-flex;">
+                    <div class="detail-item">
+                        <span>Where</span>
+                        <strong>American Legion Hall<br>Manteca, CA</strong>
+                    </div>
+                    <div class="detail-item">
+                        <span>When</span>
+                        <strong>First, second and fourth<br>Wednesdays of the month</strong>
+                    </div>
+                    <div class="detail-item">
+                        <span>Ask us</span>
+                        <strong><a href="tel:+12092147555">(209) 214-7555</a><br><a href="mailto:info@downtownmanteca.com">info@downtownmanteca.com</a></strong>
+                    </div>
+                </div>
+                <p style="margin-top: 2rem;">
+                    <a href="meeting-minutes.html" class="btn btn-terra">Agendas &amp; minutes</a>
+                </p>
+            </div>
+        </section>
+
+        <section class="section social">
+            <div class="container">
+                <p class="section-eyebrow">From the street</p>
+                <h2 class="section-title">On Instagram</h2>
+                <script src="https://elfsightcdn.com/platform.js" async></script>
+                <div class="elfsight-app-92139637-56f4-4171-ac7a-0c2eab9747f2" data-elfsight-app-lazy></div>
+            </div>
         </section>
     </main>
 
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Contact Info</h4>
-                    <p>Downtown Manteca District</p>
-                    <p>123 W. Yosemite Ave.</p>
-                    <p>Manteca, CA 95336</p>
-                    <p>Phone: (209) 214-7555</p>
-                    <p>Email: info@downtownmanteca.com</p>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <a href="index.html">Home</a>
-                    <a href="aboutUs.html">About Us</a>
-                    <a href="directory.html">Business Directory</a>
-                    <a href="events.html">Events</a>
-                    <a href="contact.html">Contact Us</a>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Connect</h4>
-                    <a href="https://www.facebook.com/profile.php?id=61573494300309" target="_blank" rel="noopener">Facebook</a>
-                    <a href="https://www.instagram.com/downtownmanteca/" target="_blank" rel="noopener">Instagram</a>
-                    <a href="https://linktr.ee/downtownmanteca" target="_blank" rel="noopener">Linktree</a>
-                    <a href="mailto:info@downtownmanteca.com">Email Us</a>
-                </div>
+    <script>
+        // Cross-fade the hero photography, unless the visitor asked for less motion.
+        (function () {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            var frames = Array.prototype.slice.call(document.querySelectorAll('.hero-photo .frame'));
+            if (!frames.length) return;
+            frames.forEach(function (f) { f.style.backgroundImage = "url('" + f.dataset.bg + "')"; });
+            var i = -1;
+            setInterval(function () {
+                if (i >= 0) frames[i].classList.remove('on');
+                i = i + 1 === frames.length ? -1 : i + 1;
+                if (i >= 0) frames[i].classList.add('on');
+            }, 6000);
+        })();
+    </script>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <img src="img/manteca-logo.png" alt="">
+                <p>The business association for the blocks around Yosemite and Maple, in Manteca, California.</p>
             </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 Downtown Manteca District. All Rights Reserved.</p>
-                <p>Managed by Jane Media Services</p>
+            <div class="footer-col">
+                <h2>Navigate</h2>
+                <a href="index.html">Home</a>
+                <a href="events.html">Events</a>
+                <a href="directory.html">Business Directory</a>
+                <a href="documents.html">Documents</a>
+                <a href="aboutUs.html">About Us</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-col">
+                <h2>Connect</h2>
+                <a href="https://www.facebook.com/profile.php?id=61573494300309" target="_blank" rel="noopener">Facebook</a>
+                <a href="https://www.instagram.com/downtownmanteca/" target="_blank" rel="noopener">Instagram</a>
+                <a href="https://linktr.ee/downtownmanteca" target="_blank" rel="noopener">Linktree</a>
+                <a href="mailto:info@downtownmanteca.com">Email Us</a>
+            </div>
+            <div class="footer-col">
+                <h2>Contact</h2>
+                <p>123 W. Yosemite Ave.</p>
+                <p>Manteca, CA 95336</p>
+                <p style="margin-top:10px;"><a href="tel:+12092147555">(209) 214-7555</a></p>
+                <p><a href="mailto:info@downtownmanteca.com">info@downtownmanteca.com</a></p>
             </div>
         </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 Downtown Manteca District. All rights reserved.</span>
+            <span><a href="privacy-policy.html">Privacy</a> &nbsp;&middot;&nbsp; <a href="terms-of-use.html">Terms</a> &nbsp;&middot;&nbsp; <a href="accessibility.html">Accessibility</a></span>
+        </div>
     </footer>
-
-    <!-- Instagram embed script - only once per page -->
-    <script async defer src="https://www.instagram.com/embed.js"></script>
-
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Add scroll effect to navigation
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'linear-gradient(135deg, rgba(10,43,48,0.95) 0%, rgba(3,88,71,0.95) 100%)';
-                header.style.backdropFilter = 'blur(10px)';
-            } else {
-                header.style.background = 'linear-gradient(135deg, #0a2b30 0%, #035847 100%)';
-                header.style.backdropFilter = 'none';
-            }
-        });
-
-        // Image Carousel Functionality
-        let currentSlideIndex = 0;
-        const slides = document.querySelectorAll('.carousel-slide');
-        const dots = document.querySelectorAll('.carousel-dot');
-        const totalSlides = slides.length;
-
-        function showSlide(index) {
-            // Remove active class from all slides and dots
-            slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            
-            // Lazy load background image if not already loaded
-            const currentSlide = slides[index];
-            if (currentSlide.dataset.bg && !currentSlide.dataset.bgLoaded) {
-                currentSlide.style.backgroundImage = `url('${currentSlide.dataset.bg}')`;
-                currentSlide.dataset.bgLoaded = 'true';
-            }
-            
-            // Preload next slide image for smooth transitions
-            const nextIndex = (index + 1) % totalSlides;
-            const nextSlide = slides[nextIndex];
-            if (nextSlide.dataset.bg && !nextSlide.dataset.bgLoaded) {
-                nextSlide.style.backgroundImage = `url('${nextSlide.dataset.bg}')`;
-                nextSlide.dataset.bgLoaded = 'true';
-            }
-            
-            // Add active class to current slide and dot
-            currentSlide.classList.add('active');
-            dots[index].classList.add('active');
-        }
-
-        function changeSlide(direction) {
-            currentSlideIndex += direction;
-            
-            if (currentSlideIndex >= totalSlides) {
-                currentSlideIndex = 0;
-            } else if (currentSlideIndex < 0) {
-                currentSlideIndex = totalSlides - 1;
-            }
-            
-            showSlide(currentSlideIndex);
-        }
-
-        function currentSlide(index) {
-            currentSlideIndex = index - 1;
-            showSlide(currentSlideIndex);
-        }
-
-        // Auto-advance carousel every 6 seconds
-        setInterval(() => {
-            changeSlide(1);
-        }, 6000);
-        
-        // Hamburger menu functionality
-        function toggleMenu() {
-            const navLinks = document.querySelector('.nav-links');
-            const hamburger = document.querySelector('.hamburger');
-            
-            navLinks.classList.toggle('active');
-            hamburger.classList.toggle('active');
-        }
-        
-        // Close menu when clicking on a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                const navLinks = document.querySelector('.nav-links');
-                const hamburger = document.querySelector('.hamburger');
-                
-                navLinks.classList.remove('active');
-                hamburger.classList.remove('active');
-            });
-        });
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            const navLinks = document.querySelector('.nav-links');
-            const hamburger = document.querySelector('.hamburger');
-            const nav = document.querySelector('nav');
-            
-            if (!nav.contains(e.target)) {
-                navLinks.classList.remove('active');
-                hamburger.classList.remove('active');
-            }
-        });
-
-    </script>
 </body>
 </html>
