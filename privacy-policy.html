@@ -3,54 +3,381 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - Downtown Manteca District</title>
-    <meta name="description" content="How the Downtown Manteca Improvement Association collects, uses and protects personal information.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/site.css">
-    <script src="js/site.js" defer></script>
+    <title>Privacy Policy - Downtown Manteca</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: #0a2b30;
+            background: linear-gradient(135deg, #f7f5f3 0%, #fff 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .logo-img {
+            width: 170px;
+            height: 170px;
+            object-fit: contain;
+            background: white;
+            border-radius: 50%;
+            padding: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background: rgba(238, 167, 25, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            padding: 3rem 0 2rem;
+            background: white;
+            margin: 2rem auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .page-header h1 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2.5rem;
+            color: #0a2b30;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: #035847;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .last-updated {
+            background: linear-gradient(135deg, #eea719, #c44720);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            margin: 2rem auto;
+            text-align: center;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(238, 167, 25, 0.3);
+        }
+
+        /* Content Section */
+        .content-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .content-section h2 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2rem;
+            color: #0a2b30;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            padding-bottom: 0.5rem;
+        }
+
+        .content-section h3 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.5rem;
+            color: #035847;
+            margin: 2rem 0 1rem 0;
+            font-weight: 600;
+        }
+
+        .content-section h4 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.2rem;
+            color: #0a2b30;
+            margin: 1.5rem 0 1rem 0;
+            font-weight: 600;
+        }
+
+        .content-section p {
+            font-size: 1.1rem;
+            color: #035847;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .content-section ul {
+            margin: 1rem 0 1.5rem 2rem;
+        }
+
+        .content-section li {
+            color: #035847;
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .info-box h4 {
+            font-family: 'Roboto Slab', serif;
+            color: #0a2b30;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .info-box p {
+            margin-bottom: 1rem;
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background: linear-gradient(135deg, rgba(141, 36, 47, 0.1), rgba(196, 71, 32, 0.1));
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            box-shadow: 0 4px 15px rgba(141, 36, 47, 0.1);
+        }
+
+        .warning-box h4 {
+            font-family: 'Roboto Slab', serif;
+            color: #8d242f;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .warning-box p {
+            color: #035847;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Highlight */
+        .contact-highlight {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            color: #0a2b30;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border: 2px solid #eea719;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .contact-highlight h3 {
+            font-family: 'Roboto Slab', serif;
+            margin-bottom: 1rem;
+            color: #0a2b30;
+            font-weight: 600;
+        }
+
+        .contact-highlight p {
+            color: #035847;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .contact-highlight a {
+            color: #8d242f;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .contact-highlight a:hover {
+            color: #c44720;
+            text-decoration: underline;
+        }
+
+        /* Data Table */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .data-table th {
+            background: linear-gradient(135deg, #0a2b30, #035847);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-family: 'Roboto Slab', serif;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+            color: #035847;
+            vertical-align: top;
+        }
+
+        .data-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        /* Links */
+        a {
+            color: #8d242f;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #c44720;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 1.5rem 0;
+            }
+            
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .logo-container {
+                justify-content: center;
+            }
+            
+            .logo-img {
+                width: 130px;
+                height: 130px;
+                padding: 8px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .content-section {
+                padding: 2rem;
+            }
+            
+            .data-table {
+                font-size: 0.9rem;
+            }
+            
+            .data-table th,
+            .data-table td {
+                padding: 0.75rem;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+        }
+    </style>
+    <!-- Site analytics -->
     <script src="analytics.js" defer></script>
 </head>
 <body>
-    <a class="skip-link" href="#main">Skip to main content</a>
     <header>
-        <nav>
-            <a class="nav-logo" href="index.html">
-                <img src="img/manteca-logo.png" alt="">
-                <span class="nav-logo-text">Downtown Manteca<span>District</span></span>
-            </a>
-            <button class="hamburger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
-                <span></span><span></span><span></span>
-            </button>
-            <ul class="nav-links" id="nav-links">
+        <nav class="container">
+            <div class="logo-container">
+                <img src="img/manteca-logo.png" alt="Downtown Manteca District Logo" class="logo-img">
+            </div>
+            <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="events.html">Events</a></li>
                 <li><a href="directory.html">Business</a></li>
-                <li><a href="documents.html">Documents</a></li>
                 <li><a href="aboutUs.html">About Us</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <main id="main">
-        <section class="page-header">
+    <section class="page-header">
         <div class="container">
             <h1>Privacy Policy</h1>
             <p>Learn how the Downtown Manteca District collects, uses, and protects your personal information.</p>
         </div>
     </section>
 
-    <div class="page-shell">
-        <div class="container">
     <div class="container">
         <div class="last-updated">
             <strong>Last Updated:</strong> January 2025
         </div>
     </div>
 
-    
+    <main class="container">
         <section class="content-section">
             <h2>Introduction</h2>
             <p>The Downtown Manteca District ("we," "us," or "our") is committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or interact with our services.</p>
@@ -58,7 +385,7 @@
             <p>As a public entity, we are committed to transparency while also respecting your privacy rights. This policy complies with applicable federal and state privacy laws, including the California Information Practices Act.</p>
 
             <div class="info-box">
-                <h4>Our Commitment</h4>
+                <h4>🔒 Our Commitment</h4>
                 <p>We collect only the information necessary to provide our services effectively and operate transparently as a public entity. We do not sell, rent, or trade your personal information to third parties for commercial purposes.</p>
             </div>
         </section>
@@ -129,7 +456,7 @@
             </ul>
 
             <div class="warning-box">
-                <h4>Third-Party Services</h4>
+                <h4>⚠️ Third-Party Services</h4>
                 <p>Our website integrates with third-party services including Google Sheets, Google Calendar, and Google Maps. These services may collect information according to their own privacy policies. We recommend reviewing their privacy policies for details on how your information is handled.</p>
             </div>
         </section>
@@ -224,7 +551,7 @@
             </ul>
 
             <div class="warning-box">
-                <h4>Security Limitation</h4>
+                <h4>⚠️ Security Limitation</h4>
                 <p>While we implement reasonable security measures, no method of transmission over the internet or electronic storage is 100% secure. We cannot guarantee absolute security of your information.</p>
             </div>
         </section>
@@ -257,7 +584,7 @@
             </ul>
 
             <div class="info-box">
-                <h4>Important Note</h4>
+                <h4>📋 Important Note</h4>
                 <p>Some information may be retained as required by law or necessary for legitimate governmental purposes, even after you request removal or correction.</p>
             </div>
         </section>
@@ -334,7 +661,7 @@
         </section>
 
         <div class="contact-highlight">
-            <h3>Privacy Questions or Concerns?</h3>
+            <h3>📞 Privacy Questions or Concerns?</h3>
             <p>If you have questions about this Privacy Policy or our privacy practices, or if you wish to exercise your privacy rights, please contact us:</p>
             <p><strong>Privacy Officer:</strong> Sialei Manuleleua, Executive Director</p>
             <p><strong>Email:</strong> <a href="mailto:privacy@downtownmanteca.com">privacy@downtownmanteca.com</a></p>
@@ -359,13 +686,20 @@
             </ul>
 
             <div class="info-box">
-                <h4>Additional Resources</h4>
+                <h4>📚 Additional Resources</h4>
                 <p>For more information about your privacy rights under California law, visit the California Attorney General's website at <a href="https://oag.ca.gov/privacy" target="_blank" rel="noopener">oag.ca.gov/privacy</a>.</p>
             </div>
         </section>
-        </div>
-    </div>
     </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>Copyright © 2025 Downtown Manteca - All Rights Reserved.</p>
+                <p>Managed by Jane Media Services</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
         // Add accessibility features
@@ -393,7 +727,7 @@
 
             // Add print functionality for privacy policy
             const printBtn = document.createElement('button');
-            printBtn.textContent = ' Print This Policy';
+            printBtn.textContent = '🖨️ Print This Policy';
             printBtn.style.cssText = 'background: linear-gradient(45deg, #eea719, #c44720); color: white; padding: 1rem 2rem; border: none; border-radius: 25px; font-family: inherit; font-weight: 600; cursor: pointer; margin: 2rem auto; display: block;';
             printBtn.addEventListener('click', function() {
                 window.print();
@@ -405,41 +739,5 @@
             }
         });
     </script>
-
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <img src="img/manteca-logo.png" alt="">
-                <p>The business association for the blocks around Yosemite and Maple, in Manteca, California.</p>
-            </div>
-            <div class="footer-col">
-                <h2>Navigate</h2>
-                <a href="index.html">Home</a>
-                <a href="events.html">Events</a>
-                <a href="directory.html">Business Directory</a>
-                <a href="documents.html">Documents</a>
-                <a href="aboutUs.html">About Us</a>
-                <a href="contact.html">Contact</a>
-            </div>
-            <div class="footer-col">
-                <h2>Connect</h2>
-                <a href="https://www.facebook.com/profile.php?id=61573494300309" target="_blank" rel="noopener">Facebook</a>
-                <a href="https://www.instagram.com/downtownmanteca/" target="_blank" rel="noopener">Instagram</a>
-                <a href="https://linktr.ee/downtownmanteca" target="_blank" rel="noopener">Linktree</a>
-                <a href="mailto:info@downtownmanteca.com">Email Us</a>
-            </div>
-            <div class="footer-col">
-                <h2>Contact</h2>
-                <p>123 W. Yosemite Ave.</p>
-                <p>Manteca, CA 95336</p>
-                <p style="margin-top:10px;"><a href="tel:+12092147555">(209) 214-7555</a></p>
-                <p><a href="mailto:info@downtownmanteca.com">info@downtownmanteca.com</a></p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <span>&copy; 2026 Downtown Manteca District. All rights reserved.</span>
-            <span><a href="privacy-policy.html">Privacy</a> &nbsp;&middot;&nbsp; <a href="terms-of-use.html">Terms</a> &nbsp;&middot;&nbsp; <a href="accessibility.html">Accessibility</a></span>
-        </div>
-    </footer>
 </body>
 </html>

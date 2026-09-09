@@ -3,79 +3,722 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Public Notices - Downtown Manteca District</title>
-    <meta name="description" content="Public notices, hearings and announcements from the Downtown Manteca District.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/site.css">
-    <script src="js/site.js" defer></script>
+    <title>Public Notices - Downtown Manteca</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: #0a2b30;
+            background: linear-gradient(135deg, #f7f5f3 0%, #fff 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .logo-img {
+            width: 170px;
+            height: 170px;
+            object-fit: contain;
+            background: white;
+            border-radius: 50%;
+            padding: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background: rgba(238, 167, 25, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            padding: 3rem 0 2rem;
+            background: white;
+            margin: 2rem auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .page-header h1 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2.5rem;
+            color: #0a2b30;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: #035847;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Notice Types Section */
+        .notice-types {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .notice-types h2 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2rem;
+            color: #0a2b30;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            text-align: center;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .type-card {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .type-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .type-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .type-card h3 {
+            font-family: 'Roboto Slab', serif;
+            color: #0a2b30;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .type-card p {
+            color: #035847;
+            font-size: 0.95rem;
+        }
+
+        /* Subscription Section */
+        .subscription-section {
+            background: linear-gradient(135deg, #8d242f, #c44720);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(141, 36, 47, 0.3);
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .subscription-section h2 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .subscription-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .subscription-form {
+            display: flex;
+            max-width: 400px;
+            margin: 0 auto;
+            gap: 0.5rem;
+        }
+
+        .subscription-form input {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .subscription-form button {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            padding: 1rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .subscription-form button:hover {
+            background: white;
+            color: #8d242f;
+        }
+
+        /* Filter Controls */
+        .filter-controls {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .filter-select, .search-input {
+            padding: 0.5rem 1rem;
+            border: 2px solid #eea719;
+            border-radius: 25px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .filter-select:focus, .search-input:focus {
+            border-color: #c44720;
+            box-shadow: 0 0 10px rgba(238, 167, 25, 0.3);
+        }
+
+        .search-input {
+            width: 200px;
+        }
+
+        .view-toggle {
+            display: flex;
+            background: #f8f9fa;
+            border-radius: 25px;
+            overflow: hidden;
+            border: 2px solid #eea719;
+        }
+
+        .view-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            color: #035847;
+            transition: all 0.3s ease;
+        }
+
+        .view-btn.active {
+            background: #eea719;
+            color: white;
+        }
+
+        /* Notice Cards */
+        .notices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .notice-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .notice-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .notice-header {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 1.5rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .notice-type-badge {
+            background: #eea719;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        .notice-title {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.3rem;
+            color: #0a2b30;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .notice-date {
+            color: #8d242f;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .notice-content {
+            padding: 1.5rem;
+        }
+
+        .notice-summary {
+            color: #035847;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .notice-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .meta-label {
+            color: #8d242f;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .meta-value {
+            color: #035847;
+            font-weight: 500;
+        }
+
+        .notice-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .notice-action-btn {
+            flex: 1;
+            text-align: center;
+            padding: 0.75rem;
+            background: linear-gradient(45deg, #eea719, #c44720);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .notice-action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(238, 167, 25, 0.4);
+        }
+
+        .notice-action-btn.secondary {
+            background: linear-gradient(45deg, #035847, #0a2b30);
+        }
+
+        /* Urgent Notice */
+        .urgent-notice .notice-type-badge {
+            background: #dc3545;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
+        /* List View */
+        .notices-list {
+            display: none;
+        }
+
+        .notices-list.active {
+            display: block;
+        }
+
+        .notice-list-item {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .notice-list-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .list-item-content {
+            padding: 1.5rem;
+            display: grid;
+            grid-template-columns: auto 1fr auto auto;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .list-date {
+            background: #eea719;
+            color: white;
+            padding: 0.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-align: center;
+            min-width: 80px;
+        }
+
+        .list-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .list-title {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.1rem;
+            color: #0a2b30;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .list-type {
+            color: #8d242f;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .list-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .list-action-btn {
+            padding: 0.5rem 1rem;
+            background: #eea719;
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .list-action-btn:hover {
+            background: #c44720;
+            transform: translateY(-1px);
+        }
+
+        /* Loading and Error States */
+        .loading, .error, .no-notices {
+            text-align: center;
+            padding: 3rem;
+            color: #8d242f;
+            font-size: 1.2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .loading::after {
+            content: "...";
+            animation: dots 1.5s steps(4, end) infinite;
+        }
+
+        @keyframes dots {
+            0%, 20% { content: "."; }
+            40% { content: ".."; }
+            60% { content: "..."; }
+            80%, 100% { content: ""; }
+        }
+
+        .error {
+            background: rgba(238, 167, 25, 0.1);
+            border: 2px solid #eea719;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Info Box */
+        .info-box {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .info-box h4 {
+            font-family: 'Roboto Slab', serif;
+            color: #0a2b30;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .info-box p {
+            color: #035847;
+            margin-bottom: 1rem;
+        }
+
+        .info-box a {
+            color: #8d242f;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .info-box a:hover {
+            color: #c44720;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 1.5rem 0;
+            }
+            
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .logo-container {
+                justify-content: center;
+            }
+            
+            .logo-img {
+                width: 130px;
+                height: 130px;
+                padding: 8px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .notice-types,
+            .subscription-section {
+                padding: 2rem;
+            }
+            
+            .types-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .subscription-form {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .filter-controls {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 1.5rem;
+            }
+            
+            .filter-group {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .search-input {
+                width: 100%;
+            }
+            
+            .notices-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .list-item-content {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .list-actions {
+                justify-content: center;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+        }
+    </style>
+    <!-- Site analytics -->
     <script src="analytics.js" defer></script>
 </head>
 <body>
-    <a class="skip-link" href="#main">Skip to main content</a>
     <header>
-        <nav>
-            <a class="nav-logo" href="index.html">
-                <img src="img/manteca-logo.png" alt="">
-                <span class="nav-logo-text">Downtown Manteca<span>District</span></span>
-            </a>
-            <button class="hamburger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
-                <span></span><span></span><span></span>
-            </button>
-            <ul class="nav-links" id="nav-links">
+        <nav class="container">
+            <div class="logo-container">
+                <img src="img/manteca-logo.png" alt="Downtown Manteca District Logo" class="logo-img">
+            </div>
+            <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="events.html">Events</a></li>
                 <li><a href="directory.html">Business</a></li>
-                <li><a href="documents.html" class="active" aria-current="page">Documents</a></li>
                 <li><a href="aboutUs.html">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <main id="main">
-        <section class="page-header">
+    <section class="page-header">
         <div class="container">
             <h1>Public Notices</h1>
             <p>Official announcements, legal notices, and public hearing information from the Downtown Manteca District.</p>
         </div>
     </section>
 
-    <div class="page-shell">
-        <div class="container">
-    
+    <main class="container">
         <!-- Notice Types -->
         <section class="notice-types">
             <h2>Types of Public Notices</h2>
             <div class="types-grid">
                 <div class="type-card">
-                    <span class="icon"></span>
+                    <span class="icon">📢</span>
                     <h3>General Announcements</h3>
                     <p>District news, program updates, and community information</p>
                 </div>
                 <div class="type-card">
-                    <span class="icon"></span>
+                    <span class="icon">🏛️</span>
                     <h3>Public Hearings</h3>
                     <p>Notice of public hearings, meetings, and community input opportunities</p>
                 </div>
                 <div class="type-card">
-                    <span class="icon"></span>
+                    <span class="icon">📋</span>
                     <h3>Bid Opportunities</h3>
                     <p>Requests for proposals, contract opportunities, and procurement notices</p>
                 </div>
                 <div class="type-card">
-                    <span class="icon"></span>
+                    <span class="icon">⚖️</span>
                     <h3>Legal Notices</h3>
                     <p>Required legal publications, ordinances, and regulatory notices</p>
                 </div>
                 <div class="type-card">
-                    <span class="icon"></span>
+                    <span class="icon">🚨</span>
                     <h3>Urgent Notices</h3>
                     <p>Emergency announcements, service disruptions, and time-sensitive alerts</p>
                 </div>
                 <div class="type-card">
-                    <span class="icon"></span>
+                    <span class="icon">🏗️</span>
                     <h3>Development Projects</h3>
                     <p>Planning applications, zoning changes, and development proposals</p>
                 </div>
@@ -83,20 +726,13 @@
         </section>
 
         <!-- Subscription Section -->
-        <!-- The form here had no action and no submit handler, so it did nothing;
-             the newsletter it echoed was removed in 0311d68. Point people at a
-             channel that exists instead. -->
         <section class="subscription-section">
-            <h2>Stay informed</h2>
-            <div class="info-box">
-                <p>
-                    Notices are posted here as they are issued. To be told when a new one
-                    goes up, email
-                    <a href="mailto:info@downtownmanteca.com?subject=Public%20notice%20alerts">info@downtownmanteca.com</a>
-                    and ask to be added to the notice list, or call
-                    <a href="tel:+12092147555">(209) 214-7555</a>.
-                </p>
-            </div>
+            <h2>📬 Stay Informed</h2>
+            <p>Subscribe to receive email notifications when new public notices are posted.</p>
+            <form class="subscription-form" id="noticeSubscriptionForm">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
         </section>
 
         <!-- Filter Controls -->
@@ -131,7 +767,7 @@
             <!-- Sample notices - these would be loaded dynamically -->
             <div class="notice-card urgent-notice">
                 <div class="notice-header">
-                    <span class="notice-type-badge">URGENT NOTICE</span>
+                    <span class="notice-type-badge">🚨 URGENT NOTICE</span>
                     <h3 class="notice-title">Temporary Street Closure - Main Street</h3>
                     <div class="notice-date">Posted: January 25, 2025</div>
                 </div>
@@ -157,10 +793,10 @@
                     </div>
                     <div class="notice-actions">
                         <a href="#" class="notice-action-btn">
-                             View Full Notice
+                            📄 View Full Notice
                         </a>
                         <a href="#" class="notice-action-btn secondary">
-                             Email Alert
+                            📧 Email Alert
                         </a>
                     </div>
                 </div>
@@ -168,7 +804,7 @@
 
             <div class="notice-card">
                 <div class="notice-header">
-                    <span class="notice-type-badge">PUBLIC HEARING</span>
+                    <span class="notice-type-badge">🏛️ PUBLIC HEARING</span>
                     <h3 class="notice-title">Public Hearing: 2025 Budget Review</h3>
                     <div class="notice-date">Posted: January 20, 2025</div>
                 </div>
@@ -194,10 +830,10 @@
                     </div>
                     <div class="notice-actions">
                         <a href="#" class="notice-action-btn">
-                             View Agenda
+                            📄 View Agenda
                         </a>
                         <a href="#" class="notice-action-btn secondary">
-                             Submit Comment
+                            💬 Submit Comment
                         </a>
                     </div>
                 </div>
@@ -205,7 +841,7 @@
 
             <div class="notice-card">
                 <div class="notice-header">
-                    <span class="notice-type-badge">BID OPPORTUNITY</span>
+                    <span class="notice-type-badge">📋 BID OPPORTUNITY</span>
                     <h3 class="notice-title">RFP: Street Beautification Project</h3>
                     <div class="notice-date">Posted: January 15, 2025</div>
                 </div>
@@ -231,10 +867,10 @@
                     </div>
                     <div class="notice-actions">
                         <a href="#" class="notice-action-btn">
-                             Download RFP
+                            📄 Download RFP
                         </a>
                         <a href="#" class="notice-action-btn secondary">
-                             Questions
+                            📧 Questions
                         </a>
                     </div>
                 </div>
@@ -242,7 +878,7 @@
 
             <div class="notice-card">
                 <div class="notice-header">
-                    <span class="notice-type-badge">ANNOUNCEMENT</span>
+                    <span class="notice-type-badge">📢 ANNOUNCEMENT</span>
                     <h3 class="notice-title">New Small Business Grant Program</h3>
                     <div class="notice-date">Posted: January 10, 2025</div>
                 </div>
@@ -268,10 +904,10 @@
                     </div>
                     <div class="notice-actions">
                         <a href="#" class="notice-action-btn">
-                             View Guidelines
+                            📄 View Guidelines
                         </a>
                         <a href="#" class="notice-action-btn secondary">
-                             Apply Now
+                            📝 Apply Now
                         </a>
                     </div>
                 </div>
@@ -279,7 +915,7 @@
 
             <div class="notice-card">
                 <div class="notice-header">
-                    <span class="notice-type-badge">LEGAL NOTICE</span>
+                    <span class="notice-type-badge">⚖️ LEGAL NOTICE</span>
                     <h3 class="notice-title">Ordinance Amendment: Outdoor Dining</h3>
                     <div class="notice-date">Posted: January 5, 2025</div>
                 </div>
@@ -305,10 +941,10 @@
                     </div>
                     <div class="notice-actions">
                         <a href="#" class="notice-action-btn">
-                             Read Ordinance
+                            📄 Read Ordinance
                         </a>
                         <a href="#" class="notice-action-btn secondary">
-                             Public Comment
+                            💬 Public Comment
                         </a>
                     </div>
                 </div>
@@ -322,7 +958,7 @@
                     <span class="list-date">Jan<br>25</span>
                     <div class="list-info">
                         <h3 class="list-title">Temporary Street Closure - Main Street</h3>
-                        <span class="list-type">Urgent Notice</span>
+                        <span class="list-type">🚨 Urgent Notice</span>
                     </div>
                     <span class="meta-value">Active</span>
                     <div class="list-actions">
@@ -337,7 +973,7 @@
                     <span class="list-date">Jan<br>20</span>
                     <div class="list-info">
                         <h3 class="list-title">Public Hearing: 2025 Budget Review</h3>
-                        <span class="list-type">Public Hearing</span>
+                        <span class="list-type">🏛️ Public Hearing</span>
                     </div>
                     <span class="meta-value">Open for Comment</span>
                     <div class="list-actions">
@@ -352,7 +988,7 @@
                     <span class="list-date">Jan<br>15</span>
                     <div class="list-info">
                         <h3 class="list-title">RFP: Street Beautification Project</h3>
-                        <span class="list-type">Bid Opportunity</span>
+                        <span class="list-type">📋 Bid Opportunity</span>
                     </div>
                     <span class="meta-value">Open</span>
                     <div class="list-actions">
@@ -367,7 +1003,7 @@
                     <span class="list-date">Jan<br>10</span>
                     <div class="list-info">
                         <h3 class="list-title">New Small Business Grant Program</h3>
-                        <span class="list-type">Announcement</span>
+                        <span class="list-type">📢 Announcement</span>
                     </div>
                     <span class="meta-value">Applications Open</span>
                     <div class="list-actions">
@@ -382,7 +1018,7 @@
                     <span class="list-date">Jan<br>05</span>
                     <div class="list-info">
                         <h3 class="list-title">Ordinance Amendment: Outdoor Dining</h3>
-                        <span class="list-type">Legal Notice</span>
+                        <span class="list-type">⚖️ Legal Notice</span>
                     </div>
                     <span class="meta-value">Comment Period</span>
                     <div class="list-actions">
@@ -395,7 +1031,7 @@
 
         <!-- Information Box -->
         <div class="info-box">
-            <h4>Questions About Public Notices?</h4>
+            <h4>📞 Questions About Public Notices?</h4>
             <p>If you have questions about any public notice or need assistance accessing documents, please contact us:</p>
             <ul>
                 <li><strong>General Inquiries:</strong> <a href="mailto:info@downtownmanteca.com">info@downtownmanteca.com</a></li>
@@ -405,9 +1041,16 @@
             </ul>
             <p><strong>Phone:</strong> <a href="tel:209-214-7555">(209) 214-7555</a></p>
         </div>
-        </div>
-    </div>
     </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>Copyright © 2025 Downtown Manteca - All Rights Reserved.</p>
+                <p>Managed by Jane Media Services</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
         // Global variables
@@ -548,41 +1191,5 @@
             });
         });
     </script>
-
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <img src="img/manteca-logo.png" alt="">
-                <p>The business association for the blocks around Yosemite and Maple, in Manteca, California.</p>
-            </div>
-            <div class="footer-col">
-                <h2>Navigate</h2>
-                <a href="index.html">Home</a>
-                <a href="events.html">Events</a>
-                <a href="directory.html">Business Directory</a>
-                <a href="documents.html">Documents</a>
-                <a href="aboutUs.html">About Us</a>
-                <a href="contact.html">Contact</a>
-            </div>
-            <div class="footer-col">
-                <h2>Connect</h2>
-                <a href="https://www.facebook.com/profile.php?id=61573494300309" target="_blank" rel="noopener">Facebook</a>
-                <a href="https://www.instagram.com/downtownmanteca/" target="_blank" rel="noopener">Instagram</a>
-                <a href="https://linktr.ee/downtownmanteca" target="_blank" rel="noopener">Linktree</a>
-                <a href="mailto:info@downtownmanteca.com">Email Us</a>
-            </div>
-            <div class="footer-col">
-                <h2>Contact</h2>
-                <p>123 W. Yosemite Ave.</p>
-                <p>Manteca, CA 95336</p>
-                <p style="margin-top:10px;"><a href="tel:+12092147555">(209) 214-7555</a></p>
-                <p><a href="mailto:info@downtownmanteca.com">info@downtownmanteca.com</a></p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <span>&copy; 2026 Downtown Manteca District. All rights reserved.</span>
-            <span><a href="privacy-policy.html">Privacy</a> &nbsp;&middot;&nbsp; <a href="terms-of-use.html">Terms</a> &nbsp;&middot;&nbsp; <a href="accessibility.html">Accessibility</a></span>
-        </div>
-    </footer>
 </body>
 </html>

@@ -4,11 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events - Downtown Manteca District</title>
-    <meta name="description" content="Beer & Wine Stroll on Friday, October 30, 2026, 6-9 PM, plus the monthly board and committee meeting schedule for the Downtown Manteca District.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/site.css">
+    <meta name="description" content="Beer &amp; Wine Stroll in Downtown Manteca on Friday, October 30, 2026, 6-9 PM. Beer and wine tastings, live music, and Halloween fun at participating local businesses. 21+.">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -59,91 +55,691 @@
       ]
     }
     </script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* The stroll carries its own artwork and colours; the details below it
-           stay in the site's voice. */
-        .stroll {
-            background: var(--paper);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            overflow: hidden;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .stroll-banner { display: block; width: 100%; height: auto; }
-        .stroll-title { margin: 0; font-size: 0; line-height: 0; }
-        .stroll-body { padding: 40px; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: #0a2b30;
+            background: linear-gradient(135deg, #f7f5f3 0%, #fff 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
+            color: white;
+            padding: .5rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+            position: relative;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .logo-img {
+            width: 170px;
+            height: 170px;
+            object-fit: contain;
+            background: white;
+            border-radius: 50%;
+            padding: 0px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background: rgba(238, 167, 25, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+            border: none;
+            background: none;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: none;
+            text-align: center;
+            padding: 2rem 0 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .page-header h1 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2.5rem;
+            color: #0a2b30;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: #035847;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Controls Section */
+        .events-controls {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .events-controls h3 {
+            font-family: 'Roboto Slab', serif;
+            color: #0a2b30;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .events-controls p {
+            color: #035847;
+            margin-bottom: 1.5rem;
+        }
+
+        .calendar-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+
+        .info-card h4 {
+            font-family: 'Roboto Slab', serif;
+            color: #0a2b30;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .info-card p {
+            color: #035847;
+            font-size: 0.95rem;
+        }
+
+        /* Calendar Embed Section */
+        .calendar-embed-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .calendar-embed {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 2px solid #eea719;
+        }
+
+        .calendar-embed iframe {
+            width: 100%;
+            min-height: 700px;
+            border: none;
+        }
+
+        /* ============ Beer & Wine Stroll feature ============ */
+        .stroll {
+            position: relative;
+            isolation: isolate;
+            scroll-margin-top: 1.5rem;
+            overflow: hidden;
+            border-radius: 24px;
+            margin-bottom: 2rem;
+            color: #f4eeff;
+            border: 1px solid rgba(180, 130, 245, 0.35);
+            background:
+                radial-gradient(120% 85% at 50% -15%, rgba(167, 96, 232, 0.55) 0%, rgba(88, 34, 148, 0.32) 38%, rgba(11, 7, 16, 0) 72%),
+                radial-gradient(75% 55% at 88% 108%, rgba(139, 63, 212, 0.38) 0%, rgba(11, 7, 16, 0) 62%),
+                linear-gradient(158deg, #1c0b31 0%, #0b0710 55%, #16092a 100%);
+            box-shadow: 0 26px 65px rgba(38, 10, 74, 0.45);
+        }
+
+        /* Film grain, to echo the flyer artwork */
+        .stroll::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.42;
+            mix-blend-mode: overlay;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23g)'/%3E%3C/svg%3E");
+        }
+
+        /* Harvest moon, sitting in the copy below the artwork */
+        .stroll-inner::before {
+            content: "";
+            position: absolute;
+            top: -60px;
+            right: -70px;
+            width: 340px;
+            height: 340px;
+            z-index: -1;
+            pointer-events: none;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(216, 178, 255, 0.30) 0%, rgba(167, 96, 232, 0.16) 45%, rgba(11, 7, 16, 0) 70%);
+            animation: stroll-moon 7s ease-in-out infinite;
+        }
+
+        @keyframes stroll-moon {
+            0%, 100% { opacity: 0.75; transform: scale(1); }
+            50%      { opacity: 1;    transform: scale(1.06); }
+        }
+
+        .stroll-inner {
+            position: relative;
+            z-index: 1;
+            padding: 2rem 2rem 2.5rem;
+            text-align: center;
+        }
+
+        .stroll-kicker {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: #c9a0f5;
+            margin-bottom: 0.75rem;
+        }
+
+        /* The event artwork carries the wordmark, so it *is* the heading */
+        .stroll-title {
+            position: relative;
+            z-index: 1;
+            margin: 0;
+            font-size: 0;
+            line-height: 0;
+        }
+
+        .stroll-banner {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .stroll-tagline {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #eadcff;
+            max-width: 640px;
+            margin: 0 auto 1.75rem;
+        }
+
+        /* Date block */
         .stroll-when {
             display: flex;
+            align-items: center;
+            justify-content: center;
             flex-wrap: wrap;
-            align-items: baseline;
-            gap: 0.5rem 1.25rem;
-            padding-bottom: 1.25rem;
-            margin-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border);
+            gap: 0.25rem 1.5rem;
+            padding: 1rem;
+            margin-bottom: 1.75rem;
+            border-top: 1px solid rgba(201, 160, 245, 0.28);
+            border-bottom: 1px solid rgba(201, 160, 245, 0.28);
         }
-        .stroll-when strong { font-family: var(--serif); font-size: 1.3rem; color: var(--brown); }
-        .stroll-when span { color: var(--terra); font-weight: 700; }
-        .stroll-tags { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.5rem 0; }
-        .stroll-tags li {
-            padding: 0.35rem 0.85rem;
-            border-radius: 4px;
-            font-size: 0.78rem;
+
+        .stroll-when-text {
+            text-align: center;
+        }
+
+        .stroll-when-text strong {
+            display: block;
+            font-size: 1.05rem;
             font-weight: 700;
-            letter-spacing: 0.04em;
-            color: var(--sage);
-            background: rgba(74, 112, 89, 0.09);
-            border: 1px solid rgba(74, 112, 89, 0.28);
+            color: #ffffff;
         }
-        .fact {
+
+        .stroll-when-text span {
+            display: block;
+            font-size: 0.95rem;
+            color: #c9a0f5;
+            font-weight: 600;
+        }
+
+        /* Highlight pills */
+        .stroll-tags {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.6rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .stroll-tags li {
+            padding: 0.45rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #f4eeff;
+            background: rgba(167, 96, 232, 0.16);
+            border: 1px solid rgba(201, 160, 245, 0.4);
+        }
+
+        .stroll-copy {
+            font-size: 1rem;
+            line-height: 1.75;
+            color: rgba(244, 238, 255, 0.88);
+            max-width: 680px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Where / ticket cards */
+        .stroll-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1rem;
+            text-align: left;
+            margin-bottom: 1.75rem;
+        }
+
+        .stroll-fact {
             display: flex;
             flex-direction: column;
-            padding: 22px 24px;
-            background: var(--cream);
-            border: 1px solid var(--border);
-            border-radius: 8px;
+            padding: 1.25rem;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(201, 160, 245, 0.28);
             text-decoration: none;
-            transition: border-color 0.2s, background 0.2s;
+            transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
         }
-        .fact:hover, .fact:focus-visible { border-color: var(--terra); background: #fff; }
-        .fact h3 {
-            font-size: 0.7rem;
+
+        .stroll-fact:hover,
+        .stroll-fact:focus-visible {
+            transform: translateY(-4px);
+            border-color: rgba(201, 160, 245, 0.7);
+            background: rgba(167, 96, 232, 0.14);
+        }
+
+        .stroll-fact:focus-visible {
+            outline: 2px solid #c9a0f5;
+            outline-offset: 3px;
+        }
+
+        /* Says out loud what the hover only hints at */
+        .stroll-go {
+            margin-top: auto;
+            padding-top: 0.9rem;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            color: #c9a0f5;
+        }
+
+        .stroll-fact:hover .stroll-go,
+        .stroll-fact:focus-visible .stroll-go {
+            color: #e2ccff;
+        }
+
+        .stroll-fact h3 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 0.78rem;
             font-weight: 700;
             letter-spacing: 0.14em;
             text-transform: uppercase;
-            color: var(--terra);
-            margin-bottom: 0.7rem;
+            color: #c9a0f5;
+            margin-bottom: 0.6rem;
         }
-        .fact p { font-size: 0.9rem; line-height: 1.6; color: var(--mid); }
-        .fact strong { color: var(--brown); }
-        .price { display: block; font-family: var(--serif); font-size: 1.9rem; color: var(--brown); line-height: 1.15; }
-        .price small { font-family: var(--sans); font-size: 0.66rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terra); }
-        .fact .link-rule { margin-top: auto; padding-top: 1rem; border: none; }
-        .fine { font-size: 0.82rem; line-height: 1.7; color: var(--mid); opacity: 0.85; margin-top: 1.75rem; }
 
-        .calendar-embed { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--paper); }
-        .calendar-embed iframe { display: block; width: 100%; min-height: 700px; border: 0; }
+        .stroll-fact p {
+            font-size: 0.92rem;
+            line-height: 1.6;
+            color: rgba(244, 238, 255, 0.85);
+        }
 
+        .stroll-price {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.1;
+            color: #ffffff;
+        }
+
+        .stroll-price small {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #c9a0f5;
+        }
+
+        .stroll-cause {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #eadcff;
+            max-width: 620px;
+            margin: 0 auto 1.75rem;
+        }
+
+        /* Buttons */
+        .stroll-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.85rem;
+            margin-bottom: 2rem;
+        }
+
+        .stroll-btn {
+            display: inline-block;
+            padding: 0.95rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: #1a0a2e;
+            background: linear-gradient(45deg, #c9a0f5, #a760e8);
+            border: 1px solid rgba(201, 160, 245, 0.9);
+            box-shadow: 0 8px 26px rgba(167, 96, 232, 0.45);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+        }
+
+        .stroll-btn:hover,
+        .stroll-btn:focus-visible {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 34px rgba(167, 96, 232, 0.65);
+            background: linear-gradient(45deg, #e2ccff, #b578f0);
+        }
+
+        .stroll-btn-ghost {
+            color: #f4eeff;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(201, 160, 245, 0.55);
+            box-shadow: none;
+        }
+
+        .stroll-btn-ghost:hover,
+        .stroll-btn-ghost:focus-visible {
+            background: rgba(167, 96, 232, 0.22);
+            box-shadow: 0 10px 26px rgba(167, 96, 232, 0.3);
+        }
+
+        .stroll-fine {
+            font-size: 0.8rem;
+            line-height: 1.7;
+            color: rgba(244, 238, 255, 0.62);
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .stroll-inner::before { animation: none; }
+            .stroll-fact,
+            .stroll-btn { transition: none; }
+            .stroll-fact:hover,
+            .stroll-btn:hover { transform: none; }
+        }
+
+        @media (max-width: 600px) {
+            .stroll-inner {
+                padding: 1.5rem 1.15rem 2rem;
+            }
+
+            .stroll-kicker {
+                font-size: 0.62rem;
+                letter-spacing: 0.16em;
+            }
+
+            .stroll-when {
+                flex-direction: column;
+                gap: 0.35rem;
+            }
+
+            .stroll-tags li {
+                font-size: 0.78rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .stroll-facts {
+                grid-template-columns: 1fr;
+            }
+
+            .stroll-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .stroll-btn {
+                padding: 0.85rem 1.25rem;
+                text-align: center;
+            }
+        }
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: #eea719;
+        }
+
+        .footer-section a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            display: block;
+            font-size: 0.9rem;
+        }
+
+        .footer-section a:hover {
+            color: #eea719;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .stroll-body { padding: 24px 20px; }
-            .calendar-embed iframe { min-height: 560px; }
+            .hamburger {
+                display: flex !important;
+            }
+            
+            .nav-links {
+                display: none !important; /* Hide regular nav on mobile */
+            }
+            
+            .nav-links.mobile-menu {
+                display: flex !important;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 300px;
+                background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                transition: right 0.3s ease;
+                z-index: 1000;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+            }
+            
+            .nav-links.mobile-menu.active {
+                right: 0;
+            }
+            
+            .nav-links a {
+                font-size: 1.2rem;
+                padding: 1rem 2rem;
+                text-align: center;
+                width: 100%;
+            }
+            
+            header {
+                padding: 1.5rem 0;
+            }
+            
+            nav {
+                flex-direction: row;
+                gap: 1rem;
+            }
+            
+            .logo-container {
+                justify-content: flex-start;
+            }
+            
+            .logo-img {
+                width: 130px;
+                height: 130px;
+                padding: 8px;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .events-controls {
+                padding: 1.5rem;
+            }
+
+            .calendar-info {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .calendar-embed {
+                border-radius: 15px;
+                overflow: hidden;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+                border: 2px solid #eea719;
+                overflow-x: auto;
+                overflow-y: hidden;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .calendar-embed iframe {
+                width: 100%;
+                min-height: 600px;
+                border: none;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+        }
+        
+        /* Remove the duplicate media queries and replace with this single one */
+        @media (max-width: 480px) {
+            .nav-links.mobile-menu {
+                width: 250px;
+            }
+            
+            .calendar-embed iframe {
+                min-width: 350px;
+                min-height: 500px;
+            }
         }
     </style>
-    <script src="js/site.js" defer></script>
+    <!-- Site analytics -->
     <script src="analytics.js" defer></script>
 </head>
 <body>
-    <a class="skip-link" href="#main">Skip to main content</a>
     <header>
-        <nav>
-            <a class="nav-logo" href="index.html">
-                <img src="img/manteca-logo.png" alt="">
-                <span class="nav-logo-text">Downtown Manteca<span>District</span></span>
-            </a>
-            <button class="hamburger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
-                <span></span><span></span><span></span>
+        <nav class="container">
+            <div class="logo-container">
+                <img src="img/manteca-logo.png" alt="Downtown Manteca District Logo" class="logo-img">
+            </div>
+            <button class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
-            <ul class="nav-links" id="nav-links">
+            <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="events.html" class="active" aria-current="page">Events</a></li>
+                <li><a href="events.html" class="active">Events</a></li>
                 <li><a href="directory.html">Business</a></li>
                 <li><a href="documents.html">Documents</a></li>
                 <li><a href="aboutUs.html">About Us</a></li>
@@ -152,182 +748,252 @@
         </nav>
     </header>
 
-    <main id="main">
-        <section class="page-header">
-            <div class="container">
-                <h1>Events</h1>
-                <p>
-                    What the association is putting on, and when the committees meet.
-                    Meetings are open to the public; events are for everyone.
+    <section class="page-header">
+        <div class="container">
+            <h1>Downtown Manteca District Events</h1>
+            <p>Join us for exciting events throughout the year that celebrate our community, culture, and local businesses.</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <!-- Events Controls -->
+        <section class="events-controls">
+            <h3>📅 Downtown Manteca District Events Calendar</h3>
+            <p>View all upcoming events, meetings, and activities happening in downtown Manteca. Click on any event for more details.</p>
+            
+            <div class="calendar-info">
+                <div class="info-card">
+                    <h4>🏛️ Board Meetings</h4>
+                </div>
+                <div class="info-card">
+                    <h4>🚶 Civil Sidewalks</h4>
+                </div>
+                <div class="info-card">
+                    <h4>👥 Executive Committee</h4>
+                </div>
+                <div class="info-card">
+                    <h4>🌆 District Identity & Placemaking</h4>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ============ Beer & Wine Stroll ============ -->
+        <section class="stroll" id="beer-wine-stroll" aria-labelledby="stroll-heading">
+            <h2 class="stroll-title" id="stroll-heading">
+                <img class="stroll-banner" src="img/beerwinestroll.jpg" width="1920" height="1080" alt="Beer &amp; Wine Stroll, presented by the Downtown Manteca District. 10.30.26, 6:00 to 9:00 pm. 21 and over.">
+            </h2>
+
+            <div class="stroll-inner">
+                <p class="stroll-kicker">Downtown Manteca Improvement Association presents</p>
+
+                <p class="stroll-tagline">An evening of local sips, music, and Halloween fun in the heart of Downtown Manteca.</p>
+
+                <div class="stroll-when">
+                    <div class="stroll-when-text">
+                        <strong>Friday, October 30, 2026</strong>
+                        <span>6:00 PM &ndash; 9:00 PM</span>
+                    </div>
+                </div>
+
+                <ul class="stroll-tags">
+                    <li>🍻 Beer &amp; wine tastings</li>
+                    <li>🎶 Live music</li>
+                    <li>👻 Costume contest</li>
+                    <li>🚶 Walkable Downtown</li>
+                    <li>🔞 21 &amp; over</li>
+                </ul>
+
+                <p class="stroll-copy">
+                    Join us for an evening of beer, wine, music, and Downtown fun! Stroll through
+                    participating local businesses while sampling a variety of beer and wine.
+                </p>
+
+                <div class="stroll-facts">
+                    <a class="stroll-fact" href="https://www.google.com/maps/search/?api=1&amp;query=134+N+Maple+Ave%2C+Manteca%2C+CA+95336" target="_blank" rel="noopener" aria-label="Get directions to the Beer &amp; Wine Stroll at 134 N. Maple, Manteca">
+                        <h3>📍 Where</h3>
+                        <p>
+                            <strong>Downtown Manteca</strong><br>
+                            Yosemite Ave. &amp; Maple Ave.<br>
+                            Check-in: 134 N. Maple, Manteca, CA 95336
+                        </p>
+                        <span class="stroll-go">Get directions &rarr;</span>
+                    </a>
+                    <a class="stroll-fact" href="https://www.eventbrite.com/e/downtown-manteca-beer-wine-stroll-tickets-1998916454926" target="_blank" rel="noopener" aria-label="Buy a Beer &amp; Wine Stroll ticket on Eventbrite">
+                        <h3>🎟️ Stroll Ticket</h3>
+                        <p>
+                            <span class="stroll-price">$45 <small>plus fees</small></span>
+                            Beer and wine tastings at participating Downtown businesses. Must be 21 or older.
+                        </p>
+                        <span class="stroll-go">Buy on Eventbrite &rarr;</span>
+                    </a>
+                    <a class="stroll-fact" href="https://www.eventbrite.com/e/downtown-manteca-beer-wine-stroll-tickets-1998916454926" target="_blank" rel="noopener" aria-label="Buy a sober driver wristband on Eventbrite">
+                        <h3>🚗 Sober Driver Wristband</h3>
+                        <p>
+                            <span class="stroll-price">$20 <small>plus fees</small></span>
+                            Join the fun without drinking. Does <strong>not</strong> include alcohol tastings.
+                        </p>
+                        <span class="stroll-go">Buy on Eventbrite &rarr;</span>
+                    </a>
+                </div>
+
+                <p class="stroll-cause">💜 This community fundraiser supports Downtown events and programs.</p>
+
+                <div class="stroll-actions">
+                    <a class="stroll-btn" href="https://www.eventbrite.com/e/downtown-manteca-beer-wine-stroll-tickets-1998916454926" target="_blank" rel="noopener">
+                        🎟️ Get Tickets on Eventbrite
+                    </a>
+                    <a class="stroll-btn stroll-btn-ghost" href="mailto:info@downtownmanteca.com?subject=Beer%20%26%20Wine%20Stroll">
+                        📧 Questions? Email Us
+                    </a>
+                </div>
+
+                <p class="stroll-fine">
+                    Must be 21+ for alcohol tastings. Valid government-issued ID required. Please drink
+                    responsibly and plan for a safe ride home. Refunds up to 7 days before the event.
                 </p>
             </div>
         </section>
 
-        <section class="section">
-            <div class="container">
-                <p class="section-eyebrow">Next up</p>
-                <h2 class="section-title">Beer &amp; Wine Stroll</h2>
-
-                <div class="stroll" id="beer-wine-stroll">
-                    <h3 class="stroll-title">
-                        <img class="stroll-banner" src="img/beerwinestroll.jpg" width="1920" height="1080" alt="Beer &amp; Wine Stroll, presented by the Downtown Manteca District. 10.30.26, 6:00 to 9:00 pm. 21 and over.">
-                    </h3>
-                    <div class="stroll-body">
-                        <p class="stroll-when">
-                            <strong>Friday, October 30, 2026</strong>
-                            <span>6:00 &ndash; 9:00 PM</span>
-                        </p>
-
-                        <p class="lede">
-                            An evening of beer, wine, music and Downtown fun. Stroll through
-                            participating local businesses while sampling a variety of beer
-                            and wine, with a costume contest along the way.
-                        </p>
-
-                        <ul class="stroll-tags">
-                            <li>Beer &amp; wine tastings</li>
-                            <li>Live music</li>
-                            <li>Costume contest</li>
-                            <li>Walkable Downtown</li>
-                            <li>21 &amp; over</li>
-                        </ul>
-
-                        <div class="card-grid">
-                            <a class="fact" href="https://www.google.com/maps/search/?api=1&amp;query=134+N+Maple+Ave%2C+Manteca%2C+CA+95336" target="_blank" rel="noopener" aria-label="Get directions to the Beer &amp; Wine Stroll at 134 N. Maple, Manteca">
-                                <h3>Where</h3>
-                                <p>
-                                    <strong>Downtown Manteca</strong><br>
-                                    Yosemite Ave. &amp; Maple Ave.<br>
-                                    Check-in: 134 N. Maple, Manteca, CA 95336
-                                </p>
-                                <span class="link-rule">Get directions &rarr;</span>
-                            </a>
-                            <a class="fact" href="https://www.eventbrite.com/e/downtown-manteca-beer-wine-stroll-tickets-1998916454926" target="_blank" rel="noopener" aria-label="Buy a Beer &amp; Wine Stroll ticket on Eventbrite">
-                                <h3>Stroll ticket</h3>
-                                <p>
-                                    <span class="price">$45 <small>plus fees</small></span>
-                                    Tastings at participating Downtown businesses. Must be 21 or older.
-                                </p>
-                                <span class="link-rule">Buy on Eventbrite &rarr;</span>
-                            </a>
-                            <a class="fact" href="https://www.eventbrite.com/e/downtown-manteca-beer-wine-stroll-tickets-1998916454926" target="_blank" rel="noopener" aria-label="Buy a sober driver wristband on Eventbrite">
-                                <h3>Sober driver wristband</h3>
-                                <p>
-                                    <span class="price">$20 <small>plus fees</small></span>
-                                    Join the fun without drinking. Does <strong>not</strong> include alcohol tastings.
-                                </p>
-                                <span class="link-rule">Buy on Eventbrite &rarr;</span>
-                            </a>
-                        </div>
-
-                        <p class="fine">
-                            This community fundraiser supports Downtown events and programs.
-                            Must be 21+ for alcohol tastings, and a valid government-issued ID
-                            is required. Please drink responsibly and plan for a safe ride
-                            home. Refunds up to 7 days before the event.
-                        </p>
-
-                        <p style="margin-top: 1.75rem;">
-                            <a class="btn btn-terra" href="https://www.eventbrite.com/e/downtown-manteca-beer-wine-stroll-tickets-1998916454926" target="_blank" rel="noopener">Get tickets</a>
-                            <a class="btn btn-sage" href="mailto:info@downtownmanteca.com?subject=Beer%20%26%20Wine%20Stroll">Ask a question</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
+<!-- Recurring Committee Meetings -->
+        <section style="background: linear-gradient(135deg, #1a3a5c, #0d1f35); border-radius: 20px; padding: 2rem; margin-bottom: 2rem; color: white; text-align: center;">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">👥</div>
+            <h2 style="font-family: 'Roboto Slab', serif; font-size: 1.8rem; margin-bottom: 0.5rem;">Executive Committee Meeting</h2>
+            <p style="font-size: 1rem; opacity: 0.9; margin-bottom: 0.25rem;">📅 First Wednesday of Each Month</p>
+            <p style="font-size: 1rem; opacity: 0.9; margin-bottom: 1.25rem;">📍 American Legion Hall | Manteca, CA</p>
+            <a href="mailto:info@downtownmanteca.com" style="background: rgba(255,255,255,0.15); color: white; padding: 0.75rem 1.5rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.95rem; border: 1px solid rgba(255,255,255,0.4);">
+                📧 Email Us
+            </a>
         </section>
 
-        <section class="section section--paper">
-            <div class="container">
-                <p class="section-eyebrow">Every month</p>
-                <h2 class="section-title">Board &amp; committee meetings</h2>
-
-                <div class="event-item">
-                    <div class="date-circle date-circle--sage"><span class="day day--sm">1st<br>Wed</span></div>
-                    <div class="event-body">
-                        <h3>Executive Committee</h3>
-                        <p>American Legion Hall, Manteca &middot; Open to the public</p>
-                    </div>
-                    <a class="link-rule" href="meeting-minutes.html">Minutes</a>
-                </div>
-
-                <div class="event-item">
-                    <div class="date-circle date-circle--sage"><span class="day day--sm">2nd<br>Wed</span></div>
-                    <div class="event-body">
-                        <h3>Board Meeting</h3>
-                        <p>American Legion Hall, Manteca &middot; Agendas posted in advance</p>
-                    </div>
-                    <a class="link-rule" href="meeting-minutes.html">Minutes</a>
-                </div>
-
-                <div class="event-item">
-                    <div class="date-circle date-circle--sage"><span class="day day--sm">4th<br>Wed</span></div>
-                    <div class="event-body">
-                        <h3>Civil Sidewalks &amp; District Identity &amp; Placemaking</h3>
-                        <p>American Legion Hall, Manteca &middot; The two committees meet the same evening</p>
-                    </div>
-                    <a class="link-rule" href="meeting-minutes.html">Minutes</a>
-                </div>
-
-                <div class="detail-row" style="margin-top: 2.5rem;">
-                    <div class="detail-item">
-                        <span>Where</span>
-                        <strong>American Legion Hall<br>Manteca, CA</strong>
-                    </div>
-                    <div class="detail-item">
-                        <span>Ask us</span>
-                        <strong><a href="tel:+12092147555">(209) 214-7555</a><br><a href="mailto:info@downtownmanteca.com">info@downtownmanteca.com</a></strong>
-                    </div>
-                </div>
-            </div>
+        <section style="background: linear-gradient(135deg, #3b1a5c, #1f0d35); border-radius: 20px; padding: 2rem; margin-bottom: 2rem; color: white; text-align: center;">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🏛️</div>
+            <h2 style="font-family: 'Roboto Slab', serif; font-size: 1.8rem; margin-bottom: 0.5rem;">Board Meeting</h2>
+            <p style="font-size: 1rem; opacity: 0.9; margin-bottom: 0.25rem;">📅 Second Wednesday of Each Month</p>
+            <p style="font-size: 1rem; opacity: 0.9; margin-bottom: 1.25rem;">📍 American Legion Hall | Manteca, CA</p>
+            <a href="mailto:info@downtownmanteca.com" style="background: rgba(255,255,255,0.15); color: white; padding: 0.75rem 1.5rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.95rem; border: 1px solid rgba(255,255,255,0.4);">
+                📧 Email Us
+            </a>
         </section>
 
-        <section class="section">
-            <div class="container">
-                <p class="section-eyebrow">Everything else</p>
-                <h2 class="section-title">Full calendar</h2>
-                <div class="calendar-embed">
-                    <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FLos_Angeles&amp;src=Y19mMTU5MzU5N2RjNjZkNjk5ODFhOTI5YjEwZjQ5MGVkMDI4OWI0MTJlN2RmMGE1NGI0OGE2MjY5ZWFmMTVkODhjQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%23c8602a&amp;mode=MONTH&amp;showTitle=0&amp;showPrint=0&amp;showTabs=1&amp;showCalendars=0"
-                            title="Downtown Manteca District events calendar"
-                            loading="lazy"></iframe>
-                </div>
+        <section style="background: linear-gradient(135deg, #1a4a2e, #0a2918); border-radius: 20px; padding: 2rem; margin-bottom: 2rem; color: white; text-align: center;">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🚶🌆</div>
+            <h2 style="font-family: 'Roboto Slab', serif; font-size: 1.8rem; margin-bottom: 0.5rem;">Civil Sidewalks Committee & DIPC Committee</h2>
+            <p style="font-size: 1rem; opacity: 0.9; margin-bottom: 0.25rem;">📅 Fourth Wednesday of Each Month</p>
+            <p style="font-size: 1rem; opacity: 0.9; margin-bottom: 1.25rem;">📍 American Legion Hall | Manteca, CA</p>
+            <a href="mailto:info@downtownmanteca.com" style="background: rgba(255,255,255,0.15); color: white; padding: 0.75rem 1.5rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.95rem; border: 1px solid rgba(255,255,255,0.4);">
+                📧 Email Us
+            </a>
+        </section>
+
+        <!-- Main Calendar Embed -->
+        <section class="calendar-embed-section">
+            <div class="calendar-embed">
+                <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FLos_Angeles&src=Y19mMTU5MzU5N2RjNjZkNjk5ODFhOTI5YjEwZjQ5MGVkMDI4OWI0MTJlN2RmMGE1NGI0OGE2MjY5ZWFmMTVkODhjQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23D50000&mode=MONTH&showTitle=1&showPrint=1&showTabs=1&showCalendars=0" 
+                        style="border-width:0; min-width: 800px;" 
+                        width="100%" 
+                        height="600" 
+                        frameborder="0" 
+                        scrolling="yes"
+                        title="Downtown Manteca District Events Calendar">
+                </iframe>
             </div>
         </section>
     </main>
 
     <footer>
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <img src="img/manteca-logo.png" alt="">
-                <p>The business association for the blocks around Yosemite and Maple, in Manteca, California.</p>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>Downtown Manteca District</p>
+                    <p>123 W. Yosemite Ave.</p>
+                    <p>Manteca, CA 95336</p>
+                    <p>Phone: (209) 214-7555</p>
+                    <p>Email: info@downtownmanteca.com</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="aboutUs.html">About Us</a>
+                    <a href="directory.html">Business Directory</a>
+                    <a href="events.html">Events</a>
+                    <a href="contact.html">Contact Us</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <a href="https://www.facebook.com/profile.php?id=61573494300309" target="_blank" rel="noopener">Facebook</a>
+                    <a href="https://www.instagram.com/downtownmanteca/" target="_blank" rel="noopener">Instagram</a>
+                    <a href="https://linktr.ee/downtownmanteca" target="_blank" rel="noopener">Linktree</a>
+                    <a href="mailto:info@downtownmanteca.com">Email Us</a>
+                </div>
             </div>
-            <div class="footer-col">
-                <h2>Navigate</h2>
-                <a href="index.html">Home</a>
-                <a href="events.html">Events</a>
-                <a href="directory.html">Business Directory</a>
-                <a href="documents.html">Documents</a>
-                <a href="aboutUs.html">About Us</a>
-                <a href="contact.html">Contact</a>
+            
+            <div class="footer-bottom">
+
+                <p>Copyright © 2025 Downtown Manteca District - All Rights Reserved.</p>
+                <p>Managed by Jane Media Services</p>
             </div>
-            <div class="footer-col">
-                <h2>Connect</h2>
-                <a href="https://www.facebook.com/profile.php?id=61573494300309" target="_blank" rel="noopener">Facebook</a>
-                <a href="https://www.instagram.com/downtownmanteca/" target="_blank" rel="noopener">Instagram</a>
-                <a href="https://linktr.ee/downtownmanteca" target="_blank" rel="noopener">Linktree</a>
-                <a href="mailto:info@downtownmanteca.com">Email Us</a>
-            </div>
-            <div class="footer-col">
-                <h2>Contact</h2>
-                <p>123 W. Yosemite Ave.</p>
-                <p>Manteca, CA 95336</p>
-                <p style="margin-top:10px;"><a href="tel:+12092147555">(209) 214-7555</a></p>
-                <p><a href="mailto:info@downtownmanteca.com">info@downtownmanteca.com</a></p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <span>&copy; 2026 Downtown Manteca District. All rights reserved.</span>
-            <span><a href="privacy-policy.html">Privacy</a> &nbsp;&middot;&nbsp; <a href="terms-of-use.html">Terms</a> &nbsp;&middot;&nbsp; <a href="accessibility.html">Accessibility</a></span>
         </div>
     </footer>
+
+    <script>
+        // Simple and reliable hamburger menu
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            
+            // Add mobile-menu class for CSS targeting
+            navLinks.classList.add('mobile-menu');
+            
+            // Force proper display on load
+            function updateNavDisplay() {
+                if (window.innerWidth <= 768) {
+                    hamburger.style.display = 'flex';
+                } else {
+                    hamburger.style.display = 'none';
+                    navLinks.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
+            }
+            
+            updateNavDisplay();
+            window.addEventListener('resize', updateNavDisplay);
+        });
+
+        // Hamburger menu toggle
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            const hamburger = document.querySelector('.hamburger');
+            
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        }
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                const navLinks = document.querySelector('.nav-links');
+                const hamburger = document.querySelector('.hamburger');
+                
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const navLinks = document.querySelector('.nav-links');
+            const hamburger = document.querySelector('.hamburger');
+            const nav = document.querySelector('nav');
+            
+            if (!nav.contains(e.target)) {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
