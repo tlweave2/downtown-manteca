@@ -4,518 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Downtown Manteca District</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
-            color: #0a2b30;
-            background: linear-gradient(135deg, #f7f5f3 0%, #fff 100%);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
-            color: white;
-            padding: .5rem 0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1.5rem;
-            position: relative;
-        }
-
-        .logo-container {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-        }
-
-        .logo-img {
-            width: 170px;
-            height: 170px;
-            object-fit: contain;
-            background: white;
-            border-radius: 50%;
-            padding: 0px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            font-weight: 600;
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            background: rgba(238, 167, 25, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            padding: 0.5rem;
-            border: none;
-            background: none;
-            z-index: 1001;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: white;
-            margin: 3px 0;
-            transition: 0.3s;
-            border-radius: 2px;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
-        }
-
-        /* Page Header - Flat Design */
-        .page-header {
-            background: none;
-            text-align: center;
-            padding: 2rem 0 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .page-header h1 {
-            font-family: 'Roboto Slab', serif;
-            font-size: 2.5rem;
-            color: #0a2b30;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-        }
-
-        /* Content Sections - No Cards, Flat Design */
-        .content-section {
-            background: none;
-            padding: 1.5rem;
-            border-radius: 0;
-            box-shadow: none;
-            margin-bottom: 2rem;
-            max-width: 1048px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .content-section h2 {
-            font-family: 'Roboto Slab', serif;
-            font-size: 2rem;
-            color: #0a2b30;
-            margin-bottom: 1rem;
-            font-weight: 600;
-            padding-bottom: 0.5rem;
-        }
-
-        .content-section h3 {
-            font-family: 'Roboto Slab', serif;
-            font-size: 1.5rem;
-            color: #035847;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .content-section p {
-            font-size: 1.1rem;
-            color: #035847;
-            margin-bottom: 1rem;
-            line-height: 1.8;
-        }
-
-        /* Board Members Grid with Integrated Image */
-        .board-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .board-member {
-            background: linear-gradient(135deg, #f8f9fa, #ffffff);
-            padding: 1.5rem;
-            border-radius: 15px;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .board-member:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-        }
-
-        .board-image-standalone {
-            background: none;
-            border-radius: 0;
-            overflow: hidden;
-            height: 120px;
-            box-shadow: none;
-            transition: all 0.3s ease;
-            position: relative;
-            margin: 2rem auto;
-            max-width: 600px;
-        }
-
-        .board-image-standalone img {
-            width: 100%;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 0;
-        }
-
-        .member-photo {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 0 auto 1rem;
-            background: linear-gradient(135deg, #eea719, #c44720);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            font-weight: 600;
-            border: 3px solid white;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .member-photo img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .board-member h5 {
-            font-family: 'Roboto Slab', serif;
-            font-size: 1.2rem;
-            color: #0a2b30;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .board-member .position {
-            color: #8d242f;
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-
-        /* Meeting Section */
-        .meeting-section {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            background: linear-gradient(135deg, #eea719, #c44720);
-            color: white;
-            padding: 2rem;
-            border-radius: 15px;
-            margin: 1.5rem 0;
-        }
-
-        .meeting-content {
-            flex: 1;
-        }
-
-        .meeting-section h3 {
-            font-family: 'Roboto Slab', serif;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: white;
-        }
-
-        .meeting-section p {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            color: white;
-        }
-
-        .meeting-image {
-            width: 300px;
-            height: 300px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            flex-shrink: 0;
-        }
-
-        .meeting-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Contact Section */
-        .contact-highlight {
-            background: linear-gradient(135deg, #f8f9fa, #ffffff);
-            color: #0a2b30;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            margin: 1.5rem 0;
-            border: 2px solid #eea719;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-        }
-
-        .contact-highlight h3 {
-            font-family: 'Roboto Slab', serif;
-            margin-bottom: 1rem;
-            color: #0a2b30;
-            font-weight: 600;
-        }
-
-        .contact-highlight p {
-            color: #035847;
-            font-weight: 500;
-        }
-
-        .contact-highlight a {
-            color: #8d242f;
-            text-decoration: none;
-            font-weight: 700;
-        }
-
-        .contact-highlight a:hover {
-            color: #c44720;
-            text-decoration: underline;
-        }
-
-        /* Bottom Feature Image */
-        .bottom-feature-image {
-            text-align: center;
-            margin: 1.5rem auto;
-            max-width: 1048px;
-            padding: 1.5rem;
-        }
-
-        .bottom-feature-image img {
-            max-width: 100%;
-            height: auto;
-            max-height: 400px;
-            object-fit: cover;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            margin-bottom: 1.5rem;
-        }
-
-        .bottom-feature-image h3 {
-            font-family: 'Roboto Slab', serif;
-            font-size: 2rem;
-            color: #0a2b30;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .bottom-feature-image p {
-            font-size: 1.2rem;
-            color: #035847;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.7;
-        }
-
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
-            color: white;
-            text-align: center;
-            padding: 3rem 0;
-            margin-top: 4rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h4 {
-            font-family: 'Roboto Slab', serif;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-            color: #eea719;
-        }
-
-        .footer-section a {
-            color: rgba(255,255,255,0.9);
-            text-decoration: none;
-            margin-bottom: 0.5rem;
-            display: block;
-            font-size: 0.9rem;
-        }
-
-        .footer-section a:hover {
-            color: #eea719;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.2);
-            padding-top: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
-            }
-            
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                height: 100vh;
-                width: 300px;
-                background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 2rem;
-                transition: right 0.3s ease;
-                z-index: 1000;
-                box-shadow: -5px 0 15px rgba(0,0,0,0.3);
-            }
-            
-            .nav-links.active {
-                right: 0;
-            }
-            
-            .nav-links a {
-                font-size: 1.2rem;
-                padding: 1rem 2rem;
-                text-align: center;
-                width: 100%;
-            }
-            
-            header {
-                padding: 1.5rem 0;
-            }
-            
-            nav {
-                flex-direction: row;
-                gap: 1rem;
-            }
-            
-            .logo-container {
-                justify-content: flex-start;
-            }
-            
-            .logo-img {
-                width: 130px;
-                height: 130px;
-                padding: 8px;
-            }
-            
-            .page-header h1 {
-                font-size: 2rem;
-            }
-            
-            .content-section {
-                padding: 2rem;
-            }
-            
-            .content-section h2 {
-                font-size: 1.8rem;
-            }
-            
-            .board-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .meeting-section {
-                flex-direction: column;
-                text-align: center;
-                padding: 1.2rem;
-                border-radius: 0;
-            }
-            
-            .meeting-image {
-                width: 100%;
-                max-width: 250px;
-                height: 160px;
-                margin: 0 auto;
-            }
-            
-            .member-photo {
-                width: 45px;
-                height: 45px;
-                font-size: 1rem;
-            }
-            
-            .container {
-                padding: 0 15px;
-            }
-        }
-    </style>
-    <!-- Site analytics -->
+    <meta name="description" content="Who the Downtown Manteca Improvement Association is, what it works on, and how to get involved.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/site.css">
+    <script src="js/site.js" defer></script>
     <script src="analytics.js" defer></script>
 </head>
 <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
     <header>
-        <nav class="container">
-            <div class="logo-container">
-                <img src="img/manteca-logo.png" alt="Downtown Manteca District Logo" class="logo-img">
-            </div>
-            <button class="hamburger" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
+        <nav>
+            <a class="nav-logo" href="index.html">
+                <img src="img/manteca-logo.png" alt="">
+                <span class="nav-logo-text">Downtown Manteca<span>District</span></span>
+            </a>
+            <button class="hamburger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+                <span></span><span></span><span></span>
             </button>
-            <ul class="nav-links">
+            <ul class="nav-links" id="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="events.html">Events</a></li>
                 <li><a href="directory.html">Business</a></li>
                 <li><a href="documents.html">Documents</a></li>
-                <li><a href="aboutUs.html" class="active">About Us</a></li>
+                <li><a href="aboutUs.html" class="active" aria-current="page">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="page-header">
+    <main id="main">
+        <section class="page-header">
         <div class="container">
             <h1>About Us</h1>
         </div>
     </section>
+
+    <div class="page-shell">
+        <div class="container">
  <!-- About Downtown Manteca District -->
         <section class="content-section">
             <h2>About Downtown Manteca District</h2>
@@ -528,13 +55,13 @@
             <p>The Downtown Manteca District is supported by a growing group of business owners, property stakeholders, civic leaders, and volunteers. Regular meetings and workshops are held to ensure open communication and public involvement in district planning and programming.</p>
 
             <div class="contact-highlight">
-                <h3>📅 Get Involved</h3>
+                <h3>Get Involved</h3>
                 <p>For information on upcoming meetings, events, and opportunities to get involved, please visit our Events Calendar or contact our team at <a href="mailto:info@downtownmanteca.com">info@downtownmanteca.com</a>.</p>
                 <p>All meetings are open to the public, and community participation is encouraged.</p>
             </div>
     </section>
 
-    <main class="container">
+    
         <!-- Board Section with Separated Groups -->
         <section class="content-section">
             <h2>Our Board</h2>
@@ -659,45 +186,9 @@
             <h3>Building Community Together</h3>
             <p>Join us in creating a vibrant downtown that celebrates our heritage while building for the future. Every voice matters in shaping the heart of Manteca.</p>
         </div>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Contact Info</h4>
-                    <p>Downtown Manteca District</p>
-                    <p>123 W. Yosemite Ave.</p>
-                    <p>Manteca, CA 95336</p>
-                    <p>Phone: (209) 214-7555</p>
-                    <p>Email: info@downtownmanteca.com</p>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <a href="index.html">Home</a>
-                    <a href="aboutUs.html">About Us</a>
-                    <a href="directory.html">Business Directory</a>
-                    <a href="events.html">Events</a>
-                    <a href="contact.html">Contact Us</a>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Connect</h4>
-                    <a href="https://www.facebook.com/profile.php?id=61573494300309" target="_blank" rel="noopener">Facebook</a>
-                    <a href="https://www.instagram.com/downtownmanteca/" target="_blank" rel="noopener">Instagram</a>
-                    <a href="https://linktr.ee/downtownmanteca" target="_blank" rel="noopener">Linktree</a>
-                    <a href="mailto:info@downtownmanteca.com">Email Us</a>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-
-                <p>Copyright © 2025 Downtown Manteca District - All Rights Reserved.</p>
-                <p>Managed by Jane Media Services</p>
-            </div>
         </div>
-    </footer>
+    </div>
+    </main>
 
     <script>
         // Hamburger menu functionality
@@ -732,5 +223,41 @@
             }
         });
     </script>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <img src="img/manteca-logo.png" alt="">
+                <p>The business association for the blocks around Yosemite and Maple, in Manteca, California.</p>
+            </div>
+            <div class="footer-col">
+                <h2>Navigate</h2>
+                <a href="index.html">Home</a>
+                <a href="events.html">Events</a>
+                <a href="directory.html">Business Directory</a>
+                <a href="documents.html">Documents</a>
+                <a href="aboutUs.html">About Us</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-col">
+                <h2>Connect</h2>
+                <a href="https://www.facebook.com/profile.php?id=61573494300309" target="_blank" rel="noopener">Facebook</a>
+                <a href="https://www.instagram.com/downtownmanteca/" target="_blank" rel="noopener">Instagram</a>
+                <a href="https://linktr.ee/downtownmanteca" target="_blank" rel="noopener">Linktree</a>
+                <a href="mailto:info@downtownmanteca.com">Email Us</a>
+            </div>
+            <div class="footer-col">
+                <h2>Contact</h2>
+                <p>123 W. Yosemite Ave.</p>
+                <p>Manteca, CA 95336</p>
+                <p style="margin-top:10px;"><a href="tel:+12092147555">(209) 214-7555</a></p>
+                <p><a href="mailto:info@downtownmanteca.com">info@downtownmanteca.com</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 Downtown Manteca District. All rights reserved.</span>
+            <span><a href="privacy-policy.html">Privacy</a> &nbsp;&middot;&nbsp; <a href="terms-of-use.html">Terms</a> &nbsp;&middot;&nbsp; <a href="accessibility.html">Accessibility</a></span>
+        </div>
+    </footer>
 </body>
 </html>

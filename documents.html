@@ -3,548 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Public Documents - Downtown Manteca District</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
-            color: #0a2b30;
-            background: linear-gradient(135deg, #f7f5f3 0%, #fff 100%);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
-            color: white;
-            padding: .5rem 0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1.5rem;
-            position: relative;
-        }
-
-        .logo-container {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-        }
-
-        .logo-img {
-            width: 170px;
-            height: 170px;
-            object-fit: contain;
-            background: white;
-            border-radius: 50%;
-            padding: 0px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            font-weight: 600;
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            background: rgba(238, 167, 25, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            padding: 0.5rem;
-            border: none;
-            background: none;
-            z-index: 1001;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: white;
-            margin: 3px 0;
-            transition: 0.3s;
-            border-radius: 2px;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
-        }
-
-        /* Page Header */
-        .page-header {
-            text-align: center;
-            padding: 3rem 0 2rem;
-            background: white;
-            margin: 2rem auto;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .page-header h1 {
-            font-family: 'Roboto Slab', serif;
-            font-size: 2.5rem;
-            color: #0a2b30;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .page-header p {
-            font-size: 1.2rem;
-            color: #035847;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* Documents Section */
-        .documents-section {
-            background: white;
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin: 2rem 0;
-        }
-
-        .documents-section h2 {
-            font-family: 'Roboto Slab', serif;
-            font-size: 2rem;
-            color: #0a2b30;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-            padding-bottom: 0.5rem;
-            text-align: center;
-        }
-
-        /* Folder Tabs */
-        .folder-tabs {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .folder-tab {
-            background: #f8f9fa;
-            color: #6c757d;
-            padding: 1rem 1.5rem;
-            border: none;
-            border-radius: 15px 15px 0 0;
-            cursor: pointer;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            flex: 1;
-            min-width: 150px;
-        }
-
-        .folder-tab.active {
-            background: linear-gradient(135deg, #0a2b30, #035847);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(10, 43, 48, 0.3);
-        }
-
-        .folder-tab:hover:not(.active) {
-            background: #eea719;
-            color: white;
-        }
-
-        /* Document Containers */
-        .document-container {
-            display: none;
-            background: #f8f9fa;
-            border-radius: 15px;
-            padding: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .document-container.active {
-            display: block;
-        }
-
-        .container-header {
-            background: linear-gradient(135deg, #0a2b30, #035847);
-            color: white;
-            padding: 1rem 1.5rem;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .container-header h3 {
-            font-family: 'Roboto Slab', serif;
-            font-size: 1.3rem;
-            margin: 0;
-        }
-
-        .folder-info {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        /* Google Drive Iframe */
-        .drive-iframe {
-            width: 100%;
-            height: 500px;
-            border: 2px solid #eea719;
-            border-radius: 10px;
-            background: white;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        /* View Toggle */
-        .view-toggle {
-            display: flex;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            overflow: hidden;
-        }
-
-        .view-btn {
-            background: transparent;
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            cursor: pointer;
-            font-size: 0.8rem;
-            transition: all 0.3s ease;
-        }
-
-        .view-btn.active {
-            background: rgba(238, 167, 25, 0.3);
-        }
-
-        .view-btn:hover {
-            background: rgba(238, 167, 25, 0.2);
-        }
-
-        /* Info Box */
-        .info-box {
-            background: linear-gradient(135deg, #f8f9fa, #ffffff);
-            padding: 2rem;
-            border-radius: 15px;
-            margin: 2rem 0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        }
-
-        .info-box h4 {
-            font-family: 'Roboto Slab', serif;
-            color: #0a2b30;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .info-box p {
-            color: #035847;
-            margin-bottom: 1rem;
-        }
-
-        .info-box a {
-            color: #8d242f;
-            text-decoration: none;
-            font-weight: 700;
-        }
-
-        .info-box a:hover {
-            color: #c44720;
-            text-decoration: underline;
-        }
-
-        /* Document List Items */
-        .document-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .document-item {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .document-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-        }
-
-        .document-info {
-            flex: 1;
-        }
-
-        .document-info h4 {
-            font-family: 'Roboto Slab', serif;
-            color: #0a2b30;
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
-        }
-
-        .document-info p {
-            color: #035847;
-            margin-bottom: 0.5rem;
-            line-height: 1.5;
-        }
-
-        .document-meta {
-            font-size: 0.9rem;
-            color: #8d242f;
-            font-weight: 500;
-        }
-
-        .document-actions {
-            display: flex;
-            gap: 0.5rem;
-            flex-shrink: 0;
-        }
-
-        .doc-btn {
-            background: linear-gradient(45deg, #eea719, #c44720);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .doc-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(238, 167, 25, 0.4);
-        }
-
-        .doc-btn.secondary {
-            background: linear-gradient(45deg, #0a2b30, #035847);
-        }
-
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
-            color: white;
-            text-align: center;
-            padding: 3rem 0;
-            margin-top: 4rem;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.2);
-            padding-top: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
-            }
-            
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                height: 100vh;
-                width: 300px;
-                background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 2rem;
-                transition: right 0.3s ease;
-                z-index: 1000;
-                box-shadow: -5px 0 15px rgba(0,0,0,0.3);
-            }
-            
-            .nav-links.active {
-                right: 0;
-            }
-            
-            .nav-links a {
-                font-size: 1.2rem;
-                padding: 1rem 2rem;
-                text-align: center;
-                width: 100%;
-            }
-            
-            header {
-                padding: 1.5rem 0;
-            }
-            
-            nav {
-                flex-direction: row;
-                gap: 1rem;
-            }
-            
-            .logo-container {
-                justify-content: flex-start;
-            }
-            
-            .logo-img {
-                width: 130px;
-                height: 130px;
-                padding: 8px;
-            }
-            
-            .page-header h1 {
-                font-size: 2rem;
-            }
-            
-            .documents-section {
-                padding: 2rem;
-            }
-            
-            .folder-tabs {
-                flex-direction: column;
-            }
-            
-            .folder-tab {
-                min-width: auto;
-                border-radius: 10px;
-                margin-bottom: 0.5rem;
-            }
-            
-            .container-header {
-                flex-direction: column;
-                text-align: center;
-                gap: 0.5rem;
-            }
-            
-            .view-toggle {
-                margin-top: 1rem;
-            }
-            
-            .drive-iframe {
-                height: 400px;
-            }
-            
-            .container {
-                padding: 0 15px;
-            }
-            
-            .document-item {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .document-actions {
-                flex-direction: column;
-                width: 100%;
-            }
-            
-            .doc-btn {
-                width: 100%;
-            }
-        }
-    </style>
-    <!-- Site analytics -->
+    <title>Documents - Downtown Manteca District</title>
+    <meta name="description" content="Public documents for the Downtown Manteca District: agendas, budgets, applications and district records.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/site.css">
+    <script src="js/site.js" defer></script>
     <script src="analytics.js" defer></script>
 </head>
 <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
     <header>
-        <nav class="container">
-            <div class="logo-container">
-                <img src="img/manteca-logo.png" alt="Downtown Manteca District Logo" class="logo-img">
-            </div>
-            <button class="hamburger" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
+        <nav>
+            <a class="nav-logo" href="index.html">
+                <img src="img/manteca-logo.png" alt="">
+                <span class="nav-logo-text">Downtown Manteca<span>District</span></span>
+            </a>
+            <button class="hamburger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+                <span></span><span></span><span></span>
             </button>
-            <ul class="nav-links">
+            <ul class="nav-links" id="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="events.html">Events</a></li>
                 <li><a href="directory.html">Business</a></li>
-                <li><a href="documents.html" class="active">Documents</a></li>
+                <li><a href="documents.html" class="active" aria-current="page">Documents</a></li>
                 <li><a href="aboutUs.html">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="page-header">
+    <main id="main">
+        <section class="page-header">
         <div class="container">
-            <h1>📁 Public Documents & Records</h1>
+            <h1>Public Documents & Records</h1>
             <p>The following public documents are available for review and download.</p>
         </div>
     </section>
 
-    <main class="container">
+    <div class="page-shell">
+        <div class="container">
+    
         <section class="documents-section">
             <h2>Available Documents</h2>
             
             <!-- Folder Navigation Tabs -->
             <div class="folder-tabs">
                 <button class="folder-tab active" onclick="showFolder('rfpOpportunities')">
-                    💼 RFP/Opportunities
+                     RFP/Opportunities
                 </button>
                 <button class="folder-tab" onclick="showFolder('boardAgenda')">
-                    📋 Board Agendas
+                     Board Agendas
                 </button>
                 <button class="folder-tab" onclick="showFolder('boardPackets')">
-                    📄 Board Packets
+                     Board Packets
                 </button>
                 <button class="folder-tab" onclick="showFolder('foundingDocs')">
-                    📜 Founding Documents
+                     Founding Documents
                 </button>
                 <button class="folder-tab" onclick="showFolder('vendorContracts')">
-                    📝 Vendor Contracts
+                     Vendor Contracts
                 </button>
                 <button class="folder-tab" onclick="showFolder('committeeMeetings')">
-                    🗂️ Committee Meetings
+                     Committee Meetings
                 </button>
                 <button class="folder-tab" onclick="showFolder('committeeAgendas')">
-                    📅 Committee Meeting Agendas
+                     Committee Meeting Agendas
                 </button>
             </div>
 
             <!-- RFP/Opportunities -->
             <div id="rfpOpportunities" class="document-container active">
                 <div class="container-header">
-                    <h3>💼 RFP/Opportunities</h3>
+                    <h3>RFP/Opportunities</h3>
                 </div>
                 <div class="document-list">
                     <div class="document-item">
@@ -552,7 +84,7 @@
                             <h4>No Open Opportunities at This Time</h4>
                             <p>There are currently no active RFP opportunities posted.</p>
                             <div class="document-meta">
-                                📧 Contact: info@downtownmanteca.com
+                                 Contact: info@downtownmanteca.com
                             </div>
                         </div>
                     </div>
@@ -562,7 +94,7 @@
             <!-- Board Agendas -->
             <div id="boardAgenda" class="document-container">
                 <div class="container-header">
-                    <h3>📋 Board Agendas</h3>
+                    <h3>Board Agendas</h3>
                     <div class="view-toggle">
                         <button class="view-btn active" onclick="switchView('boardAgenda', 'list')">List</button>
                         <button class="view-btn" onclick="switchView('boardAgenda', 'grid')">Grid</button>
@@ -578,7 +110,7 @@
             <!-- Board Packets -->
             <div id="boardPackets" class="document-container">
                 <div class="container-header">
-                    <h3>📄 Board Packets</h3>
+                    <h3>Board Packets</h3>
                     <div class="view-toggle">
                         <button class="view-btn active" onclick="switchView('boardPackets', 'list')">List</button>
                         <button class="view-btn" onclick="switchView('boardPackets', 'grid')">Grid</button>
@@ -594,7 +126,7 @@
             <!-- Founding Documents -->
             <div id="foundingDocs" class="document-container">
                 <div class="container-header">
-                    <h3>📜 Founding Documents</h3>
+                    <h3>Founding Documents</h3>
                     <div class="view-toggle">
                         <button class="view-btn active" onclick="switchView('foundingDocs', 'list')">List</button>
                         <button class="view-btn" onclick="switchView('foundingDocs', 'grid')">Grid</button>
@@ -610,7 +142,7 @@
             <!-- Vendor Contracts -->
             <div id="vendorContracts" class="document-container">
                 <div class="container-header">
-                    <h3>📝 Vendor Contracts</h3>
+                    <h3>Vendor Contracts</h3>
                     <div class="view-toggle">
                         <button class="view-btn active" onclick="switchView('vendorContracts', 'list')">List</button>
                         <button class="view-btn" onclick="switchView('vendorContracts', 'grid')">Grid</button>
@@ -626,7 +158,7 @@
             <!-- Committee Meetings -->
             <div id="committeeMeetings" class="document-container">
                 <div class="container-header">
-                    <h3>🗂️ Committee Meetings</h3>
+                    <h3>Committee Meetings</h3>
                     <div class="view-toggle">
                         <button class="view-btn active" onclick="switchView('committeeMeetings', 'list')">List</button>
                         <button class="view-btn" onclick="switchView('committeeMeetings', 'grid')">Grid</button>
@@ -642,7 +174,7 @@
             <!-- Committee Meeting Agendas -->
             <div id="committeeAgendas" class="document-container">
                 <div class="container-header">
-                    <h3>📅 Committee Meeting Agendas</h3>
+                    <h3>Committee Meeting Agendas</h3>
                     <div class="view-toggle">
                         <button class="view-btn active" onclick="switchView('committeeAgendas', 'list')">List</button>
                         <button class="view-btn" onclick="switchView('committeeAgendas', 'grid')">Grid</button>
@@ -658,51 +190,15 @@
 
         <!-- Information Box -->
         <div class="info-box">
-            <h4>📋 How to Access Documents</h4>
+            <h4>How to Access Documents</h4>
             <p><strong>Download:</strong> Click on any document in the folders above to download it directly.</p>
             <p><strong>View:</strong> Some documents can be previewed before downloading.</p>
             <p><strong>Mobile:</strong> On mobile devices, tap documents to view or download.</p>
             <p><strong>Questions?</strong> Contact us at <a href="mailto:records@downtownmanteca.com">records@downtownmanteca.com</a> or <a href="tel:209-214-7555">(209) 214-7555</a></p>
         </div>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Contact Info</h4>
-                    <p>Downtown Manteca District</p>
-                    <p>123 W. Yosemite Ave.</p>
-                    <p>Manteca, CA 95336</p>
-                    <p>Phone: (209) 214-7555</p>
-                    <p>Email: info@downtownmanteca.com</p>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <a href="index.html">Home</a>
-                    <a href="aboutUs.html">About Us</a>
-                    <a href="directory.html">Business Directory</a>
-                    <a href="events.html">Events</a>
-                    <a href="contact.html">Contact Us</a>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Connect</h4>
-                    <a href="https://www.facebook.com/profile.php?id=61573494300309" target="_blank" rel="noopener">Facebook</a>
-                    <a href="https://www.instagram.com/downtownmanteca/" target="_blank" rel="noopener">Instagram</a>
-                    <a href="https://linktr.ee/downtownmanteca" target="_blank" rel="noopener">Linktree</a>
-                    <a href="mailto:info@downtownmanteca.com">Email Us</a>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-
-                <p>Copyright © 2025 Downtown Manteca District - All Rights Reserved.</p>
-                <p>Managed by Jane Media Services</p>
-            </div>
         </div>
-    </footer>
+    </div>
+    </main>
 
     <script>
         // Show/hide folder containers
@@ -790,5 +286,41 @@
             }
         });
     </script>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <img src="img/manteca-logo.png" alt="">
+                <p>The business association for the blocks around Yosemite and Maple, in Manteca, California.</p>
+            </div>
+            <div class="footer-col">
+                <h2>Navigate</h2>
+                <a href="index.html">Home</a>
+                <a href="events.html">Events</a>
+                <a href="directory.html">Business Directory</a>
+                <a href="documents.html">Documents</a>
+                <a href="aboutUs.html">About Us</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-col">
+                <h2>Connect</h2>
+                <a href="https://www.facebook.com/profile.php?id=61573494300309" target="_blank" rel="noopener">Facebook</a>
+                <a href="https://www.instagram.com/downtownmanteca/" target="_blank" rel="noopener">Instagram</a>
+                <a href="https://linktr.ee/downtownmanteca" target="_blank" rel="noopener">Linktree</a>
+                <a href="mailto:info@downtownmanteca.com">Email Us</a>
+            </div>
+            <div class="footer-col">
+                <h2>Contact</h2>
+                <p>123 W. Yosemite Ave.</p>
+                <p>Manteca, CA 95336</p>
+                <p style="margin-top:10px;"><a href="tel:+12092147555">(209) 214-7555</a></p>
+                <p><a href="mailto:info@downtownmanteca.com">info@downtownmanteca.com</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 Downtown Manteca District. All rights reserved.</span>
+            <span><a href="privacy-policy.html">Privacy</a> &nbsp;&middot;&nbsp; <a href="terms-of-use.html">Terms</a> &nbsp;&middot;&nbsp; <a href="accessibility.html">Accessibility</a></span>
+        </div>
+    </footer>
 </body>
 </html>

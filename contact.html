@@ -3,498 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Downtown Manteca District</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
-            color: #0a2b30;
-            background: linear-gradient(135deg, #f7f5f3 0%, #fff 100%);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
-            color: white;
-            padding: .5rem 0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1.5rem;
-            position: relative;
-        }
-
-        .logo-container {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-        }
-
-        .logo-img {
-            width: 170px;
-            height: 170px;
-            object-fit: contain;
-            background: white;
-            border-radius: 50%;
-            padding: 0px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            font-weight: 600;
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            background: rgba(238, 167, 25, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            padding: 0.5rem;
-            border: none;
-            background: none;
-            z-index: 1001;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: white;
-            margin: 3px 0;
-            transition: 0.3s;
-            border-radius: 2px;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
-        }
-
-        /* Page Header */
-        .page-header {
-            text-align: center;
-            padding: 3rem 0 2rem;
-            background: white;
-            margin: 2rem auto;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .page-header h1 {
-            font-family: 'Roboto Slab', serif;
-            font-size: 2.5rem;
-            color: #0a2b30;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .page-header p {
-            font-size: 1.2rem;
-            color: #035847;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* Contact Grid */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .contact-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .contact-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .contact-card h2 {
-            font-family: 'Roboto Slab', serif;
-            font-size: 1.8rem;
-            color: #0a2b30;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .contact-card .icon {
-            font-size: 2rem;
-            color: #eea719;
-        }
-
-        .contact-info {
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-info h3 {
-            font-family: 'Roboto Slab', serif;
-            color: #035847;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .contact-info p {
-            color: #035847;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-
-        .contact-info a {
-            color: #8d242f;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .contact-info a.email::before {
-            content: "📧";
-            font-size: 1rem;
-            flex-shrink: 0;
-        }
-
-        .contact-info a:hover {
-            color: #c44720;
-            text-decoration: underline;
-        }
-
-        /* Hours Section */
-        .hours-section {
-            background: linear-gradient(135deg, #8d242f, #c44720);
-            color: white;
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(141, 36, 47, 0.3);
-            margin: 3rem 0;
-        }
-
-        .hours-section h2 {
-            font-family: 'Roboto Slab', serif;
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            font-weight: 600;
-            text-align: center;
-        }
-
-        .hours-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .hours-card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .hours-card h3 {
-            font-family: 'Roboto Slab', serif;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .hours-card p {
-            margin-bottom: 0.5rem;
-        }
-
-        /* Contact Form */
-        .contact-form-section {
-            background: white;
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin: 3rem 0;
-        }
-
-        .contact-form-section h2 {
-            font-family: 'Roboto Slab', serif;
-            font-size: 2rem;
-            color: #0a2b30;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-            text-align: center;
-            padding-bottom: 0.5rem;
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .form-group.full-width {
-            grid-column: span 2;
-        }
-
-        .form-group label {
-            font-family: 'Roboto Slab', serif;
-            font-weight: 600;
-            color: #0a2b30;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            padding: 1rem;
-            border: 2px solid #e9ecef;
-            border-radius: 10px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            background: white;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: #eea719;
-            box-shadow: 0 0 10px rgba(238, 167, 25, 0.3);
-        }
-
-        .form-group textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            background: linear-gradient(45deg, #eea719, #c44720);
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 50px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(238, 167, 25, 0.4);
-            display: block;
-            margin: 0 auto;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(238, 167, 25, 0.6);
-            background: linear-gradient(45deg, #c44720, #8d242f);
-        }
-
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
-            color: white;
-            text-align: center;
-            padding: 3rem 0;
-            margin-top: 4rem;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.2);
-            padding-top: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
-            }
-            
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                height: 100vh;
-                width: 300px;
-                background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 2rem;
-                transition: right 0.3s ease;
-                z-index: 1000;
-                box-shadow: -5px 0 15px rgba(0,0,0,0.3);
-            }
-            
-            .nav-links.active {
-                right: 0;
-            }
-            
-            .nav-links a {
-                font-size: 1.2rem;
-                padding: 1rem 2rem;
-                text-align: center;
-                width: 100%;
-            }
-            
-            header {
-                padding: 1.5rem 0;
-            }
-            
-            nav {
-                flex-direction: row;
-                gap: 1rem;
-            }
-            
-            .logo-container {
-                justify-content: flex-start;
-            }
-            
-            .logo-img {
-                width: 130px;
-                height: 130px;
-                padding: 8px;
-            }
-            
-            .page-header h1 {
-                font-size: 2rem;
-            }
-            
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            
-            .form-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-            
-            .form-group.full-width {
-                grid-column: span 1;
-            }
-            
-            .hours-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 0.75rem;
-                overflow-x: auto;
-            }
-            
-            .hours-card {
-                padding: 1rem;
-                min-width: 200px;
-                flex-shrink: 0;
-            }
-            
-            .hours-card h3 {
-                font-size: 1.1rem;
-                margin-bottom: 0.75rem;
-            }
-            
-            .hours-card p {
-                font-size: 0.95rem;
-                margin-bottom: 0.4rem;
-                line-height: 1.4;
-            }
-            
-            .contact-card,
-            .contact-form-section {
-                padding: 2rem;
-            }
-            
-            .container {
-                padding: 0 15px;
-            }
-        }
-    </style>
-    <!-- Site analytics -->
+    <title>Contact - Downtown Manteca District</title>
+    <meta name="description" content="Reach the Downtown Manteca Improvement Association: (209) 214-7555, info@downtownmanteca.com, 123 W. Yosemite Ave., Manteca, CA 95336.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/site.css">
+    <script src="js/site.js" defer></script>
     <script src="analytics.js" defer></script>
 </head>
 <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
     <header>
-        <nav class="container">
-            <div class="logo-container">
-                <img src="img/manteca-logo.png" alt="Downtown Manteca District Logo" class="logo-img">
-            </div>
-            <button class="hamburger" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
+        <nav>
+            <a class="nav-logo" href="index.html">
+                <img src="img/manteca-logo.png" alt="">
+                <span class="nav-logo-text">Downtown Manteca<span>District</span></span>
+            </a>
+            <button class="hamburger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+                <span></span><span></span><span></span>
             </button>
-            <ul class="nav-links">
+            <ul class="nav-links" id="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="events.html">Events</a></li>
                 <li><a href="directory.html">Business</a></li>
                 <li><a href="documents.html">Documents</a></li>
                 <li><a href="aboutUs.html">About Us</a></li>
-                <li><a href="contact.html" class="active">Contact</a></li>
+                <li><a href="contact.html" class="active" aria-current="page">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="page-header">
+    <main id="main">
+        <section class="page-header">
         <div class="container">
             <h1>Contact Downtown Manteca District</h1>
             <p>We're here to serve our community. Get in touch with us for information, assistance, or to get involved in making downtown Manteca vibrant.</p>
         </div>
     </section>
 
-    <main class="container">
+    <div class="page-shell">
+        <div class="container">
+    
         <!-- Primary Contact Information -->
         <section class="contact-grid">
             <div class="contact-card">
-                <h2><span class="icon">🏢</span> Main Office</h2>
+                <h2><span class="icon"></span> Main Office</h2>
                 <div class="contact-info">
                     <h3>Downtown Manteca District</h3>
                     <p>123 W. Yosemite Ave.<br>
@@ -510,7 +64,7 @@
             </div>
 
             <div class="contact-card">
-                <h2><span class="icon">📋</span> Board Leadership</h2>
+                <h2><span class="icon"></span> Board Leadership</h2>
                 <div class="contact-info">
                     <h3>President</h3>
                     <p><strong>Charles Paz</strong></p>
@@ -536,10 +90,14 @@
                     <p><em>Holiday schedule may vary</em></p>
                 </div>
                 <div class="hours-card">
-                    <h3>🗳️ Board Meetings</h3>
+                    <h3>Board Meetings</h3>
+                    <p><strong>Executive Committee:</strong> first Wednesday</p>
+                    <p><strong>Board:</strong> second Wednesday</p>
+                    <p><strong>Civil Sidewalks &amp; DIPC:</strong> fourth Wednesday</p>
+                    <p><em>American Legion Hall &middot; open to the public</em></p>
                 </div>
                 <div class="hours-card">
-                    <h3>📧 Response Times</h3>
+                    <h3>Response Times</h3>
                     <p><strong>General Inquiries:</strong> 1-2 business days</p>
                     <p><strong>Public Records:</strong> 10 days (legal requirement)</p>
                     <p><strong>Board Matters:</strong> 3-5 business days</p>
@@ -600,45 +158,9 @@
                 <button type="submit" class="submit-btn">Send Message</button>
             </form>
         </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Contact Info</h4>
-                    <p>Downtown Manteca District</p>
-                    <p>123 W. Yosemite Ave.</p>
-                    <p>Manteca, CA 95336</p>
-                    <p>Phone: (209) 214-7555</p>
-                    <p>Email: info@downtownmanteca.com</p>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <a href="index.html">Home</a>
-                    <a href="aboutUs.html">About Us</a>
-                    <a href="directory.html">Business Directory</a>
-                    <a href="events.html">Events</a>
-                    <a href="contact.html">Contact Us</a>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Connect</h4>
-                    <a href="https://www.facebook.com/profile.php?id=61573494300309" target="_blank" rel="noopener">Facebook</a>
-                    <a href="https://www.instagram.com/downtownmanteca/" target="_blank" rel="noopener">Instagram</a>
-                    <a href="https://linktr.ee/downtownmanteca" target="_blank" rel="noopener">Linktree</a>
-                    <a href="mailto:info@downtownmanteca.com">Email Us</a>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-
-                <p>Copyright © 2025 Downtown Manteca District - All Rights Reserved.</p>
-                <p>Managed by Jane Media Services</p>
-            </div>
         </div>
-    </footer>
+    </div>
+    </main>
 
     <script>
         document.getElementById('contact-form').addEventListener('submit', function(e) {
@@ -765,5 +287,41 @@
             }
         });
     </script>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <img src="img/manteca-logo.png" alt="">
+                <p>The business association for the blocks around Yosemite and Maple, in Manteca, California.</p>
+            </div>
+            <div class="footer-col">
+                <h2>Navigate</h2>
+                <a href="index.html">Home</a>
+                <a href="events.html">Events</a>
+                <a href="directory.html">Business Directory</a>
+                <a href="documents.html">Documents</a>
+                <a href="aboutUs.html">About Us</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-col">
+                <h2>Connect</h2>
+                <a href="https://www.facebook.com/profile.php?id=61573494300309" target="_blank" rel="noopener">Facebook</a>
+                <a href="https://www.instagram.com/downtownmanteca/" target="_blank" rel="noopener">Instagram</a>
+                <a href="https://linktr.ee/downtownmanteca" target="_blank" rel="noopener">Linktree</a>
+                <a href="mailto:info@downtownmanteca.com">Email Us</a>
+            </div>
+            <div class="footer-col">
+                <h2>Contact</h2>
+                <p>123 W. Yosemite Ave.</p>
+                <p>Manteca, CA 95336</p>
+                <p style="margin-top:10px;"><a href="tel:+12092147555">(209) 214-7555</a></p>
+                <p><a href="mailto:info@downtownmanteca.com">info@downtownmanteca.com</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 Downtown Manteca District. All rights reserved.</span>
+            <span><a href="privacy-policy.html">Privacy</a> &nbsp;&middot;&nbsp; <a href="terms-of-use.html">Terms</a> &nbsp;&middot;&nbsp; <a href="accessibility.html">Accessibility</a></span>
+        </div>
+    </footer>
 </body>
 </html>
