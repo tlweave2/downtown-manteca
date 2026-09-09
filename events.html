@@ -408,16 +408,41 @@
         }
 
         .stroll-fact {
+            display: flex;
+            flex-direction: column;
             padding: 1.25rem;
             border-radius: 14px;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(201, 160, 245, 0.28);
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            text-decoration: none;
+            transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
         }
 
-        .stroll-fact:hover {
+        .stroll-fact:hover,
+        .stroll-fact:focus-visible {
             transform: translateY(-4px);
             border-color: rgba(201, 160, 245, 0.7);
+            background: rgba(167, 96, 232, 0.14);
+        }
+
+        .stroll-fact:focus-visible {
+            outline: 2px solid #c9a0f5;
+            outline-offset: 3px;
+        }
+
+        /* Says out loud what the hover only hints at */
+        .stroll-go {
+            margin-top: auto;
+            padding-top: 0.9rem;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            color: #c9a0f5;
+        }
+
+        .stroll-fact:hover .stroll-go,
+        .stroll-fact:focus-visible .stroll-go {
+            color: #e2ccff;
         }
 
         .stroll-fact h3 {
@@ -785,28 +810,31 @@
                 </p>
 
                 <div class="stroll-facts">
-                    <div class="stroll-fact">
+                    <a class="stroll-fact" href="https://www.google.com/maps/search/?api=1&amp;query=134+N+Maple+Ave%2C+Manteca%2C+CA+95336" target="_blank" rel="noopener" aria-label="Get directions to the Beer &amp; Wine Stroll at 134 N. Maple, Manteca">
                         <h3>📍 Where</h3>
                         <p>
                             <strong>Downtown Manteca</strong><br>
                             Yosemite Ave. &amp; Maple Ave.<br>
                             Check-in: 134 N. Maple, Manteca, CA 95336
                         </p>
-                    </div>
-                    <div class="stroll-fact">
+                        <span class="stroll-go">Get directions &rarr;</span>
+                    </a>
+                    <a class="stroll-fact" href="https://www.eventbrite.com/e/downtown-manteca-beer-wine-stroll-tickets-1998916454926" target="_blank" rel="noopener" aria-label="Buy a Beer &amp; Wine Stroll ticket on Eventbrite">
                         <h3>🎟️ Stroll Ticket</h3>
                         <p>
                             <span class="stroll-price">$45 <small>plus fees</small></span>
                             Beer and wine tastings at participating Downtown businesses. Must be 21 or older.
                         </p>
-                    </div>
-                    <div class="stroll-fact">
+                        <span class="stroll-go">Buy on Eventbrite &rarr;</span>
+                    </a>
+                    <a class="stroll-fact" href="https://www.eventbrite.com/e/downtown-manteca-beer-wine-stroll-tickets-1998916454926" target="_blank" rel="noopener" aria-label="Buy a sober driver wristband on Eventbrite">
                         <h3>🚗 Sober Driver Wristband</h3>
                         <p>
                             <span class="stroll-price">$20 <small>plus fees</small></span>
                             Join the fun without drinking. Does <strong>not</strong> include alcohol tastings.
                         </p>
-                    </div>
+                        <span class="stroll-go">Buy on Eventbrite &rarr;</span>
+                    </a>
                 </div>
 
                 <p class="stroll-cause">💜 This community fundraiser supports Downtown events and programs.</p>

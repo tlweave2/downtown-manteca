@@ -586,7 +586,10 @@
             max-width: 320px;
         }
 
-        .attraction-card:hover {
+        /* Only lift cards that actually go somewhere. "Historic Main Street"
+           and "Manteca Historical Museum" lost their links in 01c264f, so
+           they were promising a click they could not honour. */
+        .attraction-card:has(a):hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
