@@ -4,7 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events - Downtown Manteca District</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Beer &amp; Wine Stroll in Downtown Manteca on Friday, October 30, 2026, 6-9 PM. Beer and wine tastings, live music, and Halloween fun at participating local businesses. 21+.">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "Downtown Manteca Beer & Wine Stroll",
+      "description": "An evening of local sips, music, and Halloween fun in the heart of Downtown Manteca. Stroll through participating local businesses while sampling a variety of beer and wine.",
+      "startDate": "2026-10-30T18:00:00-07:00",
+      "endDate": "2026-10-30T21:00:00-07:00",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "image": "https://downtownmanteca.com/img/beer-wine-stroll-2026.jpg",
+      "typicalAgeRange": "21-",
+      "location": {
+        "@type": "Place",
+        "name": "Downtown Manteca",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "134 N. Maple Ave",
+          "addressLocality": "Manteca",
+          "addressRegion": "CA",
+          "postalCode": "95336",
+          "addressCountry": "US"
+        }
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": "Downtown Manteca Improvement Association",
+        "url": "https://downtownmanteca.com"
+      },
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Stroll Ticket",
+          "price": "45",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "url": "https://www.eventbrite.com/e/downtown-manteca-beer-wine-stroll-tickets-1998916454926"
+        },
+        {
+          "@type": "Offer",
+          "name": "Sober Driver Wristband",
+          "description": "Join the fun without drinking. Does not include alcohol tastings.",
+          "price": "20",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "url": "https://www.eventbrite.com/e/downtown-manteca-beer-wine-stroll-tickets-1998916454926"
+        }
+      ]
+    }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto+Slab:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -200,6 +251,363 @@
             border: none;
         }
 
+        /* ============ Beer & Wine Stroll feature ============ */
+        .stroll {
+            position: relative;
+            isolation: isolate;
+            scroll-margin-top: 1.5rem;
+            overflow: hidden;
+            border-radius: 24px;
+            margin-bottom: 2rem;
+            color: #f4eeff;
+            border: 1px solid rgba(180, 130, 245, 0.35);
+            background:
+                radial-gradient(120% 85% at 50% -15%, rgba(167, 96, 232, 0.55) 0%, rgba(88, 34, 148, 0.32) 38%, rgba(11, 7, 16, 0) 72%),
+                radial-gradient(75% 55% at 88% 108%, rgba(139, 63, 212, 0.38) 0%, rgba(11, 7, 16, 0) 62%),
+                linear-gradient(158deg, #1c0b31 0%, #0b0710 55%, #16092a 100%);
+            box-shadow: 0 26px 65px rgba(38, 10, 74, 0.45);
+        }
+
+        /* Film grain, to echo the flyer artwork */
+        .stroll::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.42;
+            mix-blend-mode: overlay;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23g)'/%3E%3C/svg%3E");
+        }
+
+        /* Harvest moon behind the headline */
+        .stroll::after {
+            content: "";
+            position: absolute;
+            top: -110px;
+            right: -70px;
+            width: 340px;
+            height: 340px;
+            z-index: 0;
+            pointer-events: none;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(216, 178, 255, 0.30) 0%, rgba(167, 96, 232, 0.16) 45%, rgba(11, 7, 16, 0) 70%);
+            animation: stroll-moon 7s ease-in-out infinite;
+        }
+
+        @keyframes stroll-moon {
+            0%, 100% { opacity: 0.75; transform: scale(1); }
+            50%      { opacity: 1;    transform: scale(1.06); }
+        }
+
+        .stroll-inner {
+            position: relative;
+            z-index: 1;
+            padding: 3rem 2rem 2.5rem;
+            text-align: center;
+        }
+
+        .stroll-21 {
+            position: absolute;
+            top: 1.25rem;
+            left: 1.5rem;
+            font-family: 'Anton', 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 0.04em;
+            color: #ffffff;
+            text-shadow: 0 0 18px rgba(199, 141, 255, 0.9);
+        }
+
+        .stroll-kicker {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: #c9a0f5;
+            margin-bottom: 0.75rem;
+        }
+
+        .stroll-title {
+            font-family: 'Anton', 'Roboto Slab', serif;
+            font-weight: 400;
+            line-height: 0.92;
+            letter-spacing: 0.01em;
+            text-transform: uppercase;
+            margin-bottom: 0.85rem;
+        }
+
+        .stroll-title span {
+            display: block;
+        }
+
+        .stroll-title .line-1 {
+            font-size: clamp(2.4rem, 7vw, 4.6rem);
+            color: #ffffff;
+            text-shadow: 0 6px 30px rgba(0, 0, 0, 0.65);
+        }
+
+        .stroll-title .line-2 {
+            font-size: clamp(3rem, 9vw, 6rem);
+            color: #c9a0f5;
+            text-shadow: 0 0 42px rgba(167, 96, 232, 0.65), 0 6px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        .stroll-tagline {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #eadcff;
+            max-width: 640px;
+            margin: 0 auto 1.75rem;
+        }
+
+        /* Date block */
+        .stroll-when {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem 1.5rem;
+            padding: 1.25rem 1rem;
+            margin-bottom: 1.75rem;
+            border-top: 1px solid rgba(201, 160, 245, 0.28);
+            border-bottom: 1px solid rgba(201, 160, 245, 0.28);
+        }
+
+        .stroll-numerals {
+            font-family: 'Anton', 'Roboto Slab', serif;
+            font-size: clamp(2rem, 6vw, 3.2rem);
+            line-height: 1;
+            color: #ffffff;
+            letter-spacing: 0.02em;
+        }
+
+        .stroll-numerals em {
+            font-style: normal;
+            color: #c9a0f5;
+        }
+
+        .stroll-when-text {
+            text-align: left;
+        }
+
+        .stroll-when-text strong {
+            display: block;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .stroll-when-text span {
+            display: block;
+            font-size: 0.95rem;
+            color: #c9a0f5;
+            font-weight: 600;
+        }
+
+        /* Highlight pills */
+        .stroll-tags {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.6rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .stroll-tags li {
+            padding: 0.45rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #f4eeff;
+            background: rgba(167, 96, 232, 0.16);
+            border: 1px solid rgba(201, 160, 245, 0.4);
+        }
+
+        .stroll-copy {
+            font-size: 1rem;
+            line-height: 1.75;
+            color: rgba(244, 238, 255, 0.88);
+            max-width: 680px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Where / ticket cards */
+        .stroll-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1rem;
+            text-align: left;
+            margin-bottom: 1.75rem;
+        }
+
+        .stroll-fact {
+            padding: 1.25rem;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(201, 160, 245, 0.28);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .stroll-fact:hover {
+            transform: translateY(-4px);
+            border-color: rgba(201, 160, 245, 0.7);
+        }
+
+        .stroll-fact h3 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #c9a0f5;
+            margin-bottom: 0.6rem;
+        }
+
+        .stroll-fact p {
+            font-size: 0.92rem;
+            line-height: 1.6;
+            color: rgba(244, 238, 255, 0.85);
+        }
+
+        .stroll-price {
+            display: block;
+            font-family: 'Anton', 'Roboto Slab', serif;
+            font-size: 2rem;
+            line-height: 1.1;
+            color: #ffffff;
+        }
+
+        .stroll-price small {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #c9a0f5;
+        }
+
+        .stroll-cause {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #eadcff;
+            max-width: 620px;
+            margin: 0 auto 1.75rem;
+        }
+
+        /* Buttons */
+        .stroll-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.85rem;
+            margin-bottom: 2rem;
+        }
+
+        .stroll-btn {
+            display: inline-block;
+            padding: 0.95rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: #1a0a2e;
+            background: linear-gradient(45deg, #c9a0f5, #a760e8);
+            border: 1px solid rgba(201, 160, 245, 0.9);
+            box-shadow: 0 8px 26px rgba(167, 96, 232, 0.45);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+        }
+
+        .stroll-btn:hover,
+        .stroll-btn:focus-visible {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 34px rgba(167, 96, 232, 0.65);
+            background: linear-gradient(45deg, #e2ccff, #b578f0);
+        }
+
+        .stroll-btn-ghost {
+            color: #f4eeff;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(201, 160, 245, 0.55);
+            box-shadow: none;
+        }
+
+        .stroll-btn-ghost:hover,
+        .stroll-btn-ghost:focus-visible {
+            background: rgba(167, 96, 232, 0.22);
+            box-shadow: 0 10px 26px rgba(167, 96, 232, 0.3);
+        }
+
+        .stroll-flyer {
+            display: block;
+            width: 100%;
+            max-width: 440px;
+            margin: 0 auto 1.5rem;
+            border-radius: 14px;
+            border: 1px solid rgba(201, 160, 245, 0.35);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .stroll-fine {
+            font-size: 0.8rem;
+            line-height: 1.7;
+            color: rgba(244, 238, 255, 0.62);
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .stroll::after { animation: none; }
+            .stroll-fact,
+            .stroll-btn { transition: none; }
+            .stroll-fact:hover,
+            .stroll-btn:hover { transform: none; }
+        }
+
+        @media (max-width: 600px) {
+            .stroll-inner {
+                padding: 3.25rem 1.15rem 2rem;
+            }
+
+            .stroll-21 {
+                top: 1rem;
+                left: 1.15rem;
+                font-size: 1.25rem;
+            }
+
+            .stroll-kicker {
+                font-size: 0.62rem;
+                letter-spacing: 0.16em;
+            }
+
+            .stroll-when {
+                flex-direction: column;
+                gap: 0.35rem;
+            }
+
+            .stroll-when-text {
+                text-align: center;
+            }
+
+            .stroll-tags li {
+                font-size: 0.78rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .stroll-facts {
+                grid-template-columns: 1fr;
+            }
+
+            .stroll-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .stroll-btn {
+                padding: 0.85rem 1.25rem;
+                text-align: center;
+            }
+        }
         /* Footer */
         footer {
             background: linear-gradient(135deg, #0a2b30 0%, #035847 100%);
@@ -400,24 +808,84 @@
         </section>
 
 
-        <section style="background: linear-gradient(135deg, #3d2b18, #1c1209); border-radius: 20px; padding: 2rem; margin-bottom: 2rem; color: #f5ecd9; text-align: center;">
-            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🍻🍷🦇</div>
-            <h2 style="font-family: 'Roboto Slab', serif; font-size: 1.8rem; margin-bottom: 0.5rem; color: #e8b64c;">Beer &amp; Wine Stroll</h2>
-            <p style="font-size: 1rem; opacity: 0.9; margin-bottom: 0.25rem;">📅 Friday, October 30, 2026 @ 6:00 PM &ndash; 9:00 PM</p>
-            <p style="font-size: 1rem; opacity: 0.9; margin-bottom: 1rem;">📍 Downtown Manteca</p>
-            <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.25rem; font-size: 0.9rem; font-weight: 600;">
-                <span>🎟️ $45 per ticket, plus fees</span>
-                <span>🔞 Must be 21 or older</span>
-                <span>👻 Costume contest</span>
+        <!-- ============ Beer & Wine Stroll ============ -->
+        <section class="stroll" id="beer-wine-stroll" aria-labelledby="stroll-heading">
+            <div class="stroll-inner">
+                <span class="stroll-21" aria-hidden="true">21+</span>
+
+                <p class="stroll-kicker">Downtown Manteca Improvement Association presents</p>
+
+                <h2 class="stroll-title" id="stroll-heading">
+                    <span class="line-1">Beer &amp; Wine</span>
+                    <span class="line-2">Stroll</span>
+                </h2>
+
+                <p class="stroll-tagline">An evening of local sips, music, and Halloween fun in the heart of Downtown Manteca.</p>
+
+                <div class="stroll-when">
+                    <div class="stroll-numerals" aria-hidden="true">10<em>.</em>30<em>.</em>26</div>
+                    <div class="stroll-when-text">
+                        <strong>Friday, October 30, 2026</strong>
+                        <span>6:00 PM &ndash; 9:00 PM</span>
+                    </div>
+                </div>
+
+                <ul class="stroll-tags">
+                    <li>🍻 Beer &amp; wine tastings</li>
+                    <li>🎶 Live music</li>
+                    <li>👻 Costumes encouraged</li>
+                    <li>🚶 Walkable Downtown</li>
+                    <li>🔞 21 &amp; over</li>
+                </ul>
+
+                <p class="stroll-copy">
+                    Join us for an evening of beer, wine, music, and Downtown fun! Stroll through
+                    participating local businesses while sampling a variety of beer and wine.
+                </p>
+
+                <div class="stroll-facts">
+                    <div class="stroll-fact">
+                        <h3>📍 Where</h3>
+                        <p>
+                            <strong>Downtown Manteca</strong><br>
+                            Yosemite Ave. &amp; Maple Ave.<br>
+                            Check-in: 134 N. Maple, Manteca, CA 95336
+                        </p>
+                    </div>
+                    <div class="stroll-fact">
+                        <h3>🎟️ Stroll Ticket</h3>
+                        <p>
+                            <span class="stroll-price">$45 <small>plus fees</small></span>
+                            Beer and wine tastings at participating Downtown businesses. Must be 21 or older.
+                        </p>
+                    </div>
+                    <div class="stroll-fact">
+                        <h3>🚗 Sober Driver Wristband</h3>
+                        <p>
+                            <span class="stroll-price">$20 <small>plus fees</small></span>
+                            Join the fun without drinking. Does <strong>not</strong> include alcohol tastings.
+                        </p>
+                    </div>
+                </div>
+
+                <p class="stroll-cause">💜 This community fundraiser supports Downtown events and programs.</p>
+
+                <div class="stroll-actions">
+                    <a class="stroll-btn" href="https://www.eventbrite.com/e/downtown-manteca-beer-wine-stroll-tickets-1998916454926" target="_blank" rel="noopener">
+                        🎟️ Get Tickets on Eventbrite
+                    </a>
+                    <a class="stroll-btn stroll-btn-ghost" href="mailto:info@downtownmanteca.com?subject=Beer%20%26%20Wine%20Stroll">
+                        📧 Questions? Email Us
+                    </a>
+                </div>
+
+                <img class="stroll-flyer" src="img/beer-wine-stroll-2026.jpg" alt="Beer &amp; Wine Stroll flyer: Downtown Manteca Improvement Association, Friday, October 30, 2026, 6:00 PM to 9:00 PM, $45 per ticket plus fees, must be 21 years or older, costumes encouraged, join our costume contest.">
+
+                <p class="stroll-fine">
+                    Must be 21+ for alcohol tastings. Valid government-issued ID required. Please drink
+                    responsibly and plan for a safe ride home. Refunds up to 7 days before the event.
+                </p>
             </div>
-            <p style="font-size: 0.95rem; line-height: 1.7; max-width: 650px; margin: 0 auto 1.25rem;">
-                Stroll downtown for an evening of beer and wine tastings hosted by our local
-                businesses. Costumes are encouraged, and there is a costume contest.
-            </p>
-            <img src="img/beer-wine-stroll-2026.jpg" alt="Beer &amp; Wine Stroll flyer: Friday, October 30, 2026, 6:00 to 9:00 PM, $45 per ticket plus fees, must be 21 years or older, costume contest" style="width: 100%; max-width: 480px; border-radius: 12px; margin-bottom: 1.25rem; display: block; margin-left: auto; margin-right: auto;">
-            <a href="mailto:info@downtownmanteca.com?subject=Beer%20%26%20Wine%20Stroll%20tickets" style="background: rgba(232,182,76,0.18); color: #f5ecd9; padding: 0.75rem 1.5rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.95rem; border: 1px solid rgba(232,182,76,0.55);">
-                📧 Ask About Tickets
-            </a>
         </section>
 
 <!-- Recurring Committee Meetings -->

@@ -373,6 +373,97 @@
             font-weight: 600;
         }
 
+        /* Event cards are links, so keyboard and screen-reader users get them too */
+        .event-card {
+            display: block;
+            text-decoration: none;
+        }
+
+        /* Featured treatment: Beer & Wine Stroll */
+        .event-card-stroll {
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+            background: linear-gradient(158deg, #1c0b31 0%, #0b0710 55%, #16092a 100%);
+            border-color: rgba(201, 160, 245, 0.4);
+            padding: 2.25rem 2rem;
+        }
+
+        .event-card-stroll::before {
+            content: "";
+            position: absolute;
+            top: -90px;
+            right: -60px;
+            width: 260px;
+            height: 260px;
+            z-index: -1;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(216, 178, 255, 0.32) 0%, rgba(167, 96, 232, 0.18) 45%, rgba(11, 7, 16, 0) 70%);
+            animation: stroll-card-moon 7s ease-in-out infinite;
+        }
+
+        @keyframes stroll-card-moon {
+            0%, 100% { opacity: 0.75; transform: scale(1); }
+            50%      { opacity: 1;    transform: scale(1.07); }
+        }
+
+        .event-card-stroll:hover {
+            box-shadow: 0 15px 35px rgba(167, 96, 232, 0.45);
+            border-color: #c9a0f5;
+        }
+
+        .event-badge {
+            display: inline-block;
+            margin-bottom: 1rem;
+            padding: 0.3rem 0.9rem;
+            border-radius: 50px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #f4eeff;
+            background: rgba(167, 96, 232, 0.25);
+            border: 1px solid rgba(201, 160, 245, 0.55);
+        }
+
+        .event-card-stroll .event-date {
+            font-size: 3.2rem;
+            line-height: 1;
+            color: #c9a0f5;
+            text-shadow: 0 0 34px rgba(167, 96, 232, 0.6);
+        }
+
+        .event-card-stroll .event-month {
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 0.85rem;
+            opacity: 1;
+            color: #eadcff;
+        }
+
+        .event-card-stroll .event-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+        }
+
+        .event-meta {
+            margin-top: 0.75rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #eadcff;
+        }
+
+        .event-meta-sub {
+            margin-top: 0.35rem;
+            font-size: 0.9rem;
+            color: rgba(244, 238, 255, 0.75);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .event-card-stroll::before { animation: none; }
+        }
+
         .events-cta {
             text-align: center;
             margin-top: 2rem;
@@ -901,11 +992,14 @@
                 Join us for exciting events throughout the year that celebrate our community, culture, and local businesses.
             </p>
             <div class="events-grid">
-                <div class="event-card" onclick="window.location.href='events.html'">
+                <a class="event-card event-card-stroll" href="events.html#beer-wine-stroll">
+                    <span class="event-badge">21+ &middot; Tickets on sale</span>
                     <div class="event-date">30</div>
-                    <div class="event-month">Oct 2026</div>
+                    <div class="event-month">Friday &middot; Oct 2026</div>
                     <div class="event-title">🍻 Beer &amp; Wine Stroll</div>
-                </div>
+                    <div class="event-meta">6:00 &ndash; 9:00 PM &middot; Yosemite Ave. &amp; Maple Ave.</div>
+                    <div class="event-meta-sub">Beer &amp; wine tastings, live music, and Halloween fun at participating local businesses.</div>
+                </a>
             </div>
             <div class="events-cta">
                 <a href="events.html" class="view-calendar-btn">View Full Calendar & Event Details →</a>
