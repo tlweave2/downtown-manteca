@@ -386,13 +386,24 @@
             isolation: isolate;
             background: linear-gradient(158deg, #1c0b31 0%, #0b0710 55%, #16092a 100%);
             border-color: rgba(201, 160, 245, 0.4);
-            padding: 2.25rem 2rem;
+            padding: 0;
         }
 
-        .event-card-stroll::before {
+        .event-banner {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .event-card-body {
+            position: relative;
+            padding: 1.75rem 2rem 2rem;
+        }
+
+        .event-card-body::before {
             content: "";
             position: absolute;
-            top: -90px;
+            top: -70px;
             right: -60px;
             width: 260px;
             height: 260px;
@@ -426,27 +437,6 @@
             border: 1px solid rgba(201, 160, 245, 0.55);
         }
 
-        .event-card-stroll .event-date {
-            font-size: 3.2rem;
-            line-height: 1;
-            color: #c9a0f5;
-            text-shadow: 0 0 34px rgba(167, 96, 232, 0.6);
-        }
-
-        .event-card-stroll .event-month {
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            font-weight: 600;
-            font-size: 0.85rem;
-            opacity: 1;
-            color: #eadcff;
-        }
-
-        .event-card-stroll .event-title {
-            font-size: 1.75rem;
-            font-weight: 700;
-        }
-
         .event-meta {
             margin-top: 0.75rem;
             font-size: 1rem;
@@ -460,8 +450,21 @@
             color: rgba(244, 238, 255, 0.75);
         }
 
+        .event-more {
+            display: inline-block;
+            margin-top: 1.1rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            color: #c9a0f5;
+        }
+
+        .event-card-stroll:hover .event-more {
+            color: #e2ccff;
+        }
+
         @media (prefers-reduced-motion: reduce) {
-            .event-card-stroll::before { animation: none; }
+            .event-card-body::before { animation: none; }
         }
 
         .events-cta {
@@ -993,12 +996,13 @@
             </p>
             <div class="events-grid">
                 <a class="event-card event-card-stroll" href="events.html#beer-wine-stroll">
-                    <span class="event-badge">21+ &middot; Tickets on sale</span>
-                    <div class="event-date">30</div>
-                    <div class="event-month">Friday &middot; Oct 2026</div>
-                    <div class="event-title">🍻 Beer &amp; Wine Stroll</div>
-                    <div class="event-meta">6:00 &ndash; 9:00 PM &middot; Yosemite Ave. &amp; Maple Ave.</div>
-                    <div class="event-meta-sub">Beer &amp; wine tastings, live music, and Halloween fun at participating local businesses.</div>
+                    <img class="event-banner" src="img/beerwinestroll.jpg" width="1920" height="1080" alt="Beer &amp; Wine Stroll, presented by the Downtown Manteca District. 10.30.26, 6:00 to 9:00 pm. 21 and over.">
+                    <div class="event-card-body">
+                        <span class="event-badge">21+ &middot; Tickets on sale</span>
+                        <div class="event-meta">Friday, October 30, 2026 &middot; 6:00 &ndash; 9:00 PM</div>
+                        <div class="event-meta-sub">Beer &amp; wine tastings, live music, and Halloween fun at participating businesses along Yosemite Ave. &amp; Maple Ave.</div>
+                        <span class="event-more">See details &amp; tickets &rarr;</span>
+                    </div>
                 </a>
             </div>
             <div class="events-cta">
